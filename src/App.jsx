@@ -9,7 +9,7 @@ import lightmode from "./assets/lightmode.png";
 import nightmode from "./assets/nightmode.png";
 import { ChevronRight, Mail, Trophy, MapPin, FileText } from "lucide-react";
 import TypewriterRole from "./animations/TypewriterRole";
-
+import BotpressChat from "./modal/BotpressChat";
 
 function App() {
   const viewResume = () => {
@@ -332,6 +332,12 @@ const toggleDarkMode = () => {
           </div>
         </section>
 
+        <section>
+          <div className="fixed bottom-20 right-4 w-96 h-[600px] flex flex-col">
+            <BotpressChat />
+          </div>
+        </section>
+          
         <section>
           <div className="text-center text-xs text-foreground/70 mt-8">
             <p>© 2024 Arwin Janoyan. All rights reserved.</p>
