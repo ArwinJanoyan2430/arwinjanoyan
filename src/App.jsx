@@ -187,7 +187,7 @@ const toggleDarkMode = () => {
             </div>
 
 
-            <div className="col-span-1 md:col-span-2 md:row-span- space-y-2 animate-fade-in animation-delay-200">
+            <div className="col-span-1 md:col-span-2 md:row-span-3 space-y-2 animate-fade-in animation-delay-200">
             <div className="bento-card p-4 space-y-2 group flex-1"> 
               <h2 className="text-lg font-bold">Education</h2>
               <div className="relative space-y-4.5 mt-4">
