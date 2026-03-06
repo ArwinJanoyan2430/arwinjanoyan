@@ -11,8 +11,8 @@ import harvard from "./assets/harvard.png";
 import IntelliPatCert from "./assets/IntelliPatCert.png";
 import sqlCert from "./assets/sqlCert.png";
 import hourofcode from "./assets/hourofcode.png";
-import webdesignCert from "./assets/webdesigncert.png";
-import oracleCert from "./assets/oraclecert.png";
+import webdesignCert from "./assets/webdesignCert.png";
+import oracleCert from "./assets/oracleCert.png";
 
 import { ChevronRight, Mail, Trophy, MapPin, FileText } from "lucide-react";
 import TypewriterRole from "./animations/TypewriterRole";
