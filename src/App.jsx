@@ -1,19 +1,16 @@
 
 import profile from "./assets/profile.png";
 import profile2 from "./assets/profile2.png";
-import "./index.css"
+import "./index.css";
 import resume from "./assets/ArwinResume.pdf";
-import EmailModal from "./modal/EmailModal";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import badge from "./assets/badge.png";
 import lightmode from "./assets/lightmode.png";
 import nightmode from "./assets/nightmode.png";
 import { ChevronRight, Mail, Trophy, MapPin, FileText } from "lucide-react";
 import TypewriterRole from "./animations/TypewriterRole";
 import BotpressChat from "./modal/BotpressChat";
-import BestInWebManagement from "./assets/BestInWebManagement.png";
-import harvard from "./assets/harvard.png";
-import IntelliPatCert from "./assets/intelliPatCert.png";
+import EmailModal from "./modal/EmailModal"; // ✅ ADD THIS
 
 function App() {
   const viewResume = () => {
