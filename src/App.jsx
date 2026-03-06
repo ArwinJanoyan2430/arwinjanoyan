@@ -37,7 +37,7 @@ const toggleDarkMode = () => {
   return (
     <div className="max-w-4xl mx-auto px-4 py-8" >
       <section className={`profile-card ${animate ? 'animate-in' : ''} transition-colors duration-300`}>
-        <div className="flex items-center mb-4">
+        <div className="flex flex-col sm:flex-row items-center gap-3 mb-4">
           <img
             src={hover ? profile2 : profile}
             alt="Profile"
@@ -71,7 +71,7 @@ const toggleDarkMode = () => {
               </p>
               <div className="hidden md:block">
                 <div className="relative" >
-                    <button className="cursor-pointer flex items-center justify-center gap-1 bg-blue-600 text-white font-medium rounded-lg w-full md:w-auto md:scale-90 mx-[-15px]" onClick={() => window.open("https://www.facebook.com/photo.php?fbid=611827651697333&set=pb.100086103111194.-2207520000&type=3", "_blank")}>        
+                    <button className="cursor-pointer text-[11px] md:text-xs flex items-center justify-center gap-1 bg-blue-600 text-white font-medium rounded-lg w-full md:w-auto md:scale-90 mx-[-15px]" onClick={() => window.open("https://www.facebook.com/photo.php?fbid=611827651697333&set=pb.100086103111194.-2207520000&type=3", "_blank")}>        
                     <span className="blue-bar inline-flex h-7 md:h-8 items-center rounded-l-lg px-2.5 md:px-2 md:text-xs font-bold transition-all duration-300 gap-1 md:gap-1.5 whitespace-nowrap relative overflow-hidden group flex-1 justify-center md:justify-start min-h-0">
                       <Trophy size={15} className="mx-2"/> MMCM Programming Competition - 2nd Place  <ChevronRight size={18} className="mx-1"/>
                     </span>
@@ -81,8 +81,8 @@ const toggleDarkMode = () => {
               </div>
             </div>
             <div className="space-y-2 mt-3 md:mt-3 gap-1 md:gap-2 flex ">
-              <button className = "button inline-flex h-7 md:h-8 items-center rounded-lg bg-foreground px-2.5 md:px-6 text-[8px] md:text-xs font-medium text-background transition-all duration-200 hover:bg-foreground/90 hover:-translate-y-0.1 gap-1 md:gap-1.5 whitespace-nowrap min-h-0 bg-black dark:bg-white text-white dark:text-black" onClick={viewResume}> <FileText size={16} /> View Resume</button>
-              <button className = "button-2 inline-flex h-7 md:h-8 items-center rounded-lg bg-foreground px-2.5 md:px-6 text-[8px] md:text-xs font-medium text-background transition-all duration-200 hover:bg-foreground/90 hover:-translate-y-0.1 gap-1 md:gap-1.5 whitespace-nowrap min-h-0 dark:bg-black dark:text-white" onClick={() => setShowModal(true)}> <Mail size={16} /> Send Email</button>
+              <button className = "button text-[11px] md:text-xs inline-flex h-7 md:h-8 items-center rounded-lg bg-foreground px-2.5 md:px-6 text-[8px] md:text-xs font-medium text-background transition-all duration-200 hover:bg-foreground/90 hover:-translate-y-0.1 gap-1 md:gap-1.5 whitespace-nowrap min-h-0 bg-black dark:bg-white text-white dark:text-black" onClick={viewResume}> <FileText size={16} /> View Resume</button>
+              <button className = "button-2 text-[11px] md:text-xs inline-flex h-7 md:h-8 items-center rounded-lg bg-foreground px-2.5 md:px-6 text-[8px] md:text-xs font-medium text-background transition-all duration-200 hover:bg-foreground/90 hover:-translate-y-0.1 gap-1 md:gap-1.5 whitespace-nowrap min-h-0 dark:bg-black dark:text-white" onClick={() => setShowModal(true)}> <Mail size={16} /> Send Email</button>
             </div>
             <div className="block md:hidden">
               <div className="relative">
@@ -101,7 +101,7 @@ const toggleDarkMode = () => {
           <EmailModal onClose={() => setShowModal(false)} />
       )}
 
-        <section className={`dark:text-white grid grid-cols-1 md:grid-cols-6 gap-2 ${animate ? "animate-in delay-100" : ""}`}>
+        <section className={`dark:text-white grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 gap-3 ${animate ? "animate-in delay-100" : ""}`}>
           <div className=" bento-card p-4 col-span-1 md:col-span-4 space-y-2">
             <h2 className="text-lg font-bold">About</h2>
             <p className="text-[14px] font-medium text-foreground/70 ">
@@ -352,11 +352,11 @@ const toggleDarkMode = () => {
             </div>
           </div>
 
-          <div className="bento-card p-1 col-span-1 md:col-span-6 space-y-2 animate-fade-in animation-delay-600">
+          <div className="bento-card p-1 col-span-1 md:col-span-6 space-y-2 animate-fade-in animation-delay-600 ">
             <h2 className="text-lg font-bold">Certificate Gallery</h2>
 
            <div className="scrollbar-hover overflow-x-auto w-full transition-all duration-300">
-              <div className={`flex gap-4 w-max`}>
+              <div className="flex gap-4 my-1 w-max snap-x snap-mandatory">
 
                 <div
                 className="bg-white dark:bg-zinc-900 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden group flex-shrink-0 w-[220px]"
@@ -462,18 +462,18 @@ const toggleDarkMode = () => {
             In progress...
           </div>
         </section>
-
-        <section>
-          <div className="fixed bottom-20 right-4 w-96 h-[600px] flex flex-col">
-            <BotpressChat />
-          </div>
-        </section>
           
         <section>
           <div className="text-center text-xs text-foreground/70 mt-8">
             <p>© 2024 Arwin Janoyan. All rights reserved.</p>
           </div>
-        </section>  
+        </section>
+        <section>
+          <div className="fixed bottom-4 right-4">
+            <BotpressChat dark={dark} />
+          </div>
+          
+        </section>
     </div>
   )
 }

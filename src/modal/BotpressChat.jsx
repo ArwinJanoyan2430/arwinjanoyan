@@ -2,31 +2,39 @@ import { useEffect } from "react";
 
 const BotpressChat = () => {
   useEffect(() => {
-    // 1. Create a function to load a script
-    const loadScript = (src, defer = false) =>
-      new Promise((resolve) => {
-        const s = document.createElement("script");
-        s.src = src;
-        s.async = !defer;
-        if (defer) s.defer = true;
-        s.onload = resolve;
-        document.body.appendChild(s);
+    // Only run in browser
+    if (typeof window === "undefined") return;
+
+    const existingScript = document.getElementById("bp-chat-script");
+    if (!existingScript) {
+      const script = document.createElement("script");
+      script.id = "bp-chat-script";
+      script.src = "https://cdn.botpress.cloud/webchat/v3.6/inject.js";
+      script.async = true;
+      document.body.appendChild(script);
+
+      script.onload = () => {
+        window.botpressWebChat?.init({
+          botId: "91AH2TQB", // check this ID is correct
+          host: "https://cdn.botpress.cloud",
+          showConversationsButton: true,
+          enableReset: true,
+          enableResetNotification: true
+        });
+      };
+    } else {
+      window.botpressWebChat?.init({
+        botId: "91AH2TQB",
+        host: "https://cdn.botpress.cloud",
+        showConversationsButton: true,
+        enableReset: true,
+        enableResetNotification: true
       });
+    }
 
-    
-    // 2. Load scripts sequentially
-    (async () => {
-      await loadScript("https://cdn.botpress.cloud/webchat/v3.6/inject.js");
-      await loadScript(
-        "https://files.bpcontent.cloud/2026/03/05/16/20260305163522-91AH2TQB.js",
-        true
-      );
-    })();
-
-    // 3. Cleanup
     return () => {
-      const chatWidget = document.querySelector("iframe#bp-web-widget");
-      if (chatWidget) chatWidget.remove();
+      // optional cleanup if you want to remove chat
+      // document.getElementById("bp-chat-script")?.remove();
     };
   }, []);
 
