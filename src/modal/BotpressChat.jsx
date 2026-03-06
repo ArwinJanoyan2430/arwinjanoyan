@@ -13,6 +13,7 @@ const BotpressChat = () => {
         document.body.appendChild(s);
       });
 
+    
     // 2. Load scripts sequentially
     (async () => {
       await loadScript("https://cdn.botpress.cloud/webchat/v3.6/inject.js");

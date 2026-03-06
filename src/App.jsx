@@ -10,6 +10,8 @@ import nightmode from "./assets/nightmode.png";
 import { ChevronRight, Mail, Trophy, MapPin, FileText } from "lucide-react";
 import TypewriterRole from "./animations/TypewriterRole";
 import BotpressChat from "./modal/BotpressChat";
+import BestInWebManagement from "./assets/BestInWebManagement.png";
+import harvard from "./assets/harvard.png";
 
 function App() {
   const viewResume = () => {
@@ -19,7 +21,7 @@ function App() {
   const [showModal, setShowModal] = useState(false);
   const [animate, setAnimate] = useState(false);
   const [dark, setDark] = useState(false);
-
+const [selectedImage, setSelectedImage] = useState(null);
 const toggleDarkMode = () => {
   document.documentElement.classList.toggle("dark");
   setDark(prev => !prev);
@@ -324,7 +326,104 @@ const toggleDarkMode = () => {
             </div>
           </div>
 
+
+          <div className="bento-card p-4 col-span-1 md:col-span-4 space-y-2 group animate-fade-in animation-delay-300">
+            <div className="flex items-center justify-between">
+              <h2 className="text-lg font-bold">Recent Projects</h2>
+              <a className="text-xs text-foreground/70 hover:text-foreground flex items-center gap-1 transition-colors" href="#">View All
+                <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              <div className="bento-card p-3 space-y-1">
+                In progress..
+              </div>
+            </div>
+          </div>
+
+          <div className="bento-card p-4 col-span-1 md:col-span-6 space-y-4 animate-fade-in animation-delay-600">
+            <h2 className="text-lg font-bold">Certificate Gallery</h2>
+            <div className="flex flex-wrap gap-4">
+              <div
+              className="bg-white dark:bg-zinc-900 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden group w-50"
+              onClick={() => setSelectedImage(BestInWebManagement)}>
+              <div className="overflow-hidden">
+                <img
+                  src={BestInWebManagement}
+                  alt="Best in Web Management"
+                  className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div className="p-3">
+                <h3 className="text-sm font-semibold">
+                  Best in Web Management
+                </h3>
+                <p className="text-xs text-muted-foreground">
+                  Awarded for outstanding performance in website management during the SURGE Freelancing Marketplace training program.
+                </p>
+              </div>
+            </div>
+
+            <div
+                className="bg-white dark:bg-zinc-900 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden group w-50"
+                onClick={() => setSelectedImage(harvard)}>
+                <div className="overflow-hidden">
+                  <img
+                    src={harvard}
+                    alt="Best in Web Management"
+                    className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <div className="p-3">
+                  <h3 className="text-sm font-semibold">
+                    CS50 Certificate of Completion 
+                  </h3>
+                  <p className="text-xs text-muted-foreground">
+                    Web development course offered by Harvard University through edX.
+                  </p>
+                </div>
+              </div>     
+              
+                       
+              <div
+                className="bg-white dark:bg-zinc-900 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden group w-50"
+                onClick={() => setSelectedImage(harvard)}>
+                <div className="overflow-hidden">
+                  <img
+                    src={harvard}
+                    alt="Best in Web Management"
+                    className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <div className="p-3">
+                  <h3 className="text-sm font-semibold">
+                    CS50 Certificate of Completion 
+                  </h3>
+                  <p className="text-xs text-muted-foreground">
+                    Web development course offered by Harvard University through edX.
+                  </p>
+                </div>
+              </div>
+
+            </div>
+          </div>
         </section>
+
+{selectedImage && (
+  <div
+    className="fixed inset-0 bg-black/70 flex items-center justify-center z-50"
+    onClick={() => setSelectedImage(null)}
+  >
+    <img
+      src={selectedImage}
+      className="max-w-[90%] max-h-[90%] rounded-lg shadow-xl"
+      alt="Certificate"
+    />
+  </div>
+)}
+
 
         <section>
           <div className="p-4 font-normal text-sm group animate-fade-in animation-delay-300">
