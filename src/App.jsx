@@ -52,12 +52,15 @@ const toggleDarkMode = () => {
                 <img src={badge} className="w-4 mt-1" />
               </div>
                 <button
-                onClick={() => toggleDarkMode()}
-                className="cursor-pointer darkmode flex mx-0 px-4.5 py-1.5 bg-gray-200 dark:bg-gray-200 rounded z-50">
-                <img
-                  src={dark ? nightmode : lightmode}
-                  className="w-3.5 max-h-3.5"
-                />
+                  onClick={() => toggleDarkMode()}
+                  className="cursor-pointer flex items-center mx-0 px-4.5 py-1.5 bg-gray-200 dark:bg-gray-700 rounded z-50 transition-colors duration-300"
+                >
+                  <img
+                    key={dark ? 'night' : 'light'} // ensures React triggers re-render for animation
+                    src={dark ? nightmode : lightmode}
+                    className={`w-3.5 max-h-3.5 transform transition-transform duration-500 ease-in-out
+                              ${dark ? 'animate-spinZoom' : 'animate-spinZoom'} `}
+                  />
                 </button>
             </div>
             <p className="text-xs md:text-[14px] font-normal text-foreground/70 mt-1 flex items-center gap-1 dark:text-white"> <MapPin size={14} className="w-3 h-3 md:w-3.5 md:h-3.5 flex-shrink-0 "/> Tagum City, Philippines</p>

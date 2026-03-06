@@ -184,7 +184,22 @@ body {
     transform: translateY(0);
   }
 }
+@keyframes spinZoom {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.5);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
 
+/* Tailwind-friendly animation class */
+.animate-spinZoom {
+  animation: spinZoom 0.5s ease-in-out;
+}
 /* Tailwind theme */
 @theme {
   --color-bg: white;
