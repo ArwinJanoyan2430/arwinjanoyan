@@ -9,42 +9,38 @@ import nightmode from "./assets/nightmode.png";
 import BestInWebManagement from "./assets/BestInWebManagement.png";
 import harvard from "./assets/harvard.png";
 import IntelliPatCert from "./assets/IntelliPatCert.png";
-
-import { ChevronRight, Mail, Trophy, MapPin, FileText } from "lucide-react";
-import TypewriterRole from "./animations/TypewriterRole";
-import BotpressChat from "./modal/BotpressChat";
-import EmailModal from "./modal/EmailModal";
 import sqlCert from "./assets/sqlcert.png";
 import hourofcode from "./assets/hourofcode.png";
 import webdesignCert from "./assets/webdesigncert.png";
 import oracleCert from "./assets/oraclecert.png";
 
+import { ChevronRight, Mail, Trophy, MapPin, FileText } from "lucide-react";
+import TypewriterRole from "./animations/TypewriterRole";
+import BotpressChat from "./modal/BotpressChat";
+import EmailModal from "./modal/EmailModal";
+
 function App() {
-  const viewResume = () => {
-    window.open(resume, '_blank'); 
-  };
   const [hover, setHover] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [animate, setAnimate] = useState(false);
   const [dark, setDark] = useState(false);
-const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImage, setSelectedImage] = useState(null);
 
-const scrollRef = useRef(null);
-const isDraggingRef = useRef(false);
-const isHoveringRef = useRef(false);
-const startXRef = useRef(0);
-const scrollLeftRef = useRef(0);
+  const scrollRef = useRef(null);
 
-const toggleDarkMode = () => {
-  document.documentElement.classList.toggle("dark");
-  setDark(prev => !prev);
-};
+  const toggleDarkMode = () => {
+    document.documentElement.classList.toggle("dark");
+    setDark((prev) => !prev);
+  };
 
+  const viewResume = () => {
+    window.open(resume, "_blank");
+  };
 
   useEffect(() => {
     setAnimate(true);
   }, []);
-
+  
   return (
     <div className="max-w-4xl mx-auto px-4 py-8" >
       <section className={`profile-card ${animate ? 'animate-in' : ''} transition-colors duration-300`}>
