@@ -1,4 +1,3 @@
-
 import profile from "./assets/profile.png";
 import profile2 from "./assets/profile2.png";
 import "./index.css";
@@ -7,14 +6,17 @@ import { useState, useEffect, useRef } from "react";
 import badge from "./assets/badge.png";
 import lightmode from "./assets/lightmode.png";
 import nightmode from "./assets/nightmode.png";
+import BestInWebManagement from "./assets/BestInWebManagement.png";
+import harvard from "./assets/harvard.png";
+import IntelliPatCert from "./assets/IntelliPatCert.png";
+
 import { ChevronRight, Mail, Trophy, MapPin, FileText } from "lucide-react";
 import TypewriterRole from "./animations/TypewriterRole";
 import BotpressChat from "./modal/BotpressChat";
-import EmailModal from "./modal/EmailModal"; // ✅ ADD THIS
+import EmailModal from "./modal/EmailModal";
 
 function App() {
   const viewResume = () => {
-    // Open your resume PDF in a new tab
     window.open(resume, '_blank'); 
   };
   const [hover, setHover] = useState(false);
