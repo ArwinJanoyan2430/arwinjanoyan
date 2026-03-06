@@ -25,7 +25,7 @@ function App() {
   const [animate, setAnimate] = useState(false);
   const [dark, setDark] = useState(false);
 const [selectedImage, setSelectedImage] = useState(null);
-const [paused, setPaused] = useState(false);
+
 const toggleDarkMode = () => {
   document.documentElement.classList.toggle("dark");
   setDark(prev => !prev);
@@ -353,13 +353,11 @@ const toggleDarkMode = () => {
             </div>
           </div>
 
-          <div className="bento-card p-4 col-span-1 md:col-span-6 space-y-2 animate-fade-in animation-delay-600">
+          <div className="bento-card p-1 col-span-1 md:col-span-6 space-y-2 animate-fade-in animation-delay-600">
             <h2 className="text-lg font-bold">Certificate Gallery</h2>
 
-           <div className="overflow-x-auto w-full scrollbar-thin scrollbar-thumb-accent scrollbar-track-gray-200 dark:scrollbar-track-zinc-800"
-                onMouseEnter={() => setPaused(true)}
-                onMouseLeave={() => setPaused(false)}>
-              <div className={`flex gap-4 my-1 w-max scroll-animate`}>
+           <div className="scrollbar-hover overflow-x-auto w-full transition-all duration-300">
+              <div className={`flex gap-4 w-max`}>
 
                 <div
                 className="bg-white dark:bg-zinc-900 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden group flex-shrink-0 w-[220px]"
