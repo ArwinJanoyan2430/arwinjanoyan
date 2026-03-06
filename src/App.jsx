@@ -9,7 +9,7 @@ import nightmode from "./assets/nightmode.png";
 import BestInWebManagement from "./assets/BestInWebManagement.png";
 import harvard from "./assets/harvard.png";
 import IntelliPatCert from "./assets/IntelliPatCert.png";
-import sqlCert from "./assets/sqlcert.png";
+import sqlCert from "./assets/sqlCert.png";
 import hourofcode from "./assets/hourofcode.png";
 import webdesignCert from "./assets/webdesigncert.png";
 import oracleCert from "./assets/oraclecert.png";
