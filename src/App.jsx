@@ -352,7 +352,7 @@ const toggleDarkMode = () => {
                 onMouseEnter={() => setPaused(true)}
                 onMouseLeave={() => setPaused(false)}>
               <div
-                className="flex gap-2 w-max px-10 my-1"
+                className={`flex gap-4 my-1 w-max scroll-animate`}
                 style={{
                   animation: `scroll 30s linear infinite`,
                   animationPlayState: paused ? 'paused' : 'running',
@@ -360,7 +360,7 @@ const toggleDarkMode = () => {
                 }}>
 
                 <div
-                className="bg-white dark:bg-zinc-900 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden group w-50 flex-shrink-0"
+                className="bg-white dark:bg-zinc-900 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden group flex-shrink-0 w-[220px]"
                 onClick={() => setSelectedImage(BestInWebManagement)}>
                 <div className="overflow-hidden">
                   <img
@@ -380,7 +380,7 @@ const toggleDarkMode = () => {
               </div>
 
               <div
-                  className="bg-white dark:bg-zinc-900 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden group w-50 flex-shrink-0"
+                  className="bg-white dark:bg-zinc-900 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden group flex-shrink-0 w-[220px]"
                   onClick={() => setSelectedImage(harvard)}>
                   <div className="overflow-hidden">
                     <img
@@ -401,7 +401,7 @@ const toggleDarkMode = () => {
 
 
                 <div
-                  className="bg-white dark:bg-zinc-900 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden group w-50 flex-shrink-0"
+                  className="bg-white dark:bg-zinc-900 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden group flex-shrink-0 w-[220px]"
                   onClick={() => setSelectedImage(IntelliPatCert)}>
                   <div className="overflow-hidden">
                     <img
@@ -421,7 +421,7 @@ const toggleDarkMode = () => {
                 </div>
 
                 <div
-                  className="bg-white dark:bg-zinc-900 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden group w-50 flex-shrink-0"
+                  className="bg-white dark:bg-zinc-900 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden group flex-shrink-0 w-[220px]"
                   onClick={() => setSelectedImage(IntelliPatCert)}>
                   <div className="overflow-hidden">
                     <img
