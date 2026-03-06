@@ -117,11 +117,11 @@ function App() {
             <p className="text-[14px] font-medium text-foreground/70 ">
               I'm an aspiring software developer and data analyst with a strong passion for technology and problem solving. 
               Currently, I am pursuing a Bachelor's degree in Information Technology at the University of Mindanao. 
-              <br></br>
-              <br></br>
+              <br />
+              <br />
               I have a solid foundation in programming languages such as Java, SQL, JavaScript and Python, and I'm eager to expand my skills in web development, and
               data analysis. 
-              <br/><br/>
+              <br />
               With a keen eye for detail and a commitment to continuous learning, 
               I am excited to contribute my skills and enthusiasm to real-world projects and make a positive impact in the tech industry.
             </p>
