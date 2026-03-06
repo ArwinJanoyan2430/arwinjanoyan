@@ -12,6 +12,7 @@ import TypewriterRole from "./animations/TypewriterRole";
 import BotpressChat from "./modal/BotpressChat";
 import BestInWebManagement from "./assets/BestInWebManagement.png";
 import harvard from "./assets/harvard.png";
+import IntelliPatCert from "./assets/intelliPatCert.png";
 
 function App() {
   const viewResume = () => {
@@ -22,6 +23,7 @@ function App() {
   const [animate, setAnimate] = useState(false);
   const [dark, setDark] = useState(false);
 const [selectedImage, setSelectedImage] = useState(null);
+const [paused, setPaused] = useState(false);
 const toggleDarkMode = () => {
   document.documentElement.classList.toggle("dark");
   setDark(prev => !prev);
@@ -345,68 +347,99 @@ const toggleDarkMode = () => {
 
           <div className="bento-card p-4 col-span-1 md:col-span-6 space-y-4 animate-fade-in animation-delay-600">
             <h2 className="text-lg font-bold">Certificate Gallery</h2>
-            <div className="flex flex-wrap gap-4">
-              <div
-              className="bg-white dark:bg-zinc-900 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden group w-50"
-              onClick={() => setSelectedImage(BestInWebManagement)}>
-              <div className="overflow-hidden">
-                <img
-                  src={BestInWebManagement}
-                  alt="Best in Web Management"
-                  className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <div className="p-3">
-                <h3 className="text-sm font-semibold">
-                  Best in Web Management
-                </h3>
-                <p className="text-xs text-muted-foreground">
-                  Awarded for outstanding performance in website management during the SURGE Freelancing Marketplace training program.
-                </p>
-              </div>
-            </div>
 
-            <div
-                className="bg-white dark:bg-zinc-900 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden group w-50"
-                onClick={() => setSelectedImage(harvard)}>
+           <div className="overflow-x-auto w-full scrollbar-thin scrollbar-thumb-accent scrollbar-track-gray-200 dark:scrollbar-track-zinc-800"
+                onMouseEnter={() => setPaused(true)}
+                onMouseLeave={() => setPaused(false)}>
+              <div
+                className="flex gap-2 w-max px-10 my-1"
+                style={{
+                  animation: `scroll 30s linear infinite`,
+                  animationPlayState: paused ? 'paused' : 'running',
+                  width: 'max-content',
+                }}>
+
+                <div
+                className="bg-white dark:bg-zinc-900 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden group w-50 flex-shrink-0"
+                onClick={() => setSelectedImage(BestInWebManagement)}>
                 <div className="overflow-hidden">
                   <img
-                    src={harvard}
+                    src={BestInWebManagement}
                     alt="Best in Web Management"
                     className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
                 <div className="p-3">
                   <h3 className="text-sm font-semibold">
-                    CS50 Certificate of Completion 
+                    Best in Website Design
                   </h3>
                   <p className="text-xs text-muted-foreground">
-                    Web development course offered by Harvard University through edX.
-                  </p>
-                </div>
-              </div>     
-              
-                       
-              <div
-                className="bg-white dark:bg-zinc-900 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden group w-50"
-                onClick={() => setSelectedImage(harvard)}>
-                <div className="overflow-hidden">
-                  <img
-                    src={harvard}
-                    alt="Best in Web Management"
-                    className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <div className="p-3">
-                  <h3 className="text-sm font-semibold">
-                    CS50 Certificate of Completion 
-                  </h3>
-                  <p className="text-xs text-muted-foreground">
-                    Web development course offered by Harvard University through edX.
+                    Awarded for outstanding performance in website design during the SURGE Freelancing Marketplace training program.
                   </p>
                 </div>
               </div>
 
+              <div
+                  className="bg-white dark:bg-zinc-900 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden group w-50 flex-shrink-0"
+                  onClick={() => setSelectedImage(harvard)}>
+                  <div className="overflow-hidden">
+                    <img
+                      src={harvard}
+                      alt="Best in Web Management"
+                      className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <div className="p-3">
+                    <h3 className="text-sm font-semibold">
+                      CS50's Web Programming with Python and JavaScript
+                    </h3>
+                    <p className="text-xs text-muted-foreground">
+                      Web development course offered by Harvard University through edX.
+                    </p>
+                  </div>
+                </div>     
+
+
+                <div
+                  className="bg-white dark:bg-zinc-900 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden group w-50 flex-shrink-0"
+                  onClick={() => setSelectedImage(IntelliPatCert)}>
+                  <div className="overflow-hidden">
+                    <img
+                      src={IntelliPatCert}
+                      alt="IntelliPat Certificate"
+                      className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <div className="p-3">
+                    <h3 className="text-sm font-semibold">
+                      Excel Certification Course Online
+                    </h3>
+                    <p className="text-xs text-muted-foreground">
+                      Professional certification in Microsoft Excel offered by IntelliPaat Academy.
+                    </p>
+                  </div>
+                </div>
+
+                <div
+                  className="bg-white dark:bg-zinc-900 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden group w-50 flex-shrink-0"
+                  onClick={() => setSelectedImage(IntelliPatCert)}>
+                  <div className="overflow-hidden">
+                    <img
+                      src={IntelliPatCert}
+                      alt="IntelliPat Certificate"
+                      className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <div className="p-3">
+                    <h3 className="text-sm font-semibold">
+                      Excel Certification Course Online
+                    </h3>
+                    <p className="text-xs text-muted-foreground">
+                      Professional certification in Microsoft Excel offered by IntelliPaat Academy.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
