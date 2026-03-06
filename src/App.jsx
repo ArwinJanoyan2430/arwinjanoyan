@@ -28,14 +28,18 @@ function App() {
 
   const scrollRef = useRef(null);
 
-  const toggleDarkMode = () => {
+const toggleDarkMode = () => {
+  if (typeof window !== 'undefined') {
     document.documentElement.classList.toggle("dark");
-    setDark((prev) => !prev);
-  };
+    setDark(prev => !prev);
+  }
+};
 
-  const viewResume = () => {
+const viewResume = () => {
+  if (typeof window !== 'undefined') {
     window.open(resume, "_blank");
-  };
+  }
+};
 
   useEffect(() => {
     setAnimate(true);
@@ -64,7 +68,7 @@ function App() {
                 >
                   <img
                     key={dark ? 'night' : 'light'} // ensures React triggers re-render for animation
-                    src={dark ? nightmode : lightmode}
+                    src={dark ? lightmode : nightmode}
                     className={`w-3.5 max-h-3.5 transform transition-transform duration-500 ease-in-out
                               ${dark ? 'animate-spinZoom' : 'animate-spinZoom'} `}
                   />
@@ -369,9 +373,7 @@ function App() {
               ref={scrollRef}
               className="overflow-x-auto w-full snap-x snap-mandatory scrollbar-hover"
             >
-
               <div className="flex gap-4 my-1 w-max snap-x snap-mandatory ">
-
                 <div
                 className="bg-white dark:bg-zinc-900 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden group flex-shrink-0 w-[220px]"
                 onClick={() => setSelectedImage(BestInWebManagement)}>
