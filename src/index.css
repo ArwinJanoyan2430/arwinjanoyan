@@ -195,21 +195,7 @@ body {
     transform: rotate(360deg) scale(1);
   }
 }
-/* index.css */
-@keyframes fade-in-up {
-  0% { opacity: 0; transform: translateY(20px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
 
-.animate-fade-in {
-  animation: fade-in-up 0.6s forwards;
-}
-
-.animate-in {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fade-in-up 0.6s forwards;
-}
 /* Tailwind-friendly animation class */
 .animate-spinZoom {
   animation: spinZoom 0.5s ease-in-out;
@@ -274,45 +260,33 @@ body {
 
 /* show scrollbar on hover */
 .scrollbar-hover:hover::-webkit-scrollbar {
-  height: 6px; /* show horizontal scrollbar */
+  height: 0px; /* show scrollbar */
 }
 
-/* Scrollbar thumb */
 .scrollbar-hover::-webkit-scrollbar-thumb {
-  background-color: #4e4e4e; /* default light mode thumb */
+  background-color: #4e4e4e; /* accent color */
   border-radius: 8px;
 }
 
-/* Dark mode thumb */
-.dark .scrollbar-hover::-webkit-scrollbar-thumb {
-  background-color: #9ca3af; /* lighter gray for dark mode */
-}
-
-/* Scrollbar track */
 .scrollbar-hover::-webkit-scrollbar-track {
-  background-color: #e5e7eb; /* light mode track */
-  border-radius: 8px;
+  background-color: #e5e7eb; /* track color */
 }
 
-/* Dark mode track */
 .dark .scrollbar-hover::-webkit-scrollbar-track {
   background-color: #1f1f1f; /* dark mode track */
-  border-radius: 8px;
 }
 
-/* Firefox support: hide scrollbar by default */
+/* Firefox support */
 .scrollbar-hover {
-  margin-bottom: 5px; /* hide scrollbar space */
+  margin-bottom: 10px; /* hide scrollbar space */
   scrollbar-width: none; /* hidden by default */
 }
 
-/* Show thin scrollbar on hover */
 .scrollbar-hover:hover {
-  scrollbar-width: thin;
-  scrollbar-color: #4e4e4e #e5e7eb; /* thumb and track for light mode */
+  scrollbar-width: thin; /* show thin scrollbar on hover */
+  scrollbar-color: #6e6e6e #ffffff;
 }
 
-/* Firefox dark mode */
 .dark .scrollbar-hover:hover {
-  scrollbar-color: #9ca3af #1f1f1f; /* thumb and track for dark mode */
+  scrollbar-color: #4e4e4e #1f1f1f;
 }
