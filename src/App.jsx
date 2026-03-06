@@ -14,6 +14,10 @@ import { ChevronRight, Mail, Trophy, MapPin, FileText } from "lucide-react";
 import TypewriterRole from "./animations/TypewriterRole";
 import BotpressChat from "./modal/BotpressChat";
 import EmailModal from "./modal/EmailModal";
+import sqlCert from "./assets/sqlcert.png";
+import hourofcode from "./assets/hourofcode.png";
+import webdesignCert from "./assets/webdesigncert.png";
+import oracleCert from "./assets/oraclecert.png";
 
 function App() {
   const viewResume = () => {
@@ -25,10 +29,64 @@ function App() {
   const [dark, setDark] = useState(false);
 const [selectedImage, setSelectedImage] = useState(null);
 
+const scrollRef = useRef(null);
+const isDraggingRef = useRef(false);
+const isHoveringRef = useRef(false);
+const startXRef = useRef(0);
+const scrollLeftRef = useRef(0);
+
 const toggleDarkMode = () => {
   document.documentElement.classList.toggle("dark");
   setDark(prev => !prev);
 };
+
+const onMouseDown = (e) => {
+  isDraggingRef.current = true;
+  startXRef.current = e.pageX - scrollRef.current.offsetLeft;
+  scrollLeftRef.current = scrollRef.current.scrollLeft;
+};
+
+const onMouseMove = (e) => {
+  if (!isDraggingRef.current) return;
+  e.preventDefault();
+  const x = e.pageX - scrollRef.current.offsetLeft;
+  const walk = x - startXRef.current;
+  scrollRef.current.scrollLeft = scrollLeftRef.current - walk;
+};
+
+const onMouseUp = () => {
+  isDraggingRef.current = false;
+};
+
+const onMouseEnter = () => {
+  isHoveringRef.current = true;
+};
+
+const onMouseLeave = () => {
+  isHoveringRef.current = false;
+};
+
+useEffect(() => {
+  const carousel = scrollRef.current;
+  if (!carousel) return;
+
+  let animationFrame;
+
+  const scrollStep = () => {
+    // Scroll only if not dragging and not hovering
+    if (!isDraggingRef.current && !isHoveringRef.current) {
+      carousel.scrollLeft += 1; // auto-scroll speed
+      if (carousel.scrollLeft >= carousel.scrollWidth - carousel.clientWidth) {
+        carousel.scrollLeft = 0; // loop
+      }
+    }
+    animationFrame = requestAnimationFrame(scrollStep);
+  };
+
+  animationFrame = requestAnimationFrame(scrollStep);
+
+  return () => cancelAnimationFrame(animationFrame);
+}, []);
 
   useEffect(() => {
     setAnimate(true);
@@ -358,7 +416,17 @@ const toggleDarkMode = () => {
           <div className="bento-card p-1 col-span-1 md:col-span-6 space-y-2 animate-fade-in animation-delay-600 ">
             <h2 className="text-lg font-bold">Certificate Gallery</h2>
 
-           <div className="scrollbar-hover overflow-x-auto w-full transition-all duration-300">
+           <div
+  ref={scrollRef}
+  className="overflow-x-auto w-full snap-x snap-mandatory"
+  onMouseDown={onMouseDown}
+  onMouseMove={onMouseMove}
+  onMouseUp={onMouseUp}
+  onMouseLeave={onMouseLeave}
+  onMouseEnter={onMouseEnter}
+  style={{ scrollBehavior: "auto" }}
+>
+
               <div className="flex gap-4 my-1 w-max snap-x snap-mandatory">
 
                 <div
@@ -424,6 +492,127 @@ const toggleDarkMode = () => {
 
                 <div
                   className="bg-white dark:bg-zinc-900 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden group flex-shrink-0 w-[220px]"
+                  onClick={() => setSelectedImage(sqlCert)}>
+                  <div className="overflow-hidden">
+                    <img
+                      src={sqlCert}
+                      alt="SQL Certificate"
+                      className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <div className="p-3">
+                    <h3 className="text-sm font-semibold">
+                      Introduction to SQL
+                    </h3>
+                    <p className="text-xs text-muted-foreground">
+                      Professional online course offered by Simplilearn SkillUp to deepen technical skills and advance career capabilities.
+                    </p>
+                  </div>
+                </div>
+
+                <div
+                  className="bg-white dark:bg-zinc-900 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden group flex-shrink-0 w-[220px]"
+                  onClick={() => setSelectedImage(hourofcode)}>
+                  <div className="overflow-hidden">
+                    <img
+                      src={hourofcode}
+                      alt="Hour of Code Certificate"
+                      className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <div className="p-3">
+                    <h3 className="text-sm font-semibold">
+                      Hour of Code - AI Ready ASEAN Programme
+                    </h3>
+                    <p className="text-xs text-muted-foreground">
+                      Certificate of participation in the global "Hour of Code" initiative, focused on foundational coding and AI awareness.
+                    </p>
+                  </div>
+                </div>
+
+                <div
+                  className="bg-white dark:bg-zinc-900 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden group flex-shrink-0 w-[220px]"
+                  onClick={() => setSelectedImage(webdesignCert)}>
+                  <div className="overflow-hidden">
+                    <img
+                      src={webdesignCert}
+                      alt="Website Design Certificate"
+                      className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <div className="p-3">
+                    <h3 className="text-sm font-semibold">
+                      Best in Graphic Design (Surge Freelancing Marketplace)
+                    </h3>
+                    <p className="text-xs text-muted-foreground">
+                      Awarded for outstanding achievement during an intensive 5-day masterclass training.
+                    </p>
+                  </div>
+                </div>
+
+                <div
+                  className="bg-white dark:bg-zinc-900 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden group flex-shrink-0 w-[220px]"
+                  onClick={() => setSelectedImage(oracleCert)}>
+                  <div className="overflow-hidden">
+                    <img
+                      src={oracleCert}
+                      alt="Oracle Certificate"
+                      className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <div className="p-3">
+                    <h3 className="text-sm font-semibold">
+                      Oracle PL/SQL: Table Functions
+                    </h3>
+                    <p className="text-xs text-muted-foreground">
+                      Advanced database programming certification from Oracle Dev Gym
+                    </p>
+                  </div>
+                </div>
+
+                <div
+                className="bg-white dark:bg-zinc-900 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden group flex-shrink-0 w-[220px]"
+                onClick={() => setSelectedImage(BestInWebManagement)}>
+                <div className="overflow-hidden">
+                  <img
+                    src={BestInWebManagement}
+                    alt="Best in Web Management"
+                    className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <div className="p-3">
+                  <h3 className="text-sm font-semibold">
+                    Best in Website Design
+                  </h3>
+                  <p className="text-xs text-muted-foreground">
+                    Awarded for outstanding performance in website design during the SURGE Freelancing Marketplace training program.
+                  </p>
+                </div>
+              </div>
+
+              <div
+                  className="bg-white dark:bg-zinc-900 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden group flex-shrink-0 w-[220px]"
+                  onClick={() => setSelectedImage(harvard)}>
+                  <div className="overflow-hidden">
+                    <img
+                      src={harvard}
+                      alt="Best in Web Management"
+                      className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <div className="p-3">
+                    <h3 className="text-sm font-semibold">
+                      CS50's Web Programming with Python and JavaScript
+                    </h3>
+                    <p className="text-xs text-muted-foreground">
+                      Web development course offered by Harvard University through edX.
+                    </p>
+                  </div>
+                </div>     
+
+
+                <div
+                  className="bg-white dark:bg-zinc-900 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden group flex-shrink-0 w-[220px]"
                   onClick={() => setSelectedImage(IntelliPatCert)}>
                   <div className="overflow-hidden">
                     <img
@@ -441,6 +630,87 @@ const toggleDarkMode = () => {
                     </p>
                   </div>
                 </div>
+
+                <div
+                  className="bg-white dark:bg-zinc-900 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden group flex-shrink-0 w-[220px]"
+                  onClick={() => setSelectedImage(sqlCert)}>
+                  <div className="overflow-hidden">
+                    <img
+                      src={sqlCert}
+                      alt="SQL Certificate"
+                      className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <div className="p-3">
+                    <h3 className="text-sm font-semibold">
+                      Introduction to SQL
+                    </h3>
+                    <p className="text-xs text-muted-foreground">
+                      Professional online course offered by Simplilearn SkillUp to deepen technical skills and advance career capabilities.
+                    </p>
+                  </div>
+                </div>
+
+                <div
+                  className="bg-white dark:bg-zinc-900 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden group flex-shrink-0 w-[220px]"
+                  onClick={() => setSelectedImage(hourofcode)}>
+                  <div className="overflow-hidden">
+                    <img
+                      src={hourofcode}
+                      alt="Hour of Code Certificate"
+                      className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <div className="p-3">
+                    <h3 className="text-sm font-semibold">
+                      Hour of Code - AI Ready ASEAN Programme
+                    </h3>
+                    <p className="text-xs text-muted-foreground">
+                      Certificate of participation in the global "Hour of Code" initiative, focused on foundational coding and AI awareness.
+                    </p>
+                  </div>
+                </div>
+
+                <div
+                  className="bg-white dark:bg-zinc-900 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden group flex-shrink-0 w-[220px]"
+                  onClick={() => setSelectedImage(webdesignCert)}>
+                  <div className="overflow-hidden">
+                    <img
+                      src={webdesignCert}
+                      alt="Website Design Certificate"
+                      className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <div className="p-3">
+                    <h3 className="text-sm font-semibold">
+                      Best in Graphic Design (Surge Freelancing Marketplace)
+                    </h3>
+                    <p className="text-xs text-muted-foreground">
+                      Awarded for outstanding achievement during an intensive 5-day masterclass training.
+                    </p>
+                  </div>
+                </div>
+
+                <div
+                  className="bg-white dark:bg-zinc-900 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden group flex-shrink-0 w-[220px]"
+                  onClick={() => setSelectedImage(oracleCert)}>
+                  <div className="overflow-hidden">
+                    <img
+                      src={oracleCert}
+                      alt="Oracle Certificate"
+                      className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <div className="p-3">
+                    <h3 className="text-sm font-semibold">
+                      Oracle PL/SQL: Table Functions
+                    </h3>
+                    <p className="text-xs text-muted-foreground">
+                      Advanced database programming certification from Oracle Dev Gym
+                    </p>
+                  </div>
+                </div>
+
               </div>
             </div>
           </div>
@@ -471,11 +741,11 @@ const toggleDarkMode = () => {
             <p>© 2024 Arwin Janoyan. All rights reserved.</p>
           </div>
         </section>
+
         <section>
           <div className="fixed bottom-4 right-4">
             <BotpressChat dark={dark} />
           </div>
-          
         </section>
     </div>
   )
