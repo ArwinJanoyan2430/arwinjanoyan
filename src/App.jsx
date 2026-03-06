@@ -1,5 +1,6 @@
 
-import profile from './assets/profile.png'
+import profile from "./assets/profile.png";
+import profile2 from "./assets/profile2.png";
 import "./index.css"
 import resume from "./assets/ArwinResume.pdf";
 import EmailModal from "./modal/EmailModal";
@@ -19,6 +20,7 @@ function App() {
     // Open your resume PDF in a new tab
     window.open(resume, '_blank'); 
   };
+  const [hover, setHover] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [animate, setAnimate] = useState(false);
   const [dark, setDark] = useState(false);
@@ -37,7 +39,13 @@ const toggleDarkMode = () => {
     <div className="max-w-4xl mx-auto px-4 py-8" >
       <section className={`profile-card ${animate ? 'animate-in' : ''} transition-colors duration-300`}>
         <div className="flex items-center mb-4">
-          <img src={profile} className="profile" />
+          <img
+            src={hover ? profile2 : profile}
+            alt="Profile"
+            className="profile"
+            onMouseEnter={() => setHover(true)}
+            onMouseLeave={() => setHover(false)}
+          />
           <div className="flex-1 min-w-0">
             <div className="flex items-center justify-between gap-2">
               <div className="flex items-center gap-2">
@@ -356,7 +364,6 @@ const toggleDarkMode = () => {
                 style={{
                   animation: `scroll 30s linear infinite`,
                   animationPlayState: paused ? 'paused' : 'running',
-                  width: 'max-content',
                 }}>
 
                 <div

@@ -20,14 +20,6 @@ body {
   max-width: 100%;            /* responsive safety */
 }
 
-/* Hover image swap */
-.profile:hover {
-  content: url("src/assets/profile2.png");
-  width: 160px;
-  height: 160px;
-  border-radius: 15px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.308);
-}
 
 /* Buttons */
 .button {
