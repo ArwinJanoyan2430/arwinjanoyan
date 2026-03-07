@@ -253,15 +253,6 @@ body {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
-/* default: hidden scrollbar */
-.scrollbar-hover::-webkit-scrollbar {
-  height: 0px; /* hide horizontal scrollbar */
-}
-
-/* show scrollbar on hover */
-.scrollbar-hover:hover::-webkit-scrollbar {
-  height: 0px; /* show scrollbar */
-}
 
 .scrollbar-hover::-webkit-scrollbar-thumb {
   background-color: #4e4e4e; /* accent color */
@@ -269,16 +260,19 @@ body {
 }
 
 .scrollbar-hover::-webkit-scrollbar-track {
+  
   background-color: #e5e7eb; /* track color */
 }
 
 .dark .scrollbar-hover::-webkit-scrollbar-track {
   background-color: #1f1f1f; /* dark mode track */
 }
-
+.margin {
+  margin-bottom: 17px; /* hide scrollbar space */
+}
 /* Firefox support */
 .scrollbar-hover {
-  margin-bottom: 10px; /* hide scrollbar space */
+  margin-bottom: 0px; /* hide scrollbar space */
   scrollbar-width: none; /* hidden by default */
 }
 

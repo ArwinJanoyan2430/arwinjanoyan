@@ -18,6 +18,8 @@ import { ChevronRight, Mail, Trophy, MapPin, FileText } from "lucide-react";
 import TypewriterRole from "./animations/TypewriterRole";
 import BotpressChat from "./modal/BotpressChat";
 import EmailModal from "./modal/EmailModal";
+import g1 from "./assets/g1.jpg";
+
 
 function App() {
   const [hover, setHover] = useState(false);
@@ -46,7 +48,7 @@ const viewResume = () => {
   }, []);
   
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8" >
+    <div className="max-w-4xl mx-auto px-4 py-8 " >
       <section className={`profile-card ${animate ? 'animate-in' : ''} transition-colors duration-300`}>
         <div className="flex flex-col sm:flex-row items-center gap-3 mb-4">
           <img
@@ -324,7 +326,13 @@ const viewResume = () => {
                     <img src="https://www.svgrepo.com/show/373589/excel.svg" className="w-4 h-4" />
                     <span className="py-0.5 text-xs">Excel</span>
                   </div>
+
+                  <div className="flex bg-gray-100 dark:bg-[#2d2d2d] rounded-sm  px-3 py-1 items-center gap-2">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" className="w-4 h-4" />
+                    <span className="py-0.5 text-xs">Python</span>
+                  </div>
                 </div>
+                
               </div>
 
               <div>
@@ -348,12 +356,15 @@ const viewResume = () => {
               </div>
             </div>
           </div>
+        </section>
 
-
-          <div className="bento-card p-4 col-span-1 md:col-span-4 space-y-2 group animate-fade-in animation-delay-300">
+        <section className="grid grid-cols-1 md:grid-cols-2 gap-4 animate-fade-in animation-delay-400 mt-3 md:mt-0">
+          {/* Recent Projects */}
+          <div className="bento-card p-4 space-y-2 group">
             <div className="flex items-center justify-between">
               <h2 className="text-lg font-bold">Recent Projects</h2>
-              <a className="text-xs text-foreground/70 hover:text-foreground flex items-center gap-1 transition-colors" href="#">View All
+              <a className="text-xs text-foreground/70 hover:text-foreground flex items-center gap-1 transition-colors" href="#">
+                View All
                 <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
@@ -366,8 +377,26 @@ const viewResume = () => {
             </div>
           </div>
 
-          <div className="bento-card p-1 col-span-1 md:col-span-6 space-y-2 animate-fade-in animation-delay-600 ">
-            <h2 className="text-lg font-bold">Certificate Gallery</h2>
+          {/* Recommendations */}
+          <div className="bento-card p-4 space-y-2 group overflow-hidden">
+            <h2 className="text-lg font-bold">Recommendations</h2>
+            <div className="relative h-[160px]">
+              <div className="absolute inset-0 transition-all duration-1000">
+                <p className="text-[13px] leading-relaxed text-foreground/80 font-serif line-clamp-4">
+                  asdasd
+                </p>
+                <div className="mt-3 pt-3 border-t border-border">
+                  <p className="text-xs font-semibold font-sans">John Doe</p>
+                  <p className="text-xs text-foreground/50 font-sans">Software Engineer at Tech Company</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="grid grid-cols-1 md:grid-cols-2 gap-4 animate-fade-in animation-delay-600 mt-3 md:mt-4">
+        <div className="bento-card p-1 col-span-1 md:col-span-6 space-y-2 animate-fade-in animation-delay-600 ">
+            <h2 className="text-lg font-bold">Certifications</h2>
 
             <div
               ref={scrollRef}
@@ -514,24 +543,44 @@ const viewResume = () => {
                     </p>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="bento-card p-1 col-span-1 md:col-span-6 space-y-2 animate-fade-in animation-delay-600 ">
+            <h2 className="text-lg font-bold">Gallery</h2>
+
+            <div
+              ref={scrollRef}
+              className="overflow-x-auto w-full snap-x snap-mandatory scrollbar-hover"
+            >
+              <div className="flex gap-4 my-1 w-max snap-x snap-mandatory ">
+                <div className="flex gap-4 my-1 w-max snap-x snap-mandatory">
+                <img
+                  src={g1}
+                  alt="Gallery Image 1"
+                  className="h-50 flex-shrink-0 cursor-pointer snap-start hover:scale-105 transition-transform duration-500 ease-out"
+                  onClick={() => setSelectedImage(g1)}
+                />
+              </div>
 
               </div>
             </div>
           </div>
         </section>
 
-{selectedImage && (
-  <div
-    className="fixed inset-0 bg-black/70 flex items-center justify-center z-50"
-    onClick={() => setSelectedImage(null)}
-  >
-    <img
-      src={selectedImage}
-      className="max-w-[90%] max-h-[90%] rounded-lg shadow-xl"
-      alt="Certificate"
-    />
-  </div>
-)}
+        {selectedImage && (
+          <div
+            className="fixed inset-0 bg-black/70 flex items-center justify-center z-50"
+            onClick={() => setSelectedImage(null)}
+          >
+            <img
+              src={selectedImage}
+              className="max-w-[90%] max-h-[90%] rounded-lg shadow-xl"
+              alt="Certificate"
+            />
+          </div>
+        )}
 
 
         <section>
