@@ -28,7 +28,9 @@ function App() {
   const [dark, setDark] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
 
-  const scrollRef = useRef(null);
+const scrollRef = useRef(null);
+const certRef = useRef(null);
+const galleryRef = useRef(null);
 
 const toggleDarkMode = () => {
   if (typeof window !== 'undefined') {
@@ -45,6 +47,19 @@ const viewResume = () => {
 
   useEffect(() => {
     setAnimate(true);
+    const el = certRef.current;
+  if (!el) return;
+
+  const onWheel = (e) => {
+    if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+      e.preventDefault();
+      el.scrollLeft += e.deltaY;
+    }
+  };
+
+  el.addEventListener("wheel", onWheel, { passive: false });
+
+  return () => el.removeEventListener("wheel", onWheel);
   }, []);
   
   return (
@@ -70,7 +85,7 @@ const viewResume = () => {
                 >
                   <img
                     key={dark ? 'night' : 'light'} // ensures React triggers re-render for animation
-                    src={dark ? lightmode : nightmode}
+                    src={dark ? nightmode : lightmode}
                     className={`w-3.5 max-h-3.5 transform transition-transform duration-500 ease-in-out
                               ${dark ? 'animate-spinZoom' : 'animate-spinZoom'} `}
                   />
@@ -121,15 +136,14 @@ const viewResume = () => {
           <div className=" bento-card p-4 col-span-1 md:col-span-4 space-y-2">
             <h2 className="text-lg font-bold">About</h2>
             <p className="text-[14px] font-medium text-foreground/70 ">
-              I'm an aspiring software developer and data analyst with a strong passion for technology and problem solving. 
-              Currently, I am pursuing a Bachelor's degree in Information Technology at the University of Mindanao. 
+              I am a software developer and data analyst specializing in building systems and dashboards that turn data into actionable insights. 
+              My work helps projects run efficiently and drives measurable results.
               <br />
               <br />
-              I have a solid foundation in programming languages such as Java, SQL, JavaScript and Python, and I'm eager to expand my skills in web development, and
-              data analysis. 
+              Currently pursuing a Bachelor's degree in Information Technology at the University of Mindanao Tagum City.
               <br />
-              With a keen eye for detail and a commitment to continuous learning, 
-              I am excited to contribute my skills and enthusiasm to real-world projects and make a positive impact in the tech industry.
+              <br />
+              I am skilled in Java, SQL, JavaScript, Python, Excel, and Tableau, focusing on practical solutions that make a real impact.
             </p>
           </div>
 
@@ -230,8 +244,8 @@ const viewResume = () => {
           </div> 
 
 
-          <div className="col-span-1 md:col-span-2 md:row-span-3 space-y-2 animate-fade-in animation-delay-200">
-            <div className="p-5 space-y-2.5 group flex-1 "> 
+          <div className="col-span-1 md:col-span-2 md:row-span-3 space-y-2 animate-fade-in animation-delay-200 -mt-4">
+            <div className="p-5 space-y-2.5 group flex-1"> 
               <h2 className="text-lg font-medium">Social Links</h2>
               <div>
                 <a href="https://www.linkedin.com/in/arwin-ryan-janoyan-6b355a3a5/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 p-1.5 rounded-lg bg-foreground/5 shadow-[0_1px_2px_rgba(0,0,0,0.03),0_1px_1px_rgba(0,0,0,0.04)] hover:bg-foreground/10 hover:shadow-[0_3px_10px_rgba(0,0,0,0.06)] transition-all duration-200 hover:-translate-y-0.5 group">
@@ -359,7 +373,7 @@ const viewResume = () => {
         </section>
 
         <section className="grid grid-cols-1 md:grid-cols-2 gap-4 animate-fade-in animation-delay-400 mt-3 md:mt-0">
-          {/* Recent Projects */}
+          
           <div className="bento-card p-4 space-y-2 group">
             <div className="flex items-center justify-between">
               <h2 className="text-lg font-bold">Recent Projects</h2>
@@ -377,17 +391,20 @@ const viewResume = () => {
             </div>
           </div>
 
-          {/* Recommendations */}
+          
           <div className="bento-card p-4 space-y-2 group overflow-hidden">
             <h2 className="text-lg font-bold">Recommendations</h2>
             <div className="relative h-[160px]">
               <div className="absolute inset-0 transition-all duration-1000">
                 <p className="text-[13px] leading-relaxed text-foreground/80 font-serif line-clamp-4">
-                  asdasd
+                  Mr. Janoyan has shown a strong sense of curiosity and eagerness to understand how tasks are done. 
+                  His inquisitive nature and willingness to ask questions demonstrate a genuine interest in learning.
                 </p>
                 <div className="mt-3 pt-3 border-t border-border">
-                  <p className="text-xs font-semibold font-sans">John Doe</p>
-                  <p className="text-xs text-foreground/50 font-sans">Software Engineer at Tech Company</p>
+                  <p className="text-xs font-semibold font-sans">Engr. Octavio S. Guibelondo, Jr.</p>
+                  <p className="text-xs text-foreground/50 font-sans">
+                  Provincial Officer, Department of Information and Communications Technology (DICT)
+                  </p>
                 </div>
               </div>
             </div>
@@ -399,8 +416,16 @@ const viewResume = () => {
             <h2 className="text-lg font-bold">Certifications</h2>
 
             <div
-              ref={scrollRef}
-              className="overflow-x-auto w-full snap-x snap-mandatory scrollbar-hover"
+              ref={certRef}
+              className="scrollbar-hover w-full flex gap-4"
+              onWheel={(e) => {
+              const el = e.currentTarget;
+                if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) { 
+                // Only convert vertical wheel to horizontal scroll
+                e.preventDefault(); 
+                el.scrollLeft += e.deltaY; 
+              }
+            }}
             >
               <div className="flex gap-4 my-1 w-max snap-x snap-mandatory ">
                 <div
@@ -550,10 +575,17 @@ const viewResume = () => {
           <div className="bento-card p-1 col-span-1 md:col-span-6 space-y-2 animate-fade-in animation-delay-600 ">
             <h2 className="text-lg font-bold">Gallery</h2>
 
-            <div
-              ref={scrollRef}
-              className="overflow-x-auto w-full snap-x snap-mandatory scrollbar-hover"
-            >
+<div
+  ref={galleryRef}
+  className="scrollbar-hover w-full flex gap-4 overflow-x-auto"
+  onWheel={(e) => {
+    const el = e.currentTarget;
+    if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+      e.preventDefault();
+      el.scrollLeft += e.deltaY;
+    }
+  }}
+>
               <div className="flex gap-4 my-1 w-max snap-x snap-mandatory ">
                 <div className="flex gap-4 my-1 w-max snap-x snap-mandatory">
                 <img
@@ -581,13 +613,6 @@ const viewResume = () => {
             />
           </div>
         )}
-
-
-        <section>
-          <div className="p-4 font-normal text-sm group animate-fade-in animation-delay-300">
-            In progress...
-          </div>
-        </section>
           
         <section>
           <div className="text-center text-xs text-foreground/70 mt-8">
