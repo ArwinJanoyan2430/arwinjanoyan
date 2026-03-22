@@ -17,7 +17,7 @@ body {
   border-radius: 15px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.308);
   margin-right: 20px;
-  max-width: 100%;            /* responsive safety */
+  max-width: 100%;
 }
 
 
@@ -239,10 +239,19 @@ body {
     rgba(125,185,232,0) 100%
   );
   z-index: 1;
-  transform: translateX(-100%);
-  animation: slide 2s infinite;
+  transform: translateX(-100%) ;
+  animation: slide 3s infinite;
 }
 
+/* Shine animation */
+@keyframes slide {
+  0% {
+    transform: translateX(-1000%) ;
+  }
+  100% {
+    transform: translateX(100%) ;
+  }
+}
 
 /* Container with horizontal scroll */
 .scrollbar-hover {

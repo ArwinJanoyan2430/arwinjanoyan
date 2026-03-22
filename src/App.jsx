@@ -14,12 +14,12 @@ import hourofcode from "./assets/hourofcode.png";
 import webdesignCert from "./assets/webdesignCert.png";
 import oracleCert from "./assets/oracleCert.png";
 
-import { ChevronRight, Mail, Trophy, MapPin, FileText } from "lucide-react";
+import { ChevronRight, Mail, Trophy, MapPin, FileText, Coffee } from "lucide-react";
 import TypewriterRole from "./animations/TypewriterRole";
 import BotpressChat from "./modal/BotpressChat";
 import EmailModal from "./modal/EmailModal";
 import g1 from "./assets/g1.jpg";
-
+import CoffeeSales from "./assets/CoffeeSales.png";
 
 function App() {
   const [hover, setHover] = useState(false);
@@ -384,14 +384,29 @@ const viewResume = () => {
                 </svg>
               </a>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-              <div className="bento-card p-3 space-y-1">
-                In progress..
-              </div>
-            </div>
+
+                <div
+                  className="bg-white dark:bg-zinc-900 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden group flex-shrink-0 w-[220px]"
+                  onClick={() => window.open("https://app.powerbi.com/reportEmbed?reportId=1383451d-b530-4945-a25c-c4923f3106a1&autoAuth=true&ctid=7f0b7336-8274-4a29-9dca-61548b3398b3", "_blank")}>
+                  <div className="overflow-hidden">
+                    <img
+                      src={CoffeeSales}
+                      alt="IntelliPat Certificate"
+                      className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <div className="p-3">
+                    <h3 className="text-sm font-semibold">
+                      Coffee Shop Sales
+                    </h3>
+                    <p className="text-xs text-muted-foreground">
+                      Transforming data into a dynamic dashboard that franchise owners can use to identify patterns, trends and opportunities for the business.
+                    </p>
+                  </div>
+                </div>
+            
           </div>
 
-          
           <div className="bento-card p-4 space-y-2 group overflow-hidden">
             <h2 className="text-lg font-bold">Recommendations</h2>
             <div className="relative h-[160px]">
