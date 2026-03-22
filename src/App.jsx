@@ -631,7 +631,7 @@ const viewResume = () => {
           
         <section>
           <div className="text-center text-xs text-foreground/70 mt-8">
-            <p>© 2024 Arwin Janoyan. All rights reserved.</p>
+            <p>© 2026 Arwin Janoyan. All rights reserved.</p>
           </div>
         </section>
 
