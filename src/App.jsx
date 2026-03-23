@@ -387,7 +387,7 @@ const viewResume = () => {
 
                 <div
                   className="bg-white dark:bg-zinc-900 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden group flex-shrink-0 w-[220px]"
-                  onClick={() => window.open("https://app.powerbi.com/reportEmbed?reportId=1383451d-b530-4945-a25c-c4923f3106a1&autoAuth=true&ctid=7f0b7336-8274-4a29-9dca-61548b3398b3", "_blank")}>
+                  onClick={() => window.open("https://public.tableau.com/app/profile/arwin.janoyan/viz/Book1_17742456072680/Dashboard?publish=yes", "_blank")}>
                   <div className="overflow-hidden">
                     <img
                       src={CoffeeSales}
