@@ -4,8 +4,7 @@ import "./index.css";
 import resume from "./assets/ArwinResume.pdf";
 import { useState, useEffect, useRef } from "react";
 import badge from "./assets/badge.png";
-import lightmode from "./assets/lightmode.png";
-import nightmode from "./assets/nightmode.png";
+
 import BestInWebManagement from "./assets/BestInWebManagement.png";
 import harvard from "./assets/harvard.png";
 import IntelliPatCert from "./assets/IntelliPatCert.png";
