@@ -4,7 +4,7 @@ import "./index.css";
 import resume from "./assets/ArwinResume.pdf";
 import { useState, useEffect, useRef } from "react";
 import badge from "./assets/badge.png";
-
+import Loader from "./pages/loader.jsx";
 import BestInWebManagement from "./assets/BestInWebManagement.png";
 import harvard from "./assets/harvard.png";
 import IntelliPatCert from "./assets/IntelliPatCert.png";
@@ -27,10 +27,10 @@ function App() {
   const [dark, setDark] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
 
-const scrollRef = useRef(null);
+
 const certRef = useRef(null);
 const galleryRef = useRef(null);
-
+const [loading, setLoading] = useState(true);
 const toggleDarkMode = () => {
   if (typeof window !== 'undefined') {
     document.documentElement.classList.toggle("dark");
@@ -43,12 +43,15 @@ const viewResume = () => {
     window.open(resume, "_blank");
   }
 };
-
+useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 1500); // adjust duration as needed
+    return () => clearTimeout(timer);
+  }, []);
   useEffect(() => {
     setAnimate(true);
     const el = certRef.current;
   if (!el) return;
-
+    
   const onWheel = (e) => {
     if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
       e.preventDefault();
@@ -60,7 +63,12 @@ const viewResume = () => {
 
   return () => el.removeEventListener("wheel", onWheel);
   }, []);
-  
+  // Show loader while loading
+  if (loading) {
+    return <Loader />;
+  }
+
+
   return (
     <div className="max-w-4xl mx-auto px-4 py-8 " >
       <section className={`profile-card ${animate ? 'animate-in' : ''} transition-colors duration-300`}>
