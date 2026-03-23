@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import "../index.css";
 import logo from "../assets/logo.png"; // go up one folder from pages
 const Loader = () => {
   return (
@@ -99,12 +100,14 @@ const StyledWrapper = styled.div`
   }
 
   .trace-flow {
-    stroke-width: 1.8;
+    stroke-width: 2;
     fill: none;
-    stroke-dasharray: 40 400;
-    stroke-dashoffset: 438;
+
+    stroke-dasharray: 500;
+    stroke-dashoffset: 500;
+
     filter: drop-shadow(0 0 6px currentColor);
-    animation: flow 3s cubic-bezier(0.5, 0, 0.9, 1) infinite;
+    animation: flow 2s linear infinite;
   }
 
   .yellow { stroke: #ffea00; color: #ffea00; }
@@ -123,6 +126,8 @@ const StyledWrapper = styled.div`
     stroke: #444;
     stroke-width: 0.5;
     filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.6));
+
+    
   }`;
 
 export default Loader;

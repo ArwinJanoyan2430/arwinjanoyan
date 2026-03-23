@@ -12,7 +12,7 @@ import sqlCert from "./assets/sqlCert.png";
 import hourofcode from "./assets/hourofcode.png";
 import webdesignCert from "./assets/webdesignCert.png";
 import oracleCert from "./assets/oracleCert.png";
-
+import nike from "./assets/nike.png";
 import { ChevronRight, Mail, Trophy, MapPin, FileText, Coffee } from "lucide-react";
 import TypewriterRole from "./animations/TypewriterRole";
 import BotpressChat from "./modal/BotpressChat";
@@ -379,7 +379,7 @@ useEffect(() => {
 
         <section className="grid grid-cols-1 md:grid-cols-2 gap-4 animate-fade-in animation-delay-400 mt-3 md:mt-0">
           
-          <div className="bento-card p-4 space-y-2 group hover:shadow-xl transform hover:scale-100 hover:-translate-y-1 transition-all duration-300 ease-in-out">
+          <div className="bento-card p-4 space-y-2  hover:shadow-xl transform hover:scale-100 overflow-hidden  hover:-translate-y-1 transition-all duration-300 ease-in-out">
             <div className="flex items-center justify-between">
               <h2 className="text-lg font-bold">Recent Projects</h2>
               <a className="text-xs text-foreground/70 hover:text-foreground flex items-center gap-1 transition-colors" href="#">
@@ -389,6 +389,27 @@ useEffect(() => {
                 </svg>
               </a>
             </div>
+            
+              <div
+                ref={certRef}
+                className="scrollbar-hover flex gap-4 my-1 overflow-x-auto snap-x snap-mandatory pb-1"
+                onWheel={(e) => {
+                  const el = e.currentTarget;
+
+                  if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+                    const atStart = el.scrollLeft === 0;
+                    const atEnd = el.scrollLeft + el.clientWidth >= el.scrollWidth;
+
+                    if (
+                      (e.deltaY < 0 && !atStart) ||
+                      (e.deltaY > 0 && !atEnd)
+                    ) {
+                      e.preventDefault();
+                      el.scrollLeft += e.deltaY;
+                    }
+                  }
+                }}
+              >
 
                 <div
                   className="bg-white dark:bg-zinc-900 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden group flex-shrink-0 w-[220px]"
@@ -396,21 +417,42 @@ useEffect(() => {
                   <div className="overflow-hidden">
                     <img
                       src={CoffeeSales}
-                      alt="IntelliPat Certificate"
+                      alt="Coffee Sales Data"
                       className="w-full h-40 object-cover hover:scale-105 transition-transform duration-300"
                     />
                   </div>
                   <div className="p-3">
-                    <h3 className="text-sm font-semibold">
+                    <h3 className="text-sm font-semibold group-hover:text-blue-500 transition-colors">
                       Coffee Shop Sales
                     </h3>
                     <p className="text-xs text-muted-foreground">
                       Transforming data into a dynamic dashboard that franchise owners can use to identify patterns, trends and opportunities for the business.
                     </p>
-                    
                   </div>
+                  </div>
+                
+                  <div
+                  className="bg-white dark:bg-zinc-900 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden group flex-shrink-0 w-[220px]"
+                  onClick={() => window.open("https://nike-landingpage-rose.vercel.app/", "_blank")}>
+                  <div className="overflow-hidden">
+                    <img
+                      src={nike}
+                      alt="Coffee Sales Data"
+                      className="w-full h-40 object-cover hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <div className="p-3">
+                    <h3 className="text-sm font-semibold group-hover:text-blue-500 transition-colors">
+                      Nike Landing Page
+                    </h3>
+                    <p className="text-xs text-muted-foreground">
+                      A responsive Nike landing page built with modern frontend tools, featuring clean UI, smooth animations, and optimized layout.
+                    </p>
+                  </div>
+                  </div>
+
+                  
                 </div>
-            
           </div>
 
           <div className="bento-card p-4 space-y-2 group overflow-hidden hover:shadow-xl transform hover:scale-100 hover:-translate-y-1 transition-all duration-300 ease-in-out">
@@ -443,6 +485,7 @@ useEffect(() => {
               const el = e.currentTarget;
                 if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) { 
                 e.preventDefault(); 
+                e.stopPropagation();
                 el.scrollLeft += e.deltaY; 
               }
             }}
