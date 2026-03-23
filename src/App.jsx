@@ -79,17 +79,15 @@ const viewResume = () => {
                 <h1 className="text-lg md:text-2xl font-stretch-expanded font-bold truncate dark:text-white">Arwin Janoyan</h1>
                 <img src={badge} className="w-4 mt-1" />
               </div>
-                <button
-                  onClick={() => toggleDarkMode()}
-                  className="cursor-pointer flex items-center mx-0 px-4.5 py-1.5 bg-gray-200 dark:bg-gray-700 rounded z-50 transition-colors duration-300"
-                >
-                  <img
-                    key={dark ? 'night' : 'light'} // ensures React triggers re-render for animation
-                    src={dark ? nightmode : lightmode}
-                    className={`w-3.5 max-h-3.5 transform transition-transform duration-500 ease-in-out
-                              ${dark ? 'animate-spinZoom' : 'animate-spinZoom'} `}
-                  />
-                </button>
+              <label className="flex items-center cursor-pointer button-glow transform hover:scale-105 transition-transform duration-300 ease-in-out relative p-1 rounded">
+                {/* Hidden checkbox */}
+                <input
+                  type="checkbox"
+                  checked={dark}
+                  onChange={toggleDarkMode}
+                  className="theme-checkbox"
+                />
+              </label>
             </div>
             <p className="text-xs md:text-[14px] font-normal text-foreground/70 mt-1 flex items-center gap-1 dark:text-white"> <MapPin size={14} className="w-3 h-3 md:w-3.5 md:h-3.5 flex-shrink-0 "/> Tagum City, Philippines</p>
             <div className="flex items-center justify-between gap-0 mt-1.5">
@@ -133,10 +131,10 @@ const viewResume = () => {
       )}
 
         <section className={`dark:text-white grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 gap-3 ${animate ? "animate-in delay-100" : ""}`}>
-          <div className=" bento-card p-4 col-span-1 md:col-span-4 space-y-2">
+          <div className=" bento-card p-4 col-span-1 md:col-span-4 space-y-2 hover:scale-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ease-in-out">
             <h2 className="text-lg font-bold">About</h2>
-            <p className="text-[14px] font-medium text-foreground/70 ">
-              I am a software developer and data analyst specializing in building systems and dashboards that turn data into actionable insights. 
+            <p className="text-[14px] font-normal text-foreground/70 ">
+              I am an aspiring software developer and data analyst specializing in building systems and dashboards that turn data into actionable insights. 
               My work helps projects run efficiently and drives measurable results.
               <br />
               <br />
@@ -147,8 +145,8 @@ const viewResume = () => {
             </p>
           </div>
 
-          <div className="col-span-1 md:col-span-2 md:row-span-3 space-y-2 animate-fade-in animation-delay-200">
-            <div className="bento-card p-4 space-y-4 group flex-1"> 
+          <div className="col-span-1 md:col-span-2 md:row-span-3 space-y-2 animate-fade-in animation-delay-200 ">
+            <div className="bento-card p-4 space-y-4 group flex-1 hover:scale-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ease-in-out"> 
               <h2 className="text-lg font-bold">Experience</h2>
               <div className="relative space-y-4 mt-4">
                 <div className="absolute left-0 top-1.5 bottom-2 w-px bg-border"></div>
@@ -204,7 +202,7 @@ const viewResume = () => {
 
 
             <div className="col-span-1 md:col-span-2 md:row-span-3 space-y-2 animate-fade-in animation-delay-200">
-            <div className="bento-card p-4 space-y-2 group flex-1"> 
+            <div className="bento-card p-4 space-y-2 group flex-1 hover:shadow-xl transform hover:scale-100 hover:-translate-y-1 transition-all duration-300 ease-in-out"> 
               <h2 className="text-lg font-bold">Education</h2>
               <div className="relative space-y-4.5 mt-4">
                 <div className="absolute left-1.5 top-1.5 bottom-2 w-px bg-border"></div>
@@ -271,8 +269,8 @@ const viewResume = () => {
           </div> 
           </div> 
         
-          <div className="bento-card p-4 col-span-1 md:col-span-4 space-y-2 group animate-fade-in animation-delay-200">
-            <div className="flex items-center justify-between"> 
+          <div className="bento-card p-4 col-span-1 md:col-span-4 space-y-2 group animate-fade-in animation-delay-200 hover:shadow-xl transform hover:scale-100 hover:-translate-y-1 transition-all duration-300 ease-in-out">
+            <div className="flex items-center justify-between "> 
               <h2 className="text-lg font-bold">Tech Stack</h2>
               <a className="text-xs text-foreground/70 hover:text-foreground flex items-center gap-1 transition-colors" href="#">View All
                 <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -374,7 +372,7 @@ const viewResume = () => {
 
         <section className="grid grid-cols-1 md:grid-cols-2 gap-4 animate-fade-in animation-delay-400 mt-3 md:mt-0">
           
-          <div className="bento-card p-4 space-y-2 group">
+          <div className="bento-card p-4 space-y-2 group hover:shadow-xl transform hover:scale-100 hover:-translate-y-1 transition-all duration-300 ease-in-out">
             <div className="flex items-center justify-between">
               <h2 className="text-lg font-bold">Recent Projects</h2>
               <a className="text-xs text-foreground/70 hover:text-foreground flex items-center gap-1 transition-colors" href="#">
@@ -392,7 +390,7 @@ const viewResume = () => {
                     <img
                       src={CoffeeSales}
                       alt="IntelliPat Certificate"
-                      className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="w-full h-40 object-cover hover:scale-105 transition-transform duration-300"
                     />
                   </div>
                   <div className="p-3">
@@ -402,12 +400,13 @@ const viewResume = () => {
                     <p className="text-xs text-muted-foreground">
                       Transforming data into a dynamic dashboard that franchise owners can use to identify patterns, trends and opportunities for the business.
                     </p>
+                    
                   </div>
                 </div>
             
           </div>
 
-          <div className="bento-card p-4 space-y-2 group overflow-hidden">
+          <div className="bento-card p-4 space-y-2 group overflow-hidden hover:shadow-xl transform hover:scale-100 hover:-translate-y-1 transition-all duration-300 ease-in-out">
             <h2 className="text-lg font-bold">Recommendations</h2>
             <div className="relative h-[160px]">
               <div className="absolute inset-0 transition-all duration-1000">
@@ -427,7 +426,7 @@ const viewResume = () => {
         </section>
 
         <section className="grid grid-cols-1 md:grid-cols-2 gap-4 animate-fade-in animation-delay-600 mt-3 md:mt-4">
-        <div className="bento-card p-1 col-span-1 md:col-span-6 space-y-2 animate-fade-in animation-delay-600 ">
+        <div className="bento-card p-1 col-span-1 md:col-span-6 space-y-2 animate-fade-in animation-delay-600 hover:scale-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ease-in-out">
             <h2 className="text-lg font-bold">Certifications</h2>
 
             <div
@@ -587,7 +586,7 @@ const viewResume = () => {
             </div>
           </div>
 
-          <div className="bento-card p-1 col-span-1 md:col-span-6 space-y-2 animate-fade-in animation-delay-600 ">
+          <div className="bento-card p-1 col-span-1 md:col-span-6 space-y-2 animate-fade-in animation-delay-600 hover:shadow-xl transform hover:scale-100 hover:-translate-y-1 transition-all duration-300 ease-in-out">
             <h2 className="text-lg font-bold">Gallery</h2>
 
 <div

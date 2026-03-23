@@ -260,31 +260,54 @@ body {
   position: relative;
 }
 
-/* Hide scrollbars for Chrome, Safari, Edge */
-.scrollbar-hover::-webkit-scrollbar {
-  height: 0px; /* hide by default */
+/* Toggle switch */
+.theme-checkbox {
+  --toggle-size: 16px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 6.25em;
+  height: 3.125em;
+  background: linear-gradient(to right, #efefef 50%, #2a2a2a 50%) no-repeat;
+  background-size: 205%;
+  background-position: 0;
+  transition: 0.4s;
+  border-radius: 99em;
+  position: relative;
+  cursor: pointer;
 }
 
-/* Show scrollbar on hover for WebKit */
-.scrollbar-hover:hover::-webkit-scrollbar {
-  height: 8px; /* show scrollbar */
+.theme-checkbox::before {
+  content: "";
+  width: 2.25em;
+  height: 2.25em;
+  position: absolute;
+  top: 0.438em;
+  left: 0.438em;
+  background: linear-gradient(to right, #efefef 50%, #2a2a2a 50%) no-repeat;
+  background-size: 205%;
+  background-position: 100%;
+  border-radius: 50%;
+  transition: 0.4s;
 }
 
-.scrollbar-hover::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.4);
-  border-radius: 4px;
+.theme-checkbox:checked::before {
+  left: calc(100% - 1em - 0.438em);
+  background-position: 0;
 }
 
-.scrollbar-hover::-webkit-scrollbar-track {
-  background: transparent;
+.theme-checkbox:checked {
+  background-position: 100%;
 }
 
-/* Firefox */
-.scrollbar-hover {
-  scrollbar-width: none; /* hide by default */
+.theme-checkbox {
+  width: 3em;   /* bigger width */
+  height: 1.5em;  /* bigger height */
 }
 
-.scrollbar-hover:hover {
-  scrollbar-width: thin; /* show thin scrollbar on hover */
-  scrollbar-color: rgba(0,0,0,0.4) transparent; /* thumb color + track color */
+.theme-checkbox::before {
+  width: 1em;   /* bigger toggle knob */
+  height: 1em;
+  top: 0.3em;   /* adjust for centering */
+  left: 0.5em;
 }
