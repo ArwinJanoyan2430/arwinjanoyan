@@ -435,7 +435,6 @@ const viewResume = () => {
               onWheel={(e) => {
               const el = e.currentTarget;
                 if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) { 
-                // Only convert vertical wheel to horizontal scroll
                 e.preventDefault(); 
                 el.scrollLeft += e.deltaY; 
               }
