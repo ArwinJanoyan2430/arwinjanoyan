@@ -47,10 +47,10 @@ body {
 /* Modal overlay */
 .modal-overlay {
   position: fixed;
-  top: -50px;
+  top: 0;
   left: 0;
   width: 100vw;
-  height: 120vh;
+  height: 100vh;
   background: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
@@ -59,27 +59,28 @@ body {
   color: white;
 }
 
-/* Modal card — responsive width */
+/* Modal card — responsive width with glass effect */
 .modal-card {
   width: 90%;
-  max-width: 380px;   /* keeps your design */
+  max-width: 380px;
   padding: 1.5rem;
-  animation: fadeIn 0.25s ease;
   text-align: center;
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
 
-background: rgba(0, 0, 0, 0.64);
-border-radius: 16px;
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(20px);
--webkit-backdrop-filter: blur(20px);
+  /* Light mode */
+  background: rgba(255, 255, 255, 0.85);
+  color: #141414;
 
+  animation: fadeIn 0.25s ease;
 }
-.dark .modal-card{
-  background: rgba(255, 255, 255, 0);
-border-radius: 16px;
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(20px);
--webkit-backdrop-filter: blur(20px);
+
+/* Dark mode */
+.dark .modal-card {
+  background: rgba(28, 28, 30, 0.85); /* dark semi-transparent background */
+  color: white;
 }
 
 /* Title */
@@ -148,16 +149,23 @@ backdrop-filter: blur(20px);
   
   font-weight: 300;
   font-size: 0.7vw;
-  color: #fff;
-  background-color: rgb(28, 28, 30);
-  border: none;                   
+  color: #000000;
+  background-color: rgb(235, 235, 235);
+  border: solid 1px;                   
   border-radius: 0.4vw;             
-  box-shadow: 0 0 0.4vw rgba(0,0,0,0.5), 0 0 0 0.15vw transparent;
+  box-shadow: 0 0 0.4vw rgba(255, 255, 255, 0.5), 0 0 0 0.15vw transparent;
   box-sizing: border-box;
   transition: 0.4s;
   outline: none;
 }
-
+.dark .email,
+.dark .message,
+.dark .name {
+  border: none;
+  background-color: rgb(28, 28, 30);
+  color:white;
+  box-shadow: 0 0 0.4vw rgba(0, 0, 0, 0.5), 0 0 0 0.15vw transparent;
+}
 /* Hover effect */
 .email:hover,
 .message:hover,
@@ -169,10 +177,15 @@ backdrop-filter: blur(20px);
 .email:focus,
 .message:focus,
 .name:focus {
+  box-shadow: 0 0 0 0.15vw rgb(0, 0, 0);
+  outline: none;
+}
+.dark .email:focus,
+.dark .message:focus,
+.dark .name:focus {
   box-shadow: 0 0 0 0.15vw rgb(255, 255, 255);
   outline: none;
 }
-
 
 /* Animations — kept EXACT */
 @keyframes fadeIn {
