@@ -28,15 +28,32 @@ function App() {
   const [selectedImage, setSelectedImage] = useState(null);
 
 
+const projectRef = useRef(null);
 const certRef = useRef(null);
 const galleryRef = useRef(null);
 const [loading, setLoading] = useState(true);
+
+useEffect(() => {
+  const saved = localStorage.getItem("darkMode") === "true";
+  setDark(saved);
+  if (saved) document.documentElement.classList.add("dark");
+}, []);
+
 const toggleDarkMode = () => {
-  if (typeof window !== 'undefined') {
-    document.documentElement.classList.toggle("dark");
-    setDark(prev => !prev);
-  }
+  document.documentElement.classList.toggle("dark");
+  setDark(prev => {
+    localStorage.setItem("darkMode", !prev);
+    return !prev;
+  });
 };
+
+useEffect(() => {
+  const handleKey = (e) => {
+    if (e.key === "Escape") setSelectedImage(null);
+  };
+  window.addEventListener("keydown", handleKey);
+  return () => window.removeEventListener("keydown", handleKey);
+}, []);
 
 const viewResume = () => {
   if (typeof window !== 'undefined') {
@@ -44,31 +61,31 @@ const viewResume = () => {
   }
 };
 useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 1500); // adjust duration as needed
-    return () => clearTimeout(timer);
-  }, []);
-  useEffect(() => {
-    setAnimate(true);
-    const el = certRef.current;
-  if (!el) return;
-    
-  const onWheel = (e) => {
-    if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-      e.preventDefault();
-      el.scrollLeft += e.deltaY;
-    }
-  };
+  const timer = setTimeout(() => {
+    setLoading(false);   
+    setAnimate(true);  
+  }, 1900);
 
-  el.addEventListener("wheel", onWheel, { passive: false });
+  return () => clearTimeout(timer);
+}, []);
 
-  return () => el.removeEventListener("wheel", onWheel);
-  }, []);
-  // Show loader while loading
   if (loading) {
     return <Loader />;
   }
 
+const handleHorizontalScroll = (e, ref) => {
+  const el = ref.current;
+  if (!el) return;
 
+  const isVerticalScroll = Math.abs(e.deltaY) > Math.abs(e.deltaX);
+
+  if (isVerticalScroll) {
+    e.preventDefault(); // 🚨 ALWAYS stop vertical scroll
+    e.stopPropagation();
+
+    el.scrollLeft += e.deltaY; // smooth enough already
+  }
+};
   return (
     <div className="max-w-4xl mx-auto px-4 py-8 " >
       <section className={`profile-card ${animate ? 'animate-in' : ''} transition-colors duration-300`}>
@@ -258,7 +275,6 @@ useEffect(() => {
                 <p className="text-[10px] font-medium text-foreground group-hover:text-accent transition-colors">LinkedIn</p>
                 </a>
               </div>
-
               <div>
                 <a href="https://github.com/ArwinJanoyan2430" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 p-1.5 rounded-lg bg-foreground/5 shadow-[0_1px_2px_rgba(0,0,0,0.03),0_1px_1px_rgba(0,0,0,0.04)] hover:bg-foreground/10 hover:shadow-[0_3px_10px_rgba(0,0,0,0.06)] transition-all duration-200 hover:-translate-y-0.5 group">
                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" className="w-5 h-5 dark:invert"/>
@@ -377,7 +393,7 @@ useEffect(() => {
           </div>
         </section>
 
-        <section className="grid grid-cols-1 md:grid-cols-2 gap-4 animate-fade-in animation-delay-400 mt-3 md:mt-0">
+        <section className={ `grid grid-cols-1 md:grid-cols-2 gap-4 animate-fade-in animation-delay-400 mt-3 md:mt-0 ${animate ? 'animate-in' : ''} transition-colors duration-300`}>
           
           <div className="bento-card p-4 space-y-2  hover:shadow-xl transform hover:scale-100 overflow-hidden  hover:-translate-y-1 transition-all duration-300 ease-in-out">
             <div className="flex items-center justify-between">
@@ -391,38 +407,28 @@ useEffect(() => {
             </div>
             
               <div
-                ref={certRef}
+                ref={projectRef}
                 className="scrollbar-hover flex gap-4 my-1 overflow-x-auto snap-x snap-mandatory pb-1"
-                onWheel={(e) => {
-                  const el = e.currentTarget;
-
-                  if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-                    const atStart = el.scrollLeft === 0;
-                    const atEnd = el.scrollLeft + el.clientWidth >= el.scrollWidth;
-
-                    if (
-                      (e.deltaY < 0 && !atStart) ||
-                      (e.deltaY > 0 && !atEnd)
-                    ) {
-                      e.preventDefault();
-                      el.scrollLeft += e.deltaY;
-                    }
-                  }
-                }}
+                onWheel={(e) => handleHorizontalScroll(e, projectRef)}
               >
 
                 <div
-                  className="bg-white dark:bg-zinc-900 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden group flex-shrink-0 w-[220px]"
+                  className="bg-white dark:bg-zinc-900 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden  flex-shrink-0 w-[250px]"
                   onClick={() => window.open("https://public.tableau.com/app/profile/arwin.janoyan/viz/Book1_17742456072680/Dashboard?publish=yes", "_blank")}>
-                  <div className="overflow-hidden">
+                  <div className="overflow-hidden relative group">
                     <img
                       src={CoffeeSales}
                       alt="Coffee Sales Data"
-                      className="w-full h-40 object-cover hover:scale-105 transition-transform duration-300"
+                      className="w-full h-20 object-cover transition-all duration-300 group-hover:grayscale group-hover:scale-105"
                     />
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 hover:opacity-100 transition-all duration-300">
+                      <span className="text-white text-xs font-semibold tracking-wide">
+                        Click to View
+                      </span>
+                    </div>
                   </div>
                   <div className="p-3">
-                    <h3 className="text-sm font-semibold group-hover:text-blue-500 transition-colors">
+                    <h3 className="text-sm font-semibold hover:text-blue-500 transition-colors">
                       Coffee Shop Sales
                     </h3>
                     <p className="text-xs text-muted-foreground">
@@ -432,23 +438,30 @@ useEffect(() => {
                   </div>
                 
                   <div
-                  className="bg-white dark:bg-zinc-900 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden group flex-shrink-0 w-[220px]"
+                  className="bg-white dark:bg-zinc-900 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden flex-shrink-0 w-[250px]"
                   onClick={() => window.open("https://nike-landingpage-rose.vercel.app/", "_blank")}>
-                  <div className="overflow-hidden">
+                  <div className="overflow-hidden  relative group">
                     <img
                       src={nike}
-                      alt="Coffee Sales Data"
-                      className="w-full h-40 object-cover hover:scale-105 transition-transform duration-300"
+                      alt="Nike Landing Page"
+                      className="w-full h-20 object-cover transition-all duration-300 group-hover:grayscale group-hover:scale-105"
                     />
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 hover:opacity-100 transition-all duration-300">
+                      <span className="text-white text-xs font-semibold tracking-wide">
+                        Click to View
+                      </span>
+                    </div>
                   </div>
+                  
                   <div className="p-3">
-                    <h3 className="text-sm font-semibold group-hover:text-blue-500 transition-colors">
+                    <h3 className="text-sm font-semibold hover:text-blue-500 transition-colors">
                       Nike Landing Page
                     </h3>
                     <p className="text-xs text-muted-foreground">
                       A responsive Nike landing page built with modern frontend tools, featuring clean UI, smooth animations, and optimized layout.
                     </p>
                   </div>
+                  
                   </div>
 
                   
@@ -481,14 +494,7 @@ useEffect(() => {
             <div
               ref={certRef}
               className="scrollbar-hover w-full flex gap-4"
-              onWheel={(e) => {
-              const el = e.currentTarget;
-                if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) { 
-                e.preventDefault(); 
-                e.stopPropagation();
-                el.scrollLeft += e.deltaY; 
-              }
-            }}
+              onWheel={(e) => handleHorizontalScroll(e, certRef)}
             >
               <div className="flex gap-4 my-1 w-max snap-x snap-mandatory ">
                 <div
@@ -502,7 +508,7 @@ useEffect(() => {
                   />
                 </div>
                 <div className="p-3">
-                  <h3 className="text-sm font-semibold">
+                  <h3 className="text-sm font-semibold hover:text-blue-500 transition-colors">
                     Best in Website Design
                   </h3>
                   <p className="text-xs text-muted-foreground">
@@ -522,10 +528,10 @@ useEffect(() => {
                     />
                   </div>
                   <div className="p-3">
-                    <h3 className="text-sm font-semibold">
+                    <h3 className="text-sm font-semibold hover:text-blue-500 transition-colors">
                       CS50's Web Programming with Python and JavaScript
                     </h3>
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-xs text-muted-foreground ">
                       Web development course offered by Harvard University through edX.
                     </p>
                   </div>
@@ -543,7 +549,7 @@ useEffect(() => {
                     />
                   </div>
                   <div className="p-3">
-                    <h3 className="text-sm font-semibold">
+                    <h3 className="text-sm font-semibold hover:text-blue-500 transition-colors">
                       Excel Certification Course Online
                     </h3>
                     <p className="text-xs text-muted-foreground">
@@ -563,7 +569,7 @@ useEffect(() => {
                     />
                   </div>
                   <div className="p-3">
-                    <h3 className="text-sm font-semibold">
+                    <h3 className="text-sm font-semibold hover:text-blue-500 transition-colors">
                       Introduction to SQL
                     </h3>
                     <p className="text-xs text-muted-foreground">
@@ -583,7 +589,7 @@ useEffect(() => {
                     />
                   </div>
                   <div className="p-3">
-                    <h3 className="text-sm font-semibold">
+                    <h3 className="text-sm font-semibold hover:text-blue-500 transition-colors">
                       Hour of Code - AI Ready ASEAN Programme
                     </h3>
                     <p className="text-xs text-muted-foreground">
@@ -603,7 +609,7 @@ useEffect(() => {
                     />
                   </div>
                   <div className="p-3">
-                    <h3 className="text-sm font-semibold">
+                    <h3 className="text-sm font-semibold hover:text-blue-500 transition-colors">
                       Best in Graphic Design (Surge Freelancing Marketplace)
                     </h3>
                     <p className="text-xs text-muted-foreground">
@@ -623,7 +629,7 @@ useEffect(() => {
                     />
                   </div>
                   <div className="p-3">
-                    <h3 className="text-sm font-semibold">
+                    <h3 className="text-sm font-semibold hover:text-blue-500 transition-colors">
                       Oracle PL/SQL: Table Functions
                     </h3>
                     <p className="text-xs text-muted-foreground">
@@ -638,17 +644,11 @@ useEffect(() => {
           <div className="bento-card p-1 col-span-1 md:col-span-6 space-y-2 animate-fade-in animation-delay-600 hover:shadow-xl transform hover:scale-100 hover:-translate-y-1 transition-all duration-300 ease-in-out">
             <h2 className="text-lg font-bold">Gallery</h2>
 
-<div
-  ref={galleryRef}
-  className="scrollbar-hover w-full flex gap-4 overflow-x-auto"
-  onWheel={(e) => {
-    const el = e.currentTarget;
-    if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-      e.preventDefault();
-      el.scrollLeft += e.deltaY;
-    }
-  }}
->
+            <div
+              ref={galleryRef}
+              className="scrollbar-hover w-full flex gap-4 overflow-x-auto"
+              onWheel={(e) => handleHorizontalScroll(e, galleryRef)}
+            >
               <div className="flex gap-4 my-1 w-max snap-x snap-mandatory ">
                 <div className="flex gap-4 my-1 w-max snap-x snap-mandatory">
                 <img
@@ -684,7 +684,7 @@ useEffect(() => {
         </section>
 
         <section>
-          <div className="fixed bottom-4 right-4">
+          <div className="">
             <BotpressChat dark={dark} />
           </div>
         </section>

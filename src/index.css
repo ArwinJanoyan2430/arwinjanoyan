@@ -56,6 +56,7 @@ body {
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  color: white;
 }
 
 /* Modal card — responsive width */
@@ -63,12 +64,22 @@ body {
   width: 90%;
   max-width: 380px;   /* keeps your design */
   padding: 1.5rem;
-  border-radius: 18px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
   animation: fadeIn 0.25s ease;
   text-align: center;
-  background-color: white;
-  
+
+background: rgba(0, 0, 0, 0.64);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(20px);
+-webkit-backdrop-filter: blur(20px);
+
+}
+.dark .modal-card{
+  background: rgba(255, 255, 255, 0);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(20px);
+-webkit-backdrop-filter: blur(20px);
 }
 
 /* Title */
@@ -77,6 +88,7 @@ body {
   font-weight: 600;
   margin-bottom: 1rem;
   text-align: center;
+  
 }
 
 /* Form */
@@ -84,24 +96,6 @@ body {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-}
-
-/* Inputs */
-.modal-form input,
-.modal-form textarea {
-  padding: 0.9rem;
-  border-radius: 100px;
-  border: 1px solid #ddd;
-  font-size: 0.9rem;
-  transition: 0.2s ease;
-  width: 100%;              /* responsive */
-  box-sizing: border-box;
-}
-
-.modal-form input:focus,
-.modal-form textarea:focus {
-  border-color: black;
-  outline: none;
 }
 
 /* Button row */
@@ -125,17 +119,19 @@ body {
 }
 
 .send-btn:hover {
-  background: #333;
+  background: #141414;
 }
 
 /* Cancel button */
 .cancel-btn {
   padding: 0.5rem 2.5rem;
   border-radius: 10px;
+  background: rgb(190, 190, 190);
   border: none;
   cursor: pointer;
   transition: 0.2s ease;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.308);
+  color: #141414;
   flex: 1;                  /* responsive */
 }
 
@@ -143,15 +139,38 @@ body {
   background: #ddd;
 }
 
-/* Inputs */
 .email,
 .message,
 .name {
-  width: 100%;
-  margin-top: 10px;
-  border: 1px solid black;
-  text-align: left;
-  border-radius: 10px;
+  width: 100%;                   
+  margin-top: 10px;                
+  padding: 0.4vw;                   
+  
+  font-weight: 300;
+  font-size: 0.7vw;
+  color: #fff;
+  background-color: rgb(28, 28, 30);
+  border: none;                   
+  border-radius: 0.4vw;             
+  box-shadow: 0 0 0.4vw rgba(0,0,0,0.5), 0 0 0 0.15vw transparent;
+  box-sizing: border-box;
+  transition: 0.4s;
+  outline: none;
+}
+
+/* Hover effect */
+.email:hover,
+.message:hover,
+.name:hover {
+  box-shadow: 0 0 0 0.15vw rgba(196, 196, 196, 0.186);
+}
+
+/* Focus effect */
+.email:focus,
+.message:focus,
+.name:focus {
+  box-shadow: 0 0 0 0.15vw rgb(255, 255, 255);
+  outline: none;
 }
 
 
@@ -256,9 +275,9 @@ body {
 /* Container with horizontal scroll */
 .scrollbar-hover {
   overflow-x: auto;
-  scroll-behavior: smooth;
-  position: relative;
-  margin-top: 10px;
+
+  overscroll-behavior-x: contain;
+  overscroll-behavior-y: contain;
 }
 .dark .scrollbar-hover::-webkit-scrollbar-track {
   background: #1f1f1f; /* dark track */
@@ -326,3 +345,4 @@ body {
     stroke-dashoffset: 0;
   }
 }
+
