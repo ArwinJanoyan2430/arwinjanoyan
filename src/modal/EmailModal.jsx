@@ -23,20 +23,22 @@ function EmailModal({ onClose }) {
   };
 
   return (
-    <div className="modal-overlay ">
-      <div className="modal-card ">
-        <h3 className="text-lg font-bold justify-center">Send me a message</h3>
+    
+    <div className="modal-overlay " >
+      <div className="modal-card " >
+        <h3 className="text-lg my-2 font-bold justify-center">Send me a message</h3>
+        <div className="py-3">
+          <form onSubmit={sendEmail}>
+            <input className ="name text-sm md:text-sm p-1" type="text" name="user_name" placeholder="Your Name" required />
+            <input className ="email text-sm md:text-sm p-1" type="email" name="user_email" placeholder="Your Email" required />
+            <textarea className ="message text-sm md:text-sm p-1 " name="message" placeholder="Your Message" required />
 
-        <form onSubmit={sendEmail}>
-          <input className ="name text-xs p-1" type="text" name="user_name" placeholder="Your Name" required />
-          <input className ="email text-xs p-1" type="email" name="user_email" placeholder="Your Email" required />
-          <textarea className ="message text-xs p-1 " name="message" placeholder="Your Message" required />
-
-          <div className="modal-buttons">
-            <button className ="send-btn text-sm" type="submit">Send</button>
-            <button className="cancel-btn text-sm" type="button" onClick={onClose}>Cancel</button>
-          </div>
-        </form>
+            <div className="modal-buttons">
+              <button className ="send-btn text-sm" type="submit">Send</button>
+              <button className="cancel-btn text-sm" type="button" onClick={onClose}>Cancel</button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );

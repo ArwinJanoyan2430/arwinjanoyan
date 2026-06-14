@@ -19,14 +19,15 @@ import BotpressChat from "./modal/BotpressChat";
 import EmailModal from "./modal/EmailModal";
 import g1 from "./assets/g1.jpg";
 import CoffeeSales from "./assets/CoffeeSales.png";
+import ResumeModal from "./modal/ResumeModal";
 
 function App() {
   const [hover, setHover] = useState(false);
-  const [showModal, setShowModal] = useState(false);
+  const [showEmailModal, setShowEmailModal] = useState(false);
   const [animate, setAnimate] = useState(false);
   const [dark, setDark] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
-
+  const [showResumeModal, setShowResumeModal] = useState(false);
 
 const projectRef = useRef(null);
 const certRef = useRef(null);
@@ -134,8 +135,8 @@ const handleHorizontalScroll = (e, ref) => {
               </div>
             </div>
             <div className="space-y-2 mt-3 md:mt-3 gap-1 md:gap-2 flex ">
-              <button className = "button text-[11px] md:text-xs inline-flex h-7 md:h-8 items-center rounded-lg bg-foreground px-2.5 md:px-6 text-[8px] md:text-xs font-medium text-background transition-all duration-200 hover:bg-foreground/90 hover:-translate-y-0.1 gap-1 md:gap-1.5 whitespace-nowrap min-h-0 bg-black dark:bg-white text-white dark:text-black" onClick={viewResume}> <FileText size={16} /> View Resume</button>
-              <button className = "button-2 text-[11px] md:text-xs inline-flex h-7 md:h-8 items-center rounded-lg bg-foreground px-2.5 md:px-6 text-[8px] md:text-xs font-medium text-background transition-all duration-200 hover:bg-foreground/90 hover:-translate-y-0.1 gap-1 md:gap-1.5 whitespace-nowrap min-h-0 dark:bg-black dark:text-white" onClick={() => setShowModal(true)}> <Mail size={16} /> Send Email</button>
+              <button className = "button text-[11px] md:text-xs inline-flex h-7 md:h-8 items-center rounded-lg bg-foreground px-2.5 md:px-6 text-[8px] md:text-xs font-medium text-background transition-all duration-200 hover:bg-foreground/90 hover:-translate-y-0.1 gap-1 md:gap-1.5 whitespace-nowrap min-h-0 bg-black dark:bg-white text-white dark:text-black" onClick={() => setShowResumeModal(true)}> <FileText size={16} /> View Resume</button>
+              <button className = "button-2 text-[11px] md:text-xs inline-flex h-7 md:h-8 items-center rounded-lg bg-foreground px-2.5 md:px-6 text-[8px] md:text-xs font-medium text-background transition-all duration-200 hover:bg-foreground/90 hover:-translate-y-0.1 gap-1 md:gap-1.5 whitespace-nowrap min-h-0 dark:bg-black dark:text-white" onClick={() => setShowEmailModal(true)}> <Mail size={16} /> Send Email</button>
             </div>
             <div className="block md:hidden">
               <div className="relative">
@@ -150,14 +151,18 @@ const handleHorizontalScroll = (e, ref) => {
         </div>
       </section>
 
-      {showModal && (
-          <EmailModal onClose={() => setShowModal(false)} />
+      {showEmailModal && (
+        <EmailModal onClose={() => setShowEmailModal(false)} />
       )}
 
-        <section className={`dark:text-white grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 gap-3 ${animate ? "animate-in delay-100" : ""}`}>
+      {showResumeModal && (
+        <ResumeModal onClose={() => setShowResumeModal(false)} />
+      )}
+
+        <section className={`dark:text-white grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 gap-4 ${animate ? "animate-in delay-100" : ""}`}>
           <div className=" bento-card p-4 col-span-1 md:col-span-4 space-y-2 hover:scale-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ease-in-out">
             <h2 className="text-lg font-bold">About</h2>
-            <p className="text-[14px] font-normal text-foreground/70 ">
+            <p className="text-[14px] my-3 font-normal text-foreground/70 ">
               I am an aspiring software developer and data analyst specializing in building systems and dashboards that turn data into actionable insights. 
               My work helps projects run efficiently and drives measurable results.
               <br />
@@ -200,6 +205,23 @@ const handleHorizontalScroll = (e, ref) => {
                   <div className="space-y-1">
                     <h3 className="text-sm font-semibold 
                       text-accent 
+                      transition-colors">Work Immersion Student</h3>
+                      <div className="flex items-center justify-between"> 
+                        <span className="text-xs text-foreground/70 ">Department of Information and Communications Technology (DICT)</span>
+                        <span className="text-[10px] font-mono px-1.5 py-0.5 rounded-full bg-foreground/5 shadow-[0_1px_1px_rgba(0,0,0,0.03)]
+                        bg-accent/10">2025</span>
+                      </div>
+                  </div>
+                </div>
+
+                <div className="relative pl-6 group/role">
+                  <div className="absolute left-0 top-1.5 w-3 h-3 rounded-full border-2 
+                    border-accent bg-accent 
+                    transition-colors">
+                  </div>
+                  <div className="space-y-1">
+                    <h3 className="text-sm font-semibold 
+                      text-accent 
                       transition-colors">Programming Competition</h3>
                       <div className="flex items-center justify-between"> 
                         <span className="text-xs text-foreground/70 ">Mapua MCM Cup / 2nd placer</span>
@@ -216,7 +238,7 @@ const handleHorizontalScroll = (e, ref) => {
                       Hello World!
                       </h3>
                       <div className="flex items-center justify-between">
-                        <span className="text-xs text-foreground/70 ">Started learning programming</span>
+                        <span className="text-xs text-foreground/70 ">Started learning programming!</span>
                         <span className="text-[10px] font-mono px-1.5 py-0.5 rounded-full bg-foreground/5 shadow-[0_1px_1px_rgba(0,0,0,0.03)]">2023</span>
                       </div>
                     </div>
@@ -270,7 +292,7 @@ const handleHorizontalScroll = (e, ref) => {
             <div className="p-5 space-y-2.5 group flex-1"> 
               <h2 className="text-lg font-medium">Social Links</h2>
               <div>
-                <a href="https://www.linkedin.com/in/arwin-ryan-janoyan-6b355a3a5/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 p-1.5 rounded-lg bg-foreground/5 shadow-[0_1px_2px_rgba(0,0,0,0.03),0_1px_1px_rgba(0,0,0,0.04)] hover:bg-foreground/10 hover:shadow-[0_3px_10px_rgba(0,0,0,0.06)] transition-all duration-200 hover:-translate-y-0.5 group">
+                <a href="https://www.linkedin.com/in/arwin-ryan-janoyan-6b355a3a5" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 p-1.5 rounded-lg bg-foreground/5 shadow-[0_1px_2px_rgba(0,0,0,0.03),0_1px_1px_rgba(0,0,0,0.04)] hover:bg-foreground/10 hover:shadow-[0_3px_10px_rgba(0,0,0,0.06)] transition-all duration-200 hover:-translate-y-0.5 group">
                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linkedin/linkedin-plain.svg" className="w-5 h-5 dark:invert"/>
                 <p className="text-[10px] font-medium text-foreground group-hover:text-accent transition-colors">LinkedIn</p>
                 </a>
@@ -301,7 +323,7 @@ const handleHorizontalScroll = (e, ref) => {
                 </svg>
               </a>
             </div>
-            <div className="space-y-4">
+            <div className="space-y-4 my-3">
               <div>
                 <h3 className="text-sm font-semibold mb-2">Frontend</h3>
                 <div className="flex flex-wrap gap-1.5">
