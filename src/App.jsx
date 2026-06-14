@@ -20,6 +20,7 @@ import EmailModal from "./modal/EmailModal";
 import g1 from "./assets/g1.jpg";
 import CoffeeSales from "./assets/CoffeeSales.png";
 import ResumeModal from "./modal/ResumeModal";
+import m4 from "./assets/m4.mp4";
 
 function App() {
   const [hover, setHover] = useState(false);
@@ -91,13 +92,34 @@ const handleHorizontalScroll = (e, ref) => {
     <div className="max-w-4xl mx-auto px-4 py-8 " >
       <section className={`profile-card ${animate ? 'animate-in' : ''} transition-colors duration-300`}>
         <div className="flex flex-col sm:flex-row items-center gap-3 mb-4">
-          <img
-            src={hover ? profile2 : profile}
-            alt="Profile"
-            className="profile"
-            onMouseEnter={() => setHover(true)}
-            onMouseLeave={() => setHover(false)}
-          />
+          <div className="relative w-[150px] h-[150px]">
+
+  {/* Default profile (light mode) */}
+  {!dark && (
+    <video
+    src={m4}
+    muted
+    playsInline
+    autoPlay={false}
+    preload="auto"
+    className="... pointer-events-none profile absolute object-cover transition-opacity duration-700 -translate-y-2"
+    />
+  )}
+
+  {/* AI Morph Video (dark mode ON) */}
+  {dark && (
+    <video
+      key={dark} 
+      src={m4}
+      autoPlay
+      muted
+      playsInline
+      disablePictureInPicture
+      className="profile absolute object-cover transition-opacity duration-700 -translate-y-2"
+    />
+  )}
+
+</div>
           <div className="flex-1 min-w-0">
             <div className="flex items-center justify-between gap-2">
               <div className="flex items-center gap-2">
