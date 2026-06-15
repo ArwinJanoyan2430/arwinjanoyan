@@ -94,22 +94,20 @@ const handleHorizontalScroll = (e, ref) => {
       <section className={`profile-card ${animate ? 'animate-in' : ''} transition-colors duration-300`}>
         <div className="flex flex-col sm:flex-row items-center gap-3 mb-4">
           <div className="relative w-[150px] h-[150px]">
-
-<video
-  src={dark ? m4 : m4Reverse}
-  autoPlay
-  muted
-  playsInline
-  preload="auto"
-  disablePictureInPicture
-  controls={false}
-  controlsList="nodownload noplaybackrate noremoteplayback nofullscreen"
-  tabIndex={-1}
-  aria-hidden="true"
-  className="profile absolute object-cover transition-opacity duration-700 -translate-y-2 pointer-events-none select-none"
-/>
-
-</div>
+            <video
+              src={dark ? m4 : m4Reverse}
+              autoPlay
+              muted
+              playsInline
+              preload="auto"
+              disablePictureInPicture
+              controls={false}
+              controlsList="nodownload noplaybackrate noremoteplayback nofullscreen"
+              tabIndex={-1}
+              aria-hidden="true"
+              className="profile absolute object-cover transition-opacity duration-700 -translate-y-2 pointer-events-none select-none"
+            />
+          </div>
           <div className="flex-1 min-w-0">
             <div className="flex items-center justify-between gap-2">
               <div className="flex items-center gap-2">
