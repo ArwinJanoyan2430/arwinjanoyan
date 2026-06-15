@@ -21,6 +21,7 @@ import g1 from "./assets/g1.jpg";
 import CoffeeSales from "./assets/CoffeeSales.png";
 import ResumeModal from "./modal/ResumeModal";
 import m4 from "./assets/m4.mp4";
+import m4Reverse from "./assets/m4Reverse.mp4";
 
 function App() {
   const [hover, setHover] = useState(false);
@@ -94,30 +95,19 @@ const handleHorizontalScroll = (e, ref) => {
         <div className="flex flex-col sm:flex-row items-center gap-3 mb-4">
           <div className="relative w-[150px] h-[150px]">
 
-  {/* Default profile (light mode) */}
-  {!dark && (
-    <video
-    src={m4}
-    muted
-    playsInline
-    autoPlay={false}
-    preload="auto"
-    className="... pointer-events-none profile absolute object-cover transition-opacity duration-700 -translate-y-2"
-    />
-  )}
-
-  {/* AI Morph Video (dark mode ON) */}
-  {dark && (
-    <video
-      key={dark} 
-      src={m4}
-      autoPlay
-      muted
-      playsInline
-      disablePictureInPicture
-      className="profile absolute object-cover transition-opacity duration-700 -translate-y-2"
-    />
-  )}
+<video
+  src={dark ? m4 : m4Reverse}
+  autoPlay
+  muted
+  playsInline
+  preload="auto"
+  disablePictureInPicture
+  controls={false}
+  controlsList="nodownload noplaybackrate noremoteplayback nofullscreen"
+  tabIndex={-1}
+  aria-hidden="true"
+  className="profile absolute object-cover transition-opacity duration-700 -translate-y-2 pointer-events-none select-none"
+/>
 
 </div>
           <div className="flex-1 min-w-0">
