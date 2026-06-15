@@ -13,7 +13,7 @@ import hourofcode from "./assets/hourofcode.png";
 import webdesignCert from "./assets/webdesignCert.png";
 import oracleCert from "./assets/oracleCert.png";
 import nike from "./assets/nike.png";
-import { ChevronRight, Mail, Trophy, MapPin, FileText, Coffee } from "lucide-react";
+import { ChevronRight, Mail, Trophy, MapPin, FileText, Coffee, FolderOpen } from "lucide-react";
 import TypewriterRole from "./animations/TypewriterRole";
 import BotpressChat from "./modal/BotpressChat";
 import EmailModal from "./modal/EmailModal";
@@ -22,6 +22,7 @@ import CoffeeSales from "./assets/CoffeeSales.png";
 import ResumeModal from "./modal/ResumeModal";
 import m4 from "./assets/m4.mp4";
 import m4Reverse from "./assets/m4Reverse.mp4";
+import ProjectsModal from "./modal/ProjectsModal";
 
 function App() {
   const [hover, setHover] = useState(false);
@@ -30,6 +31,7 @@ function App() {
   const [dark, setDark] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
   const [showResumeModal, setShowResumeModal] = useState(false);
+  const [showProjectsModal, setShowProjectsModal] = useState(false);
 
 const projectRef = useRef(null);
 const certRef = useRef(null);
@@ -124,7 +126,7 @@ const handleHorizontalScroll = (e, ref) => {
                 />
               </label>
             </div>
-            <p className="text-xs md:text-[14px] font-normal text-foreground/70 mt-1 flex items-center gap-1 dark:text-white"> <MapPin size={14} className="w-3 h-3 md:w-3.5 md:h-3.5 flex-shrink-0 "/> Tagum City, Philippines</p>
+            <p className="text-xs md:text-[14px] font-normal text-foreground/70 mt-0 flex items-center gap-1 dark:text-white"> <MapPin size={14} className="w-3 h-3 md:w-3.5 md:h-3.5 flex-shrink-0 "/> Tagum City, Philippines</p>
             <div className="flex items-center justify-between gap-0 mt-1.5">
               <p className="text-[10px] md:text-base font-medium text-black dark:text-white">
                 BSIT Student
@@ -143,10 +145,21 @@ const handleHorizontalScroll = (e, ref) => {
                     </button>
                 </div>
               </div>
+
             </div>
-            <div className="space-y-2 mt-3 md:mt-3 gap-1 md:gap-2 flex ">
-              <button className = "button text-[11px] md:text-xs inline-flex h-7 md:h-8 items-center rounded-lg bg-foreground px-2.5 md:px-6 text-[8px] md:text-xs font-medium text-background transition-all duration-200 hover:bg-foreground/90 hover:-translate-y-0.1 gap-1 md:gap-1.5 whitespace-nowrap min-h-0 bg-black dark:bg-white text-white dark:text-black" onClick={() => setShowResumeModal(true)}> <FileText size={16} /> View Resume</button>
-              <button className = "button-2 text-[11px] md:text-xs inline-flex h-7 md:h-8 items-center rounded-lg bg-foreground px-2.5 md:px-6 text-[8px] md:text-xs font-medium text-background transition-all duration-200 hover:bg-foreground/90 hover:-translate-y-0.1 gap-1 md:gap-1.5 whitespace-nowrap min-h-0 dark:bg-black dark:text-white" onClick={() => setShowEmailModal(true)}> <Mail size={16} /> Send Email</button>
+            <div className="space-y-2 w-full flex flex-wrap items-center gap-2 mt-3">
+              <button className = "button text-sm md:text-xs inline-flex h-7 md:h-8 items-center rounded-lg bg-foreground px-2.5 md:px-6 text-[8px] font-medium text-background transition-all duration-200 hover:bg-foreground/90 hover:-translate-y-0.1 gap-1 md:gap-1.5 whitespace-nowrap min-h-0 bg-black dark:bg-white text-white dark:text-black" onClick={() => setShowResumeModal(true)}> <FileText size={16} /> View Resume</button>
+              <button className = "button-2 text-sm md:text-xs inline-flex h-7 md:h-8 items-center rounded-lg bg-foreground px-2.5 md:px-6 text-[8px] font-medium text-background transition-all duration-200 hover:bg-foreground/90 hover:-translate-y-0.1 gap-1 md:gap-1.5 whitespace-nowrap min-h-0 dark:bg-black dark:text-white" onClick={() => setShowEmailModal(true)}> <Mail size={16} /> Send Email</button>
+              <button
+                className="button-3  -translate-y-1 text-sm md:text-xs inline-flex h-7 md:h-8 items-center rounded-lg bg-foreground px-2.5 md:px-6 text-[8px] font-medium text-background transition-all duration-200 hover:bg-foreground/90 hover:-translate-y-0.1 gap-1 md:gap-1.5 whitespace-nowrap min-h-0 dark:bg-black dark:text-white"
+                onClick={() => {
+                  setShowProjectsModal(true);
+                }}
+              >
+                <FolderOpen size={16} />
+                Recent Projects
+                
+              </button>
             </div>
             <div className="block md:hidden">
               <div className="relative">
@@ -167,6 +180,10 @@ const handleHorizontalScroll = (e, ref) => {
 
       {showResumeModal && (
         <ResumeModal onClose={() => setShowResumeModal(false)} />
+      )}
+
+      {showProjectsModal && (
+        <ProjectsModal onClose={() => setShowProjectsModal(false)} />
       )}
 
         <section className={`dark:text-white grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 gap-4 ${animate ? "animate-in delay-100" : ""}`}>
