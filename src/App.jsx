@@ -12,8 +12,8 @@ import sqlCert from "./assets/sqlCert.png";
 import hourofcode from "./assets/hourofcode.png";
 import webdesignCert from "./assets/webdesignCert.png";
 import oracleCert from "./assets/oracleCert.png";
-import nike from "./assets/nike.png";
 import alingnena from "./assets/alingnena.png";
+import nike from "./assets/nike.png";
 
 import {
   ChevronRight,
@@ -662,6 +662,40 @@ function App() {
             onWheel={(e) => handleHorizontalScroll(e, projectRef)}
           >
             <div
+              className="bg-white dark:bg-zinc-900 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden flex-shrink-0 w-[250px]"
+              onClick={() =>
+                window.open(
+                  "https://aling-nena-store-theta.vercel.app/",
+                  "_blank",
+                )
+              }
+            >
+              <div className="overflow-hidden  relative group">
+                <img
+                  src={alingnena}
+                  alt="Aling Nena Store"
+                  className="w-full h-20 object-cover transition-all duration-300 group-hover:grayscale group-hover:scale-105"
+                />
+                <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 hover:opacity-100 transition-all duration-300">
+                  <span className="text-white text-xs font-semibold tracking-wide">
+                    Click to View
+                  </span>
+                </div>
+              </div>
+
+              <div className="p-3">
+                <h3 className="text-sm font-semibold hover:text-blue-500 transition-colors">
+                  Aling Nena Store
+                </h3>
+                <p className="text-xs text-muted-foreground">
+                  A responsive e-commerce website for Aling Nena's store, built
+                  with modern frontend tools, featuring a clean UI, smooth
+                  animations, and an optimized layout.
+                </p>
+              </div>
+            </div>
+
+            <div
               className="bg-white dark:bg-zinc-900 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden  flex-shrink-0 w-[250px]"
               onClick={() =>
                 window.open(
@@ -723,40 +757,6 @@ function App() {
                 <p className="text-xs text-muted-foreground">
                   A responsive Nike landing page built with modern frontend
                   tools, featuring clean UI, smooth animations, and optimized
-                  layout.
-                </p>
-              </div>
-            </div>
-
-            <div
-              className="bg-white dark:bg-zinc-900 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden flex-shrink-0 w-[250px]"
-              onClick={() =>
-                window.open(
-                  "https://aling-nena-store-theta.vercel.app/",
-                  "_blank",
-                )
-              }
-            >
-              <div className="overflow-hidden  relative group">
-                <img
-                  src={alingnena}
-                  alt="Aling Nena Store"
-                  className="w-full h-20 object-cover transition-all duration-300 group-hover:grayscale group-hover:scale-105"
-                />
-                <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 hover:opacity-100 transition-all duration-300">
-                  <span className="text-white text-xs font-semibold tracking-wide">
-                    Click to View
-                  </span>
-                </div>
-              </div>
-
-              <div className="p-3">
-                <h3 className="text-sm font-semibold hover:text-blue-500 transition-colors">
-                  Aling Nena Store
-                </h3>
-                <p className="text-xs text-muted-foreground">
-                  A responsive e-commerce website for Aling Nena's store, built with modern frontend
-                  tools, featuring a clean UI, smooth animations, and an optimized
                   layout.
                 </p>
               </div>
