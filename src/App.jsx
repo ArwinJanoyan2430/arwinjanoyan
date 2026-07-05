@@ -259,56 +259,60 @@ function App() {
         </div>
 
         <div className="col-span-1 md:col-span-2 md:row-span-3 space-y-2 animate-fade-in animation-delay-200 ">
-          <div className="bento-card p-4 space-y-4 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ease-in-out overflow-visible">
-            <h2 className="text-lg font-bold">Experience</h2>
+          <div className="space-y-4 hover:-translate-y-1 transition-all duration-300 ease-in-out overflow-visible">
+            <div className="relative p-[2px] rounded-2xl bg-gradient-to-r dark:from-[#3cf0ff] dark:via-[#7c5cff] dark:to-[#ff3cf7] ">
+              {/* glow layer */}
+              <div className="absolute inset-0 rounded-5xl border bg-gradient-to-r dark:from-[#3cf0ff] dark:via-[#7c5cff] dark:to-[#ff3cf7] blur-2xl opacity-50 dark:shadow-[0_0_0px_rgba(110,92,255,0.1)]"></div>
+              <div className="bento-card relative bg-white/95 dark:bg-zinc-900/95 rounded-xl p-4 flex flex-col items-start space-y-4">
+                <h2 className="text-lg font-bold">Experience</h2>
 
-            <div className="relative mt-4">
-              <div className="absolute left-0 top-1.5 bottom-2 w-px bg-border"></div>
+                <div className="relative mt-4">
+                  <div className="absolute left-0 top-1.5 bottom-2 w-px bg-border"></div>
 
-              <div className="space-y-4">
-                {experiences.map((exp, index) => (
-                  <div key={index} className="relative pl-6 group/role">
-                    {/* Timeline Dot */}
-                    <div
-                      className={`absolute left-0 top-1.5 w-3 h-3 rounded-full border-2 transition-all duration-300 ${
-                        index !== experiences.length - 1
-                          ? "border-accent bg-accent"
-                          : "border-border bg-background"
-                      } group-hover/role:scale-125 group-hover/role:shadow-lg`}
-                    />
-
-                    {/* Timeline Content */}
-                    <div className="space-y-1">
-                      <h3
-                        className={`text-sm font-semibold transition-colors ${
-                          index !== experiences.length - 1
-                            ? "text-accent"
-                            : "group-hover/role:text-accent"
-                        }`}
-                      >
-                        {exp.title}
-                      </h3>
-
-                      <div className="flex items-center justify-between">
-                        <span className="text-xs text-foreground/70">
-                          {exp.company}
-                        </span>
-
-                        <span
-                          className={`text-[10px] font-mono px-1.5 py-0.5 rounded-full bg-foreground/5 ${
+                  <div className="space-y-4">
+                    {experiences.map((exp, index) => (
+                      <div key={index} className="relative pl-6 group/role">
+                        {/* Timeline Dot */}
+                        <div
+                          className={`absolute left-0 top-1.5 w-3 h-3 rounded-full border-2 transition-all duration-300 ${
                             index !== experiences.length - 1
-                              ? "bg-accent/10"
-                              : ""
-                          }`}
-                        >
-                          {exp.year}
-                        </span>
-                      </div>
-                    </div>
+                              ? "border-accent bg-accent"
+                              : "border-border bg-background"
+                          } group-hover/role:scale-125 group-hover/role:shadow-lg`}
+                        />
 
-                    {/* Hover Card */}
-                    <div
-                      className="
+                        {/* Timeline Content */}
+                        <div className="space-y-1">
+                          <h3
+                            className={`text-sm font-semibold transition-colors ${
+                              index !== experiences.length - 1
+                                ? "text-accent"
+                                : "group-hover/role:text-accent"
+                            }`}
+                          >
+                            {exp.title}
+                          </h3>
+
+                          <div className="flex items-center justify-between">
+                            <span className="text-xs text-foreground/70">
+                              {exp.company}
+                            </span>
+
+                            <span
+                              className={`text-[10px] font-mono px-1.5 py-0.5 rounded-full bg-foreground/5 ${
+                                index !== experiences.length - 1
+                                  ? "bg-accent/10"
+                                  : ""
+                              }`}
+                            >
+                              {exp.year}
+                            </span>
+                          </div>
+                        </div>
+
+                        {/* Hover Card */}
+                        <div
+                          className="
                                   absolute
                                   -translate-y-1/2
                                   left-full
@@ -329,67 +333,69 @@ function App() {
 
                                   z-50
                                 "
-                    >
-                      <div className="relative overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-700 bg-white/95 dark:bg-zinc-900/95 backdrop-blur-xl shadow-2xl">
-                        {/* Accent Line */}
-                        <div className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b bg-gradient-to-b from-gray-300 via-zinc-400 to-zinc-600" />
+                        >
+                          <div className="relative overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-700 bg-white/95 dark:bg-zinc-900/95 backdrop-blur-xl shadow-2xl">
+                            {/* Accent Line */}
+                            <div className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b bg-gradient-to-b from-gray-300 via-zinc-400 to-zinc-600" />
 
-                        <div className="p-5">
-                          {/* Header */}
-                          <div className="flex items-start justify-between">
-                            <div>
-                              <h4 className="font-semibold text-base mt-1">
-                                {exp.title}
-                              </h4>
+                            <div className="p-5">
+                              {/* Header */}
+                              <div className="flex items-start justify-between">
+                                <div>
+                                  <h4 className="font-semibold text-base mt-1">
+                                    {exp.title}
+                                  </h4>
 
-                              <p className="text-xs text-zinc-500">
-                                {exp.company}
-                              </p>
-                            </div>
-                          </div>
-
-                          {/* Divider */}
-                          <div className="my-4 border-t border-zinc-200 dark:border-zinc-700" />
-
-                          {/* Responsibilities */}
-                          <h5 className="text-xs uppercase tracking-widest text-zinc-400 mb-3">
-                            Responsibilities
-                          </h5>
-
-                          <ul className="space-y-2">
-                            {exp.roles.map((role, i) => (
-                              <li key={i} className="flex gap-3 text-sm">
-                                <div className="mt-1 h-5 w-5 rounded-full bg-green-500/10 text-green-500 flex items-center justify-center text-xs">
-                                  ✓
+                                  <p className="text-xs text-zinc-500">
+                                    {exp.company}
+                                  </p>
                                 </div>
+                              </div>
 
-                                <span>{role}</span>
-                              </li>
-                            ))}
-                          </ul>
+                              {/* Divider */}
+                              <div className="my-4 border-t border-zinc-200 dark:border-zinc-700" />
 
-                          {/* Skills */}
-                          <div className="mt-5">
-                            <h5 className="text-xs uppercase tracking-widest text-zinc-400 mb-2">
-                              Skills
-                            </h5>
+                              {/* Responsibilities */}
+                              <h5 className="text-xs uppercase tracking-widest text-zinc-400 mb-3">
+                                Responsibilities
+                              </h5>
 
-                            <div className="flex flex-wrap gap-2">
-                              {exp.skills.map((skill) => (
-                                <span
-                                  key={skill}
-                                  className="rounded-full bg-zinc-100 dark:bg-zinc-800 px-3 py-1 text-xs font-medium"
-                                >
-                                  {skill}
-                                </span>
-                              ))}
+                              <ul className="space-y-2">
+                                {exp.roles.map((role, i) => (
+                                  <li key={i} className="flex gap-3 text-sm">
+                                    <div className="flex items-center justify-center text-xs">
+                                      ✓
+                                    </div>
+
+                                    <span>{role}</span>
+                                  </li>
+                                ))}
+                              </ul>
+
+                              {/* Skills */}
+                              <div className="mt-5">
+                                <h5 className="text-xs uppercase tracking-widest text-zinc-400 mb-2">
+                                  Skills
+                                </h5>
+
+                                <div className="flex flex-wrap gap-2">
+                                  {exp.skills.map((skill) => (
+                                    <span
+                                      key={skill}
+                                      className="rounded-full bg-zinc-100 dark:bg-zinc-800 px-3 py-1 text-xs font-medium"
+                                    >
+                                      {skill}
+                                    </span>
+                                  ))}
+                                </div>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </div>
+                    ))}
                   </div>
-                ))}
+                </div>
               </div>
             </div>
           </div>
@@ -449,7 +455,7 @@ function App() {
           </div>
         </div>
 
-        <div className="bento-card p-4 col-span-1 md:col-span-4 space-y-2 group animate-fade-in animation-delay-200 hover:shadow-xl transform hover:scale-100 hover:-translate-y-1 transition-all duration-300 ease-in-out">
+        <div className="bento-card p-4 col-span-1 md:col-span-4 space-y-2 group animate-fade-in animation-delay-200 transform hover:scale-100 hover:-translate-y-1 transition-all duration-300 ease-in-out">
           <div className="flex items-center justify-between ">
             <h2 className="text-lg font-bold">Tech Stack</h2>
             <a
@@ -473,7 +479,7 @@ function App() {
               </svg>
             </a>
           </div>
-          <div className="space-y-2.5 my-3">
+          <div className="space-y-4 my-3">
             <div>
               <h3 className="text-sm font-semibold mb-2">Frontend</h3>
               <div className="flex flex-wrap gap-1.5">
