@@ -14,7 +14,8 @@ import webdesignCert from "./assets/webdesignCert.png";
 import oracleCert from "./assets/oracleCert.png";
 import alingnena from "./assets/alingnena.png";
 import nike from "./assets/nike.png";
-
+import experiences from "./data/experiences";
+import { Linkedin, Github, Instagram } from "lucide-react";
 import {
   ChevronRight,
   Mail,
@@ -241,133 +242,160 @@ function App() {
       >
         <div className=" bento-card p-4 col-span-1 md:col-span-4 space-y-2 hover:scale-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ease-in-out">
           <h2 className="text-lg font-bold">About</h2>
-          <p className="text-[14px] my-3 font-normal text-foreground/70 ">
-            I am an aspiring software developer and data analyst specializing in
-            building systems and dashboards that turn data into actionable
-            insights. My work helps projects run efficiently and drives
-            measurable results.
+          <p className="text-[14px] my-3 font-normal text-foreground/70">
+            I'm an Information Technology student at the University of Mindanao
+            with a passion for building modern web applications and data-driven
+            solutions.
             <br />
             <br />
-            Currently pursuing a Bachelor's degree in Information Technology at
-            the University of Mindanao Tagum City.
+            I enjoy developing responsive websites, business systems, and
+            interactive dashboards that solve real-world problems. My current
+            interests include full-stack development, UI/UX design, and data
+            analytics.
             <br />
-            <br />I am skilled in Java, SQL, JavaScript, Python, Excel, and
-            Tableau, focusing on practical solutions that make a real impact.
+            Outside academics, I continuously improve my skills through personal
+            projects, certifications, and programming competitions.
           </p>
         </div>
 
         <div className="col-span-1 md:col-span-2 md:row-span-3 space-y-2 animate-fade-in animation-delay-200 ">
-          <div className="bento-card p-4 space-y-4 group flex-1 hover:scale-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ease-in-out">
+          <div className="bento-card p-4 space-y-4 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ease-in-out overflow-visible">
             <h2 className="text-lg font-bold">Experience</h2>
-            <div className="relative space-y-4 mt-4">
+
+            <div className="relative mt-4">
               <div className="absolute left-0 top-1.5 bottom-2 w-px bg-border"></div>
 
-              <div className="relative pl-6 group/role">
-                <div
-                  className="absolute left-0 top-1.5 w-3 h-3 rounded-full border-2 
-                    border-accent bg-accent 
-                    transition-colors"
-                ></div>
-                <div className="space-y-1">
-                  <h3
-                    className="text-sm font-semibold 
-                      text-accent 
-                      transition-colors"
-                  >
-                    Website Management Training
-                  </h3>
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs text-foreground/70 ">
-                      SURGE FreeLancing Marketplace
-                    </span>
-                    <span
-                      className="text-[10px] font-mono px-1.5 py-0.5 rounded-full bg-foreground/5 shadow-[0_1px_1px_rgba(0,0,0,0.03)]
-                        bg-accent/10"
-                    >
-                      2026
-                    </span>
-                  </div>
-                </div>
-              </div>
+              <div className="space-y-4">
+                {experiences.map((exp, index) => (
+                  <div key={index} className="relative pl-6 group/role">
+                    {/* Timeline Dot */}
+                    <div
+                      className={`absolute left-0 top-1.5 w-3 h-3 rounded-full border-2 transition-all duration-300 ${
+                        index !== experiences.length - 1
+                          ? "border-accent bg-accent"
+                          : "border-border bg-background"
+                      } group-hover/role:scale-125 group-hover/role:shadow-lg`}
+                    />
 
-              <div className="relative pl-6 group/role">
-                <div
-                  className="absolute left-0 top-1.5 w-3 h-3 rounded-full border-2 
-                    border-accent bg-accent 
-                    transition-colors"
-                ></div>
-                <div className="space-y-1">
-                  <h3
-                    className="text-sm font-semibold 
-                      text-accent 
-                      transition-colors"
-                  >
-                    Work Immersion Student
-                  </h3>
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs text-foreground/70 ">
-                      Department of Information and Communications Technology
-                      (DICT)
-                    </span>
-                    <span
-                      className="text-[10px] font-mono px-1.5 py-0.5 rounded-full bg-foreground/5 shadow-[0_1px_1px_rgba(0,0,0,0.03)]
-                        bg-accent/10"
-                    >
-                      2025
-                    </span>
-                  </div>
-                </div>
-              </div>
+                    {/* Timeline Content */}
+                    <div className="space-y-1">
+                      <h3
+                        className={`text-sm font-semibold transition-colors ${
+                          index !== experiences.length - 1
+                            ? "text-accent"
+                            : "group-hover/role:text-accent"
+                        }`}
+                      >
+                        {exp.title}
+                      </h3>
 
-              <div className="relative pl-6 group/role">
-                <div
-                  className="absolute left-0 top-1.5 w-3 h-3 rounded-full border-2 
-                    border-accent bg-accent 
-                    transition-colors"
-                ></div>
-                <div className="space-y-1">
-                  <h3
-                    className="text-sm font-semibold 
-                      text-accent 
-                      transition-colors"
-                  >
-                    Programming Competition
-                  </h3>
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs text-foreground/70 ">
-                      Mapua MCM Cup / 2nd placer
-                    </span>
-                    <span
-                      className="text-[10px] font-mono px-1.5 py-0.5 rounded-full bg-foreground/5 shadow-[0_1px_1px_rgba(0,0,0,0.03)]
-                        bg-accent/10"
-                    >
-                      2025
-                    </span>
-                  </div>
-                </div>
-              </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs text-foreground/70">
+                          {exp.company}
+                        </span>
 
-              <div className="relative pl-6 group/role">
-                <div className="absolute left-0 top-1.5 w-3 h-3 rounded-full border-2 border-border bg-background group-hover/role:bg-accent transition-colors"></div>
-                <div className="space-y-1">
-                  <h3 className="text-sm font-semibold group-hover/role:text-accent transition-colors">
-                    Hello World!
-                  </h3>
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs text-foreground/70 ">
-                      Started learning programming!
-                    </span>
-                    <span className="text-[10px] font-mono px-1.5 py-0.5 rounded-full bg-foreground/5 shadow-[0_1px_1px_rgba(0,0,0,0.03)]">
-                      2023
-                    </span>
+                        <span
+                          className={`text-[10px] font-mono px-1.5 py-0.5 rounded-full bg-foreground/5 ${
+                            index !== experiences.length - 1
+                              ? "bg-accent/10"
+                              : ""
+                          }`}
+                        >
+                          {exp.year}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Hover Card */}
+                    <div
+                      className="
+                                  absolute
+                                  -translate-y-1/2
+                                  left-full
+                                  ml-8
+                                  w-[400px]
+
+                                  opacity-0
+                                  invisible
+                                  translate-x-2
+
+                                  group-hover/role:opacity-100
+                                  group-hover/role:visible
+                                  group-hover/role:translate-x-0
+
+                                  transition-all
+                                  duration-300
+                                  ease-out
+
+                                  z-50
+                                "
+                    >
+                      <div className="relative overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-700 bg-white/95 dark:bg-zinc-900/95 backdrop-blur-xl shadow-2xl">
+                        {/* Accent Line */}
+                        <div className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b bg-gradient-to-b from-gray-300 via-zinc-400 to-zinc-600" />
+
+                        <div className="p-5">
+                          {/* Header */}
+                          <div className="flex items-start justify-between">
+                            <div>
+                              <h4 className="font-semibold text-base mt-1">
+                                {exp.title}
+                              </h4>
+
+                              <p className="text-xs text-zinc-500">
+                                {exp.company}
+                              </p>
+                            </div>
+                          </div>
+
+                          {/* Divider */}
+                          <div className="my-4 border-t border-zinc-200 dark:border-zinc-700" />
+
+                          {/* Responsibilities */}
+                          <h5 className="text-xs uppercase tracking-widest text-zinc-400 mb-3">
+                            Responsibilities
+                          </h5>
+
+                          <ul className="space-y-2">
+                            {exp.roles.map((role, i) => (
+                              <li key={i} className="flex gap-3 text-sm">
+                                <div className="mt-1 h-5 w-5 rounded-full bg-green-500/10 text-green-500 flex items-center justify-center text-xs">
+                                  ✓
+                                </div>
+
+                                <span>{role}</span>
+                              </li>
+                            ))}
+                          </ul>
+
+                          {/* Skills */}
+                          <div className="mt-5">
+                            <h5 className="text-xs uppercase tracking-widest text-zinc-400 mb-2">
+                              Skills
+                            </h5>
+
+                            <div className="flex flex-wrap gap-2">
+                              {exp.skills.map((skill) => (
+                                <span
+                                  key={skill}
+                                  className="rounded-full bg-zinc-100 dark:bg-zinc-800 px-3 py-1 text-xs font-medium"
+                                >
+                                  {skill}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
+                ))}
               </div>
             </div>
           </div>
 
-          <div className="col-span-1 md:col-span-2 md:row-span-3 space-y-2 animate-fade-in animation-delay-200">
-            <div className="bento-card p-4 space-y-2 group flex-1 hover:shadow-xl transform hover:scale-100 hover:-translate-y-1 transition-all duration-300 ease-in-out">
+          <div className="col-span-1 md:col-span-2 md:row-span-3 space-y-2 translate-y-1 animate-fade-in animation-delay-200">
+            <div className="bento-card space-y-2 group flex-1 hover:shadow-xl transform hover:scale-100 hover:-translate-y-1 transition-all duration-300 ease-in-out">
               <h2 className="text-lg font-bold">Education</h2>
               <div className="relative space-y-4.5 mt-4">
                 <div className="absolute left-1.5 top-1.5 bottom-2 w-px bg-border"></div>
@@ -391,7 +419,7 @@ function App() {
                         University of Mindanao
                       </span>
                       <span
-                        className="text-[10px] font-mono px-1.5 py-0.5 rounded-full bg-foreground/5 shadow-[0_1px_1px_rgba(0,0,0,0.03)]
+                        className="text-[10px] font-mono px-1.5 py-1 rounded-full bg-foreground/5 shadow-[0_1px_1px_rgba(0,0,0,0.03)]
                         bg-accent/10"
                       >
                         2026
@@ -410,67 +438,12 @@ function App() {
                       <span className="text-xs text-foreground/70 ">
                         Tagum City National High School
                       </span>
-                      <span className="text-[10px] font-mono px-1.5 py-0.5 rounded-full bg-foreground/5 shadow-[0_1px_1px_rgba(0,0,0,0.03)]">
+                      <span className="text-[10px] font-mono px-1.5 py-1 rounded-full bg-foreground/5 shadow-[0_1px_1px_rgba(0,0,0,0.03)]">
                         2025
                       </span>
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="col-span-1 md:col-span-2 md:row-span-3 space-y-2 animate-fade-in animation-delay-200 -mt-4">
-            <div className="p-5 space-y-2.5 group flex-1">
-              <h2 className="text-lg font-medium">Social Links</h2>
-              <div>
-                <a
-                  href="https://www.linkedin.com/in/arwin-ryan-janoyan-6b355a3a5"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 p-1.5 rounded-lg bg-foreground/5 shadow-[0_1px_2px_rgba(0,0,0,0.03),0_1px_1px_rgba(0,0,0,0.04)] hover:bg-foreground/10 hover:shadow-[0_3px_10px_rgba(0,0,0,0.06)] transition-all duration-200 hover:-translate-y-0.5 group"
-                >
-                  <img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linkedin/linkedin-plain.svg"
-                    className="w-5 h-5 dark:invert"
-                  />
-                  <p className="text-[10px] font-medium text-foreground group-hover:text-accent transition-colors">
-                    LinkedIn
-                  </p>
-                </a>
-              </div>
-              <div>
-                <a
-                  href="https://github.com/ArwinJanoyan2430"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 p-1.5 rounded-lg bg-foreground/5 shadow-[0_1px_2px_rgba(0,0,0,0.03),0_1px_1px_rgba(0,0,0,0.04)] hover:bg-foreground/10 hover:shadow-[0_3px_10px_rgba(0,0,0,0.06)] transition-all duration-200 hover:-translate-y-0.5 group"
-                >
-                  <img
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg"
-                    className="w-5 h-5 dark:invert"
-                  />
-                  <p className="text-[10px] font-medium text-foreground group-hover:text-accent transition-colors">
-                    GitHub
-                  </p>
-                </a>
-              </div>
-
-              <div>
-                <a
-                  href="https://www.instagram.com/arwinj.dev/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 p-1.5 rounded-lg bg-foreground/5 shadow-[0_1px_2px_rgba(0,0,0,0.03),0_1px_1px_rgba(0,0,0,0.04)] hover:bg-foreground/10 hover:shadow-[0_3px_10px_rgba(0,0,0,0.06)] transition-all duration-200 hover:-translate-y-0.5 group"
-                >
-                  <img
-                    src="https://www.svgrepo.com/show/521711/instagram.svg"
-                    className="w-5 h-5 dark:invert"
-                  />
-                  <p className="text-[10px] font-medium text-foreground group-hover:text-accent transition-colors">
-                    Instagram
-                  </p>
-                </a>
               </div>
             </div>
           </div>
@@ -500,7 +473,7 @@ function App() {
               </svg>
             </a>
           </div>
-          <div className="space-y-4 my-3">
+          <div className="space-y-2.5 my-3">
             <div>
               <h3 className="text-sm font-semibold mb-2">Frontend</h3>
               <div className="flex flex-wrap gap-1.5">
@@ -628,165 +601,38 @@ function App() {
         </div>
       </section>
 
-      <section
-        className={`grid grid-cols-1 md:grid-cols-2 gap-4 animate-fade-in animation-delay-400 mt-3 md:mt-0 ${animate ? "animate-in" : ""} transition-colors duration-300`}
-      >
-        <div className="bento-card p-4 space-y-2  hover:shadow-xl transform hover:scale-100 overflow-hidden  hover:-translate-y-1 transition-all duration-300 ease-in-out">
-          <div className="flex items-center justify-between">
-            <h2 className="text-lg font-bold">Recent Projects</h2>
-            <a
-              className="text-xs text-foreground/70 hover:text-foreground flex items-center gap-1 transition-colors"
-              href="#"
-            >
-              View All
-              <svg
-                className="w-3 h-3"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
-            </a>
-          </div>
+      <div className="bento-card p-4 col-span-1 md:col-span-2 md:translate-y-1 md:row-span-3 flex flex-col items-start space-y-4 animate-fade-in animation-delay-200 hover:shadow-xl transition-all duration-300 ease-in-out mt-2 md:mt-0">
+        <h2 className="text-lg font-bold">Social Links</h2>
 
-          <div
-            ref={projectRef}
-            className="scrollbar-hover flex gap-4 my-1 overflow-x-auto snap-x snap-mandatory pb-1"
-            onWheel={(e) => handleHorizontalScroll(e, projectRef)}
+        <div className="flex items-center gap-3">
+          <a
+            href="https://www.linkedin.com/in/arwin-ryan-janoyan-6b355a3a5"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-3 rounded-xl bg-foreground/5 hover:bg-foreground/10 shadow-sm hover:shadow-md transition-all duration-200 hover:-translate-y-0.5"
           >
-            <div
-              className="bg-white dark:bg-zinc-900 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden flex-shrink-0 w-[250px]"
-              onClick={() =>
-                window.open(
-                  "https://aling-nena-store-theta.vercel.app/",
-                  "_blank",
-                )
-              }
-            >
-              <div className="overflow-hidden  relative group">
-                <img
-                  src={alingnena}
-                  alt="Aling Nena Store"
-                  className="w-full h-20 object-cover transition-all duration-300 group-hover:grayscale group-hover:scale-105"
-                />
-                <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 hover:opacity-100 transition-all duration-300">
-                  <span className="text-white text-xs font-semibold tracking-wide">
-                    Click to View
-                  </span>
-                </div>
-              </div>
+            <Linkedin className="w-5 h-5" />
+          </a>
 
-              <div className="p-3">
-                <h3 className="text-sm font-semibold hover:text-blue-500 transition-colors">
-                  Aling Nena Store
-                </h3>
-                <p className="text-xs text-muted-foreground">
-                  A responsive e-commerce website for Aling Nena's store, built
-                  with modern frontend tools, featuring a clean UI, smooth
-                  animations, and an optimized layout.
-                </p>
-              </div>
-            </div>
+          <a
+            href="https://github.com/ArwinJanoyan2430"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-3 rounded-xl bg-foreground/5 hover:bg-foreground/10 shadow-sm hover:shadow-md transition-all duration-200 hover:-translate-y-0.5"
+          >
+            <Github className="w-5 h-5" />
+          </a>
 
-            <div
-              className="bg-white dark:bg-zinc-900 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden  flex-shrink-0 w-[250px]"
-              onClick={() =>
-                window.open(
-                  "https://public.tableau.com/app/profile/arwin.janoyan/viz/Book1_17742456072680/Dashboard?publish=yes",
-                  "_blank",
-                )
-              }
-            >
-              <div className="overflow-hidden relative group">
-                <img
-                  src={CoffeeSales}
-                  alt="Coffee Sales Data"
-                  className="w-full h-20 object-cover transition-all duration-300 group-hover:grayscale group-hover:scale-105"
-                />
-                <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 hover:opacity-100 transition-all duration-300">
-                  <span className="text-white text-xs font-semibold tracking-wide">
-                    Click to View
-                  </span>
-                </div>
-              </div>
-              <div className="p-3">
-                <h3 className="text-sm font-semibold hover:text-blue-500 transition-colors">
-                  Coffee Shop Sales
-                </h3>
-                <p className="text-xs text-muted-foreground">
-                  Transforming data into a dynamic dashboard that franchise
-                  owners can use to identify patterns, trends and opportunities
-                  for the business.
-                </p>
-              </div>
-            </div>
-
-            <div
-              className="bg-white dark:bg-zinc-900 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden flex-shrink-0 w-[250px]"
-              onClick={() =>
-                window.open(
-                  "https://nike-landingpage-rose.vercel.app/",
-                  "_blank",
-                )
-              }
-            >
-              <div className="overflow-hidden  relative group">
-                <img
-                  src={nike}
-                  alt="Nike Landing Page"
-                  className="w-full h-20 object-cover transition-all duration-300 group-hover:grayscale group-hover:scale-105"
-                />
-                <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 hover:opacity-100 transition-all duration-300">
-                  <span className="text-white text-xs font-semibold tracking-wide">
-                    Click to View
-                  </span>
-                </div>
-              </div>
-
-              <div className="p-3">
-                <h3 className="text-sm font-semibold hover:text-blue-500 transition-colors">
-                  Nike Landing Page
-                </h3>
-                <p className="text-xs text-muted-foreground">
-                  A responsive Nike landing page built with modern frontend
-                  tools, featuring clean UI, smooth animations, and optimized
-                  layout.
-                </p>
-              </div>
-            </div>
-          </div>
+          <a
+            href="https://www.instagram.com/arwinj.dev/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-3 rounded-xl bg-foreground/5 hover:bg-foreground/10 shadow-sm hover:shadow-md transition-all duration-200 hover:-translate-y-0.5"
+          >
+            <Instagram className="w-5 h-5" />
+          </a>
         </div>
-
-        <div className="bento-card p-4 space-y-2 group overflow-hidden hover:shadow-xl transform hover:scale-100 hover:-translate-y-1 transition-all duration-300 ease-in-out">
-          <h2 className="text-lg font-bold">Recommendations</h2>
-          <div className="relative h-[160px]">
-            <div className="absolute inset-0 transition-all duration-1000">
-              <p className="text-[13px] leading-relaxed text-foreground/80 font-serif line-clamp-4">
-                Mr. Janoyan has shown a strong sense of curiosity and eagerness
-                to understand how tasks are done. His inquisitive nature and
-                willingness to ask questions demonstrate a genuine interest in
-                learning.
-              </p>
-              <div className="mt-3 pt-3 border-t border-border">
-                <p className="text-xs font-semibold font-sans">
-                  Engr. Octavio S. Guibelondo, Jr.
-                </p>
-                <p className="text-xs text-foreground/50 font-sans">
-                  Provincial Officer, Department of Information and
-                  Communications Technology (DICT)
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      </div>
 
       <section className="grid grid-cols-1 md:grid-cols-2 gap-4 animate-fade-in animation-delay-600 mt-3 md:mt-4">
         <div className="bento-card p-1 col-span-1 md:col-span-6 space-y-2 animate-fade-in animation-delay-600 hover:scale-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ease-in-out">
