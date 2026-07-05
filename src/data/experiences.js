@@ -1,29 +1,29 @@
 const experiences = [
   {
-  title: "Full-Stack Developer",
-  company: "OmBoy Store",
-  year: "2026",
+    title: "Full-Stack Developer",
+    company: "OmBoy Store",
+    year: "2026",
 
-  roles: [
-    "Built a full e-commerce platform for a retail business",
-    "Developed a POS system with inventory and stock management",
-    "Implemented sales, products, and customer management features",
-    "Created a dashboard for revenue, profit, and sales tracking",
-    "Integrated Supabase for authentication and database",
-    "Designed a responsive UI using React and Tailwind CSS",
-  ],
+    roles: [
+      "Built a full e-commerce platform for a retail business",
+      "Developed a POS system with inventory and stock management",
+      "Implemented sales, products, and customer management features",
+      "Created a dashboard for revenue, profit, and sales tracking",
+      "Integrated Supabase for authentication and database",
+      "Designed a responsive UI using React and Tailwind CSS",
+    ],
 
-  skills: [
-    "React",
-    "Tailwind CSS",
-    "Supabase",
-    "JavaScript",
-    "POS System",
-    "Inventory",
-    "Dashboard",
-    "Responsive Design",
-  ],
-},
+    skills: [
+      "React",
+      "Tailwind CSS",
+      "Supabase",
+      "JavaScript",
+      "POS System",
+      "Inventory",
+      "Dashboard",
+      "Responsive Design",
+    ],
+  },
 
   {
     title: "Website Management Training",
@@ -33,19 +33,16 @@ const experiences = [
     duration: "5-Day Intensive Training",
 
     skills: [
-      "HTML",
-      "CSS",
-      "JavaScript",
       "UI/UX",
       "Website Management",
       "Freelancing",
     ],
     roles: [
-      "Developed responsive and user-friendly websites using modern web technologies.",
-      "Designed landing pages and business websites with a strong focus on UI/UX.",
-      "Managed website content, layout, and page optimization.",
-      "Applied freelance project workflows and client communication practices.",
-      "Recognized for excellence in Website Management during the training program.",
+      "Designed clean and user-friendly UI/UX layouts for web interfaces.",
+      "Created website wireframes and visual mockups focused on usability.",
+      "Improved interface structure and user experience through design principles.",
+      "Applied color, typography, and spacing for better visual hierarchy.",
+      "Received recognition for excellence in Website Design during training.",
     ],
   },
 
@@ -64,11 +61,11 @@ const experiences = [
       "Documentation",
     ],
     roles: [
-      "Provided technical assistance for hardware and software-related concerns.",
+      "Provided technical assistance for hardware, software, and ICT-related concerns.",
       "Installed, configured, and maintained computer systems and applications.",
       "Performed troubleshooting and basic network support.",
-      "Assisted staff in daily ICT operations and administrative tasks.",
-      "Prepared technical documentation and service reports.",
+      "Visited schools to test and evaluate DICT Free WiFi connectivity.",
+      "Assisted in ICT operations and prepared technical reports and documentation.",
     ],
   },
 
@@ -87,9 +84,9 @@ const experiences = [
       "Competitive Programming",
     ],
     roles: [
-      "Competed in a university-level programming competition.",
-      "Solved algorithmic and logical programming challenges under time constraints.",
-      "Collaborated with teammates to develop efficient coding solutions.",
+      "Competed in an inter-school programming competition.",
+      "Solved algorithmic and logic-based challenges under time pressure.",
+      "Collaborated with teammates to build efficient solutions.",
       "Achieved 2nd Place among participating teams.",
     ],
   },
@@ -101,14 +98,14 @@ const experiences = [
     year: "2023",
     duration: "Present",
 
-    skills: ["Java", "HTML", "CSS", "React", "JavaScript", "Git"],
+    skills: ["HTML", "CSS", "JavaScript", "Git"],
 
     roles: [
-      "Started learning programming through personal projects and online courses.",
-      "Built foundational knowledge in web development and software engineering.",
-      "Developed responsive websites and interactive applications.",
-      "Completed 2 personal website projects to apply and strengthen frontend skills.",
-      "Continuously expanded technical skills through certifications and hands-on practice.",
+      "Learned programming and web development through E-Tech.",
+      "Built simple responsive websites and web apps.",
+      "Applied frontend concepts through hands-on activities.",
+      "Completed projects to strengthen coding skills.",
+      "Improved technical skills through continuous practice.",
     ],
   },
 ];
