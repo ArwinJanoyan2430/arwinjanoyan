@@ -600,39 +600,42 @@ function App() {
           </div>
         </div>
       </section>
+      <section
+        className={`profile-card ${animate ? "animate-in" : ""} transition-colors duration-300`}
+      >
+        <div className="bento-card p-4 col-span-1 animate-fade-in animation-delay-200 hover:shadow-xl transform hover:scale-100 hover:-translate-y-0.5 md:col-span-2 md:translate-y-1 md:row-span-3 flex flex-col items-start space-y-4 transition-all duration-300 ease-in-out mt-2 md:-mt-2">
+          <h2 className="text-lg font-bold">Social Links</h2>
 
-      <div className="bento-card p-4 col-span-1 md:col-span-2 md:translate-y-1 md:row-span-3 flex flex-col items-start space-y-4 animate-fade-in animation-delay-200 hover:shadow-xl transition-all duration-300 ease-in-out mt-2 md:mt-0">
-        <h2 className="text-lg font-bold">Social Links</h2>
+          <div className="flex items-center gap-3">
+            <a
+              href="https://www.linkedin.com/in/arwin-ryan-janoyan-6b355a3a5"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 rounded-xl bg-foreground/5 hover:bg-foreground/10 shadow-sm hover:shadow-md transition-all duration-200 hover:-translate-y-0.5"
+            >
+              <Linkedin className="w-5 h-5" />
+            </a>
 
-        <div className="flex items-center gap-3">
-          <a
-            href="https://www.linkedin.com/in/arwin-ryan-janoyan-6b355a3a5"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-3 rounded-xl bg-foreground/5 hover:bg-foreground/10 shadow-sm hover:shadow-md transition-all duration-200 hover:-translate-y-0.5"
-          >
-            <Linkedin className="w-5 h-5" />
-          </a>
+            <a
+              href="https://github.com/ArwinJanoyan2430"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 rounded-xl bg-foreground/5 hover:bg-foreground/10 shadow-sm hover:shadow-md transition-all duration-200 hover:-translate-y-0.5"
+            >
+              <Github className="w-5 h-5" />
+            </a>
 
-          <a
-            href="https://github.com/ArwinJanoyan2430"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-3 rounded-xl bg-foreground/5 hover:bg-foreground/10 shadow-sm hover:shadow-md transition-all duration-200 hover:-translate-y-0.5"
-          >
-            <Github className="w-5 h-5" />
-          </a>
-
-          <a
-            href="https://www.instagram.com/arwinj.dev/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-3 rounded-xl bg-foreground/5 hover:bg-foreground/10 shadow-sm hover:shadow-md transition-all duration-200 hover:-translate-y-0.5"
-          >
-            <Instagram className="w-5 h-5" />
-          </a>
+            <a
+              href="https://www.instagram.com/arwinj.dev/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 rounded-xl bg-foreground/5 hover:bg-foreground/10 shadow-sm hover:shadow-md transition-all duration-200 hover:-translate-y-0.5"
+            >
+              <Instagram className="w-5 h-5" />
+            </a>
+          </div>
         </div>
-      </div>
+      </section>
 
       <section className="grid grid-cols-1 md:grid-cols-2 gap-4 animate-fade-in animation-delay-600 mt-3 md:mt-4">
         <div className="bento-card p-1 col-span-1 md:col-span-6 space-y-2 animate-fade-in animation-delay-600 hover:scale-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ease-in-out">
