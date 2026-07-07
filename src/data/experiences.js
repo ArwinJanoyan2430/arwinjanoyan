@@ -5,12 +5,13 @@ const experiences = [
     year: "2026",
 
     roles: [
-      "Built a full e-commerce platform for a retail business",
-      "Developed a POS system with inventory and stock management",
-      "Implemented sales, products, and customer management features",
-      "Created a dashboard for revenue, profit, and sales tracking",
-      "Integrated Supabase for authentication and database",
-      "Designed a responsive UI using React and Tailwind CSS",
+      "Developed a full-stack Sari-Sari Store Management System.",
+      "Designed a cashier module with barcode scanning, receipt generation, and quick checkout.",
+      "Implemented POS functionality with real-time inventory and automatic stock deduction.",
+      "Built modules for managing products, customers, suppliers, and sales records.",
+      "Created a business dashboard featuring revenue, profit, and sales analytics.",
+      "Integrated Supabase Authentication with role-based access for administrators and cashiers.",
+      "Built a responsive interface using React, Tailwind CSS, and JavaScript.",
     ],
 
     skills: [
@@ -32,11 +33,7 @@ const experiences = [
     year: "2026",
     duration: "5-Day Intensive Training",
 
-    skills: [
-      "UI/UX",
-      "Website Management",
-      "Freelancing",
-    ],
+    skills: ["UI/UX", "Website Management", "Freelancing"],
     roles: [
       "Designed clean and user-friendly UI/UX layouts for web interfaces.",
       "Created website wireframes and visual mockups focused on usability.",

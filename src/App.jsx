@@ -16,6 +16,7 @@ import alingnena from "./assets/alingnena.png";
 import nike from "./assets/nike.png";
 import experiences from "./data/experiences";
 import { Linkedin, Github, Instagram } from "lucide-react";
+import dict from "./assets/dict-logo.png";
 import {
   ChevronRight,
   Mail,
@@ -34,6 +35,7 @@ import ResumeModal from "./modal/ResumeModal";
 import m4 from "./assets/m4.mp4";
 import m4Reverse from "./assets/m4Reverse.mp4";
 import ProjectsModal from "./modal/ProjectsModal";
+import feedback from "./assets/feedback.png";
 
 function App() {
   const [hover, setHover] = useState(false);
@@ -252,6 +254,7 @@ function App() {
             interactive dashboards that solve real-world problems. My current
             interests include full-stack development, UI/UX design, and data
             analytics.
+            <br />
             <br />
             Outside academics, I continuously improve my skills through personal
             projects, certifications, and programming competitions.
@@ -606,40 +609,222 @@ function App() {
           </div>
         </div>
       </section>
-      <section
-        className={`profile-card ${animate ? "animate-in" : ""} transition-colors duration-300`}
-      >
-        <div className="bento-card p-4 col-span-1 animate-fade-in animation-delay-200 hover:shadow-xl transform hover:scale-100 hover:-translate-y-0.5 md:col-span-2 md:translate-y-1 md:row-span-3 flex flex-col items-start space-y-4 transition-all duration-300 ease-in-out mt-2 md:-mt-2">
-          <h2 className="text-lg font-bold">Social Links</h2>
+      <section className="mt-2 md:mt-0 bento-card">
+        <h2 className="text-xl font-bold mb-4">Featured Projects</h2>
 
-          <div className="flex items-center gap-3">
+        <div
+          ref={projectRef}
+          className="scrollbar-hover overflow-x-auto"
+          onWheel={(e) => handleHorizontalScroll(e, projectRef)}
+        >
+          <div className="flex gap-5 w-max py-2">
+            {[
+              {
+                title: "Sari-Sari Store Management System",
+                image: alingnena,
+                desc: "A full-stack business management system that helps sari-sari store owners streamline inventory, process sales, monitor stock levels, and generate sales reports through an intuitive dashboard.",
+                stack: [
+                  "React",
+                  "Node.js",
+                  "Supabase",
+                  "JavaScript",
+                  "Tailwind CSS",
+                ],
+                color: "from-orange-500 to-red-500",
+                link: "https://omboystore.vercel.app/login",
+              },
+              {
+                title: "Coffee Sales Dashboard",
+                image: CoffeeSales,
+                desc: "An interactive Tableau dashboard that visualizes coffee sales performance, revenue trends, product insights, and business analytics.",
+                stack: ["Tableau", "Excel", "Data Analytics"],
+                color: "from-sky-500 to-cyan-500",
+                link: "https://public.tableau.com/app/profile/arwin.janoyan/viz/Book1_17742456072680/Dashboard?publish=yes",
+              },
+              {
+                title: "Nike Landing Page",
+                image: nike,
+                desc: "A responsive Nike landing page featuring a modern UI, smooth animations, and a mobile-first design built with React and Tailwind CSS.",
+                stack: ["React", "Tailwind CSS", "Vite"],
+                color: "from-violet-500 to-fuchsia-500",
+                link: "https://nikeiske-landingpage-rose.vercel.app",
+              },
+            ].map((project) => (
+              <div
+                key={project.title}
+                className="group
+                            w-[300px] sm:w-[340px] md:w-[400px]
+                            min-h-[430px] md:h-[500px]
+                            flex-shrink-0
+                            overflow-hidden
+                            rounded-2xl
+                            border border-zinc-200 dark:border-zinc-800
+                            bg-white dark:bg-zinc-900
+                            transition-all duration-300
+                            hover:-translate-y-2 hover:shadow-2xl
+                            flex flex-col"
+              >
+                {/* Gradient Accent */}
+                <div
+                  className={`h-1.5 w-full bg-gradient-to-r ${project.color}`}
+                />
+
+                {/* Project Image */}
+                <div className="overflow-hidden">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    loading="lazy"
+                    className="h-36 sm:h-40 md:h-48 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+
+                {/* Content */}
+                <div className="flex flex-col flex-1 p-4 md:p-5">
+                  <h3 className="text-md md:text-xl font-bold">
+                    {project.title}
+                  </h3>
+
+                  <p className="mt-1 text-xs md:text-sm leading-5 text-foreground/70 flex-1">
+                    {project.desc}
+                  </p>
+
+                  {/* Tech Stack */}
+                  <div className="mt-3 md:mt-0 flex flex-wrap gap-2">
+                    {project.stack.map((item) => (
+                      <span
+                        key={item}
+                        className="rounded-full bg-zinc-100 dark:bg-zinc-800 px-3 py-1 text-[11px] md:text-xs font-medium"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Divider */}
+                  <div className="my-4 border-t border-zinc-200 dark:border-zinc-800" />
+
+                  {/* Button */}
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-between text-sm font-medium text-accent group/link"
+                  >
+                    <span>View Live Demo</span>
+
+                    <ChevronRight
+                      size={18}
+                      className="transition-transform duration-300 group-hover/link:translate-x-1"
+                    />
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section
+        className={`grid grid-cols-1 md:grid-cols-2 gap-4 ${
+          animate ? "animate-in" : ""
+        } transition-colors duration-300 mt-3`}
+      >
+        <div className="bento-card p-5 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+          <div className="flex items-center justify-between">
+            <div>
+              <h2 className="text-lg font-bold">Let's Connect</h2>
+              <p className="text-sm text-foreground/60 mt-1">
+                Open for internships, freelance work, and collaborations.
+              </p>
+            </div>
+
+            <div className="flex items-center gap-1 rounded-full bg-green-500/10 px-3 py-1">
+              <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+              <span className="text-xs font-medium text-green-600 dark:text-green-400">
+                Available
+              </span>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-3 gap-3 mt-6">
             <a
               href="https://www.linkedin.com/in/arwin-ryan-janoyan-6b355a3a5"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 rounded-xl bg-foreground/5 hover:bg-foreground/10 shadow-sm hover:shadow-md transition-all duration-200 hover:-translate-y-0.5"
+              className="group rounded-2xl border border-border bg-foreground/5 p-4 flex flex-col items-center gap-2 hover:border-blue-500 hover:bg-blue-500/10 transition-all duration-300"
             >
-              <Linkedin className="w-5 h-5" />
+              <Linkedin className="w-6 h-6 group-hover:scale-110 transition-transform" />
+              <span className="text-xs font-medium">LinkedIn</span>
             </a>
 
             <a
               href="https://github.com/ArwinJanoyan2430"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 rounded-xl bg-foreground/5 hover:bg-foreground/10 shadow-sm hover:shadow-md transition-all duration-200 hover:-translate-y-0.5"
+              className="group rounded-2xl border border-border bg-foreground/5 p-4 flex flex-col items-center gap-2 hover:border-white hover:bg-white/10 transition-all duration-300"
             >
-              <Github className="w-5 h-5" />
+              <Github className="w-6 h-6 group-hover:scale-110 transition-transform" />
+              <span className="text-xs font-medium">GitHub</span>
             </a>
 
             <a
               href="https://www.instagram.com/arwinj.dev/"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 rounded-xl bg-foreground/5 hover:bg-foreground/10 shadow-sm hover:shadow-md transition-all duration-200 hover:-translate-y-0.5"
+              className="group rounded-2xl border border-border bg-foreground/5 p-4 flex flex-col items-center gap-2 hover:border-pink-500 hover:bg-pink-500/10 transition-all duration-300"
             >
-              <Instagram className="w-5 h-5" />
+              <Instagram className="w-6 h-6 group-hover:scale-110 transition-transform" />
+              <span className="text-xs font-medium">Instagram</span>
             </a>
           </div>
+
+          <div className="mt-6 rounded-xl border border-dashed border-border p-3">
+            <p className="text-xs text-foreground/70 leading-relaxed">
+              Feel free to reach out if you'd like to discuss a project,
+              internship opportunity, or just connect with me.
+            </p>
+          </div>
+        </div>
+
+        {/* Recommendation */}
+        <div className="bento-card p-5 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+          <h2 className="text-lg font-bold">Recommendation</h2>
+
+          <div className="flex items-center gap-3 mt-4">
+            <img
+              src={dict} // or alingnena
+              alt="Recommender"
+              className="w-12 h-12 rounded-full object-cover"
+            />
+
+            <div>
+              <h3 className="font-semibold">
+                Department of Information Communications Technology
+              </h3>
+              <p className="text-xs text-foreground/60">
+                Immediate Supervisor • SHS Work Immersion
+              </p>
+            </div>
+          </div>
+
+          <p className="mt-4 text-sm italic leading-relaxed text-foreground/70">
+            "Mr. Janoyan has shown a strong sense of curiosity and eagerness to
+            understand how tasks are done. His inquisitive nature and
+            willingness to ask questions demonstrate a genuine interest in
+            learning."
+          </p>
+
+          <div className="flex items-center gap-1 mt-4 text-yellow-500">
+            ★★★★★
+          </div>
+          <button
+            onClick={() => setSelectedImage(feedback)}
+            className="inline-flex items-center gap-2 text-sm font-medium text-accent hover:gap-3 transition-all duration-300"
+          >
+            View Supervisor's Comment
+            <ChevronRight size={16} />
+          </button>
         </div>
       </section>
 
