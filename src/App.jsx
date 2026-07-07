@@ -403,10 +403,10 @@ function App() {
             </div>
           </div>
 
-          <div className="col-span-1 md:col-span-2 md:row-span-3 space-y-2 translate-y-1 animate-fade-in animation-delay-200">
+          <div className="col-span-1 md:col-span-2 md:row-span-3 space-y-2 translate-y-0 md:translate-y-4 animate-fade-in animation-delay-200">
             <div className="bento-card space-y-2 group flex-1 hover:shadow-xl transform hover:scale-100 hover:-translate-y-1 transition-all duration-300 ease-in-out">
               <h2 className="text-lg font-bold">Education</h2>
-              <div className="relative space-y-4.5 mt-4">
+              <div className="relative space-y-4.5 mt-3">
                 <div className="absolute left-1.5 top-1.5 bottom-2 w-px bg-border"></div>
 
                 <div className="relative pl-6 group/role">
@@ -482,7 +482,7 @@ function App() {
               </svg>
             </a>
           </div>
-          <div className="space-y-4 my-3">
+          <div className="space-y-3 my-3">
             <div>
               <h3 className="text-sm font-semibold mb-2">Frontend</h3>
               <div className="flex flex-wrap gap-1.5">
@@ -752,7 +752,7 @@ function App() {
               href="https://www.linkedin.com/in/arwin-ryan-janoyan-6b355a3a5"
               target="_blank"
               rel="noopener noreferrer"
-              className="group rounded-2xl border border-border bg-foreground/5 p-4 flex flex-col items-center gap-2 hover:border-blue-500 hover:bg-blue-500/10 transition-all duration-300"
+              className="group rounded-full bg-foreground/5 p-8 flex flex-col items-center gap-3 border transition-all duration-300"
             >
               <Linkedin className="w-6 h-6 group-hover:scale-110 transition-transform" />
               <span className="text-xs font-medium">LinkedIn</span>
@@ -762,7 +762,7 @@ function App() {
               href="https://github.com/ArwinJanoyan2430"
               target="_blank"
               rel="noopener noreferrer"
-              className="group rounded-2xl border border-border bg-foreground/5 p-4 flex flex-col items-center gap-2 hover:border-white hover:bg-white/10 transition-all duration-300"
+              className="group rounded-full bg-foreground/5 p-8 flex flex-col items-center gap-3 border transition-all duration-300"
             >
               <Github className="w-6 h-6 group-hover:scale-110 transition-transform" />
               <span className="text-xs font-medium">GitHub</span>
@@ -772,7 +772,7 @@ function App() {
               href="https://www.instagram.com/arwinj.dev/"
               target="_blank"
               rel="noopener noreferrer"
-              className="group rounded-2xl border border-border bg-foreground/5 p-4 flex flex-col items-center gap-2 hover:border-pink-500 hover:bg-pink-500/10 transition-all duration-300"
+              className="group rounded-full bg-foreground/5 p-8 flex flex-col items-center gap-3 border transition-all duration-300"
             >
               <Instagram className="w-6 h-6 group-hover:scale-110 transition-transform" />
               <span className="text-xs font-medium">Instagram</span>
