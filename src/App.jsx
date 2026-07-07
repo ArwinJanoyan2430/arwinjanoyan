@@ -631,7 +631,7 @@ function App() {
                   "Tailwind CSS",
                 ],
                 color: "from-orange-500 to-red-500",
-                link: "https://omboystore.vercel.app/login",
+                link: "https://aling-nena-store-theta.vercel.app/login",
               },
               {
                 title: "Coffee Sales Dashboard",
