@@ -733,7 +733,7 @@ function App() {
         <div className="bento-card p-5 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
           <div className="flex items-center justify-between">
             <div>
-              <h2 className="text-md md:text-lg font-bold">Let's Connect</h2>
+              <h2 className="text-lg font-bold">Let's Connect</h2>
               <p className="text-xs md:text-xs text-foreground/60 mt-1">
                 Open for internships, freelance work, and collaborations.
               </p>
