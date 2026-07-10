@@ -5,18 +5,13 @@ import resume from "./assets/ArwinResume.pdf";
 import { useState, useEffect, useRef } from "react";
 import badge from "./assets/badge.png";
 import Loader from "./pages/loader.jsx";
-import BestInWebManagement from "./assets/BestInWebManagement.png";
-import harvard from "./assets/harvard.png";
-import IntelliPatCert from "./assets/IntelliPatCert.png";
-import sqlCert from "./assets/sqlCert.png";
-import hourofcode from "./assets/hourofcode.png";
-import webdesignCert from "./assets/webdesignCert.png";
-import oracleCert from "./assets/oracleCert.png";
 import alingnena from "./assets/alingnena.png";
 import nike from "./assets/nike.png";
 import experiences from "./data/experiences";
 import { Linkedin, Github, Instagram } from "lucide-react";
 import dict from "./assets/dict-logo.png";
+import CertificateCard from "./component/CertCard.jsx";
+import { certificates } from "./data/certificates";
 import {
   ChevronRight,
   Mail,
@@ -36,8 +31,11 @@ import m4 from "./assets/m4.mp4";
 import m4Reverse from "./assets/m4Reverse.mp4";
 import ProjectsModal from "./modal/ProjectsModal";
 import feedback from "./assets/feedback.png";
+import kstock from "./assets/Kstock.png";
+import asyncstorage from "./assets/AsyncStorage.svg";
 
 function App() {
+  
   const [hover, setHover] = useState(false);
   const [showEmailModal, setShowEmailModal] = useState(false);
   const [animate, setAnimate] = useState(false);
@@ -104,6 +102,7 @@ function App() {
       el.scrollLeft += e.deltaY; // smooth enough already
     }
   };
+
   return (
     <div className="max-w-4xl mx-auto px-4 py-8 ">
       <section
@@ -496,10 +495,26 @@ function App() {
 
                 <div className="flex bg-gray-100 dark:bg-[#2d2d2d] rounded-sm  px-3 py-1 items-center gap-2">
                   <img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg"
+                    className="w-4 h-4"
+                  />
+                  <span className="py-0.5 text-xs">TypeScript</span>
+                </div>
+
+                <div className="flex bg-gray-100 dark:bg-[#2d2d2d] rounded-sm  px-3 py-1 items-center gap-2">
+                  <img
                     src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg"
                     className="w-4 h-4"
                   />
                   <span className="py-0.5 text-xs">Tailwind CSS</span>
+                </div>
+
+                <div className="flex bg-gray-100 dark:bg-[#2d2d2d] rounded-sm  px-3 py-1 items-center gap-2">
+                  <img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg"
+                    className="w-4 h-4"
+                  />
+                  <span className="py-0.5 text-xs">CSS3</span>
                 </div>
 
                 <div className="flex bg-gray-100 dark:bg-[#2d2d2d] rounded-sm  px-3 py-1 items-center gap-2">
@@ -512,10 +527,26 @@ function App() {
 
                 <div className="flex bg-gray-100 dark:bg-[#2d2d2d] rounded-sm  px-3 py-1 items-center gap-2">
                   <img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"
+                    className="w-4 h-4"
+                  />
+                  <span className="py-0.5 text-xs">React Native</span>
+                </div>
+
+                <div className="flex bg-gray-100 dark:bg-[#2d2d2d] rounded-sm  px-3 py-1 items-center gap-2">
+                  <img
                     src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg"
                     className="w-4 h-4"
                   />
                   <span className="py-0.5 text-xs">Next.js</span>
+                </div>
+
+                <div className="flex bg-gray-100 dark:bg-[#2d2d2d] rounded-sm  px-3 py-1 items-center gap-2">
+                  <img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/expo/expo-original.svg"
+                    className="w-4 h-4"
+                  />
+                  <span className="py-0.5 text-xs">Expo</span>
                 </div>
               </div>
             </div>
@@ -545,6 +576,19 @@ function App() {
                     className="w-4 h-4"
                   />
                   <span className="py-0.5 text-xs">Java</span>
+                </div>
+
+                <div className="flex bg-gray-100 dark:bg-[#2d2d2d] rounded-sm  px-3 py-1 items-center gap-2">
+                  <img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/supabase/supabase-original.svg"
+                    className="w-4 h-4"
+                  />
+                  <span className="py-0.5 text-xs">Supabase</span>
+                </div>
+
+                <div className="flex bg-gray-100 dark:bg-[#2d2d2d] rounded-sm  px-3 py-1 items-center gap-2">
+                  <img src={asyncstorage} className="w-4 h-4" />
+                  <span className="py-0.5 text-xs">AsyncStorage</span>
                 </div>
               </div>
             </div>
@@ -604,12 +648,29 @@ function App() {
                   />
                   <span className="py-0.5 text-xs">Git</span>
                 </div>
+
+                <div className="flex bg-gray-100 dark:bg-[#2d2d2d] rounded-sm  px-3 py-1 items-center gap-2">
+                  <img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vercel/vercel-original.svg"
+                    className="w-4 h-4"
+                  />
+                  <span className="py-0.5 text-xs">Vercel</span>
+                </div>
+
+                <div className="flex bg-gray-100 dark:bg-[#2d2d2d] rounded-sm  px-3 py-1 items-center gap-2">
+                  <img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/npm/npm-original.svg"
+                    className="w-4 h-4"
+                  />
+                  <span className="py-0.5 text-xs">NPM</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
-      <section className="mt-2 md:mt-0 bento-card">
+
+      <section className="mt-2 md:mt-0 bento-card hover:-translate-y-2 hover:shadow-2xl transition-all duration-300">
         <h2 className="text-xl font-bold mb-4">Featured Projects</h2>
 
         <div
@@ -630,15 +691,23 @@ function App() {
                   "JavaScript",
                   "Tailwind CSS",
                 ],
-                color: "from-orange-500 to-red-500",
+                color: "from-slate-800 to-orange-500",
                 link: "https://samplepos-eosin.vercel.app/login",
+              },
+              {
+                title: "Sari-Sari Store Management System",
+                image: kstock,
+                desc: "A lightweight grocery purchase calculator that lets users add items, enter prices and quantities, and instantly calculate the total cost to stay within budget.",
+                stack: ["React Native", "Expo", "JavaScript", "AsyncStorage"],
+                color: "from-slate-900 to-cyan-500",
+                link: "https://kumprastock.vercel.app/",
               },
               {
                 title: "Coffee Sales Dashboard",
                 image: CoffeeSales,
                 desc: "An interactive Tableau dashboard that visualizes coffee sales performance, revenue trends, product insights, and business analytics.",
                 stack: ["Tableau", "Excel", "Data Analytics"],
-                color: "from-sky-500 to-cyan-500",
+                color: "from-gray-900 to-cyan-500",
                 link: "https://public.tableau.com/app/profile/arwin.janoyan/viz/Book1_17742456072680/Dashboard?publish=yes",
               },
               {
@@ -646,7 +715,7 @@ function App() {
                 image: nike,
                 desc: "A responsive Nike landing page featuring a modern UI, smooth animations, and a mobile-first design built with React and Tailwind CSS.",
                 stack: ["React", "Tailwind CSS", "Vite"],
-                color: "from-violet-500 to-fuchsia-500",
+                color: "from-gray-900 to-fuchsia-500",
                 link: "https://nikeiske-landingpage-rose.vercel.app",
               },
             ].map((project) => (
@@ -661,7 +730,7 @@ function App() {
                             border border-zinc-200 dark:border-zinc-800
                             bg-white dark:bg-zinc-900
                             transition-all duration-300
-                            hover:-translate-y-2 hover:shadow-2xl
+                            hover:-translate-y-2
                             flex flex-col"
               >
                 {/* Gradient Accent */}
@@ -820,7 +889,7 @@ function App() {
           </div>
           <button
             onClick={() => setSelectedImage(feedback)}
-            className="inline-flex items-center gap-2 text-sm font-medium text-accent hover:gap-3 transition-all duration-300"
+            className="inline-flex items-center gap-2 text-sm font-medium text-accent hover:gap-3 cursor-pointer transition-all duration-300"
           >
             View Supervisor's Comment
             <ChevronRight size={16} />
@@ -834,163 +903,19 @@ function App() {
 
           <div
             ref={certRef}
-            className="scrollbar-hover w-full flex gap-4"
+            className="scrollbar-hover w-full flex"
             onWheel={(e) => handleHorizontalScroll(e, certRef)}
           >
-            <div className="flex gap-4 my-1 w-max snap-x snap-mandatory ">
-              <div
-                className="bg-white dark:bg-zinc-900 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden group flex-shrink-0 w-[220px]"
-                onClick={() => setSelectedImage(BestInWebManagement)}
-              >
-                <div className="overflow-hidden">
-                  <img
-                    src={BestInWebManagement}
-                    alt="Best in Web Management"
-                    className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <div className="p-3">
-                  <h3 className="text-sm font-semibold hover:text-blue-500 transition-colors">
-                    Best in Website Design
-                  </h3>
-                  <p className="text-xs text-muted-foreground">
-                    Awarded for outstanding performance in website design during
-                    the SURGE Freelancing Marketplace training program.
-                  </p>
-                </div>
-              </div>
-
-              <div
-                className="bg-white dark:bg-zinc-900 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden group flex-shrink-0 w-[220px]"
-                onClick={() => setSelectedImage(harvard)}
-              >
-                <div className="overflow-hidden">
-                  <img
-                    src={harvard}
-                    alt="Best in Web Management"
-                    className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <div className="p-3">
-                  <h3 className="text-sm font-semibold hover:text-blue-500 transition-colors">
-                    CS50's Web Programming with Python and JavaScript
-                  </h3>
-                  <p className="text-xs text-muted-foreground ">
-                    Web development course offered by Harvard University through
-                    edX.
-                  </p>
-                </div>
-              </div>
-
-              <div
-                className="bg-white dark:bg-zinc-900 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden group flex-shrink-0 w-[220px]"
-                onClick={() => setSelectedImage(IntelliPatCert)}
-              >
-                <div className="overflow-hidden">
-                  <img
-                    src={IntelliPatCert}
-                    alt="IntelliPat Certificate"
-                    className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <div className="p-3">
-                  <h3 className="text-sm font-semibold hover:text-blue-500 transition-colors">
-                    Excel Certification Course Online
-                  </h3>
-                  <p className="text-xs text-muted-foreground">
-                    Professional certification in Microsoft Excel offered by
-                    IntelliPaat Academy.
-                  </p>
-                </div>
-              </div>
-
-              <div
-                className="bg-white dark:bg-zinc-900 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden group flex-shrink-0 w-[220px]"
-                onClick={() => setSelectedImage(sqlCert)}
-              >
-                <div className="overflow-hidden">
-                  <img
-                    src={sqlCert}
-                    alt="SQL Certificate"
-                    className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <div className="p-3">
-                  <h3 className="text-sm font-semibold hover:text-blue-500 transition-colors">
-                    Introduction to SQL
-                  </h3>
-                  <p className="text-xs text-muted-foreground">
-                    Professional online course offered by Simplilearn SkillUp to
-                    deepen technical skills and advance career capabilities.
-                  </p>
-                </div>
-              </div>
-
-              <div
-                className="bg-white dark:bg-zinc-900 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden group flex-shrink-0 w-[220px]"
-                onClick={() => setSelectedImage(hourofcode)}
-              >
-                <div className="overflow-hidden">
-                  <img
-                    src={hourofcode}
-                    alt="Hour of Code Certificate"
-                    className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <div className="p-3">
-                  <h3 className="text-sm font-semibold hover:text-blue-500 transition-colors">
-                    Hour of Code - AI Ready ASEAN Programme
-                  </h3>
-                  <p className="text-xs text-muted-foreground">
-                    Certificate of participation in the global "Hour of Code"
-                    initiative, focused on foundational coding and AI awareness.
-                  </p>
-                </div>
-              </div>
-
-              <div
-                className="bg-white dark:bg-zinc-900 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden group flex-shrink-0 w-[220px]"
-                onClick={() => setSelectedImage(webdesignCert)}
-              >
-                <div className="overflow-hidden">
-                  <img
-                    src={webdesignCert}
-                    alt="Website Design Certificate"
-                    className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <div className="p-3">
-                  <h3 className="text-sm font-semibold hover:text-blue-500 transition-colors">
-                    Best in Graphic Design (Surge Freelancing Marketplace)
-                  </h3>
-                  <p className="text-xs text-muted-foreground">
-                    Awarded for outstanding achievement during an intensive
-                    5-day masterclass training.
-                  </p>
-                </div>
-              </div>
-
-              <div
-                className="bg-white dark:bg-zinc-900 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden group flex-shrink-0 w-[220px]"
-                onClick={() => setSelectedImage(oracleCert)}
-              >
-                <div className="overflow-hidden">
-                  <img
-                    src={oracleCert}
-                    alt="Oracle Certificate"
-                    className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <div className="p-3">
-                  <h3 className="text-sm font-semibold hover:text-blue-500 transition-colors">
-                    Oracle PL/SQL: Table Functions
-                  </h3>
-                  <p className="text-xs text-muted-foreground">
-                    Advanced database programming certification from Oracle Dev
-                    Gym
-                  </p>
-                </div>
-              </div>
+            <div className="flex gap-4 my-1 w-max snap-x snap-mandatory">
+              {certificates.map((cert, index) => (
+                <CertificateCard
+                  key={index}
+                  image={cert.image}
+                  title={cert.title}
+                  description={cert.description}
+                  onClick={() => setSelectedImage(cert.image)}
+                />
+              ))}
             </div>
           </div>
         </div>
