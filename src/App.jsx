@@ -35,7 +35,6 @@ import kstock from "./assets/Kstock.png";
 import asyncstorage from "./assets/AsyncStorage.svg";
 
 function App() {
-  
   const [hover, setHover] = useState(false);
   const [showEmailModal, setShowEmailModal] = useState(false);
   const [animate, setAnimate] = useState(false);
@@ -178,49 +177,48 @@ function App() {
                 </div>
               </div>
             </div>
-            <div className="space-y-2 w-full flex flex-wrap items-center gap-2 mt-3">
+            <div className="flex flex-wrap items-center gap-2 mt-3 w-full">
               <button
-                className="button text-sm md:text-xs inline-flex h-7 md:h-8 items-center rounded-lg bg-foreground px-2.5 md:px-6 text-[8px] font-medium text-background transition-all duration-200 hover:bg-foreground/90 hover:-translate-y-0.1 gap-1 md:gap-1.5 whitespace-nowrap min-h-0 bg-black dark:bg-white text-white dark:text-black"
+                className="button inline-flex h-8 items-center rounded-lg bg-black px-3 md:px-6 text-xs font-medium text-white transition-all duration-200 hover:bg-black/90 hover:-translate-y-0.5 gap-1.5 whitespace-nowrap dark:bg-white dark:text-black"
                 onClick={() => setShowResumeModal(true)}
               >
-                {" "}
-                <FileText size={16} /> View Resume
+                <FileText size={16} />
+                View Resume
               </button>
+
               <button
-                className="button-2 text-sm md:text-xs inline-flex h-7 md:h-8 items-center rounded-lg bg-foreground px-2.5 md:px-6 text-[8px] font-medium text-background transition-all duration-200 hover:bg-foreground/90 hover:-translate-y-0.1 gap-1 md:gap-1.5 whitespace-nowrap min-h-0 dark:bg-black dark:text-white"
+                className="button-2 inline-flex h-8 items-center rounded-lg bg-foreground px-3 md:px-6 text-xs font-medium text-background transition-all duration-200 hover:bg-foreground/90 hover:-translate-y-0.5 gap-1.5 whitespace-nowrap dark:bg-black dark:text-white"
                 onClick={() => setShowEmailModal(true)}
               >
-                {" "}
-                <Mail size={16} /> Send Email
+                <Mail size={16} />
+                Send Email
               </button>
+
               <button
-                className="button-3  -translate-y-1 text-sm md:text-xs inline-flex h-7 md:h-8 items-center rounded-lg bg-foreground px-2.5 md:px-6 text-[8px] font-medium text-background transition-all duration-200 hover:bg-foreground/90 hover:-translate-y-0.1 gap-1 md:gap-1.5 whitespace-nowrap min-h-0 dark:bg-black dark:text-white"
-                onClick={() => {
-                  setShowProjectsModal(true);
-                }}
+                className="button-3 inline-flex h-8 items-center rounded-lg bg-foreground px-3 md:px-6 text-xs font-medium text-background transition-all duration-200 hover:bg-foreground/90 hover:-translate-y-0.5 gap-1.5 whitespace-nowrap dark:bg-black dark:text-white"
+                onClick={() => setShowProjectsModal(true)}
               >
                 <FolderOpen size={16} />
-                Recent Projects
+                View Research
               </button>
             </div>
-            <div className="block md:hidden">
-              <div className="relative">
-                <button
-                  className="cursor-pointer flex items-center justify-center gap-1.5 bg-blue-600 font-bold text-white text-xs rounded-lg w-full md:w-auto md:scale-80"
-                  onClick={() =>
-                    window.open(
-                      "https://www.facebook.com/photo.php?fbid=611827651697333&set=pb.100086103111194.-2207520000&type=3",
-                      "_blank",
-                    )
-                  }
-                >
-                  <span className="blue-bar inline-flex h-7 md:h-8 items-center rounded-l-lg px-2.5 md:px-4 text-[7.5px] md:text-sm font-bold text-white transition-all duration-300 gap-1 md:gap-1.5 whitespace-nowrap relative overflow-hidden group flex-1 justify-center md:justify-start min-h-0">
-                    <Trophy size={11} className="mx-2" /> MMCM CodeClash
-                    Programming Competition — 2nd Place{" "}
-                    <ChevronRight size={13} className="mx-0.5" />
-                  </span>
-                </button>
-              </div>
+
+            <div className="block md:hidden mt-3">
+              <button
+                className="cursor-pointer flex items-center justify-center bg-blue-600 font-bold text-white text-xs rounded-lg w-full overflow-hidden"
+                onClick={() =>
+                  window.open(
+                    "https://www.facebook.com/photo.php?fbid=611827651697333&set=pb.100086103111194.-2207520000&type=3",
+                    "_blank",
+                  )
+                }
+              >
+                <span className="blue-bar flex items-center justify-center gap-2 h-8 px-3 text-[10px] font-bold text-white whitespace-nowrap">
+                  <Trophy size={13} />
+                  MMCM CodeClash Programming Competition — 2nd Place
+                  <ChevronRight size={13} />
+                </span>
+              </button>
             </div>
           </div>
         </div>
