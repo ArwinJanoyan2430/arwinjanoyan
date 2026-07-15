@@ -12,6 +12,7 @@ import { Linkedin, Github, Instagram } from "lucide-react";
 import dict from "./assets/dict-logo.png";
 import CertificateCard from "./component/CertCard.jsx";
 import { certificates } from "./data/certificates";
+import p1 from "./assets/p1.jpg";
 import {
   ChevronRight,
   Mail,
@@ -24,7 +25,10 @@ import {
 import TypewriterRole from "./animations/TypewriterRole";
 import BotpressChat from "./modal/BotpressChat";
 import EmailModal from "./modal/EmailModal";
+
 import g1 from "./assets/g1.jpg";
+import g2 from "./assets/g2.jpg";
+
 import CoffeeSales from "./assets/CoffeeSales.png";
 import ResumeModal from "./modal/ResumeModal";
 import m4 from "./assets/m4.mp4";
@@ -679,7 +683,7 @@ function App() {
           <div className="flex gap-5 w-max py-2">
             {[
               {
-                title: "Sari-Sari Store Management System",
+                title: "POS & Inventory Management System",
                 image: alingnena,
                 desc: "A full-stack business management system that helps sari-sari store owners streamline inventory, process sales, monitor stock levels, and generate sales reports through an intuitive dashboard.",
                 stack: [
@@ -693,7 +697,7 @@ function App() {
                 link: "https://samplepos-eosin.vercel.app/login",
               },
               {
-                title: "Sari-Sari Store Management System",
+                title: "KumpraStock – Grocery Purchase Calculator",
                 image: kstock,
                 desc: "A lightweight grocery purchase calculator that lets users add items, enter prices and quantities, and instantly calculate the total cost to stay within budget.",
                 stack: ["React Native", "Expo", "JavaScript", "AsyncStorage"],
@@ -701,9 +705,9 @@ function App() {
                 link: "https://kumprastock.vercel.app/",
               },
               {
-                title: "Coffee Sales Dashboard",
+                title: "Coffee Sales Analytics Dashboard",
                 image: CoffeeSales,
-                desc: "An interactive Tableau dashboard that visualizes coffee sales performance, revenue trends, product insights, and business analytics.",
+                desc: "An interactive Tableau dashboard showcasing coffee sales performance, revenue trends, product insights, and key business metrics through dynamic data visualizations.",
                 stack: ["Tableau", "Excel", "Data Analytics"],
                 color: "from-gray-900 to-cyan-500",
                 link: "https://public.tableau.com/app/profile/arwin.janoyan/viz/Book1_17742456072680/Dashboard?publish=yes",
@@ -711,10 +715,10 @@ function App() {
               {
                 title: "Nike Landing Page",
                 image: nike,
-                desc: "A responsive Nike landing page featuring a modern UI, smooth animations, and a mobile-first design built with React and Tailwind CSS.",
+                desc: "A responsive Nike-inspired landing page showcasing modern UI design, smooth animations, reusable React components, and a mobile-first user experience.",
                 stack: ["React", "Tailwind CSS", "Vite"],
                 color: "from-gray-900 to-fuchsia-500",
-                link: "https://nikeiske-landingpage-rose.vercel.app",
+                link: "https://nike-landingpage-rose.vercel.app/",
               },
             ].map((project) => (
               <div
@@ -933,6 +937,18 @@ function App() {
                   alt="Gallery Image 1"
                   className="h-50 flex-shrink-0 cursor-pointer snap-start hover:scale-105 transition-transform duration-500 ease-out"
                   onClick={() => setSelectedImage(g1)}
+                />
+                <img
+                  src={p1}
+                  alt="Gallery Image 1"
+                  className="h-50 flex-shrink-0 cursor-pointer snap-start hover:scale-105 transition-transform duration-500 ease-out"
+                  onClick={() => setSelectedImage(p1)}
+                />
+                <img
+                  src={g2}
+                  alt="Gallery Image 1"
+                  className="h-50 flex-shrink-0 cursor-pointer snap-start hover:scale-105 transition-transform duration-500 ease-out"
+                  onClick={() => setSelectedImage(g2)}
                 />
               </div>
             </div>
