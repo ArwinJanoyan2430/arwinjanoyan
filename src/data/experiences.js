@@ -95,7 +95,7 @@ const experiences = [
     year: "2023",
     duration: "Present",
 
-    skills: ["HTML", "CSS", "JavaScript", "Git"],
+    skills: ["HTML", "CSS", "JavaScript"],
 
     roles: [
       "Learned programming and web development through E-Tech.",

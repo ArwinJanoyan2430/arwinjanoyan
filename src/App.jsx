@@ -690,6 +690,7 @@ function App() {
                   "React",
                   "Node.js",
                   "Supabase",
+                  "PostgreSQL",
                   "JavaScript",
                   "Tailwind CSS",
                 ],
