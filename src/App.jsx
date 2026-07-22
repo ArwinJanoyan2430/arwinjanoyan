@@ -111,8 +111,8 @@ function App() {
       <section
         className={`profile-card ${animate ? "animate-in" : ""} transition-colors duration-300`}
       >
-        <div className="flex flex-col sm:flex-row items-center gap-3 mb-4">
-          <div className="relative w-[150px] h-[150px]">
+        <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 mb-5">
+          <div className="relative w-40 h-40 sm:w-32 sm:h-32 md:w-40 md:h-40 shrink-0">
             <video
               src={dark ? m4 : m4Reverse}
               autoPlay
@@ -124,16 +124,16 @@ function App() {
               controlsList="nodownload noplaybackrate noremoteplayback nofullscreen"
               tabIndex={-1}
               aria-hidden="true"
-              className="profile absolute object-cover transition-opacity duration-700 -translate-y-2 pointer-events-none select-none"
+              className="profile absolute inset-0 w-full h-full object-cover transition-opacity duration-700 pointer-events-none select-none"
             />
           </div>
-          <div className="flex-1 min-w-0">
-            <div className="flex items-center justify-between gap-2">
+          <div className="flex-1 w-full text-center md:text-left">
+            <div className="flex items-start justify-between gap-2">
               <div className="flex items-center gap-2">
-                <h1 className="text-lg md:text-2xl font-stretch-expanded font-bold truncate dark:text-white">
+                <h1 className="text-xl sm:text-2xl font-bold leading-tight truncate dark:text-white">
                   Arwin Janoyan
                 </h1>
-                <img src={badge} className="w-4 mt-1" />
+                <img src={badge} className="w-4 h-4 mt-1 shrink-0" />
               </div>
               <label className="flex items-center cursor-pointer button-glow transform hover:scale-105 transition-transform duration-300 ease-in-out relative p-1 rounded">
                 {/* Hidden checkbox */}
@@ -145,7 +145,7 @@ function App() {
                 />
               </label>
             </div>
-            <p className="text-xs md:text-[14px] font-normal text-foreground/70 mt-0 flex items-center gap-1 dark:text-white">
+            <p className="flex items-center gap-1 text-xs sm:text-sm text-foreground/70 mt-1 dark:text-white">
               {" "}
               <MapPin
                 size={14}
@@ -153,8 +153,8 @@ function App() {
               />{" "}
               Tagum City, Philippines
             </p>
-            <div className="flex items-center justify-between gap-0 mt-1.5">
-              <p className="text-[10px] md:text-base font-medium text-black dark:text-white">
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mt-2">
+              <p className="text-xs sm:text-sm md:text-base font-medium dark:text-white wrap-break-words">
                 BSIT Student
                 <span className="text-gray-400">{" \\ "}</span>
                 Aspiring
@@ -181,9 +181,9 @@ function App() {
                 </div>
               </div>
             </div>
-            <div className="flex flex-wrap items-center gap-2 mt-3 w-full">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-2 mt-5 w-full">
               <button
-                className="button inline-flex h-8 items-center rounded-lg bg-black px-3 md:px-6 text-xs font-medium text-white transition-all duration-200 hover:bg-black/90 hover:-translate-y-0.5 gap-1.5 whitespace-nowrap dark:bg-white dark:text-black"
+                className="button h-8 flex items-center justify-center rounded-lg bg-black px-4 text-xs font-medium text-white transition-all duration-200 hover:bg-black/90  dark:hover:bg-white hover:-translate-y-0.5 gap-2 whitespace-nowrap dark:bg-white dark:text-black"
                 onClick={() => setShowResumeModal(true)}
               >
                 <FileText size={16} />
@@ -191,7 +191,7 @@ function App() {
               </button>
 
               <button
-                className="button-2 inline-flex h-8 items-center rounded-lg bg-foreground px-3 md:px-6 text-xs font-medium text-background transition-all duration-200 hover:bg-foreground/90 hover:-translate-y-0.5 gap-1.5 whitespace-nowrap dark:bg-black dark:text-white"
+                className="button-2 h-8 flex items-center justify-center rounded-lg bg-foreground px-4 text-xs font-medium text-background transition-all duration-200 hover:bg-foreground/90 hover:-translate-y-0.5 gap-2 whitespace-nowrap dark:bg-black dark:text-white"
                 onClick={() => setShowEmailModal(true)}
               >
                 <Mail size={16} />
@@ -199,7 +199,7 @@ function App() {
               </button>
 
               <button
-                className="button-3 inline-flex h-8 items-center rounded-lg bg-foreground px-3 md:px-6 text-xs font-medium text-background transition-all duration-200 hover:bg-foreground/90 hover:-translate-y-0.5 gap-1.5 whitespace-nowrap dark:bg-black dark:text-white"
+                className="button-3 col-span-2 md:col-span-1 h-8 flex items-center justify-center rounded-lg bg-foreground px-4 text-xs font-medium text-background transition-all duration-200 hover:bg-foreground/90 hover:-translate-y-0.5 gap-2 whitespace-nowrap dark:bg-black dark:text-white"
                 onClick={() => setShowProjectsModal(true)}
               >
                 <FolderOpen size={16} />
@@ -217,7 +217,7 @@ function App() {
                   )
                 }
               >
-                <span className="blue-bar flex items-center justify-center gap-2 h-8 px-3 text-[10px] font-bold text-white whitespace-nowrap">
+                <span className="blue-bar flex items-center justify-center gap-2 min-h-10 px-3 py-2 text-[11px] font-bold text-white text-center">
                   <Trophy size={13} />
                   MMCM CodeClash Programming Competition — 2nd Place
                   <ChevronRight size={13} />
@@ -317,26 +317,23 @@ function App() {
                         {/* Hover Card */}
                         <div
                           className="
-                                  absolute
-                                  -translate-y-1/2
-                                  left-full
-                                  ml-8
-                                  w-[400px]
-
-                                  opacity-0
-                                  invisible
-                                  translate-x-2
-
-                                  group-hover/role:opacity-100
-                                  group-hover/role:visible
-                                  group-hover/role:translate-x-0
-
-                                  transition-all
-                                  duration-300
-                                  ease-out
-
-                                  z-50
-                                "
+                                      hidden md:block
+                                      absolute
+                                      left-full
+                                      ml-8
+                                      -my-40
+                                      w-100
+                                      opacity-0
+                                      invisible
+                                      translate-x-2
+                                      group-hover/role:opacity-100
+                                      group-hover/role:visible
+                                      group-hover/role:translate-x-0
+                                      transition-all
+                                      duration-300
+                                      ease-out
+                                      z-50
+                                    "
                         >
                           <div className="relative overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-700 bg-white/95 dark:bg-zinc-900/95 backdrop-blur-xl shadow-2xl">
                             {/* Accent Line */}
@@ -344,7 +341,7 @@ function App() {
 
                             <div className="p-5">
                               {/* Header */}
-                              <div className="flex items-start justify-between">
+                              <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-3">
                                 <div>
                                   <h4 className="font-semibold text-base mt-1">
                                     {exp.title}
