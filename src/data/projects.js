@@ -1,5 +1,5 @@
 import OmboyStore from "../assets/v2/alingnena.png"
-import Kstock from "../assets/v2/kstock.png"
+import Kstock from "../assets/v2/Kstock.png"
 
 const projects = [
   {
