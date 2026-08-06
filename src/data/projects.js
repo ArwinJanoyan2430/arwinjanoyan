@@ -3,7 +3,7 @@ import Kstock from "../assets/v2/kstock.png"
 
 const projects = [
   {
-    id: 2,
+    id: 1,
     image: Kstock,
     title: "KumpraStock",
     subtitle: "POS & Inventory System",
