@@ -1,12 +1,36 @@
 @import "tailwindcss";
 
+.dark ::selection {
+  background: white;
+  color: black;
+}
+
+::selection {
+  background: black;
+  color: white;
+}
+
+.pixel-font {
+  font-family: "Silkscreen", sans-serif;
+  font-weight: 100;
+}
+
+.inter-font {
+  font-family: "Inter", sans-serif;
+  
+}
+
+.ibm-mono {
+  font-family: "IBM Plex Mono", monospace;
+}
+
 body {
   margin: 0;
 }
 
 /* Dark mode */
 .dark body {
-  background-color: black;
+  background-color: #0f1115;
 }
 
 
@@ -371,3 +395,110 @@ body {
   }
 }
 
+/* From Uiverse.io by Awadhesh684827 */ 
+[class*="btn-glitch-"] {
+  display: inline-block;
+  line-height: 1.5em;
+  white-space: no-wrap;
+  cursor: pointer;
+
+  .text,
+  .decoration {
+    display: inline-block;
+  }
+
+  .decoration {
+    display: inline-block;
+  }
+
+  &:hover {
+    animation-name: glitch;
+    animation-duration: 0.2s;
+    background-color: rgba(255, 255, 255, 0);
+    color: black;
+    border-color: solid 1px white;
+
+    .text-decoration {
+      animation-name: blink;
+      animation-duration: 0.1s;
+      animation-iteration-count: infinite;
+    }
+
+    .decoration {
+      animation-name: blink;
+      animation-duration: 0.1s;
+      animation-iteration-count: infinite;
+    }
+  }
+
+  &:active {
+    background: none;
+    color: rgb(102, 102, 102);
+
+    .text-decoration {
+      animation-name: none;
+    }
+
+    .decoration {
+      animation-name: none;
+    }
+
+    :before,
+    :after {
+      display: none;
+    }
+  }
+}
+
+@keyframes glitch {
+  25% {
+    background-color: rgb(124, 123, 123);
+  }
+
+  35% {
+    background-color: rgb(43, 43, 43);
+  }
+
+  59% {
+    opacity: 0;
+  }
+
+  60% {
+    background-color: rgb(175, 175, 175);
+    filter: blur(5px);
+  }
+
+  100% {
+    background-color: rgb(146, 146, 146);
+    filter: blur(5px);
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes shrink {
+  100% {
+    width: 10%;
+  }
+}
+
+.dark .btn-glitch-fill{
+  color:white;
+  border-color:white;
+}
+
+.scroll-reveal-text {
+  line-height: 0;
+}
+
+.word {
+  display: inline-block;
+}
+
+html {
+  scroll-behavior: smooth;
+}
