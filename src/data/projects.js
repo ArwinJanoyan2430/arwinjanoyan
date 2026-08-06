@@ -1,26 +1,26 @@
-import OmboyStore from "../assets/v2/alingnena.png";
-import Kstock from "../assets/v2/Kstock.png";
+import OmboyStore from "../assets/v2/alingnena.png"
+import Kstock from "../assets/v2/Kstock.png"
 
 const projects = [
   {
     id: 1,
-    image: OmboyStore,
-    title: "OmboyStore",
-    subtitle: "POS & Inventory Management System",
+    image: Kstock,
+    title: "KumpraStock",
+    subtitle: "POS & Inventory System",
     description:
-      "A full-stack business management system that helps sari-sari store owners streamline inventory, process sales, monitor stock levels, and generate sales reports through an intuitive dashboard.",
-    technologies: ["React", "Node.js", "Supabase", "JavaScript", "TailwindCss"],
+      "An offline-first point-of-sale system for sari-sari stores with inventory management and analytics.",
+    technologies: ["React Native", "Expo", "AsyncStorage"],
     liveLink: "#",
     githubLink: "#",
   },
   {
     id: 2,
-    image: Kstock,
-    title: "KumpraStock",
-    subtitle: "Grocery Purchase Calculator",
+    image: OmboyStore,
+    title: "Omboy Store",
+    subtitle: "POS & Inventory System",
     description:
-      "A lightweight grocery purchase calculator that lets users add items, enter prices and quantities, and instantly calculate the total cost to stay within budget.",
-    technologies: ["React Native", "Expo", "JavaScript","AsyncStorage"],
+      "An offline-first point-of-sale system for sari-sari stores with inventory management and analytics.",
+    technologies: ["React Native", "Expo", "AsyncStorage"],
     liveLink: "#",
     githubLink: "#",
   },
