@@ -2,20 +2,30 @@ import { useState, useEffect } from "react";
 import "../index.css";
 
 const quotes = [
-  "Crafting clean interfaces with powerful code.",
-  "Turning ideas into scalable software solutions.",
-  "Building modern solutions through design and code.",
-  "Writing code that feels as good as it looks.",
+  "Building modern web experiences through code and creativity.",
+  "Creating responsive applications with clean and thoughtful design.",
+  "Turning ideas into functional websites and digital solutions.",
+  "Growing as a developer through projects and continuous learning.",
 ];
 
 const keywords = [
-  "interfaces",
-  "code",
-  "concepts",
-  "digital",
   "modern",
-  "solutions",
+  "web",
+  "experiences",
+  "code",
+  "creativity",
+  "responsive",
+  "applications",
+  "clean",
   "design",
+  "ideas",
+  "functional",
+  "websites",
+  "digital",
+  "solutions",
+  "developer",
+  "projects",
+  "learning",
 ];
 
 function QuoteTransition() {
@@ -32,7 +42,7 @@ function QuoteTransition() {
       }, 350);
 
       return () => clearTimeout(timeout);
-    }, 4500);
+    }, 4000);
 
     return () => clearInterval(interval);
   }, []);
@@ -66,9 +76,9 @@ function QuoteTransition() {
           ibm-mono
           text-center
           md:text-left
-          text-4xl
-          sm:text-5xl
-          lg:text-6xl
+          text-3xl
+          sm:text-4xl
+          lg:text-5xl
           font-bold
           leading-tight
           tracking-tight
