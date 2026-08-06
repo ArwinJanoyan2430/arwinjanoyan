@@ -7,7 +7,7 @@ function Projects() {
     <section className="mx-auto max-w-7xl px-10 py-20 transition-colors duration-300">
       {/* Heading */}
       <header className="mb-12">
-        <h1 className="pixel-font mb-4 text-3xl font-bold">Projects</h1>
+        <h1 className="pixel-font md:text-3xl sm:text-4xl">Things I've Built</h1>
 
         <ScrollReveal
           baseOpacity={0}

@@ -3,6 +3,7 @@ import pfp from "../assets/v2/pfp.png";
 import QuoteTransition from "../animations/QuoteTransition";
 import { Github, Linkedin } from "lucide-react";
 
+
 function Home() {
   return (
     <motion.div
@@ -45,7 +46,7 @@ function Home() {
           initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.6 }}
-          className="mt-8 flex w-full flex-col items-center gap-5 md:flex-row md:justify-start"
+          className="mt-0 flex w-full flex-col items-center gap-8 md:flex-row md:justify-start"
         >
           <button
             onClick={() =>
@@ -54,7 +55,7 @@ function Home() {
                 block: "start",
               })
             }
-            className="btn-glitch-fill ibm-mono rounded-2xl border px-4 py-1.5 text-sm md:px-5 md:py-2 md:text-base"
+            className="btn-glitch-fill ibm-mono rounded-2xl border px-4 py-1 text-sm md:px-5 md:py-2 md:text-base"
           >
             <span className="text">projects</span>
             <span className="text-decoration"> _ </span>
