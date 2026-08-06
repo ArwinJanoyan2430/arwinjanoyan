@@ -41,27 +41,29 @@ function NavBar({ dark, setDark }) {
 
   return (
     <nav
-      className={`fixed top-5 left-1/2 z-50 flex w-full md:w-[1200px]
-      -translate-x-1/2 items-center justify-between px-10 py-3
-      transition-all duration-300
-      ${showNav ? "translate-y-0 opacity-100" : "-translate-y-24 opacity-0"}
-      ${
-        scrolled
-          ? "rounded-full bg-white/70 shadow-lg backdrop-blur-xl dark:bg-black/70"
-          : "bg-transparent"
-      }`}
+      className={`fixed top-4 left-1/2 z-50
+  flex w-[95%] max-w-7xl
+  -translate-x-1/2 items-center justify-between
+  px-4 py-3 sm:px-6 md:px-8 lg:px-10
+  transition-all duration-300
+  ${showNav ? "translate-y-0 opacity-100" : "-translate-y-24 opacity-0"}
+  ${
+    scrolled
+      ? "rounded-full bg-white/70 shadow-lg backdrop-blur-xl dark:bg-black/70"
+      : "bg-transparent"
+  }`}
     >
-      <h1 className="pixel-font text-sm text-black dark:text-white sm:text-base">
+      <h1 className="pixel-font text-xs text-black dark:text-white sm:text-sm md:text-base">
         Arwin Janoyan
       </h1>
 
-      <div className="flex items-center gap-6">
-        <ul className="hidden gap-6 md:flex">
+      <div className="flex items-center gap-3 sm:gap-5 md:gap-6">
+        <ul className="hidden items-center gap-4 md:flex lg:gap-6">
           {navLinks.map(([name, link]) => (
             <li key={name}>
               <a
                 href={link}
-                className="ibm-mono text-base font-bold text-zinc-500 transition-colors duration-300 hover:text-zinc-900 dark:hover:text-zinc-100"
+                className="ibm-mono text-sm font-bold text-zinc-500 transition-colors duration-300 hover:text-zinc-900 dark:hover:text-zinc-100 lg:text-base"
               >
                 {name}
               </a>

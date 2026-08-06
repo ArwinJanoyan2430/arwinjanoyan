@@ -6,6 +6,7 @@ import { useState } from "react";
 // pages
 import Home from "../pages/Home";
 import Projects from "../pages/Projects";
+import Experiences from "../pages/Experiences";
 
 function PortfolioV2() {
   const [dark, setDark] = useState(false);
@@ -22,8 +23,12 @@ function PortfolioV2() {
             <Home />
           </section>
 
-          <section id="projects" className="scroll-mt-0">
+          <section id="projects" className="min-h-screen">
             <Projects />
+          </section>
+
+          <section id="experiences" className="min-h-screen">
+            <Experiences />
           </section>
         </main>
       </div>

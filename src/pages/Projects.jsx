@@ -4,10 +4,10 @@ import projects from "@/data/projects";
 
 function Projects() {
   return (
-    <section className="mx-auto max-w-6xl px-6 py-24 transition-colors duration-300">
+    <section className="mx-auto max-w-7xl px-10 py-20 transition-colors duration-300">
       {/* Heading */}
       <header className="mb-12">
-        <h1 className="pixel-font mb-4 text-2xl font-bold">Projects</h1>
+        <h1 className="pixel-font mb-4 text-3xl font-bold">Projects</h1>
 
         <ScrollReveal
           baseOpacity={0}
@@ -15,13 +15,12 @@ function Projects() {
           blurStrength={8}
           textClassName="ibm-mono text-sm md:text-lg font-light leading-7 text-zinc-600 dark:text-zinc-400"
         >
-          Products and platforms I've designed and shipped—spanning developer
-          education, generative AI, and consumer apps.
+          Real-world applications I've designed and developed using modern web and mobile technologies.
         </ScrollReveal>
       </header>
 
       {/* Project Cards */}
-      <div className="space-y-12">
+      <div className="space-y-8">
         {projects.map((project) => (
           <ProjectCard key={project.id} {...project} />
         ))}
