@@ -1,10 +1,25 @@
 import { motion } from "framer-motion";
 import pfp from "../assets/v2/pfp.png";
 import QuoteTransition from "../animations/QuoteTransition";
-import { Github, Linkedin } from "lucide-react";
-
+import { Github, Linkedin, MailIcon, X } from "lucide-react";
+import { useState } from "react";
 
 function Home() {
+  const [showEmailCard, setShowEmailCard] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  const email = "ajanoyan24@gmail.com";
+
+  function copyEmail() {
+    navigator.clipboard.writeText(email);
+
+    setCopied(true);
+
+    setTimeout(() => {
+      setCopied(false);
+    }, 2000);
+  }
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 60 }}
@@ -64,18 +79,85 @@ function Home() {
 
           {/* Social Icons */}
           <div className="flex flex-wrap justify-center gap-3 md:justify-start">
-            <a href="" target="_blank" rel="noopener noreferrer" className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-zinc-300 transition-all duration-300 hover:-translate-y-1 hover:bg-zinc-600 hover:text-white dark:border-zinc-700 dark:hover:bg-white dark:hover:text-black">
+            <a
+              href="https://github.com/ArwinJanoyan2430"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-zinc-300 transition-all duration-300 hover:-translate-y-1 hover:bg-zinc-600 hover:text-white dark:border-zinc-700 dark:hover:bg-white dark:hover:text-black"
+            >
               <Github size={20} />
             </a>
-            <a href="" target="_blank" rel="noopener noreferrer" className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-zinc-300 transition-all duration-300 hover:-translate-y-1 hover:bg-zinc-600 hover:text-white dark:border-zinc-700 dark:hover:bg-white dark:hover:text-black">
+            <a
+              href="https://www.linkedin.com/in/arwin-ryan-janoyan-6b355a3a5/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-zinc-300 transition-all duration-300 hover:-translate-y-1 hover:bg-zinc-600 hover:text-white dark:border-zinc-700 dark:hover:bg-white dark:hover:text-black"
+            >
               <Linkedin size={20} />
             </a>
-            <a href="" target="_blank" rel="noopener noreferrer" className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-zinc-300 transition-all duration-300 hover:-translate-y-1 hover:bg-zinc-600 hover:text-white dark:border-zinc-700 dark:hover:bg-white dark:hover:text-black">
+            <a
+              href=""
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-zinc-300 transition-all duration-300 hover:-translate-y-1 hover:bg-zinc-600 hover:text-white dark:border-zinc-700 dark:hover:bg-white dark:hover:text-black"
+            >
               <Github size={20} />
             </a>
-            <a href="" target="_blank" rel="noopener noreferrer" className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-zinc-300 transition-all duration-300 hover:-translate-y-1 hover:bg-zinc-600 hover:text-white dark:border-zinc-700 dark:hover:bg-white dark:hover:text-black">
-              <Linkedin size={20} />
+            <a
+              onClick={() => setShowEmailCard(true)}
+              className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-zinc-300 transition-all duration-300 hover:-translate-y-1 hover:bg-zinc-600 hover:text-white dark:border-zinc-700 dark:hover:bg-white dark:hover:text-black"
+            >
+              <MailIcon size={20} />
             </a>
+            {showEmailCard && (
+              <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm">
+                <div className="w-100 rounded-2xl bg-white p-8 shadow-xl dark:bg-zinc-900">
+                  <div className="flex items-center justify-between">
+                    <h2 className="text-xs inter-font text-zinc-400 font-light tracking-widest">
+                      GET IN TOUCH
+                    </h2>
+
+                    <button
+                      onClick={() => setShowEmailCard(false)}
+                      className="text-zinc-500 cursor-pointer transition hover:bg-zinc-100 hover:text-black dark:hover:bg-zinc-800 dark:hover:text-white"
+                      aria-label="Close"
+                    >
+                      <X size={18} />
+                    </button>
+                  </div>
+                  <h2 className="text-xl pixel-font mt-2 font-semibold">
+                    Say hello
+                  </h2>
+
+                  <p className="mt-2 inter-font text-sm text-zinc-600 dark:text-zinc-100">
+                    For work, collabs, or just to say hi — drop me a line.
+                  </p>
+
+                  <div className="mt-4 ibm-mono flex items-center justify-between rounded-lg border dark:bg-zinc-800 border-zinc-300 p-1 dark:border-zinc-700">
+                    <span className="text-sm mx-2">ajanoyan24@gmail.com</span>
+
+                    <button
+                      onClick={copyEmail}
+                      className="rounded-lg cursor-pointer ibm-mono text-sm bg-zinc-800 px-3 py-1.5 text-white hover:bg-zinc-300 dark:bg-white dark:text-black"
+                    >
+                      {copied ? "Copied" : "Copy"}
+                    </button>
+                  </div>
+
+                  <button
+                    onClick={() =>
+                      window.open(
+                        "https://mail.google.com/mail/?view=cm&fs=1&to=ajanoyan24@gmail.com&su=Portfolio%20Inquiry",
+                        "_blank",
+                      )
+                    }
+                    className="mt-2 cursor-pointer w-full rounded-lg border border-zinc-300 py-2 text-sm ibm-mono font-semibold transition hover:border-zinc-100 dark:border-zinc-700"
+                  >
+                    Send Email
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
         </motion.div>
       </motion.div>

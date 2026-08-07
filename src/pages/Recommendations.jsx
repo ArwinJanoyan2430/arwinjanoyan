@@ -43,7 +43,7 @@ function Recommendation() {
           blurStrength={8}
           textClassName="ibm-mono mt-3 text-sm leading-7 text-zinc-600 dark:text-zinc-400 sm:text-base md:text-lg"
         >
-          Where I've learned, built, and grown.
+          Feedback from people I've worked and learned with.
         </ScrollReveal>
       </header>
 

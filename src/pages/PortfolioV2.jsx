@@ -1,16 +1,35 @@
 import Navbar from "../modal/NavBar";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 // animations
+import Loader from "../pages/loader";
 
 // pages
 import Home from "../pages/Home";
 import Projects from "../pages/Projects";
 import Experiences from "../pages/Experiences";
 import Recommendations from "../pages/Recommendations";
+import About from "../pages/About";
 
 function PortfolioV2() {
   const [dark, setDark] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1900);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <Loader />
+      </div>
+    );
+  }
 
   return (
     <div className={dark ? "dark" : ""}>
@@ -34,6 +53,10 @@ function PortfolioV2() {
 
           <section id="" className="min-h-screen">
             <Recommendations />
+          </section>
+
+          <section id="about" className="min-h-screen">
+            <About />
           </section>
         </main>
       </div>
