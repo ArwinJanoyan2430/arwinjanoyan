@@ -101,24 +101,24 @@ function About() {
         </div>
 
         {/* Right */}
-        <div className="flex justify-end">
+        <div className="flex justify-center md:justify-end">
           <TiltedCard
             imageSrc={pfp2}
             altText="Arwin Janoyan"
             captionText="Arwin Janoyan"
-            containerHeight="350px"
-            containerWidth="350px"
-            imageHeight="350px"
-            imageWidth="350px"
+            containerHeight={isMobile ? "280px" : "300px"}
+            containerWidth={isMobile ? "280px" : "300px"}
+            imageHeight={isMobile ? "280px" : "300px"}
+            imageWidth={isMobile ? "280px" : "300px"}
             rotateAmplitude={10}
             scaleOnHover={1.05}
             showMobileWarning={false}
             showTooltip
             displayOverlayContent
             overlayContent={
-              <div className="flex h-full items-end rounded-2xl bg-gradient-to-t from-black/80 via-black/30 to-transparent p-6">
+              <div className="flex h-full items-end rounded-2xl bg-gradient-to-t from-black/80 via-black/30 to-transparent p-5">
                 <div>
-                  <h3 className="pixel-font text-xs font-semibold text-white">
+                  <h3 className="pixel-font text-sm font-semibold text-white">
                     Arwin Janoyan - dev
                   </h3>
                 </div>
@@ -170,6 +170,7 @@ function About() {
             showIndicators
           />
         </div>
+        <div></div>
       </div>
     </section>
   );
