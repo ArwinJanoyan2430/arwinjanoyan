@@ -7,6 +7,7 @@ import { useState } from "react";
 import Home from "../pages/Home";
 import Projects from "../pages/Projects";
 import Experiences from "../pages/Experiences";
+import Recommendations from "../pages/Recommendations";
 
 function PortfolioV2() {
   const [dark, setDark] = useState(false);
@@ -29,6 +30,10 @@ function PortfolioV2() {
 
           <section id="experiences" className="min-h-screen">
             <Experiences />
+          </section>
+
+          <section id="" className="min-h-screen">
+            <Recommendations />
           </section>
         </main>
       </div>
