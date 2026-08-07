@@ -63,7 +63,7 @@ function Experiences() {
         grid-cols-1 
         gap-x-10 
         gap-y-12 
-        sm:gap-y-16
+        sm:gap-y-10
         lg:grid-cols-2
         lg:gap-x-20
       ">
