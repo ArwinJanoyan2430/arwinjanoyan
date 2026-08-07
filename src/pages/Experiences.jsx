@@ -43,7 +43,7 @@ function Experiences() {
   return (
     <section className="mx-auto max-w-7xl px-5 py-16 sm:px-8 md:px-10 md:py-20">
       <header className="mb-12 md:mb-16">
-        <h1 className="pixel-font md:text-3xl sm:text-4xl">
+        <h1 className="pixel-font md:text-3xl text-xl sm:text-3xl">
           Where I've Been
         </h1>
 
@@ -70,17 +70,17 @@ function Experiences() {
         {experiences.map((item, index) => (
           <article key={index} className="max-w-xl">
 
-            <p className="ibm-mono text-[11px] uppercase tracking-[0.25em] text-zinc-400 sm:text-xs">
+            <p className="ibm-mono text-[11px] uppercase tracking-[0.25em] text-zinc-400 sm:text-sm">
               {item.year}
             </p>
 
             <h2 className="
-              inter-font
+              ibm-mono
               mt-2
-              text-xl
-              font-semibold
+              text-g
+              font-light
               leading-tight
-              sm:text-2xl
+              sm:text-xl
             ">
               {item.title}
             </h2>

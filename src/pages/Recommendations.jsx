@@ -1,5 +1,7 @@
 import ScrollReveal from "@/animations/ScrollReveal";
-import { FaQuoteLeft } from "react-icons/fa";
+import Dict from "../assets/v2/dict-logo.png";
+import OmboyStore from "../assets/v2/omboy-store.png";
+import Surge from "../assets/v2/surge-logo.png";
 
 function Recommendation() {
   const recommendations = [
@@ -7,6 +9,7 @@ function Recommendation() {
       name: "Engr. Octavio S. Guibelondo, Jr.",
       role: "Provincial Director",
       company: "Department of Information Communications Technology (DICT)",
+      logo: Dict,
       recommendation:
         "Mr. Janoyan has shown a strong sense of curiosity and eagerness to understand how tasks are done. His inquisitive nature and willingness to ask questions demonstrate a genuine interest in learning.",
     },
@@ -14,6 +17,7 @@ function Recommendation() {
       name: "Verified Client",
       role: "Store Owner",
       company: "Local Sari-Sari Store",
+      logo: OmboyStore,
       recommendation:
         "I really appreciate how easy the system is to use. Recording sales and managing products is straightforward, and the sales report visuals make it easy to understand my store's performance.",
     },
@@ -21,6 +25,7 @@ function Recommendation() {
       name: "Jho Ash",
       role: "Virtual Assistant & Training Coach",
       company: "SURGE Freelancing Marketplace",
+      logo: Surge,
       recommendation:
         "During our portfolio-building sessions, Arwin showed a strong understanding of frontend development and web design. His layouts were modern, responsive, and easy to navigate. He pays close attention to detail and consistently delivers interfaces that are both visually appealing and user-friendly.",
     },
@@ -30,7 +35,7 @@ function Recommendation() {
     <section className="mx-auto max-w-7xl px-5 py-16 sm:px-8 md:px-10 md:py-20">
       {/* Header */}
       <header className="mb-12 md:mb-16">
-        <h1 className="pixel-font md:text-3xl sm:text-4xl">What They Say</h1>
+        <h1 className="pixel-font md:text-3xl text-xl sm:text-3xl">What They Say</h1>
 
         <ScrollReveal
           baseOpacity={0}
@@ -59,8 +64,11 @@ function Recommendation() {
             <div className="absolute left-0 top-0 h-full w-[3px] origin-top scale-y-0 bg-gradient-to-b from-transparent via-white to-transparent transition-transform duration-500 group-hover:scale-y-100" />
 
             {/* Quote */}
-            <FaQuoteLeft className="absolute -right-4 -top-4 text-6xl text-white/[0.03] transition-all duration-500 group-hover:rotate-6 group-hover:scale-110 sm:text-7xl lg:text-[8rem]" />
-
+            <img
+              src={item.logo}
+              alt={item.company}
+              className="absolute -right-15 -top-13 h-40 w-40 object-contain opacity-[0.1] grayscale transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 group-hover:opacity-[0.3] sm:h-40 sm:w-40 lg:h-50 lg:w-50"
+            />
             {/* Number */}
             <div className="relative z-10 mb-8 flex items-center gap-3 sm:mb-10">
               <div className="h-px w-8 bg-zinc-700 transition-all duration-500 group-hover:w-14" />

@@ -4,26 +4,23 @@ import Kstock from "../assets/v2/Kstock.png"
 const projects = [
   {
     id: 1,
-    image: Kstock,
-    title: "KumpraStock",
-    subtitle: "POS & Inventory System",
-    description:
-      "An offline-first point-of-sale system for sari-sari stores with inventory management and analytics.",
-    technologies: ["React Native", "Expo", "AsyncStorage"],
+    image: OmboyStore,
+    title: "Omboy Store",
+    subtitle: "Smart POS / Inventory / Sales Analytics",
+description: "A cashier and inventory system that makes selling easier, manages products smoothly, and helps businesses grow.",    technologies: ["React", "Vite", "Tailwind CSS", "JavaScript", "Node.js", "Express.js", "Supabase", "React Router", "React Icons", "Recharts", "Git", "GitHub", "Vercel"],
     liveLink: "#",
     githubLink: "#",
   },
   {
     id: 2,
-    image: OmboyStore,
-    title: "Omboy Store",
+    image: Kstock,
+    title: "KumpraStock",
     subtitle: "POS & Inventory System",
-    description:
-      "An offline-first point-of-sale system for sari-sari stores with inventory management and analytics.",
-    technologies: ["React Native", "Expo", "AsyncStorage"],
+description: "A grocery budgeting app that helps you plan what to buy, organize your cart, and know your total before you checkout.",    technologies: ["React Native", "Expo", "Expo Router", "TypeScript", "AsyncStorage", "React", "Git", "GitHub", "Vercel"],
     liveLink: "#",
     githubLink: "#",
   },
+  
 ];
 
 export default projects;

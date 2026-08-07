@@ -55,7 +55,7 @@ function Home() {
                 block: "start",
               })
             }
-            className="btn-glitch-fill ibm-mono rounded-2xl border px-4 py-1 text-sm md:px-5 md:py-2 md:text-base"
+            className="btn-glitch-fill ibm-mono rounded-lg border px-4 py-1 text-xs md:px-5 md:py-2 md:text-sm"
           >
             <span className="text">projects</span>
             <span className="text-decoration"> _ </span>

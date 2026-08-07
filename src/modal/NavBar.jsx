@@ -4,17 +4,21 @@ import "../index.css";
 function NavBar({ dark, setDark }) {
   const [scrolled, setScrolled] = useState(false);
   const [showNav, setShowNav] = useState(true);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    // Navbar entrance animation
+    const timer = setTimeout(() => {
+      setMounted(true);
+    }, 200);
+
     let lastScrollY = window.scrollY;
 
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
-      // Add blur/background after scrolling
       setScrolled(currentScrollY > 50);
 
-      // Hide when scrolling down, show when scrolling up
       if (currentScrollY > lastScrollY && currentScrollY > 100) {
         setShowNav(false);
       } else {
@@ -27,6 +31,7 @@ function NavBar({ dark, setDark }) {
     window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
+      clearTimeout(timer);
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
@@ -41,19 +46,19 @@ function NavBar({ dark, setDark }) {
 
   return (
     <nav
-      className={`fixed top-4 left-1/2 z-50
-  flex w-[95%] max-w-7xl
-  -translate-x-1/2 items-center justify-between
-  px-4 py-3 sm:px-6 md:px-8 lg:px-10
-  transition-all duration-300
-  ${showNav ? "translate-y-0 opacity-100" : "-translate-y-24 opacity-0"}
-  ${
-    scrolled
-      ? "rounded-full bg-white/70 shadow-lg backdrop-blur-xl dark:bg-black/70"
-      : "bg-transparent"
-  }`}
+      className={`fixed top-4 left-1/2 z-50 flex w-[95%] max-w-7xl -translate-x-1/2 items-center justify-between px-4 py-3 sm:px-6 md:px-8 lg:px-10 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+        mounted
+          ? showNav
+            ? "translate-y-0 opacity-100"
+            : "-translate-y-24 opacity-0"
+          : "-translate-y-12 opacity-0"
+      } ${
+        scrolled
+          ? "rounded-full bg-white/70 shadow-lg backdrop-blur-xl dark:bg-black/70"
+          : "bg-transparent"
+      }`}
     >
-      <h1 className="pixel-font text-xs text-black dark:text-white sm:text-sm md:text-base">
+      <h1 className="pixel-font text-lg text-zinc-900 dark:text-white sm:text-xl">
         Arwin Janoyan
       </h1>
 
