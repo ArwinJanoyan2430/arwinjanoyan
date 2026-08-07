@@ -78,7 +78,7 @@ function Experiences() {
               ibm-mono
               mt-2
               text-g
-              font-light
+              font-semibold
               leading-tight
               sm:text-xl
             ">
