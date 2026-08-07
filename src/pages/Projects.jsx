@@ -15,7 +15,7 @@ function Projects() {
           blurStrength={8}
           textClassName="ibm-mono mt-3 text-sm leading-7 text-zinc-600 dark:text-zinc-400 sm:text-base md:text-lg"
         >
-          Where I turn concepts into working solutions.
+          Where ideas became applications.
         </ScrollReveal>
       </header>
 
