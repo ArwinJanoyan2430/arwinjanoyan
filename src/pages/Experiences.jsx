@@ -43,7 +43,7 @@ function Experiences() {
   return (
     <section className="mx-auto max-w-7xl px-5 py-16 sm:px-8 md:px-10 md:py-20">
       <header className="mb-12 md:mb-16">
-        <h1 className="pixel-font md:text-3xl text-xl sm:text-3xl">
+        <h1 className="pixel-font font-bold md:text-3xl text-xl sm:text-3xl">
           Where I've Been
         </h1>
 
