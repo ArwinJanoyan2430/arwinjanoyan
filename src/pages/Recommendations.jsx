@@ -16,7 +16,7 @@ function Recommendation() {
     {
       name: "Verified Client",
       role: "Store Owner",
-      company: "Local Sari-Sari Store",
+      company: "Omboy Store",
       logo: OmboyStore,
       recommendation:
         "I really appreciate how easy the system is to use. Recording sales and managing products is straightforward, and the sales report visuals make it easy to understand my store's performance.",
@@ -63,11 +63,11 @@ function Recommendation() {
             {/* Left Accent */}
             <div className="absolute left-0 top-0 h-full w-[3px] origin-top scale-y-0 bg-gradient-to-b from-transparent via-white to-transparent transition-transform duration-500 group-hover:scale-y-100" />
 
-            {/* Quote */}
+            {/* Logo */}
             <img
               src={item.logo}
               alt={item.company}
-              className="absolute -right-15 -top-13 h-40 w-40 object-contain opacity-[0.1] grayscale transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 group-hover:opacity-[0.3] sm:h-40 sm:w-40 lg:h-50 lg:w-50"
+              className="absolute -right-15 -top-13 h-40 w-40 object-contain opacity-[0.2] grayscale transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 group-hover:opacity-[0.4] sm:h-40 sm:w-40 lg:h-50 lg:w-50"
             />
             {/* Number */}
             <div className="relative z-10 mb-8 flex items-center gap-3 sm:mb-10">
@@ -80,7 +80,7 @@ function Recommendation() {
 
             {/* Testimonial */}
             <blockquote className="relative z-10">
-              <p className="font-inter italic text-base leading-8 tracking-wide text-zinc-200 sm:text-md sm:leading-9 lg:text-[17px] lg:leading-8">
+              <p className="font-inter italic text-sm leading-8 tracking-wide text-zinc-200 sm:text-sm sm:leading-9 lg:text-[15px] lg:leading-8">
                 “{item.recommendation}”
               </p>
             </blockquote>

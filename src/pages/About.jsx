@@ -26,9 +26,20 @@ import pfp2 from "../assets/v2/pfp2.png";
 import surge from "../assets/v2/surge-logo.png";
 import simplilearn from "../assets/v2/simplilearn.png";
 
+//icons
+import { FcGoogle } from "react-icons/fc";
+import { Database } from "lucide-react";
+import IntelliPaat from "../assets/v2/IntelliPaat.png";
+import harvardLogo from "../assets/v2/harvard-logo.png";
+
 //certs
 import BestInWebManagement from "../assets/v2/BestInWebManagement.png";
 import sqlCert from "../assets/v2/sqlCert.png";
+import HourOfCode from "../assets/v2/hourofcode.png";
+import webdesignCert from "../assets/v2/webdesignCert.png";
+import oracleCert from "../assets/v2/oracleCert.png";
+import IntelliPatCert from "../assets/v2/IntelliPatCert.png";
+import harvard from "../assets/v2/harvard.png";
 
 function About() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
@@ -43,10 +54,23 @@ function About() {
 
   const certifications = [
     {
+      title: "CS50, Web Programming",
+      issuer: "HARVARD",
+      icon: (
+        <img
+          src={harvardLogo}
+          alt="Harvard"
+          className="h-6 w-6 object-contain"
+        />
+      ),
+      iconStyle: "",
+      image: harvard,
+    },
+    {
       title: "Best in Website Design",
       issuer: "SURGE",
       icon: <img src={surge} alt="SURGE" className="h-6 w-6 object-contain" />,
-      iconStyle: "text-blue-500",
+      iconStyle: "",
       image: BestInWebManagement,
     },
     {
@@ -59,29 +83,42 @@ function About() {
           className="h-6 w-6 object-contain"
         />
       ),
-      iconStyle: "text-blue-500",
+      iconStyle: "",
       image: sqlCert,
     },
     {
-      title: "Generative AI Certified Professional",
+      title: "AI Ready - Hour of code",
+      issuer: "Google",
+      icon: <FcGoogle size={20} />,
+      iconStyle: "",
+      image: HourOfCode,
+    },
+    {
+      title: "Graphics Design",
+      issuer: "SURGE",
+      icon: <img src={surge} alt="SURGE" className="h-6 w-6 object-contain" />,
+      iconStyle: "",
+      image: webdesignCert,
+    },
+    {
+      title: "SQL Table Functions",
       issuer: "ORACLE",
-      icon: "O",
-      iconStyle: "text-red-500",
-      image: "",
+      icon: <Database size={20} />,
+      iconStyle: "text-red",
+      image: oracleCert,
     },
     {
-      title: "Neo4j & Generative AI Certification",
-      issuer: "NEO4J",
-      icon: "••",
-      iconStyle: "text-cyan-400",
-      image: "",
-    },
-    {
-      title: "Building RAG Apps Using MongoDB",
-      issuer: "MONGODB",
-      icon: "◆",
-      iconStyle: "text-green-400",
-      image: "",
+      title: "Excel Course",
+      issuer: "INTELLIPAAT",
+      icon: (
+        <img
+          src={IntelliPaat}
+          alt="IntelliPaat"
+          className="h-6 w-6 object-contain"
+        />
+      ),
+      iconStyle: "text-red",
+      image: IntelliPatCert,
     },
   ];
 
@@ -105,45 +142,9 @@ function About() {
 
   return (
     <section className="mx-auto max-w-7xl px-8 md:px-12 py-10 md:py-50">
-      <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
-        {/* Left */}
-        <div className="max-w-xl">
-          <h2 className="pixel-font text-2xl font-semibold">Hi I'm Arwin</h2>
-
-          <p className="mt-6 text-[15px] leading-8 text-zinc-600 dark:text-zinc-400">
-            I'm an Information Technology student at the University of Mindanao
-            with a passion for building modern web applications and data-driven
-            solutions.
-          </p>
-
-          <p className="mt-5 text-[15px] leading-8 text-zinc-600 dark:text-zinc-400">
-            I enjoy developing responsive websites, business systems, and
-            interactive dashboards that solve real-world problems. My interests
-            include full-stack development, UI/UX design, and data analytics.
-          </p>
-
-          <p className="mt-5 text-[15px] leading-8 text-zinc-600 dark:text-zinc-400">
-            Outside academics, I continuously improve my skills through personal
-            projects, certifications, and programming competitions.
-          </p>
-
-          <div className="mt-8 flex flex-wrap gap-3">
-            <span className="rounded-full border border-zinc-300 px-4 py-2 text-sm dark:border-zinc-700">
-              Full Stack
-            </span>
-
-            <span className="rounded-full border border-zinc-300 px-4 py-2 text-sm dark:border-zinc-700">
-              UI/UX
-            </span>
-
-            <span className="rounded-full border border-zinc-300 px-4 py-2 text-sm dark:border-zinc-700">
-              Data Analytics
-            </span>
-          </div>
-        </div>
-
-        {/* Right */}
-        <div className="flex justify-center md:justify-end">
+      <div className="mx-auto grid max-w-5xl items-center justify-items-center gap-12 md:grid-cols-2 md:gap-16">
+        {/* Profile Card */}
+        <div className="flex w-full justify-center">
           <TiltedCard
             imageSrc={pfp2}
             altText="Arwin Janoyan"
@@ -168,7 +169,44 @@ function About() {
             }
           />
         </div>
+
+        {/* About */}
+        <div className="max-w-xl text-center md:text-left">
+          <h2 className="pixel-font text-2xl font-semibold">Hi, I'm Arwin</h2>
+
+          <p className="mt-6 text-[15px] leading-8 text-zinc-600 dark:text-zinc-400">
+            I'm an Information Technology student at the University of Mindanao
+            with a passion for building modern web applications and data-driven
+            solutions.
+          </p>
+
+          <p className="mt-5 text-[15px] leading-8 text-zinc-600 dark:text-zinc-400">
+            I enjoy developing responsive websites, business systems, and
+            interactive dashboards that solve real-world problems. My interests
+            include full-stack development, UI/UX design, and data analytics.
+          </p>
+
+          <p className="mt-5 text-[15px] leading-8 text-zinc-600 dark:text-zinc-400">
+            Outside academics, I continuously improve my skills through personal
+            projects, certifications, and programming competitions.
+          </p>
+
+          <div className="mt-8 flex flex-wrap justify-center gap-3 md:justify-start">
+            <span className="rounded-full border border-zinc-300 px-4 py-2 text-sm dark:border-zinc-700">
+              Full Stack
+            </span>
+
+            <span className="rounded-full border border-zinc-300 px-4 py-2 text-sm dark:border-zinc-700">
+              UI/UX
+            </span>
+
+            <span className="rounded-full border border-zinc-300 px-4 py-2 text-sm dark:border-zinc-700">
+              Data Analytics
+            </span>
+          </div>
+        </div>
       </div>
+
       <div className="relative h-[200px] overflow-hidden translate-y-10 md:translate-y-[100px]">
         <LogoLoop
           logos={techLogos}
@@ -186,7 +224,7 @@ function About() {
       <div className="mx-auto max-w-7xl  px-0 md:px-0 md:py-30">
         <header className="mb-12 md:mb-16">
           <h1 className="pixel-font font-bold md:text-3xl text-xl sm:text-3xl">
-            Certificates
+            Certifications
           </h1>
 
           <ScrollReveal
@@ -195,98 +233,111 @@ function About() {
             blurStrength={8}
             textClassName="ibm-mono mt-3 text-sm leading-7 text-zinc-600 dark:text-zinc-400 sm:text-base md:text-lg"
           >
-            Where I've learned, built, and grown.
+            Web development certifications & achievements{" "}
           </ScrollReveal>
         </header>
-        <div className="grid grid-cols-2 gap-x-0 gap-y-2 sm:gap-4 lg:grid-cols-4 lg:gap-5">
+
+        {/* Certificates Grid */}
+        <div
+          className="
+    grid grid-cols-2 gap-0
+    rounded-xl
+    p-0
+    max-w-5xl
+    mx-auto
+    transition-colors duration-300
+    md:grid-cols-3
+    lg:grid-cols-4
+  "
+        >
           {certifications.map((cert, index) => (
             <button
               key={cert.title}
               onClick={() => setSelectedCertificate(cert)}
               className={`
-    cert-card
-    group
-    relative
-    -m-1.5
-    flex
-    flex-col
-    items-center
-    rounded-xl
-    bg-gradient-to-b
-    from-gray-50
-    to-white
-    px-3.5
-    py-5
-    text-center
-    shadow-sm
-    transition-all
-    duration-300
-    hover:-translate-y-1
-    hover:shadow-lg
-    focus:outline-none
-    focus:ring-2
-    focus:ring-zinc-400
+  group relative z-0 -mx-1
+  rounded-lg
+  border border-zinc-200
+  bg-white
+  p-2
+  shadow-lg
+  transition-all duration-300
+  backface-hidden
+  transform-3d
+  will-change-transform
+  hover:z-20
+  hover:-translate-y-6
+  hover:rotate-0
+ dark:border-zinc-900
+dark:bg-gradient-to-b
+dark:from-zinc-900
+dark:via-zinc-900
+dark:to-zinc-950
+dark:shadow-black/30
 
-    dark:from-zinc-900
-    dark:to-zinc-950
-    dark:border
-    dark:border-zinc-800
-
-    ${index === 0 ? "rotate-[-2deg]" : ""}
-    ${index === 1 ? "rotate-[2deg]" : ""}
-    ${index === 2 ? "rotate-[-1deg]" : ""}
-    ${index === 3 ? "rotate-[2deg]" : ""}
-    ${index === 4 ? "rotate-[-2deg]" : ""}
-  `}
+  ${index % 4 === 0 ? "rotate-[-5deg]" : ""}
+  ${index % 4 === 1 ? "rotate-[5deg]" : ""}
+  ${index % 4 === 2 ? "rotate-[-5deg]" : ""}
+  ${index % 4 === 3 ? "rotate-[5deg]" : ""}
+`}
             >
-              {/* Icon */}
-              <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-lg border border-zinc-200 bg-white text-lg dark:border-zinc-800 dark:bg-zinc-950">
-                {cert.icon}
+              <div className="group relative rounded-lg border border-zinc-200 bg-white p-3 transition-all duration-500 dark:border-zinc-800 dark:bg-gradient-to-b dark:from-zinc-900 dark:via-zinc-900 dark:to-zinc-950 dark:shadow-black/30">
+                {/* Icon */}
+                <div className="mt-1 mb-4 flex justify-center">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-md border border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900">
+                    {cert.icon}
+                  </div>
+                </div>
+
+                {/* Title */}
+                <h3 className="ibm-mono text-center text-[11px] font-bold leading-tight text-zinc-800 dark:text-zinc-200 sm:text-xs">
+                  {cert.title}
+                </h3>
+
+                {/* Issuer */}
+                <p className="mt-1 text-center font-mono text-[8px] uppercase tracking-wider text-zinc-400 sm:text-[9px]">
+                  {cert.issuer}
+                </p>
+
+                {/* Verify */}
+                <div className="mt-1 text-center">
+                  <span className="pixel-font text-[8px] font-bold tracking-[0.15em] text-zinc-300 transition-colors duration-300 group-hover:text-zinc-700 dark:text-zinc-700 dark:group-hover:text-zinc-300 sm:text-[9px]">
+                    ( VERIFY )
+                  </span>
+                </div>
               </div>
-
-              {/* Title */}
-              <h3 className="ibm-mono px-1 text-[11px] font-semibold leading-tight text-zinc-800 dark:text-zinc-200 sm:text-xs">
-                {cert.title}
-              </h3>
-
-              {/* Issuer */}
-              <p className="mt-1 font-mono text-[8px] uppercase tracking-wider text-zinc-500 sm:text-[9px]">
-                {cert.issuer}
-              </p>
-
-              {/* Verify */}
-              <span className="mt-4 font-mono text-[8px] tracking-[0.15em] text-zinc-400 transition-colors group-hover:text-zinc-900 dark:text-zinc-600 dark:group-hover:text-white sm:text-[9px]">
-                ‹ VERIFY ›
-              </span>
             </button>
           ))}
         </div>
 
-        {/* Certificate Modal — OUTSIDE the grid */}
+        {/* Certificate Modal */}
         {selectedCertificate && (
           <div
             className="fixed inset-0 z-[999] flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm"
             onClick={() => setSelectedCertificate(null)}
           >
             <div
-              className="relative max-h-[90vh] max-w-5xl overflow-hidden rounded-xl border border-zinc-800 bg-[#111113] shadow-2xl"
+              className="relative max-h-[90vh] w-full max-w-5xl overflow-hidden rounded-xl border border-zinc-800 bg-[#111113] shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Close */}
               <button
+                type="button"
                 onClick={() => setSelectedCertificate(null)}
-                className="absolute right-3 top-3 z-10 flex h-9 w-9 items-center justify-center rounded-full border border-zinc-700 bg-black/70 text-xl text-zinc-400 transition hover:bg-white hover:text-black"
+                className="absolute right-3 top-3 z-10 flex h-9 w-9 items-center justify-center rounded-full border border-zinc-700 bg-black/70 text-xl text-zinc-400 transition-all duration-200 hover:scale-105 hover:bg-white hover:text-black"
                 aria-label="Close certificate"
               >
                 ×
               </button>
 
-              {/* Certificate */}
-              <img
-                src={selectedCertificate.image}
-                alt={`${selectedCertificate.title} certificate`}
-                className="max-h-[80vh] max-w-full object-contain"
-              />
+              {/* Certificate Image */}
+              <div className="flex max-h-[75vh] items-center justify-center overflow-auto">
+                <img
+                  src={selectedCertificate.image}
+                  alt={`${selectedCertificate.title} certificate`}
+                  className="max-h-[75vh] max-w-full object-contain"
+                />
+              </div>
 
               {/* Information */}
               <div className="border-t border-zinc-800 px-5 py-4">
@@ -294,7 +345,7 @@ function About() {
                   {selectedCertificate.title}
                 </h2>
 
-                <p className="mt-1 font-mono text-[10px] tracking-wider text-zinc-500">
+                <p className="mt-1 font-mono text-[10px] uppercase tracking-wider text-zinc-500">
                   {selectedCertificate.issuer}
                 </p>
               </div>

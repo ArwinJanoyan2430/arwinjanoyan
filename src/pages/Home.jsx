@@ -104,7 +104,7 @@ function Home() {
               <Github size={20} />
             </a>
             <a
-              onClick={() => setShowEmailCard(true)}
+              onClick={() => setShowEmailCard(true)} rel="noopener noreferrer"
               className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-zinc-300 transition-all duration-300 hover:-translate-y-1 hover:bg-zinc-600 hover:text-white dark:border-zinc-700 dark:hover:bg-white dark:hover:text-black"
             >
               <MailIcon size={20} />
@@ -113,7 +113,7 @@ function Home() {
               <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm">
                 <div className="w-100 rounded-2xl bg-white p-8 shadow-xl dark:bg-zinc-900">
                   <div className="flex items-center justify-between">
-                    <h2 className="text-xs inter-font text-zinc-400 font-light tracking-widest">
+                    <h2 className="text-[10px] inter-font justify-start text-zinc-400 font-light tracking-widest">
                       GET IN TOUCH
                     </h2>
 
@@ -138,7 +138,7 @@ function Home() {
 
                     <button
                       onClick={copyEmail}
-                      className="rounded-lg cursor-pointer ibm-mono text-sm bg-zinc-800 px-3 py-1.5 text-white hover:bg-zinc-300 dark:bg-white dark:text-black"
+                      className="rounded-lg cursor-pointer ibm-mono text-sm bg-zinc-800 px-3 py-1.5 text-white hover:bg-zinc-700 dark:hover:bg-zinc-300 dark:bg-white dark:text-black"
                     >
                       {copied ? "Copied" : "Copy"}
                     </button>
@@ -151,7 +151,7 @@ function Home() {
                         "_blank",
                       )
                     }
-                    className="mt-2 cursor-pointer w-full rounded-lg border border-zinc-300 py-2 text-sm ibm-mono font-semibold transition hover:border-zinc-100 dark:border-zinc-700"
+                    className="mt-2 cursor-pointer w-full rounded-lg border border-zinc-300 py-2 text-sm ibm-mono font-semibold transition hover:border-zinc-400  dark:border-zinc-700"
                   >
                     Send Email
                   </button>
