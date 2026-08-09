@@ -169,7 +169,7 @@ function Contact() {
               required
               value={form.name}
               onChange={(event) => updateField("name", event.target.value)}
-              placeholder="Jane Doe"
+              placeholder="John Doe"
               className="ibm-mono mt-2 w-full border-b border-zinc-300 bg-transparent px-0 py-3 text-sm outline-none transition placeholder:text-zinc-400 focus:border-zinc-950 dark:border-zinc-700 dark:focus:border-white"
             />
           </label>
@@ -183,7 +183,7 @@ function Contact() {
               type="email"
               value={form.email}
               onChange={(event) => updateField("email", event.target.value)}
-              placeholder="jane@example.com"
+              placeholder="john@example.com"
               className="ibm-mono mt-2 w-full border-b border-zinc-300 bg-transparent px-0 py-3 text-sm outline-none transition placeholder:text-zinc-400 focus:border-zinc-950 dark:border-zinc-700 dark:focus:border-white"
             />
           </label>
