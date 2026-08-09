@@ -207,21 +207,33 @@ function About() {
         </div>
       </div>
 
-      <div className="relative h-[200px] overflow-hidden translate-y-10 md:translate-y-[100px]">
-        <LogoLoop
-          logos={techLogos}
-          speed={100}
-          direction="left"
-          logoHeight={60}
-          gap={60}
-          hoverSpeed={0}
-          scaleOnHover
-          fadeOut
-          ariaLabel="Technology partners"
-        />
+      <div className="mt-12 md:mt-16">
+        <div className="mb-5 flex items-center gap-4">
+          <div>
+            <p className="ibm-mono text-[11px] uppercase tracking-[0.24em] text-zinc-500 dark:text-zinc-400">
+              Tech stack
+            </p>
+            <h2 className="pixel-font mt-1 text-lg">Tools I use</h2>
+          </div>
+          <div className="h-px flex-1 bg-zinc-200 dark:bg-zinc-800" />
+        </div>
+
+        <div className="relative h-24 overflow-hidden">
+          <LogoLoop
+            logos={techLogos}
+            speed={100}
+            direction="left"
+            logoHeight={60}
+            gap={60}
+            hoverSpeed={0}
+            scaleOnHover
+            fadeOut
+            ariaLabel="Technologies I use"
+          />
+        </div>
       </div>
 
-      <div className="mx-auto max-w-7xl  px-0 md:px-0 md:py-30">
+      <div className="mx-auto max-w-7xl py-20  px-0 md:px-0 md:py-25">
         <header className="mb-12 md:mb-16">
           <h1 className="pixel-font font-bold md:text-3xl text-xl sm:text-3xl">
             Certifications
@@ -242,7 +254,7 @@ function About() {
           className="
     grid grid-cols-2 gap-0
     rounded-xl
-    p-0
+    p-0 md:p-2
     max-w-5xl
     mx-auto
     transition-colors duration-300
@@ -255,7 +267,7 @@ function About() {
               key={cert.title}
               onClick={() => setSelectedCertificate(cert)}
               className={`
-  group relative z-0 -mx-1
+  group relative z-0 -mx-2 -my-2 md:-my-2
   rounded-lg
   border border-zinc-200
   bg-white

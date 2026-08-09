@@ -10,6 +10,7 @@ import Projects from "../pages/Projects";
 import Experiences from "../pages/Experiences";
 import Recommendations from "../pages/Recommendations";
 import About from "../pages/About";
+import Contact from "../pages/Contact";
 
 function PortfolioV2() {
   const [dark, setDark] = useState(false);
@@ -57,6 +58,10 @@ function PortfolioV2() {
 
           <section id="projects" className="min-h-screen">
             <Projects />
+          </section>
+
+          <section id="contact" className="min-h-screen">
+            <Contact />
           </section>
         </main>
       </div>
