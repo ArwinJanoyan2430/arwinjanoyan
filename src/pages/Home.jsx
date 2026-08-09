@@ -3,11 +3,9 @@ import pfp from "../assets/v2/pfp.png";
 import QuoteTransition from "../animations/QuoteTransition";
 import { Github, Linkedin, MailIcon, X } from "lucide-react";
 import { useState } from "react";
+import { FaFacebook } from "react-icons/fa";
 
 function Home() {
-  const [showEmailCard, setShowEmailCard] = useState(false);
-  const [copied, setCopied] = useState(false);
-
   const email = "ajanoyan24@gmail.com";
 
   function copyEmail() {
@@ -124,76 +122,22 @@ function Home() {
             </a>
 
             <a
-              href=""
+              href="https://www.facebook.com/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub"
               className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-zinc-300 transition-all duration-300 hover:-translate-y-1 hover:bg-zinc-600 hover:text-white dark:border-zinc-700 dark:hover:bg-white dark:hover:text-black"
             >
-              <Github size={20} />
+              <FaFacebook size={20} />
             </a>
 
-            <button
-              onClick={() => setShowEmailCard(true)}
+            <a
+              href = "#contact"
               aria-label="Open email"
               className="inline-flex h-12 w-12 cursor-pointer items-center justify-center rounded-full border border-zinc-300 transition-all duration-300 hover:-translate-y-1 hover:bg-zinc-600 hover:text-white dark:border-zinc-700 dark:hover:bg-white dark:hover:text-black"
             >
               <MailIcon size={20} />
-            </button>
-
-            {/* Email Modal */}
-            {showEmailCard && (
-              <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 px-4 backdrop-blur-sm">
-                <div className="w-full max-w-md rounded-2xl bg-white p-5 shadow-xl sm:p-8 dark:bg-zinc-900">
-                  <div className="flex items-center justify-between">
-                    <h2 className="inter-font text-[10px] font-light tracking-widest text-zinc-400">
-                      GET IN TOUCH
-                    </h2>
-
-                    <button
-                      onClick={() => setShowEmailCard(false)}
-                      className="cursor-pointer text-zinc-500 transition hover:bg-zinc-100 hover:text-black dark:hover:bg-zinc-800 dark:hover:text-white"
-                      aria-label="Close"
-                    >
-                      <X size={18} />
-                    </button>
-                  </div>
-
-                  <h2 className="pixel-font mt-2 text-xl font-semibold">
-                    Say hello
-                  </h2>
-
-                  <p className="inter-font mt-2 text-sm text-zinc-600 dark:text-zinc-100">
-                    For work, collabs, or just to say hi — drop me a line.
-                  </p>
-
-                  <div className="ibm-mono mt-4 flex items-center justify-between rounded-lg border border-zinc-300 p-1 dark:border-zinc-700 dark:bg-zinc-800">
-                    <span className="mx-2 min-w-0 truncate text-sm">
-                      {email}
-                    </span>
-
-                    <button
-                      onClick={copyEmail}
-                      className="ibm-mono shrink-0 cursor-pointer rounded-lg bg-zinc-800 px-3 py-1.5 text-sm text-white hover:bg-zinc-700 dark:bg-white dark:text-black dark:hover:bg-zinc-300"
-                    >
-                      {copied ? "Copied" : "Copy"}
-                    </button>
-                  </div>
-
-                  <button
-                    onClick={() =>
-                      window.open(
-                        "https://mail.google.com/mail/?view=cm&fs=1&to=ajanoyan24@gmail.com&su=Portfolio%20Inquiry",
-                        "_blank",
-                      )
-                    }
-                    className="ibm-mono mt-2 w-full cursor-pointer rounded-lg border border-zinc-300 py-2 text-sm font-semibold transition hover:border-zinc-400 dark:border-zinc-700"
-                  >
-                    Send Email
-                  </button>
-                </div>
-              </div>
-            )}
+            </a>
           </div>
         </motion.div>
       </motion.div>

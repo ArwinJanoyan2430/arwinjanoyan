@@ -1,5 +1,6 @@
 import { Check, Copy, Github, Linkedin, Mail, Send } from "lucide-react";
 import { useState } from "react";
+import { FaFacebook } from "react-icons/fa";
 
 const email = "ajanoyan24@gmail.com";
 
@@ -59,7 +60,7 @@ function Contact() {
   }
 
   return (
-    <section className="mx-auto max-w-5xl px-5 py-20 sm:px-8 md:py-28">
+    <section className="mx-auto max-w-5xl px-5 py-20 sm:px-10 md:py-20">
       <header className="mx-auto max-w-2xl text-center">
         <p className="ibm-mono text-[11px] uppercase tracking-[0.28em] text-zinc-500 dark:text-zinc-400">
           Contact
@@ -133,6 +134,15 @@ function Contact() {
               className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-zinc-100 text-zinc-700 transition hover:bg-zinc-900 hover:text-white dark:bg-zinc-800 dark:text-zinc-200 dark:hover:bg-white dark:hover:text-zinc-950"
             >
               <Linkedin size={17} />
+            </a>
+            <a
+              href="https://www.facebook.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-zinc-100 text-zinc-700 transition hover:bg-zinc-900 hover:text-white dark:bg-zinc-800 dark:text-zinc-200 dark:hover:bg-white dark:hover:text-zinc-950"
+            >
+              <FaFacebook size={17} />
             </a>
           </div>
           <p className="ibm-mono mt-5 text-[10px] uppercase tracking-[0.2em] text-zinc-500">

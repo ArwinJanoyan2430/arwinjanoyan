@@ -11,6 +11,7 @@ import Experiences from "../pages/Experiences";
 import Recommendations from "../pages/Recommendations";
 import About from "../pages/About";
 import Contact from "../pages/Contact";
+import Footer from "../pages/Footer";
 
 function PortfolioV2() {
   const [dark, setDark] = useState(false);
@@ -64,6 +65,7 @@ function PortfolioV2() {
             <Contact />
           </section>
         </main>
+        <Footer />
       </div>
     </div>
   );

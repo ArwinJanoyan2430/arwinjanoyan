@@ -28,7 +28,7 @@ import simplilearn from "../assets/v2/simplilearn.png";
 
 //icons
 import { FcGoogle } from "react-icons/fc";
-import { Database } from "lucide-react";
+import { ArrowUpRight, Database, Trophy } from "lucide-react";
 import IntelliPaat from "../assets/v2/IntelliPaat.png";
 import harvardLogo from "../assets/v2/harvard-logo.png";
 
@@ -265,11 +265,22 @@ function About() {
           {certifications.map((cert, index) => (
             <button
               key={cert.title}
-              onClick={() => setSelectedCertificate(cert)}
+              onClick={() => {
+                if (cert.link) {
+                  window.open(cert.link, "_blank", "noopener,noreferrer");
+                  return;
+                }
+                setSelectedCertificate(cert);
+              }}
+              aria-label={
+                cert.link
+                  ? `View ${cert.title} achievement on Facebook`
+                  : `View ${cert.title} certificate`
+              }
               className={`
   group relative z-0 -mx-2 -my-2 md:-my-2
   rounded-lg
-  border border-zinc-200
+  border border-zinc-100
   bg-white
   p-2
   shadow-lg
@@ -280,7 +291,7 @@ function About() {
   hover:z-20
   hover:-translate-y-6
   hover:rotate-0
- dark:border-zinc-900
+ dark:border-zinc-950
 dark:bg-gradient-to-b
 dark:from-zinc-900
 dark:via-zinc-900
@@ -314,13 +325,39 @@ dark:shadow-black/30
                 {/* Verify */}
                 <div className="mt-1 text-center">
                   <span className="pixel-font text-[8px] font-bold tracking-[0.15em] text-zinc-300 transition-colors duration-300 group-hover:text-zinc-700 dark:text-zinc-700 dark:group-hover:text-zinc-300 sm:text-[9px]">
-                    ( VERIFY )
+                    {cert.link ? "( VIEW ACHIEVEMENT )" : "( VERIFY )"}
                   </span>
                 </div>
               </div>
             </button>
           ))}
         </div>
+
+        <a
+          href="https://www.facebook.com/photo.php?fbid=611827651697333&set=pb.100086103111194.-2207520000&type=3"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group relative mx-auto mt-10 flex max-w-5xl items-center justify-between gap-5 overflow-hidden rounded-2xl border border-amber-200 bg-gradient-to-br from-amber-50 via-white to-amber-100 p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-amber-400 hover:shadow-xl hover:shadow-amber-950/10 dark:border-amber-500/25 dark:from-amber-500/15 dark:via-zinc-900 dark:to-zinc-900 dark:hover:border-amber-400/60 sm:p-6"
+        >
+          <div className="pointer-events-none absolute -right-12 -top-12 h-36 w-36 rounded-full border border-amber-300/50 dark:border-amber-400/15" />
+          <div className="relative flex items-center gap-4 sm:gap-5">
+            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-amber-400 text-amber-950 shadow-lg shadow-amber-500/25 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
+              <Trophy size={23} aria-hidden="true" />
+            </span>
+            <div>
+              <p className="ibm-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-amber-700 dark:text-amber-300">
+                Achievement unlocked · 2025
+              </p>
+              <h3 className="pixel-font mt-1.5 text-sm leading-snug text-zinc-900 dark:text-white sm:text-base">
+                MMCM CodeClash Programming Competition — 2nd Place
+              </h3>
+            </div>
+          </div>
+          <span className="relative inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-amber-300 bg-white/70 text-amber-800 transition-all duration-300 group-hover:translate-x-1 group-hover:bg-amber-400 group-hover:text-amber-950 dark:border-amber-400/30 dark:bg-white/5 dark:text-amber-300 dark:group-hover:bg-amber-400">
+            <ArrowUpRight size={18} aria-hidden="true" />
+            <span className="sr-only">View achievement post</span>
+          </span>
+        </a>
 
         {/* Certificate Modal */}
         {selectedCertificate && (
