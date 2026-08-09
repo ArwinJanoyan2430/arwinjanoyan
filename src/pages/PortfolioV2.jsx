@@ -43,8 +43,8 @@ function PortfolioV2() {
             <Home />
           </section>
 
-          <section id="projects" className="min-h-screen">
-            <Projects />
+          <section id="about" className="min-h-screen">
+            <About />
           </section>
 
           <section id="experiences" className="min-h-screen">
@@ -55,8 +55,8 @@ function PortfolioV2() {
             <Recommendations />
           </section>
 
-          <section id="about" className="min-h-screen">
-            <About />
+          <section id="projects" className="min-h-screen">
+            <Projects />
           </section>
         </main>
       </div>

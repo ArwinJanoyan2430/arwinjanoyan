@@ -25,7 +25,7 @@ function Home() {
       initial={{ opacity: 0, y: 60 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className="selection:bg-black grid w-full max-w-7xl items-center gap-12 px-6 md:grid-cols-[280px_1fr]"
+      className="relative grid min-h-screen w-full max-w-7xl items-center gap-12 px-6 md:grid-cols-[280px_1fr]"
     >
       {/* Profile */}
       <motion.div
@@ -104,7 +104,8 @@ function Home() {
               <Github size={20} />
             </a>
             <a
-              onClick={() => setShowEmailCard(true)} rel="noopener noreferrer"
+              onClick={() => setShowEmailCard(true)}
+              rel="noopener noreferrer"
               className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-zinc-300 transition-all duration-300 hover:-translate-y-1 hover:bg-zinc-600 hover:text-white dark:border-zinc-700 dark:hover:bg-white dark:hover:text-black"
             >
               <MailIcon size={20} />
@@ -161,6 +162,11 @@ function Home() {
           </div>
         </motion.div>
       </motion.div>
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2">
+        <p className="ibm-mono text-xs tracking-widest text-zinc-500">
+          SCROLL TO EXPLORE
+        </p>
+      </div>
     </motion.div>
   );
 }

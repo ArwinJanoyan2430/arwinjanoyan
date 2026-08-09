@@ -38,9 +38,9 @@ function NavBar({ dark, setDark }) {
 
   const navLinks = [
     ["home", "#home"],
-    ["projects", "#projects"],
-    ["experiences", "#experiences"],
     ["about", "#about"],
+    ["experiences", "#experiences"],
+    ["projects", "#projects"],
     ["contact", "#contact"],
   ];
 
