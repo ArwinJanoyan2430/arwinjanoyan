@@ -1,6 +1,7 @@
 import ScrollReveal from "../animations/ScrollReveal";
 import ProjectCard from "@/modal/ProjectsCard";
 import projects from "@/data/projects";
+import { Lock } from "lucide-react";
 
 function Projects() {
   return (
@@ -18,6 +19,7 @@ function Projects() {
           Where ideas became applications.
         </ScrollReveal>
       </header>
+      
 
       {/* Project Cards */}
       <div className="space-y-8">

@@ -1,8 +1,12 @@
 import { Check, Copy, Github, Linkedin, Mail, Send } from "lucide-react";
 import { useState } from "react";
 import { FaFacebook } from "react-icons/fa";
+import emailjs from "@emailjs/browser";
 
 const email = "ajanoyan24@gmail.com";
+const SERVICE_ID = "service_e2nmypf";
+const TEMPLATE_ID = "template_eukgmuo";
+const PUBLIC_KEY = "Bqgik_6mGtN5uL5ks";
 
 function Contact() {
   const [copied, setCopied] = useState(false);
@@ -22,26 +26,12 @@ function Contact() {
     setErrorMessage("");
 
     try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
-      const contentType = response.headers.get("content-type") || "";
-      const data = contentType.includes("application/json")
-        ? await response.json()
-        : {};
-
-      if (!response.ok) {
-        const localApiUnavailable =
-          import.meta.env.DEV && response.status === 404;
-        throw new Error(
-          data.message ||
-            (localApiUnavailable
-              ? "Contact API is unavailable locally. Run `vercel dev` to test the form."
-              : "Unable to send message"),
-        );
-      }
+      await emailjs.sendForm(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        event.currentTarget,
+        PUBLIC_KEY,
+      );
 
       setForm({ name: "", email: "", message: "" });
       setStatus("success");
@@ -177,6 +167,7 @@ function Contact() {
             </span>
             <input
               required
+              name="user_name"
               value={form.name}
               onChange={(event) => updateField("name", event.target.value)}
               placeholder="John Doe"
@@ -191,6 +182,7 @@ function Contact() {
             <input
               required
               type="email"
+              name="user_email"
               value={form.email}
               onChange={(event) => updateField("email", event.target.value)}
               placeholder="john@example.com"
@@ -206,6 +198,7 @@ function Contact() {
           <textarea
             required
             rows={5}
+            name="message"
             value={form.message}
             onChange={(event) => updateField("message", event.target.value)}
             placeholder="Tell me a little about your project or idea..."
