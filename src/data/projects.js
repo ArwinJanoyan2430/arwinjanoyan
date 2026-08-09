@@ -47,7 +47,7 @@ const projects = [
       "GitHub",
       "Vercel",
     ],
-    liveLink: "#",
+    liveLink: "https://kumprastock.vercel.app/",
     githubLink: "#",
     private: false,
   },
