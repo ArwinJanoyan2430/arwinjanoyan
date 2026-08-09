@@ -2,6 +2,7 @@ import ScrollReveal from "@/animations/ScrollReveal";
 import TiltedCard from "@/animations/TitledCard";
 import { useEffect, useState } from "react";
 import LogoLoop from "@/animations/LogoLoop";
+import Carousel from "@/animations/Carousel";
 import {
   SiReact,
   SiNextdotjs,
@@ -19,10 +20,18 @@ import {
   SiVercel,
   SiHtml5,
   SiPython,
+  SiTypescript,
 } from "react-icons/si";
 
-//images
+//pfp
 import pfp2 from "../assets/v2/pfp2.png";
+
+//carousel
+import g2 from "../assets/p1.jpg";
+import g1 from "../assets/g1.jpg";
+import p1 from "../assets/g2.jpg";
+
+//image-icons
 import surge from "../assets/v2/surge-logo.png";
 import simplilearn from "../assets/v2/simplilearn.png";
 
@@ -44,6 +53,12 @@ import harvard from "../assets/v2/harvard.png";
 function About() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const [selectedCertificate, setSelectedCertificate] = useState(null);
+  const [showTechStack, setShowTechStack] = useState(false);
+  const [showGallery, setShowGallery] = useState(false);
+  const [activeGalleryIndex, setActiveGalleryIndex] = useState(0);
+
+  const galleryCardWidth = 500;
+  const galleryCardHeight = 500;
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
@@ -135,9 +150,55 @@ function About() {
     { node: <SiGithub />, title: "GitHub" },
     { node: <SiVite />, title: "Vite" },
     { node: <SiExpo />, title: "Expo" },
-    { node: <SiPostman />, title: "Postman" },
     { node: <SiVercel />, title: "Vercel" },
     { node: <SiPython />, title: "Python" },
+  ];
+  const techGroups = [
+    {
+      title: "Front End",
+      items: [
+        "JavaScript",
+        "TypeScript",
+        "React",
+        "React Native",
+        "Next.js",
+        "Tailwind CSS",
+        "CSS3",
+        "Vite",
+        "Expo",
+      ],
+    },
+    {
+      title: "Back End",
+      items: [
+        "Node.js",
+        "Express.js",
+        "Supabase",
+        "MongoDB",
+        "MySQL",
+        "AsyncStorage",
+      ],
+    },
+    {
+      title: "Data Analytics",
+      items: ["Python", "Excel", "Tableau"],
+    },
+    {
+      title: "Other Tools",
+      items: ["Git", "GitHub", "Vercel", "ChatGpt 5.6", "Gemini", "VS Code"],
+    },
+  ];
+
+  const galleryItems = [
+    {
+      image: p1,
+    },
+    {
+      image: g1,
+    },
+    {
+      image: g2,
+    },
   ];
 
   return (
@@ -149,10 +210,10 @@ function About() {
             imageSrc={pfp2}
             altText="Arwin Janoyan"
             captionText="Arwin Janoyan"
-            containerHeight={isMobile ? "280px" : "300px"}
-            containerWidth={isMobile ? "280px" : "300px"}
-            imageHeight={isMobile ? "280px" : "300px"}
-            imageWidth={isMobile ? "280px" : "300px"}
+            containerHeight="300px"
+            containerWidth="300px"
+            imageHeight="300px"
+            imageWidth="300px"
             rotateAmplitude={10}
             scaleOnHover={1.05}
             showMobileWarning={false}
@@ -172,35 +233,35 @@ function About() {
 
         {/* About */}
         <div className="max-w-xl text-center md:text-left">
-          <h2 className="pixel-font text-2xl font-semibold">Hi, I'm Arwin</h2>
+          <h2 className="pixel-font text-xl font-semibold sm:text-2xl">Hi, I'm Arwin</h2>
 
-          <p className="mt-6 text-[15px] leading-8 text-zinc-600 dark:text-zinc-400">
+          <p className="mt-6 text-sm leading-7 text-zinc-600 dark:text-zinc-400 sm:text-[15px] sm:leading-8">
             I'm an Information Technology student at the University of Mindanao
             with a passion for building modern web applications and data-driven
             solutions.
           </p>
 
-          <p className="mt-5 text-[15px] leading-8 text-zinc-600 dark:text-zinc-400">
+          <p className="mt-5 text-sm leading-7 text-zinc-600 dark:text-zinc-400 sm:text-[15px] sm:leading-8">
             I enjoy developing responsive websites, business systems, and
             interactive dashboards that solve real-world problems. My interests
             include full-stack development, UI/UX design, and data analytics.
           </p>
 
-          <p className="mt-5 text-[15px] leading-8 text-zinc-600 dark:text-zinc-400">
+          <p className="mt-5 text-sm leading-7 text-zinc-600 dark:text-zinc-400 sm:text-[15px] sm:leading-8">
             Outside academics, I continuously improve my skills through personal
             projects, certifications, and programming competitions.
           </p>
 
           <div className="mt-8 flex flex-wrap justify-center gap-3 md:justify-start">
-            <span className="rounded-full border border-zinc-300 px-4 py-2 text-sm dark:border-zinc-700">
+            <span className="rounded-full border border-zinc-300 px-3 py-2 text-xs dark:border-zinc-700 sm:px-4 sm:py-2 sm:text-sm">
               Full Stack
             </span>
 
-            <span className="rounded-full border border-zinc-300 px-4 py-2 text-sm dark:border-zinc-700">
+            <span className="rounded-full border border-zinc-300 px-3 py-2 text-xs dark:border-zinc-700 sm:px-4 sm:py-2 sm:text-sm">
               UI/UX
             </span>
 
-            <span className="rounded-full border border-zinc-300 px-4 py-2 text-sm dark:border-zinc-700">
+            <span className="rounded-full border border-zinc-300 px-3 py-2 text-xs dark:border-zinc-700 sm:px-4 sm:py-2 sm:text-sm">
               Data Analytics
             </span>
           </div>
@@ -232,10 +293,151 @@ function About() {
           />
         </div>
       </div>
+      <div className="mt-8 flex flex-col items-center gap-4 md:flex-row md:items-start md:justify-center">
+        <div className="flex w-full flex-col items-center md:w-auto md:items-start md:pr-2">
+          <button
+            type="button"
+            onClick={() => setShowTechStack((prev) => !prev)}
+            className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full border border-zinc-300 bg-white/90 px-4 py-2.5 text-sm font-medium text-zinc-700 shadow-sm transition duration-300 hover:border-zinc-400 hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900/90 dark:text-zinc-200 dark:hover:border-zinc-500 dark:hover:bg-zinc-800"
+          >
+            <span className="absolute inset-0 translate-x-[-120%] bg-gradient-to-r from-transparent via-white/40 to-transparent transition duration-700 group-hover:translate-x-[120%] dark:via-white/10" />
+            <span className="relative">
+              {showTechStack ? "Hide" : "View"} Tech Stack
+            </span>
+            <span
+              className={`relative text-xs transition-transform duration-300 ${showTechStack ? "rotate-180" : ""}`}
+            >
+              ⌄
+            </span>
+          </button>
+        </div>
 
+        <div className="flex w-full flex-col items-center md:w-auto md:items-start md:pl-2">
+          <button
+            type="button"
+            onClick={() => setShowGallery((prev) => !prev)}
+            className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full border border-zinc-300 bg-white/90 px-4 py-2.5 text-sm font-medium text-zinc-700 shadow-sm transition duration-300 hover:border-zinc-400 hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900/90 dark:text-zinc-200 dark:hover:border-zinc-500 dark:hover:bg-zinc-800"
+          >
+            <span className="absolute inset-0 translate-x-[-120%] bg-gradient-to-r from-transparent via-white/40 to-transparent transition duration-700 group-hover:translate-x-[120%] dark:via-white/10" />
+            <span className="relative">
+              {showGallery ? "Hide Gallery" : "View Gallery"}
+            </span>
+            <span
+              className={`relative text-xs transition-transform duration-300 ${showGallery ? "rotate-180" : ""}`}
+            >
+              ⌄
+            </span>
+          </button>
+        </div>
+        <div></div>
+      </div>
+      {showGallery && (
+        <div className="mx-auto mt-4 w-full max-w-[min(100%,400px)] animate-[fadeIn_0.35s_ease-out] overflow-hidden rounded-[32px] border border-zinc-200/80 bg-[linear-gradient(135deg,_rgba(255,255,255,0.98),_rgba(244,244,245,0.96))] p-3 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.2)] dark:border-zinc-800 dark:bg-[linear-gradient(135deg,_rgba(24,24,27,0.98),_rgba(9,9,11,1))] sm:max-w-[min(100%,380px)] md:max-w-[min(100%,500px)]">
+          <div className="mb-3 flex items-center justify-between">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-zinc-500">
+              Depth gallery
+            </p>
+            <span className="rounded-full border border-zinc-300 bg-white/80 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-600 dark:border-zinc-700 dark:bg-zinc-900/80 dark:text-zinc-300">
+              {activeGalleryIndex + 1}/{galleryItems.length}
+            </span>
+          </div>
+
+          <div className="overflow-hidden rounded-[24px] border border-zinc-200 bg-white/80 p-3 shadow-sm dark:border-zinc-800 dark:bg-zinc-900/70">
+            <div className="mx-auto h-80 w-full max-w-[500px] sm:h-[360px] sm:max-w-[320px] md:h-[450px] md:max-w-[500px]">
+              <Carousel
+                items={galleryItems}
+                cardWidth={galleryCardWidth}
+                cardHeight={galleryCardHeight}
+                radius={18}
+                depth={isMobile ? 90 : 100}
+                spread={isMobile ? 48 : 70}
+                tilt={isMobile ? 14 : 20}
+                tiltDirection="right"
+                perspective={isMobile ? 1000 : 1200}
+                visibleCards={isMobile ? 2 : 3}
+                falloff={0.2}
+                blur={isMobile ? 3 : 4}
+                duration={700}
+                autoplay={false}
+                loop
+                showControls
+                showIndicators
+                onChange={(index) => setActiveGalleryIndex(index)}
+              />
+            </div>
+          </div>
+        </div>
+      )}
+      
+      {showTechStack && (
+        <div className="mt-4 w-full min-w-[280px] animate-[fadeIn_0.35s_ease-out] overflow-hidden rounded-[32px] border border-zinc-200/80 bg-[linear-gradient(135deg,_rgba(255,255,255,0.98),_rgba(244,244,245,0.96))] p-3 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.25)] dark:border-zinc-800 dark:bg-[linear-gradient(135deg,_rgba(24,24,27,0.98),_rgba(9,9,11,1))] md:min-w-[420px]">
+          <div className="rounded-[24px] p-4 backdrop-blur-xl dark:border-zinc-800 dark:bg-zinc-900/70">
+            <div className="flex flex-wrap items-start justify-between gap-3">
+              <div>
+                <p className="ibm-mono text-[10px] uppercase tracking-[0.24em] text-zinc-500">
+                  Stack overview
+                </p>
+                <h3 className="pixel-font mt-1 text-lg text-zinc-900 dark:text-white">
+                  My toolkit
+                </h3>
+                <p className="mt-2 max-w-xl text-sm leading-6 text-zinc-600 dark:text-zinc-400">
+                  A quick look at the languages, frameworks, and tools I use to
+                  build modern products.
+                </p>
+              </div>
+              <div className="rounded-full border border-zinc-200 bg-zinc-950 px-3 py-1 text-xs font-semibold text-white shadow-sm dark:border-zinc-700 dark:bg-white dark:text-zinc-950">
+                {techGroups.reduce(
+                  (count, group) => count + group.items.length,
+                  0,
+                )}{" "}
+                tools
+              </div>
+            </div>
+
+            <div className="mt-5 grid gap-3 md:grid-cols-2">
+              {techGroups.map((group, index) => (
+                <div
+                  key={group.title}
+                  className={`group relative overflow-hidden rounded-[22px] border border-zinc-200 p-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-zinc-800 ${
+                    index % 2 === 0
+                      ? "bg-zinc-50/90 dark:bg-zinc-950/80"
+                      : "bg-white/90 dark:bg-zinc-900/80"
+                  }`}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-zinc-900/5 via-transparent to-zinc-900/10 opacity-0 transition duration-300 group-hover:opacity-100 dark:from-white/5 dark:to-white/10" />
+                  <div className="relative flex items-center justify-between">
+                    <div>
+                      <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-zinc-500">
+                        {group.title}
+                      </p>
+                      <h4 className="mt-1 text-base font-semibold text-zinc-900 transition-colors duration-300 group-hover:text-zinc-700 dark:text-zinc-100 dark:group-hover:text-zinc-300">
+                        {group.title}
+                      </h4>
+                    </div>
+                    <span className="rounded-full border border-zinc-200 bg-white px-2.5 py-1 text-[11px] font-semibold text-zinc-600 transition-all duration-300 group-hover:scale-105 group-hover:shadow-sm dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">
+                      {group.items.length}
+                    </span>
+                  </div>
+
+                  <div className="relative mt-3 flex flex-wrap gap-2">
+                    {group.items.map((title) => (
+                      <span
+                        key={title}
+                        className="rounded-full border border-zinc-200 bg-white px-3 py-1.5 text-sm font-medium text-zinc-700 transition-all duration-300 hover:-translate-y-0.5 hover:border-zinc-400 hover:bg-zinc-100 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-200 dark:hover:bg-zinc-700"
+                      >
+                        {title}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
       <div className="mx-auto max-w-7xl py-20  px-0 md:px-0 md:py-25">
         <header className="mb-12 md:mb-16">
-          <h1 className="pixel-font font-bold md:text-3xl text-xl sm:text-3xl">
+          <h1 className="pixel-font text-xl font-bold sm:text-2xl md:text-3xl">
             Certifications
           </h1>
 

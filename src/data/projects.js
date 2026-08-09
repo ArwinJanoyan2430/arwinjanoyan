@@ -1,5 +1,6 @@
 import OmboyStore from "../assets/v2/alingnena.png";
 import Kstock from "../assets/v2/Kstock.png";
+import nike from "../assets/v2/nike.png";
 
 const projects = [
   {
@@ -48,7 +49,29 @@ const projects = [
       "Vercel",
     ],
     liveLink: "https://kumprastock.vercel.app/",
-    githubLink: "#",
+    githubLink: "https://github.com/ArwinJanoyan2430/KumpraStock",
+    private: false,
+  },
+  {
+    id: 3,
+    image: nike,
+    title: "Nike Landing Page",
+    subtitle: "Frontend Practice Project",
+
+    description:
+      "A Nike-inspired landing page created as a frontend practice project to improve my skills in React, responsive design, and modern UI development.",
+
+    technologies: [
+      "React",
+      "JavaScript",
+      "Tailwind CSS",
+      "Git",
+      "GitHub",
+      "Vercel",
+    ],
+
+    liveLink: "https://nike-landingpage-rose.vercel.app/",
+    githubLink: "https://github.com/ArwinJanoyan2430/nike-landingpage",
     private: false,
   },
 ];
