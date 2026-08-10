@@ -1,6 +1,7 @@
 import OmboyStore from "../assets/v2/alingnena.png";
 import Kstock from "../assets/v2/Kstock.png";
 import nike from "../assets/v2/nike.png";
+import aralflow from "../assets/aralflow.png";
 
 const projects = [
   {
@@ -31,7 +32,30 @@ const projects = [
   },
 
   {
-    id: 2,
+    id: 3,
+    image: aralflow,
+    title: "AralFlow",
+    subtitle: "AI-Powered Study Companion",
+    description:
+      "An AI-powered study platform that transforms PDF study materials into focused practice experiences, helping students review, practice, and improve more effectively.",
+    technologies: [
+      "React",
+      "Vite",
+      "Tailwind CSS",
+      "Supabase",
+      "Framer Motion",
+      "JavaScript",
+      "Git",
+      "GitHub",
+      "Vercel",
+    ],
+    liveLink: "https://aralflow.vercel.app/",
+    githubLink: "https://github.com/ArwinJanoyan2430/AralFlow",
+    private: false,
+  },
+
+  {
+    id: 3,
     image: Kstock,
     title: "KumpraStock",
     subtitle: "POS & Inventory System",
@@ -53,7 +77,7 @@ const projects = [
     private: false,
   },
   {
-    id: 3,
+    id: 4,
     image: nike,
     title: "Nike Landing Page",
     subtitle: "Frontend Practice Project",
