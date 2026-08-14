@@ -32,7 +32,7 @@ const projects = [
   },
 
   {
-    id: 3,
+    id: 2,
     image: aralflow,
     title: "AralFlow",
     subtitle: "AI-Powered Study Companion",

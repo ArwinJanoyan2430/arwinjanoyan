@@ -12,6 +12,7 @@ import Recommendations from "../pages/Recommendations";
 import About from "../pages/About";
 import Contact from "../pages/Contact";
 import Footer from "../pages/Footer";
+import Certifications from '../pages/Certifications'
 
 function PortfolioV2() {
   const [dark, setDark] = useState(false);
@@ -45,20 +46,24 @@ function PortfolioV2() {
             <Home />
           </section>
 
-          <section id="about" className="min-h-screen">
+          <section id="about" className="">
             <About />
           </section>
 
-          <section id="experiences" className="min-h-screen">
+          <section id="experiences" className="">
             <Experiences />
           </section>
 
-          <section id="" className="min-h-screen">
-            <Recommendations />
+          <section id="projects" className="">
+            <Projects />
           </section>
 
-          <section id="projects" className="min-h-screen">
-            <Projects />
+          <section id="">
+            <Certifications />
+          </section>
+
+          <section id="">
+            <Recommendations />
           </section>
 
           <section id="contact" className="min-h-screen">

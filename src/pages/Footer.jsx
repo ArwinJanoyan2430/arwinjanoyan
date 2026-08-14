@@ -21,7 +21,7 @@ const socialLinks = [
   },
   {
     label: "Email",
-    href: "mailto:ajanoyan24@gmail.com",
+    href:"https://mail.google.com/mail/?view=cm&fs=1&to=ajanoyan24@gmail.com&su=Portfolio%20Inquiry&body=Hi%20Arwin%2C",
     icon: Mail,
   },
 ];
