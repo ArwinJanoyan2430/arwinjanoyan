@@ -93,7 +93,7 @@ const experiences = [
     company: "Self-Learning",
     location: "Personal Development",
     year: "2023",
-    duration: "Present",
+    duration: "",
 
     skills: ["HTML", "CSS", "JavaScript"],
 
