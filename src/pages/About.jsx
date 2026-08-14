@@ -211,7 +211,7 @@ function About() {
                 className={`group relative min-w-0 overflow-hidden rounded-[18px] border border-zinc-200 p-3 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-zinc-800 sm:rounded-[22px] sm:p-4 ${
                   index % 2 === 0
                     ? "bg-zinc-50/90 dark:bg-zinc-950/80"
-                    : "bg-white/90 dark:bg-zinc-900/80"
+                    : "bg-white/90 dark:bg-zinc-950/80"
                 }`}
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-zinc-900/5 via-transparent to-zinc-900/10 opacity-0 transition duration-300 group-hover:opacity-100 dark:from-white/5 dark:to-white/10" />
