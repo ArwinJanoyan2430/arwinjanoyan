@@ -10,7 +10,7 @@ import RJpending from "../assets/v2/rj/rj-pending.png";
 import RJTranscation from "../assets/v2/rj/rj-transaction.png";
 
 //omboy store
-import OmboyStore from "../assets/v2/alingnena.png";
+import OmboyStore from "../assets/v2/omboystore/omboystore.png";
 import dashboard from "../assets/v2/omboystore/dashboard.png";
 import cashier from "../assets/v2/omboystore/cashier.png";
 import inventory from "../assets/v2/omboystore/inventory.png";
