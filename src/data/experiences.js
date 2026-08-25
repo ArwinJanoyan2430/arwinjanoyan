@@ -1,6 +1,34 @@
 const experiences = [
   {
     title: "Full-Stack Developer",
+    company: "RJ Insurance Services",
+    year: "2026",
+
+    roles: [
+      "Developed a full-stack Insurance and Vehicle Services Management System.",
+      "Built modules for managing clients, vehicles, insurance policies, and service transactions.",
+      "Implemented vehicle service processing for registration, license renewal, transfer of ownership, change of color, and body design.",
+      "Created an organized dashboard for monitoring clients, transactions, and service records.",
+      "Designed searchable and manageable records to simplify daily business operations.",
+      "Integrated Supabase for database management, authentication, and real-time data handling.",
+      "Built a responsive and user-friendly interface using React, Tailwind CSS, and JavaScript.",
+    ],
+
+    skills: [
+      "React",
+      "Tailwind CSS",
+      "Supabase",
+      "JavaScript",
+      "Database Management",
+      "Authentication",
+      "CRUD Operations",
+      "Dashboard",
+      "Responsive Design",
+    ],
+  },
+
+  {
+    title: "Full-Stack Developer",
     company: "OmBoy Store",
     year: "2026",
 
