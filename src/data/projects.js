@@ -16,9 +16,39 @@ import cashier from "../assets/v2/omboystore/cashier.png";
 import inventory from "../assets/v2/omboystore/inventory.png";
 import sales from "../assets/v2/omboystore/salesreport.png";
 
+//bscents
+import b1 from "../assets/v2/bscents/b1.png";
+
 const projects = [
   {
     id: 1,
+    images: [b1],
+    title: "BSCENTS",
+    subtitle: "Curated Fragrance E-Commerce Store",
+
+    description:
+      "A modern e-commerce platform for discovering and shopping a curated collection of fragrances, with a clean and convenient online shopping experience.",
+
+    technologies: [
+      "React",
+      "Vite",
+      "Tailwind CSS",
+      "JavaScript",
+      "Supabase",
+      "React Router",
+      "React Icons",
+      "Git",
+      "GitHub",
+      "Vercel",
+    ],
+
+    private: false,
+    clientProject: true,
+    liveLink: "https://bscents.vercel.app/",
+    githubLink: "#",
+  },
+  {
+    id: 2,
     images: [RJ, RJDashboard, RJTranscation, RJpending, RJClient],
     title: "RJ Insurance Services",
     subtitle: "Insurance / Vehicle Services / Management System",
@@ -39,12 +69,13 @@ const projects = [
       "Vercel",
     ],
     private: true,
+    clientProject: true,
     liveLink: "#",
     githubLink: "#",
   },
 
   {
-    id: 2,
+    id: 3,
     images: [OmboyStore, dashboard, cashier, inventory, sales],
     title: "Omboy Store",
     subtitle: "Smart POS / Inventory / Sales Analytics",
@@ -66,12 +97,13 @@ const projects = [
       "Vercel",
     ],
     private: true,
+    clientProject: true,
     liveLink: "#",
     githubLink: "#",
   },
 
   {
-    id: 3,
+    id: 4,
     images: [aralflow],
     title: "AralFlow",
     subtitle: "AI-Powered Study Companion",
@@ -91,10 +123,12 @@ const projects = [
     liveLink: "https://aralflow.vercel.app/",
     githubLink: "https://github.com/ArwinJanoyan2430/AralFlow",
     private: false,
+    variant: "directory",
+    category: "AI Study Platform",
   },
 
   {
-    id: 4,
+    id: 5,
     images: [Kstock],
     title: "KumpraStock",
     subtitle: "POS & Inventory System",
@@ -114,16 +148,16 @@ const projects = [
     liveLink: "https://kumprastock.vercel.app/",
     githubLink: "https://github.com/ArwinJanoyan2430/KumpraStock",
     private: false,
+    variant: "directory",
+    category: "Platform",
   },
   {
-    id: 5,
+    id: 6,
     images: [nike],
     title: "Nike Landing Page",
     subtitle: "Frontend Practice Project",
-
     description:
       "A Nike-inspired landing page created as a frontend practice project to improve my skills in React, responsive design, and modern UI development.",
-
     technologies: [
       "React",
       "JavaScript",
@@ -132,10 +166,11 @@ const projects = [
       "GitHub",
       "Vercel",
     ],
-
     liveLink: "https://nike-landingpage-rose.vercel.app/",
     githubLink: "https://github.com/ArwinJanoyan2430/nike-landingpage",
     private: false,
+    variant: "directory",
+    category: "Front-end Practice",
   },
 ];
 

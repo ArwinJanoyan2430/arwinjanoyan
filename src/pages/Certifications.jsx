@@ -67,18 +67,24 @@ function Certifications() {
   const [selectedCertificate, setSelectedCertificate] = useState(null);
   return (
     <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8 md:px-10 md:py-20">
-      <header className="mb-12 md:mb-16">
-        <h1 className="pixel-font text-xl font-bold sm:text-2xl md:text-3xl">
-          Certifications
-        </h1>
+      <header className="mb-12 grid gap-6 md:mb-16 md:grid-cols-[0.8fr_1.2fr] md:items-end">
+        <div>
+          <p className="ibm-mono text-[10px] font-medium uppercase tracking-[0.28em] text-zinc-500 dark:text-zinc-400">
+            Learning / Credentials
+          </p>
+          <h1 className="pixel-font mt-4 text-xl font-bold sm:text-3xl">
+            Certifications
+          </h1>
+        </div>
 
         <ScrollReveal
           baseOpacity={0}
           enableBlur
           blurStrength={8}
-          textClassName="ibm-mono mt-3 text-sm leading-7 text-zinc-600 dark:text-zinc-400 sm:text-base md:text-lg"
+          containerClassName="md:flex md:justify-end"
+          textClassName="ibm-mono max-w-2xl text-sm leading-7 text-zinc-600 dark:text-zinc-400 sm:text-base md:mx-0 md:text-right"
         >
-          Web development certifications & achievements{" "}
+          Web development certifications and achievements.
         </ScrollReveal>
       </header>
 

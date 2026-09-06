@@ -149,7 +149,7 @@ function Home() {
         </p>
 
         <p className="pixel-font text-[9px] tracking-wide sm:text-xs">
-          Full stack . UI/UX . Data analytics
+          Full-Stack Developer · Software Engineer · UI/UX Designer · Data Analyst
         </p>
 
         <p className="ibm-mono mt-3 text-[9px] tracking-widest text-zinc-500 sm:text-xs">

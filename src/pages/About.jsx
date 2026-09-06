@@ -130,7 +130,8 @@ function About() {
           <p className="mt-5 text-sm leading-7 text-zinc-600 dark:text-zinc-400 sm:text-[15px] sm:leading-8">
             I enjoy developing responsive websites, business systems, and
             interactive dashboards that solve real-world problems. My interests
-            include full-stack development, UI/UX design, and data analytics.
+            include software engineering, full-stack development, UI/UX design,
+            and data analytics.
           </p>
 
           <p className="mt-5 text-sm leading-7 text-zinc-600 dark:text-zinc-400 sm:text-[15px] sm:leading-8">
@@ -141,6 +142,10 @@ function About() {
           <div className="mt-8 flex flex-wrap justify-center gap-3 md:justify-start">
             <span className="rounded-full border border-zinc-300 px-3 py-2 text-xs dark:border-zinc-700 sm:px-4 sm:py-2 sm:text-sm">
               Full Stack
+            </span>
+
+            <span className="rounded-full border border-zinc-300 px-3 py-2 text-xs dark:border-zinc-700 sm:px-4 sm:py-2 sm:text-sm">
+              Software Engineer
             </span>
 
             <span className="rounded-full border border-zinc-300 px-3 py-2 text-xs dark:border-zinc-700 sm:px-4 sm:py-2 sm:text-sm">
