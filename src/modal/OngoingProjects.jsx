@@ -18,7 +18,7 @@ function OngoingProjects() {
       name: "PaddleQ",
       image: PaddleQ,
       description:
-        "PaddleQ streamlines pickleball club management, court bookings, and session tracking by automating player queuing, smart rotation, matchmaking, and live scores.",
+        "PaddleQ streamlines pickleball club management, court bookings, and session tracking by automating player queuing, smart rotation, matchmaking, and live scores. ",
       progress: 50,
       status: "In Progress",
       category: "Development",
