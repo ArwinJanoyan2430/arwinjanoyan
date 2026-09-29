@@ -5,6 +5,7 @@ import ResearchModal from "@/modal/Research";
 import projects from "@/data/projects";
 import sensCaneImage from "@/assets/SENSCANE.png";
 import { ArrowUpRight, Eye } from "lucide-react";
+import OngoingProjects from '../modal/OngoingProjects';
 
 function Projects() {
   const [showResearch, setShowResearch] = useState(false);
@@ -78,6 +79,24 @@ function Projects() {
         </div>
       </section>
 
+      {/* Ongong Projects */}
+      <section className="mt-14 sm:mt-20" aria-labelledby="self-projects-heading">
+        <div className="mb-5 flex items-center gap-4">
+          <h2
+            id="self-projects-heading"
+            className="ibm-mono shrink-0 text-[10px] font-medium uppercase tracking-[0.24em] text-zinc-500 dark:text-zinc-400"
+          >
+            Ongoing projects
+          </h2>
+          <span className="h-px w-full bg-zinc-200 dark:bg-zinc-800" />
+          <span className="ibm-mono shrink-0 text-[9px] uppercase tracking-[0.18em] text-zinc-400 dark:text-zinc-600">
+            {String(selfProjects.length).padStart(2, "0")} projects
+          </span>
+        </div>
+
+        <OngoingProjects/>
+      </section>
+
       <section className="mt-14 sm:mt-20" aria-labelledby="research-heading">
         <div className="mb-5 flex items-center gap-4">
           <p
@@ -149,6 +168,7 @@ function Projects() {
       {showResearch && (
         <ResearchModal onClose={() => setShowResearch(false)} />
       )}
+      
     </section>
   );
 }
