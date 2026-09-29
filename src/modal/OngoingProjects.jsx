@@ -1,5 +1,5 @@
 import PaddleHub from "../assets/v2/paddlehub/PaddleHub.jpg";
-import PaddleQs from "../assets/v2/paddleq/PaddleQ.jpg";
+import PaddleQ from "../assets/v2/paddleq/PaddleQ.jpg";
 
 
 function OngoingProjects() {
@@ -16,7 +16,7 @@ function OngoingProjects() {
     },
     {
       name: "PaddleQ",
-      image: PaddleQs,
+      image: PaddleQ,
       description:
         "PaddleQ streamlines pickleball club management, court bookings, and session tracking by automating player queuing, smart rotation, matchmaking, and live scores. ",
       progress: 50,
