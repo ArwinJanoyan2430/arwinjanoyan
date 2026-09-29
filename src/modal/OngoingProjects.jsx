@@ -11,7 +11,7 @@ function OngoingProjects() {
         "A full-stack platform for managing pickleball club operations, including court bookings, open play sessions, tournaments, player leaderboards, and admin workflows.",
       progress: 75,
       status: "In Progress",
-      category: "Web Design",
+      category: "Development",
       timeline: "Active Development",
     },
     {
