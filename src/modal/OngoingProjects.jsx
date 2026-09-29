@@ -1,5 +1,5 @@
-import PaddleHub from "../assets/v2/paddleHub/PaddleHub.jpg";
-import PaddleQ from "../assets/v2/PaddleQ/PaddleQ.jpg";
+import PaddleHub from "../assets/v2/PaddleHub.jpg";
+import PaddleQ from "../assets/v2/PaddleQ.jpg";
 
 
 function OngoingProjects() {
