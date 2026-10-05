@@ -180,103 +180,105 @@ function About() {
         </div>
       </div>
 
-      <div className="mt-4 w-full min-w-0 overflow-hidden rounded-[28px] border border-zinc-200 bg-white shadow-[0_20px_70px_-25px_rgba(0,0,0,0.2)] dark:border-zinc-800 dark:bg-zinc-950">
+      <div className="mt-4 w-full min-w-0 overflow-hidden rounded-[28px] border border-zinc-200/80 bg-white shadow-[0_24px_80px_-30px_rgba(0,0,0,0.22)] dark:border-zinc-800/80 dark:bg-zinc-950">
         {/* Header */}
-        <div className="border-b border-zinc-200 px-4 py-5 sm:px-6 sm:py-6 dark:border-zinc-800">
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+        <div className="relative overflow-hidden px-5 py-6 sm:px-7 sm:py-8">
+          {/* Decorative background */}
+          <div className="pointer-events-none absolute -right-20 -top-20 h-48 w-48 rounded-full bg-zinc-100 blur-3xl dark:bg-zinc-900" />
+
+          <div className="relative flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
             <div className="min-w-0">
               <div className="mb-3 flex items-center gap-2">
-                <span className="h-2 w-2 rounded-full bg-zinc-900 dark:bg-white" />
-                <p className="ibm-mono text-[10px] font-medium uppercase tracking-[0.25em] text-zinc-500">
-                  Stack overview
-                </p>
+                <span className="h-1.5 w-1.5 rounded-full bg-zinc-950 dark:bg-white" />
+
+                <span className="ibm-mono text-[9px] font-medium uppercase tracking-[0.28em] text-zinc-400">
+                  Technologies & tools
+                </span>
               </div>
 
-              <h3 className="pixel-font text-xl tracking-tight text-zinc-950 dark:text-white sm:text-2xl">
+              <h3 className="pixel-font text-2xl tracking-tight text-zinc-950 dark:text-white sm:text-3xl">
                 My toolkit
               </h3>
 
-              <p className="mt-2 max-w-2xl text-xs leading-5 text-zinc-500 dark:text-zinc-400 sm:text-sm sm:leading-6">
-                Technologies and tools I use to design, develop, and ship modern
-                digital products.
+              <p className="mt-2 max-w-xl text-xs leading-5 text-zinc-500 dark:text-zinc-400 sm:text-sm sm:leading-6">
+                The technologies I use to turn ideas into functional, modern
+                digital experiences.
               </p>
             </div>
 
-            <div className="flex shrink-0 items-center gap-2">
-              <span className="ibm-mono rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1.5 text-[10px] uppercase tracking-wider text-zinc-500 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-400">
-                {techGroups.reduce(
-                  (count, group) => count + group.items.length,
-                  0,
-                )}{" "}
-                tools
-              </span>
+            {/* Tool count */}
+            <div className="flex shrink-0 items-center gap-3">
+              <div className="hidden h-px w-8 bg-zinc-200 sm:block dark:bg-zinc-800" />
+
+              <div className="flex items-baseline gap-2">
+                <span className="text-2xl font-semibold tracking-tight text-zinc-950 dark:text-white">
+                  {techGroups.reduce(
+                    (count, group) => count + group.items.length,
+                    0,
+                  )}
+                </span>
+
+                <span className="ibm-mono text-[9px] uppercase tracking-[0.2em] text-zinc-400">
+                  tools
+                </span>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Stack */}
-        <div className="grid min-w-0 grid-cols-1 divide-y divide-zinc-200 dark:divide-zinc-800 md:grid-cols-2 md:divide-x md:divide-y-0">
+        {/* Categories */}
+        <div className="border-t border-zinc-100 dark:border-zinc-900">
           {techGroups.map((group, index) => (
             <div
               key={group.title}
-              className="group relative min-w-0 p-4 transition-colors duration-300 hover:bg-zinc-50 sm:p-6 dark:hover:bg-zinc-900/60"
+              className="group relative px-5 py-6 transition-colors duration-300 hover:bg-zinc-50/70 sm:px-7 sm:py-7 dark:hover:bg-zinc-900/40"
             >
-              {/* Category number */}
-              <div className="mb-5 flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <span className="ibm-mono text-[10px] text-zinc-400">
+              <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
+                {/* Number / Category */}
+                <div className="flex shrink-0 items-center gap-3 sm:w-40">
+                  <span className="ibm-mono text-[10px] text-zinc-300 transition-colors duration-300 group-hover:text-zinc-600 dark:text-zinc-700 dark:group-hover:text-zinc-400">
                     {String(index + 1).padStart(2, "0")}
                   </span>
 
-                  <div className="h-px w-8 bg-zinc-200 dark:bg-zinc-800" />
+                  <div className="h-px w-5 bg-zinc-200 dark:bg-zinc-800" />
 
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-zinc-500">
+                  <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400">
                     {group.title}
-                  </p>
+                  </span>
                 </div>
 
-                <span className="ibm-mono text-[10px] text-zinc-400">
+                {/* Technologies */}
+                <div className="flex min-w-0 flex-1 flex-wrap gap-2">
+                  {group.items.map((title) => (
+                    <span
+                      key={title}
+                      className="group/item inline-flex max-w-full items-center gap-2 rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1.5 text-xs font-medium text-zinc-700 transition-all duration-300 hover:-translate-y-0.5 hover:border-zinc-400 hover:bg-white hover:shadow-[0_6px_20px_-8px_rgba(0,0,0,0.3)] dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:border-zinc-600 dark:hover:bg-zinc-800"
+                    >
+
+                      <span className="break-words">{title}</span>
+                    </span>
+                  ))}
+                </div>
+
+                {/* Count */}
+                <span className="ibm-mono hidden shrink-0 text-[9px] text-zinc-300 sm:block dark:text-zinc-700">
                   {String(group.items.length).padStart(2, "0")}
-                </span>
-              </div>
-
-              {/* Technologies */}
-              <div className="flex min-w-0 flex-wrap gap-2">
-                {group.items.map((title) => (
-                  <span
-                    key={title}
-                    className="inline-flex max-w-full items-center gap-2 rounded-lg border border-zinc-200 bg-zinc-50 px-3 py-2 text-xs font-medium text-zinc-700 transition-all duration-300 hover:-translate-y-0.5 hover:border-zinc-400 hover:bg-white hover:text-zinc-950 hover:shadow-sm dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:border-zinc-600 dark:hover:bg-zinc-800 dark:hover:text-white"
-                  >
-                    <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-zinc-300 transition-colors duration-300 group-hover:bg-zinc-500 dark:bg-zinc-700 dark:group-hover:bg-zinc-400" />
-
-                    <span className="break-words">{title}</span>
-                  </span>
-                ))}
-              </div>
-
-              {/* Subtle bottom indicator */}
-              <div className="mt-6 flex items-center gap-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                <div className="h-px flex-1 bg-zinc-200 dark:bg-zinc-800" />
-                <span className="ibm-mono text-[9px] uppercase tracking-widest text-zinc-400">
-                  active stack
                 </span>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Footer */}
-        <div className="border-t border-zinc-200 bg-zinc-50/70 px-4 py-3 dark:border-zinc-800 dark:bg-zinc-900/40 sm:px-6">
-          <div className="flex items-center justify-between gap-4">
-            <p className="ibm-mono text-[9px] uppercase tracking-[0.2em] text-zinc-400">
-              Built with curiosity
-            </p>
+        {/* Bottom accent */}
+        <div className="flex items-center justify-between border-t border-zinc-100 px-5 py-3.5 dark:border-zinc-900 sm:px-7">
+          <span className="ibm-mono text-[8px] uppercase tracking-[0.25em] text-zinc-300 dark:text-zinc-700">
+            Always learning · Always building
+          </span>
 
-            <div className="flex items-center gap-1.5">
-              <span className="h-1.5 w-1.5 rounded-full bg-zinc-300 dark:bg-zinc-700" />
-              <span className="h-1.5 w-1.5 rounded-full bg-zinc-400 dark:bg-zinc-600" />
-              <span className="h-1.5 w-1.5 rounded-full bg-zinc-600 dark:bg-zinc-400" />
-            </div>
+          <div className="flex items-center gap-1">
+            <span className="h-1 w-1 rounded-full bg-zinc-300 dark:bg-zinc-700" />
+            <span className="h-1 w-1 rounded-full bg-zinc-400 dark:bg-zinc-600" />
+            <span className="h-1 w-1 rounded-full bg-zinc-700 dark:bg-zinc-400" />
           </div>
         </div>
       </div>
