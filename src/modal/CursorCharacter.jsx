@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
@@ -16,48 +15,33 @@ export default function CursorCharacter() {
 
   useEffect(() => {
     const handleMouseMove = (event) => {
-      if (!containerRef.current) return;
+      if (!containerRef.current) {
+        setDirection("front");
+        setRotation(0);
+        return;
+      }
 
       const rect = containerRef.current.getBoundingClientRect();
 
-      // Center of the character
       const centerX = rect.left + rect.width / 2;
       const centerY = rect.top + rect.height / 2;
 
-      // Cursor position relative to character
       const x = event.clientX - centerX;
       const y = event.clientY - centerY;
 
       const distance = Math.sqrt(x * x + y * y);
 
-      // Close to character = looking forward
+      // Close to character = front
       if (distance < 120) {
         setDirection("front");
         setRotation(0);
         return;
       }
 
-      /*
-       * Determine the dominant direction.
-       *
-       *             UP
-       *              ↑
-       *
-       *       LEFT ← ● → RIGHT
-       *
-       *              ↓
-       *             DOWN
-       */
-
       const horizontal = Math.abs(x);
       const vertical = Math.abs(y);
 
-      /*
-       * DIAGONAL
-       *
-       * We only use a diagonal when X and Y
-       * are reasonably close to each other.
-       */
+      // DIAGONAL
       if (
         horizontal > vertical * 0.5 &&
         vertical > horizontal * 0.5
@@ -89,47 +73,40 @@ export default function CursorCharacter() {
         return;
       }
 
-      /*
-       * VERTICAL
-       */
-
+      // VERTICAL
       if (vertical > horizontal) {
-        // UP ↑
         if (y < 0) {
           setDirection("up");
-          setRotation(0);
-        }
-
-        // DOWN ↓
-        else {
+        } else {
           setDirection("down");
-          setRotation(0);
         }
 
+        setRotation(0);
         return;
       }
 
-      /*
-       * HORIZONTAL
-       */
-
-      // LEFT ←
+      // HORIZONTAL
       if (x < 0) {
         setDirection("left");
-        setRotation(0);
+      } else {
+        setDirection("right");
       }
 
-      // RIGHT →
-      else {
-        setDirection("right");
-        setRotation(0);
-      }
+      setRotation(0);
+    };
+
+    // Cursor leaves the browser/window
+    const handleMouseLeave = () => {
+      setDirection("front");
+      setRotation(0);
     };
 
     window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mouseout", handleMouseLeave);
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mouseout", handleMouseLeave);
     };
   }, []);
 
@@ -146,7 +123,6 @@ export default function CursorCharacter() {
       ref={containerRef}
       className="h-65 w-65"
     >
-      {/* Character stays in this position */}
       <motion.div
         initial={{
           opacity: 0,
