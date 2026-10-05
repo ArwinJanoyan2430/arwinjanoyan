@@ -161,7 +161,7 @@ export default function CursorCharacter() {
           }}
           transition={{
             rotate: {
-              duration: 0.15,
+              duration: 0,
               ease: "easeOut",
             },
           }}
