@@ -24,7 +24,6 @@ import {
 //pfp
 import pfp1 from "../assets/v2/pfp1.png";
 
-
 function About() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
@@ -130,8 +129,8 @@ function About() {
           <p className="mt-5 text-sm leading-7 text-zinc-600 dark:text-zinc-400 sm:text-[15px] sm:leading-8">
             I enjoy developing responsive websites, business systems, and
             interactive dashboards that solve real-world problems. My interests
-            include software engineering, full-stack development, UI/UX design,
-            and data analytics.
+            include software engineering, full-stack development, and data
+            analytics.
           </p>
 
           <p className="mt-5 text-sm leading-7 text-zinc-600 dark:text-zinc-400 sm:text-[15px] sm:leading-8">
@@ -146,10 +145,6 @@ function About() {
 
             <span className="rounded-full border border-zinc-300 px-3 py-2 text-xs dark:border-zinc-700 sm:px-4 sm:py-2 sm:text-sm">
               Software Engineer
-            </span>
-
-            <span className="rounded-full border border-zinc-300 px-3 py-2 text-xs dark:border-zinc-700 sm:px-4 sm:py-2 sm:text-sm">
-              UI/UX
             </span>
 
             <span className="rounded-full border border-zinc-300 px-3 py-2 text-xs dark:border-zinc-700 sm:px-4 sm:py-2 sm:text-sm">
@@ -185,67 +180,103 @@ function About() {
         </div>
       </div>
 
-      <div className="mt-4 w-full min-w-0 animate-[fadeIn_0.35s_ease-out] overflow-hidden rounded-[24px] border border-zinc-200/80 bg-[linear-gradient(135deg,_rgba(255,255,255,0.98),_rgba(244,244,245,0.96))] p-2 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.25)] dark:border-zinc-800 dark:bg-[linear-gradient(135deg,_rgba(24,24,27,0.98),_rgba(9,9,11,1))] sm:rounded-[32px] sm:p-3">
-        <div className="min-w-0 rounded-[18px] p-3 backdrop-blur-xl dark:border-zinc-800 dark:bg-zinc-900/70 sm:rounded-[24px] sm:p-4">
-          <div className="flex flex-col items-start gap-3 sm:flex-row sm:justify-between">
+      <div className="mt-4 w-full min-w-0 overflow-hidden rounded-[28px] border border-zinc-200 bg-white shadow-[0_20px_70px_-25px_rgba(0,0,0,0.2)] dark:border-zinc-800 dark:bg-zinc-950">
+        {/* Header */}
+        <div className="border-b border-zinc-200 px-4 py-5 sm:px-6 sm:py-6 dark:border-zinc-800">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div className="min-w-0">
-              <p className="ibm-mono text-[10px] uppercase tracking-[0.24em] text-zinc-500">
-                Stack overview
-              </p>
-              <h3 className="pixel-font mt-1 text-base text-zinc-900 dark:text-white sm:text-lg">
+              <div className="mb-3 flex items-center gap-2">
+                <span className="h-2 w-2 rounded-full bg-zinc-900 dark:bg-white" />
+                <p className="ibm-mono text-[10px] font-medium uppercase tracking-[0.25em] text-zinc-500">
+                  Stack overview
+                </p>
+              </div>
+
+              <h3 className="pixel-font text-xl tracking-tight text-zinc-950 dark:text-white sm:text-2xl">
                 My toolkit
               </h3>
-              <p className="mt-2 max-w-xl text-xs leading-5 text-zinc-600 dark:text-zinc-400 sm:text-sm sm:leading-6">
-                A quick look at the languages, frameworks, and tools I use to
-                build modern products.
+
+              <p className="mt-2 max-w-2xl text-xs leading-5 text-zinc-500 dark:text-zinc-400 sm:text-sm sm:leading-6">
+                Technologies and tools I use to design, develop, and ship modern
+                digital products.
               </p>
             </div>
-            <div className="shrink-0 rounded-full border border-zinc-200 bg-zinc-950 px-3 py-1 text-xs font-semibold text-white shadow-sm dark:border-zinc-700 dark:bg-white dark:text-zinc-950">
-              {techGroups.reduce(
-                (count, group) => count + group.items.length,
-                0,
-              )}{" "}
-              tools
+
+            <div className="flex shrink-0 items-center gap-2">
+              <span className="ibm-mono rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1.5 text-[10px] uppercase tracking-wider text-zinc-500 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-400">
+                {techGroups.reduce(
+                  (count, group) => count + group.items.length,
+                  0,
+                )}{" "}
+                tools
+              </span>
             </div>
           </div>
+        </div>
 
-          <div className="mt-4 grid min-w-0 grid-cols-1 gap-3 md:mt-5 md:grid-cols-2">
-            {techGroups.map((group, index) => (
-              <div
-                key={group.title}
-                className={`group relative min-w-0 overflow-hidden rounded-[18px] border border-zinc-200 p-3 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-zinc-800 sm:rounded-[22px] sm:p-4 ${
-                  index % 2 === 0
-                    ? "bg-zinc-50/90 dark:bg-zinc-950/80"
-                    : "bg-white/90 dark:bg-zinc-950/80"
-                }`}
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-zinc-900/5 via-transparent to-zinc-900/10 opacity-0 transition duration-300 group-hover:opacity-100 dark:from-white/5 dark:to-white/10" />
-                <div className="relative flex min-w-0 items-center justify-between gap-3">
-                  <div className="min-w-0">
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-zinc-500">
-                      {group.title}
-                    </p>
-                    <h4 className="mt-1 break-words text-sm font-semibold text-zinc-900 transition-colors duration-300 group-hover:text-zinc-700 dark:text-zinc-100 dark:group-hover:text-zinc-300 sm:text-base">
-                      {group.title}
-                    </h4>
-                  </div>
-                  <span className="shrink-0 rounded-full border border-zinc-200 bg-white px-2.5 py-1 text-[11px] font-semibold text-zinc-600 transition-all duration-300 group-hover:scale-105 group-hover:shadow-sm dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">
-                    {group.items.length}
+        {/* Stack */}
+        <div className="grid min-w-0 grid-cols-1 divide-y divide-zinc-200 dark:divide-zinc-800 md:grid-cols-2 md:divide-x md:divide-y-0">
+          {techGroups.map((group, index) => (
+            <div
+              key={group.title}
+              className="group relative min-w-0 p-4 transition-colors duration-300 hover:bg-zinc-50 sm:p-6 dark:hover:bg-zinc-900/60"
+            >
+              {/* Category number */}
+              <div className="mb-5 flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <span className="ibm-mono text-[10px] text-zinc-400">
+                    {String(index + 1).padStart(2, "0")}
                   </span>
+
+                  <div className="h-px w-8 bg-zinc-200 dark:bg-zinc-800" />
+
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-zinc-500">
+                    {group.title}
+                  </p>
                 </div>
 
-                <div className="relative mt-3 flex min-w-0 flex-wrap gap-1.5 sm:gap-2">
-                  {group.items.map((title) => (
-                    <span
-                      key={title}
-                      className="max-w-full break-words rounded-full border border-zinc-200 bg-white px-2.5 py-1 text-xs font-medium text-zinc-700 transition-all duration-300 hover:-translate-y-0.5 hover:border-zinc-400 hover:bg-zinc-100 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-200 dark:hover:bg-zinc-700 sm:px-3 sm:py-1.5 sm:text-sm"
-                    >
-                      {title}
-                    </span>
-                  ))}
-                </div>
+                <span className="ibm-mono text-[10px] text-zinc-400">
+                  {String(group.items.length).padStart(2, "0")}
+                </span>
               </div>
-            ))}
+
+              {/* Technologies */}
+              <div className="flex min-w-0 flex-wrap gap-2">
+                {group.items.map((title) => (
+                  <span
+                    key={title}
+                    className="inline-flex max-w-full items-center gap-2 rounded-lg border border-zinc-200 bg-zinc-50 px-3 py-2 text-xs font-medium text-zinc-700 transition-all duration-300 hover:-translate-y-0.5 hover:border-zinc-400 hover:bg-white hover:text-zinc-950 hover:shadow-sm dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:border-zinc-600 dark:hover:bg-zinc-800 dark:hover:text-white"
+                  >
+                    <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-zinc-300 transition-colors duration-300 group-hover:bg-zinc-500 dark:bg-zinc-700 dark:group-hover:bg-zinc-400" />
+
+                    <span className="break-words">{title}</span>
+                  </span>
+                ))}
+              </div>
+
+              {/* Subtle bottom indicator */}
+              <div className="mt-6 flex items-center gap-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <div className="h-px flex-1 bg-zinc-200 dark:bg-zinc-800" />
+                <span className="ibm-mono text-[9px] uppercase tracking-widest text-zinc-400">
+                  active stack
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Footer */}
+        <div className="border-t border-zinc-200 bg-zinc-50/70 px-4 py-3 dark:border-zinc-800 dark:bg-zinc-900/40 sm:px-6">
+          <div className="flex items-center justify-between gap-4">
+            <p className="ibm-mono text-[9px] uppercase tracking-[0.2em] text-zinc-400">
+              Built with curiosity
+            </p>
+
+            <div className="flex items-center gap-1.5">
+              <span className="h-1.5 w-1.5 rounded-full bg-zinc-300 dark:bg-zinc-700" />
+              <span className="h-1.5 w-1.5 rounded-full bg-zinc-400 dark:bg-zinc-600" />
+              <span className="h-1.5 w-1.5 rounded-full bg-zinc-600 dark:bg-zinc-400" />
+            </div>
           </div>
         </div>
       </div>

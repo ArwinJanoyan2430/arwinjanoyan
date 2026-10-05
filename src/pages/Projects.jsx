@@ -46,7 +46,7 @@ function Projects() {
           </h2>
           <span className="h-px w-full bg-zinc-200 dark:bg-zinc-800" />
           <span className="ibm-mono shrink-0 text-[9px] uppercase tracking-[0.18em] text-zinc-400 dark:text-zinc-600">
-            {String(clientProjects.length).padStart(2, "0")} projects
+            projects
           </span>
         </div>
 

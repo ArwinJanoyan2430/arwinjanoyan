@@ -29,26 +29,8 @@ function OngoingProjects() {
   return (
     <section className="w-full">
       {/* Section Header */}
-      <div className="mb-10">
+      <div className="mb-0">
         <div className="flex items-end justify-between gap-4">
-          <div>
-            <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400">
-              Current Work
-            </span>
-
-            <h2 className="text-3xl font-bold tracking-tight text-zinc-950 sm:text-4xl dark:text-white">
-              Ongoing Projects
-            </h2>
-
-            <p className="mt-3 max-w-2xl text-sm leading-6 text-zinc-600 dark:text-zinc-400">
-              A look at the projects currently being designed, developed, and
-              brought to life.
-            </p>
-          </div>
-
-          <div className="hidden rounded-full border border-zinc-200 bg-white px-4 py-2 text-xs font-medium text-zinc-600 shadow-sm sm:block dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300">
-            {projects.length} Active Projects
-          </div>
         </div>
       </div>
 
