@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import pfp from "../assets/v2/pfp.png";
 import QuoteTransition from "../animations/QuoteTransition";
 import { Github, Linkedin, MailIcon, X } from "lucide-react";
-import { useState } from "react";
+import CursorCharacter from "../modal/CursorCharacter";
 import { FaFacebook } from "react-icons/fa";
 
 function Home() {
@@ -42,24 +42,7 @@ function Home() {
           transition={{ type: "spring", stiffness: 220, damping: 20, mass: 0.8 }}
           className="cursor-pointer"
         >
-          <motion.img
-            src={pfp}
-            alt="Arwin"
-            initial={{ opacity: 0, scale: 0.92, y: 16 }}
-            animate={{
-              opacity: 1,
-              y: [0, -10, 0],
-              rotate: [0, 1.2, 0, -1.2, 0],
-              scale: [1, 1.015, 1],
-            }}
-            transition={{
-              opacity: { duration: 0.45, ease: "easeOut" },
-              y: { duration: 5, repeat: Infinity, ease: "easeInOut" },
-              rotate: { duration: 7, repeat: Infinity, ease: "easeInOut" },
-              scale: { duration: 5, repeat: Infinity, ease: "easeInOut" },
-            }}
-            className="h-65 w-65 object-contain will-change-transform drop-shadow-[0_18px_18px_rgba(0,0,0,0.18)]"
-          />
+          <CursorCharacter />
         </motion.div>
       </motion.div>
 
