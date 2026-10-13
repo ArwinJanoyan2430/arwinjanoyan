@@ -73,7 +73,6 @@ function About() {
         "Supabase",
         "MongoDB",
         "MySQL",
-        "AsyncStorage",
       ],
     },
     {
@@ -82,7 +81,7 @@ function About() {
     },
     {
       title: "Other Tools",
-      items: ["Git", "GitHub", "Vercel", "ChatGpt 5.6", "Gemini", "VS Code"],
+      items: ["Git", "GitHub", "Vercel", "Codex", "Claude", "Gemini", "VS Code"],
     },
   ];
 
