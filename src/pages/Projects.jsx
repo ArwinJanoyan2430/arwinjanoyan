@@ -5,7 +5,7 @@ import ResearchModal from "@/modal/Research";
 import projects from "@/data/projects";
 import sensCaneImage from "@/assets/SENSCANE.png";
 import { ArrowUpRight, Eye } from "lucide-react";
-import OngoingProjects from '../modal/OngoingProjects';
+import OngoingProjects from "../modal/OngoingProjects";
 
 function Projects() {
   const [showResearch, setShowResearch] = useState(false);
@@ -20,7 +20,9 @@ function Projects() {
           <p className="ibm-mono text-[10px] font-medium uppercase tracking-[0.28em] text-zinc-500 dark:text-zinc-400">
             Work / Selected projects
           </p>
-          <h1 className="pixel-font mt-4 text-xl font-bold sm:text-3xl">What I&apos;ve built</h1>
+          <h1 className="pixel-font mt-4 text-xl font-bold sm:text-3xl">
+            What I&apos;ve built
+          </h1>
         </div>
 
         <ScrollReveal
@@ -33,7 +35,6 @@ function Projects() {
           Where ideas became applications.
         </ScrollReveal>
       </header>
-      
 
       {/* Client Projects */}
       <section aria-labelledby="client-projects-heading">
@@ -58,7 +59,10 @@ function Projects() {
       </section>
 
       {/* Self Projects */}
-      <section className="mt-14 sm:mt-20" aria-labelledby="self-projects-heading">
+      <section
+        className="mt-14 sm:mt-20"
+        aria-labelledby="self-projects-heading"
+      >
         <div className="mb-5 flex items-center gap-4">
           <h2
             id="self-projects-heading"
@@ -80,21 +84,26 @@ function Projects() {
       </section>
 
       {/* Ongong Projects */}
-      <section className="mt-14 sm:mt-20" aria-labelledby="self-projects-heading">
-        <div className="mb-5 flex items-center gap-4">
+      <section
+        className="mt-8 sm:mt-20"
+        aria-labelledby="self-projects-heading"
+      >
+        <div className="mb-3 sm:mb-5 flex items-center gap-2 sm:gap-4">
           <h2
             id="self-projects-heading"
-            className="ibm-mono shrink-0 text-[10px] font-medium uppercase tracking-[0.24em] text-zinc-500 dark:text-zinc-400"
+            className="ibm-mono shrink-0 text-[8px] sm:text-[10px] font-medium uppercase tracking-[0.12em] sm:tracking-[0.24em] text-zinc-500 dark:text-zinc-400"
           >
             Ongoing projects
           </h2>
-          <span className="h-px w-full bg-zinc-200 dark:bg-zinc-800" />
-          <span className="ibm-mono shrink-0 text-[9px] uppercase tracking-[0.18em] text-zinc-400 dark:text-zinc-600">
+
+          <span className="h-px min-w-2 flex-1 bg-zinc-200 dark:bg-zinc-800" />
+
+          <span className="ibm-mono shrink-0 text-[8px] sm:text-[9px] uppercase tracking-[0.08em] sm:tracking-[0.18em] text-zinc-400 dark:text-zinc-600">
             {String(selfProjects.length).padStart(2, "0")} projects
           </span>
         </div>
 
-        <OngoingProjects/>
+        <OngoingProjects />
       </section>
 
       <section className="mt-14 sm:mt-20" aria-labelledby="research-heading">
@@ -165,10 +174,7 @@ function Projects() {
         </button>
       </section>
 
-      {showResearch && (
-        <ResearchModal onClose={() => setShowResearch(false)} />
-      )}
-      
+      {showResearch && <ResearchModal onClose={() => setShowResearch(false)} />}
     </section>
   );
 }
