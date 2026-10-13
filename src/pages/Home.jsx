@@ -39,7 +39,12 @@ function Home() {
             y: -6,
           }}
           whileTap={{ scale: 0.98 }}
-          transition={{ type: "spring", stiffness: 220, damping: 20, mass: 0.8 }}
+          transition={{
+            type: "spring",
+            stiffness: 220,
+            damping: 20,
+            mass: 0.8,
+          }}
           className="cursor-pointer"
         >
           <CursorCharacter />
@@ -66,22 +71,32 @@ function Home() {
           initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.6 }}
-          className="mt-4 flex w-full flex-col items-center gap-8 md:flex-row md:justify-start"
+          className="mt-4 flex w-full flex-col items-center gap-4 md:flex-row md:justify-start"
         >
-          <button
-            onClick={() =>
-              document.getElementById("projects")?.scrollIntoView({
-                behavior: "smooth",
-                block: "start",
-              })
-            }
-            className="btn-glitch-fill ibm-mono rounded-lg border px-6 py-1 text-xs md:px-5 md:py-2 md:text-sm"
-          >
-            <span className="text">projects</span>
-            <span className="text-decoration"> _ </span>
-            <span className="decoration">⇒</span>
-          </button>
+          <div className="flex gap-4">
+            <button
+              onClick={() =>
+                document.getElementById("projects")?.scrollIntoView({
+                  behavior: "smooth",
+                  block: "start",
+                })
+              }
+              className="btn-glitch-fill ibm-mono rounded-lg border px-6 py-2 text-xs md:px-5 md:py-2 md:text-sm"
+            >
+              <span className="text">projects</span>
+              <span className="text-decoration"> _ </span>
+              <span className="decoration">⇒</span>
+            </button>
 
+            <a
+              href="https://docs.google.com/document/d/1VP-TqcVEvLKOiXYFlrS82h1CEuJRLu3K0f_lTg-9vbI/edit?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-glitch-fill ibm-mono rounded-lg border px-7 py-2 text-xs md:px-6 md:py-2 md:text-sm bg-zinc-950 text-white"
+            >
+              View Resume
+            </a>
+          </div>
           {/* Social Icons */}
           <div className="flex flex-wrap justify-center gap-3 md:justify-start">
             <a
@@ -115,7 +130,7 @@ function Home() {
             </a>
 
             <a
-              href = "#contact"
+              href="#contact"
               aria-label="Open email"
               className="inline-flex h-12 w-12 cursor-pointer items-center justify-center rounded-full border border-zinc-300 transition-all duration-300 hover:-translate-y-1 hover:bg-zinc-600 hover:text-white dark:border-zinc-700 dark:hover:bg-white dark:hover:text-black"
             >

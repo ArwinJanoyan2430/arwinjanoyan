@@ -97,7 +97,7 @@ function Experiences() {
                     <h3 className="ibm-mono text-[9px] font-semibold uppercase tracking-[0.22em] text-zinc-400 dark:text-zinc-500">
                       Selected contributions
                     </h3>
-                    <ul className="mt-4 space-y-3">
+                    <ul className="mt-4 space-y-0">
                       {visibleRoles.map((role) => (
                         <li key={role} className="grid grid-cols-[1rem_1fr] gap-3 text-sm leading-6 text-zinc-600 dark:text-zinc-300 sm:text-[15px] sm:leading-7">
                           <span className="ibm-mono pt-0.5 text-[9px] text-zinc-400 dark:text-zinc-600">—</span>
