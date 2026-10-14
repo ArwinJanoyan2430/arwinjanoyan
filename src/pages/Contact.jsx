@@ -55,7 +55,7 @@ function Contact() {
   }
 
   return (
-    <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8 md:px-10">
+    <section className="mx-auto max-w-7xl px-0 py-20 sm:px-0 md:px-0">
       <header className="mb-12 grid gap-6 md:mb-16 md:grid-cols-[0.8fr_1.2fr] md:items-end">
         <div>
           <p className="ibm-mono text-[10px] font-medium uppercase tracking-[0.28em] text-zinc-500 dark:text-zinc-400">

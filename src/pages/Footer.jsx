@@ -33,7 +33,7 @@ function Footer() {
   };
 
   return (
-    <footer className="mx-auto max-w-7xl px-0 pb-6 pt-0 sm:px-8 md:px-10">
+    <footer className="mx-auto max-w-7xl px-0 pb-6 pt-0 sm:px-0 md:px-0">
       <div className="border-t border-zinc-200 py-6 dark:border-zinc-800">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
           <div>

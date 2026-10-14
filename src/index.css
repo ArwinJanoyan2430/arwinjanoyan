@@ -898,11 +898,11 @@ html {
   );
 }
 .logoloop {
-  --logoloop-fadeColor: #ffffff;
+  --logoloop-fadeColor: #ffffff00;
 }
 
 .dark .logoloop {
-  --logoloop-fadeColor: #020202;
+  --logoloop-fadeColor: #02020200;
 }
 
 .logoloop--fade::after {

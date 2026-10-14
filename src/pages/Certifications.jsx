@@ -22,42 +22,49 @@ const certifications = [
   {
     title: "CS50, Web Programming",
     issuer: "HARVARD",
+    category: "Web Development & Programming",
     icon: <img src={harvardLogo} alt="Harvard" className="h-6 w-6 object-contain" />,
     image: harvard,
   },
   {
     title: "Best in Website Design",
     issuer: "SURGE",
+    category: "Web Development & Programming",
     icon: <img src={surge} alt="SURGE" className="h-6 w-6 object-contain" />,
     image: BestInWebManagement,
   },
   {
     title: "Introduction to SQL",
     issuer: "SIMPLILEARN",
+    category: "Data Analytics",
     icon: <img src={simplilearn} alt="Simplilearn" className="h-6 w-6 object-contain" />,
     image: sqlCert,
   },
   {
     title: "AI Ready - Hour of Code",
     issuer: "Google",
+    category: "AI",
     icon: <FcGoogle size={20} aria-hidden="true" />,
     image: HourOfCode,
   },
   {
     title: "Graphics Design",
     issuer: "SURGE",
+    category: "Web Development & Programming",
     icon: <img src={surge} alt="SURGE" className="h-6 w-6 object-contain" />,
     image: webdesignCert,
   },
   {
     title: "SQL Table Functions",
     issuer: "ORACLE",
+    category: "Data Analytics",
     icon: <Database size={20} aria-hidden="true" />,
     image: oracleCert,
   },
   {
     title: "Excel Course",
     issuer: "INTELLIPAAT",
+    category: "Data Analytics",
     icon: <img src={IntelliPaat} alt="Intellipaat" className="h-6 w-6 object-contain" />,
     image: IntelliPatCert,
   },
@@ -66,7 +73,7 @@ const certifications = [
 function Certifications() {
   const [selectedCertificate, setSelectedCertificate] = useState(null);
   return (
-    <div className="mx-auto max-w-7xl px-0 py-10 sm:px-8 md:px-10 md:py-0">
+    <div className="mx-auto max-w-7xl px- py-16 sm:px- md:px-0 md:py-20">
       <header className="mb-12 grid gap-6 md:mb-16 md:grid-cols-[0.8fr_1.2fr] md:items-end">
         <div>
           <p className="ibm-mono text-[10px] font-medium uppercase tracking-[0.28em] text-zinc-500 dark:text-zinc-400">
@@ -87,90 +94,103 @@ function Certifications() {
           Web development certifications and achievements.
         </ScrollReveal>
       </header>
+    
+{/* Categorized Certificates */}
+<div className="mx-auto max-w-5xl">
+  {[
+    "Web Development & Programming",
+    "Data Analytics",
+    "AI",
+  ].map((category) => {
+    const categoryCertificates = certifications.filter(
+      (cert) => cert.category === category
+    );
 
-      {/* Certificates Grid */}
-      <div
-        className="
-    grid grid-cols-2 gap-0
-    rounded-xl
-    p-0 md:p-2
-    max-w-5xl
-    mx-auto
-    transition-colors duration-300
-    md:grid-cols-3
-    lg:grid-cols-4
-  "
-      >
-        {certifications.map((cert, index) => (
-          <button
-            key={cert.title}
-            onClick={() => {
-              if (cert.link) {
-                window.open(cert.link, "_blank", "noopener,noreferrer");
-                return;
-              }
-              setSelectedCertificate(cert);
-            }}
-            aria-label={
-              cert.link
-                ? `View ${cert.title} achievement on Facebook`
-                : `View ${cert.title} certificate`
-            }
-            className={`
-  group relative z-0 -mx-2 -my-2 md:-my-2
-  rounded-lg
-  border border-zinc-100
-  bg-white
-  p-2
-  shadow-lg
-  transition-all duration-300
-  backface-hidden
-  transform-3d
-  will-change-transform
-  hover:z-20
-  hover:-translate-y-6
-  hover:rotate-0
- dark:border-zinc-950
-dark:bg-gradient-to-b
-dark:from-zinc-900
-dark:via-zinc-900
-dark:to-zinc-950
-dark:shadow-black/30
+    return (
+      <section key={category} className="mb-12 last:mb-0">
+        {/* Category Label */}
+        <div className="mb-6 flex items-center gap-3 pb-3 dark:border-zinc-800">
+          <h2 className="ibm-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-zinc-500 dark:text-zinc-400 sm:text-xs">
+            {category}
+          </h2>
 
-  ${index % 4 === 0 ? "rotate-[-5deg]" : ""}
-  ${index % 4 === 1 ? "rotate-[5deg]" : ""}
-  ${index % 4 === 2 ? "rotate-[-5deg]" : ""}
-  ${index % 4 === 3 ? "rotate-[5deg]" : ""}
-`}
-          >
-            <div className="group relative rounded-lg border border-zinc-200 bg-white p-3 transition-all duration-500 dark:border-zinc-800 dark:bg-gradient-to-b dark:from-zinc-900 dark:via-zinc-900 dark:to-zinc-950 dark:shadow-black/30">
-              {/* Icon */}
-              <div className="mt-1 mb-4 flex justify-center">
-                <div className="flex h-10 w-10 items-center justify-center rounded-md border border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900">
-                  {cert.icon}
+          <div className='border-b border-zinc-600 w-full'/>
+
+          <span className="ibm-mono text-[9px] text-zinc-400 dark:text-zinc-500">
+            [{String(categoryCertificates.length).padStart(2, "0")} CERTS]
+          </span>
+        </div>
+
+        {/* Original Certificate Cards */}
+        <div className="grid grid-cols-2 gap-0 rounded-xl p-0 transition-colors duration-300 md:grid-cols-3 md:p-2 lg:grid-cols-4">
+          {categoryCertificates.map((cert, index) => (
+            <button
+              key={cert.title}
+              type="button"
+              onClick={() => {
+                if (cert.link) {
+                  window.open(
+                    cert.link,
+                    "_blank",
+                    "noopener,noreferrer"
+                  );
+                  return;
+                }
+
+                setSelectedCertificate(cert);
+              }}
+              aria-label={`View ${cert.title} certificate`}
+              className={`
+                group relative z-0 -mx-2 -my-2 rounded-lg
+                border border-zinc-100 bg-white p-2 shadow-lg
+                transition-all duration-300
+                backface-hidden transform-3d will-change-transform
+                hover:z-20 hover:-translate-y-6 hover:rotate-0
+                dark:border-zinc-950
+                dark:bg-gradient-to-b dark:from-zinc-900
+                dark:via-zinc-900 dark:to-zinc-950
+                dark:shadow-black/30
+                ${index % 4 === 0 ? "rotate-[-5deg]" : ""}
+                ${index % 4 === 1 ? "rotate-[5deg]" : ""}
+                ${index % 4 === 2 ? "rotate-[-5deg]" : ""}
+                ${index % 4 === 3 ? "rotate-[5deg]" : ""}
+              `}
+            >
+              <div className="group relative rounded-lg border border-zinc-200 bg-white p-3 transition-all duration-500 dark:border-zinc-800 dark:bg-gradient-to-b dark:from-zinc-900 dark:via-zinc-900 dark:to-zinc-950 dark:shadow-black/30">
+                {/* Icon */}
+                <div className="mb-4 mt-1 flex justify-center">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-md border border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900">
+                    {cert.icon}
+                  </div>
+                </div>
+
+                {/* Title */}
+                <h3 className="ibm-mono text-center text-[11px] font-bold leading-tight text-zinc-800 dark:text-zinc-200 sm:text-xs">
+                  {cert.title}
+                </h3>
+
+                {/* Issuer */}
+                <p className="mt-1 text-center font-mono text-[8px] uppercase tracking-wider text-zinc-400 sm:text-[9px]">
+                  {cert.issuer}
+                </p>
+
+                {/* Verify */}
+                <div className="mt-1 text-center">
+                  <span className="pixel-font text-[8px] font-bold tracking-[0.15em] text-zinc-300 transition-colors duration-300 group-hover:text-zinc-700 dark:text-zinc-700 dark:group-hover:text-zinc-300 sm:text-[9px]">
+                    {cert.link
+                      ? "( VIEW ACHIEVEMENT )"
+                      : "( VERIFY )"}
+                  </span>
                 </div>
               </div>
+            </button>
+          ))}
+        </div>
+      </section>
+    );
+  })}
+</div>
 
-              {/* Title */}
-              <h3 className="ibm-mono text-center text-[11px] font-bold leading-tight text-zinc-800 dark:text-zinc-200 sm:text-xs">
-                {cert.title}
-              </h3>
-
-              {/* Issuer */}
-              <p className="mt-1 text-center font-mono text-[8px] uppercase tracking-wider text-zinc-400 sm:text-[9px]">
-                {cert.issuer}
-              </p>
-
-              {/* Verify */}
-              <div className="mt-1 text-center">
-                <span className="pixel-font text-[8px] font-bold tracking-[0.15em] text-zinc-300 transition-colors duration-300 group-hover:text-zinc-700 dark:text-zinc-700 dark:group-hover:text-zinc-300 sm:text-[9px]">
-                  {cert.link ? "( VIEW ACHIEVEMENT )" : "( VERIFY )"}
-                </span>
-              </div>
-            </div>
-          </button>
-        ))}
-      </div>
 
       <a
         href="https://www.facebook.com/photo.php?fbid=611827651697333&set=pb.100086103111194.-2207520000&type=3"
