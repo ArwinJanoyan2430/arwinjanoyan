@@ -28,11 +28,6 @@ function OngoingProjects() {
 
   return (
     <section className="w-full">
-      {/* Section Header */}
-      <div className="mb-0">
-        <div className="flex items-end justify-between gap-4">
-        </div>
-      </div>
 
       {/* Projects */}
       <div className="grid gap-7 lg:grid-cols-2">
@@ -42,7 +37,7 @@ function OngoingProjects() {
             className="
               group relative overflow-hidden rounded-[30px]
               border border-zinc-200/80
-              bg-white
+             bg-white/60 backdrop-blur-xl
               shadow-[0_20px_70px_-35px_rgba(24,24,27,0.35)]
               transition-all duration-500
               hover:-translate-y-2

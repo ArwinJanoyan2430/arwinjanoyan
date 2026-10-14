@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import "../index.css";
 
@@ -51,13 +52,11 @@ function QuoteTransition() {
     quote.split(" ").map((word, i) => {
       const cleanWord = word.replace(/[.,!?]/g, "");
 
-      const highlighted = keywords.some(
-        (keyword) => keyword.toLowerCase() === cleanWord.toLowerCase()
-      );
+      const highlighted = keywords.includes(cleanWord.toLowerCase());
 
       return (
         <span
-          key={i}
+          key={`${index}-${i}`}
           className={
             highlighted
               ? "font-semibold text-zinc-500 dark:text-white"
@@ -70,25 +69,26 @@ function QuoteTransition() {
     });
 
   return (
-    <div className="relative flex min-h-[170px] w-full items-start">
+    <div className="relative w-full">
       <h2
         className={`
           ibm-mono
+          w-full
           text-center
-          md:text-left
-          text-3xl
-          sm:text-4xl
-          lg:text-5xl
+          text-2xl
           font-bold
-          leading-tight
+          leading-snug
           tracking-tight
           transition-all
           duration-500
           ease-out
+          sm:text-3xl
+          lg:text-4xl
+          md:text-left
           ${
             visible
               ? "translate-y-0 opacity-100"
-              : "translate-y-4 opacity-0"
+              : "translate-y-2 opacity-0"
           }
         `}
       >

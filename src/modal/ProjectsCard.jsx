@@ -28,52 +28,75 @@ export default function ProjectCard({
     setActiveImage((current) => (current + 1) % projectImages.length);
   };
 
-  if (variant === "directory") {
-    return (
-      <article className="group border-y border-zinc-200 transition-colors duration-300 hover:bg-zinc-100/70 dark:border-zinc-800 dark:hover:bg-zinc-900/50">
-        <a
-          href={liveLink || githubLink || "#"}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={`Open ${title}`}
-          className="grid gap-5 px-3 py-8 sm:px-5 sm:py-10 md:grid-cols-[minmax(180px,0.72fr)_minmax(0,1.28fr)] md:items-center md:gap-10 lg:px-8 lg:py-12"
-        >
-          <div className="flex items-center justify-between gap-4 md:block">
-            <h2 className="pixel-font text-xl leading-tight text-zinc-950 transition-colors duration-300 group-hover:text-zinc-600 dark:text-white dark:group-hover:text-zinc-300 sm:text-2xl">
-              {title}
-            </h2>
-            <ArrowUpRight
-              size={17}
-              aria-hidden="true"
-              className="shrink-0 text-zinc-400 transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-zinc-950 dark:text-zinc-700 dark:group-hover:text-white md:hidden"
-            />
+  
+
+
+if (variant === "directory") {
+  return (
+    <article className="group border-b border-zinc-200/80 bg-white/30 transition-colors duration-300 hover:bg-white/70 dark:border-zinc-800/80 dark:bg-zinc-950/20 dark:hover:bg-zinc-900/50">
+      <a
+        href={liveLink || githubLink || "#"}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`Open ${title}`}
+        className="grid grid-cols-1 gap-4 px-5 py-6 sm:grid-cols-[minmax(0,0.8fr)_minmax(0,1.5fr)_auto] sm:items-center sm:gap-8 sm:px-6 sm:py-7"
+      >
+        {/* Project title */}
+        <div className="min-w-0">
+          <h2 className="pixel-font text-sm leading-relaxed text-zinc-950 transition-colors duration-300 group-hover:text-zinc-500 dark:text-zinc-100 dark:group-hover:text-zinc-400 sm:text-base">
+            {title}
+          </h2>
+
+          {clientProject && (
+            <span className="ibm-mono mt-2 inline-block text-[9px] uppercase tracking-widest text-zinc-400 dark:text-zinc-500">
+              Client project
+            </span>
+          )}
+        </div>
+
+        {/* Project details */}
+        <div className="min-w-0">
+          <div className="mb-2 flex flex-wrap items-center gap-2">
+            <span className="ibm-mono text-[9px] uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400">
+              {category || "Platform"}
+            </span>
+
+            <span className="text-zinc-300 dark:text-zinc-700">/</span>
+
+            <span className="ibm-mono text-[9px] uppercase tracking-wider text-zinc-400 dark:text-zinc-500">
+              {isPrivate ? "Private" : "Public"}
+            </span>
           </div>
 
-          <div className="grid min-w-0 grid-cols-[1fr_auto] items-center gap-5">
-            <div>
-              <p className="ibm-mono text-[9px] font-medium uppercase tracking-[0.22em] text-zinc-500 dark:text-zinc-400 sm:text-[10px]">
-                {category || "Platform"}
-              </p>
-              <p className="mt-3 max-w-xl text-sm leading-6 text-zinc-700 dark:text-zinc-300 sm:text-base sm:leading-7">
-                {description}
-              </p>
-            </div>
+          <p className="max-w-2xl text-sm leading-6 text-zinc-600 dark:text-zinc-400">
+            {description}
+          </p>
+        </div>
 
-            <ArrowUpRight
-              size={18}
-              aria-hidden="true"
-              className="hidden text-zinc-400 transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-zinc-950 dark:text-zinc-700 dark:group-hover:text-white md:block"
-            />
-          </div>
-        </a>
-      </article>
-    );
-  }
+        {/* Action */}
+        <div className="flex items-center justify-between border-t border-zinc-200/70 pt-3 sm:justify-end sm:border-0 sm:pt-0 dark:border-zinc-800">
+          <span className="ibm-mono text-[9px] uppercase tracking-[0.18em] text-zinc-400 transition-colors group-hover:text-zinc-800 dark:text-zinc-500 dark:group-hover:text-zinc-200 sm:hidden">
+            Explore project
+          </span>
+
+          <ArrowUpRight
+            size={18}
+            aria-hidden="true"
+            className="shrink-0 text-zinc-400 transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-zinc-950 dark:group-hover:text-white"
+          />
+        </div>
+      </a>
+    </article>
+  );
+}
+
+
+
 
   return (
-    <article className="group overflow-hidden rounded-[28px] border border-zinc-200 bg-white/80 p-3 shadow-[0_20px_60px_-30px_rgba(24,24,27,0.35)] backdrop-blur-sm transition-all duration-500 hover:-translate-y-1 hover:border-zinc-300 hover:shadow-[0_30px_80px_-30px_rgba(24,24,27,0.45)] dark:border-zinc-800 dark:bg-zinc-900/80 dark:hover:border-zinc-700 dark:hover:shadow-black/30 md:p-4">
+    <article className="group overflow-hidden rounded-[28px] border border-zinc-200 bg-white/60 backdrop-blur-xl p-3 shadow-[0_20px_60px_-30px_rgba(24,24,27,0.35)] transition-all duration-500 hover:-translate-y-1 hover:border-zinc-300 hover:shadow-[0_30px_80px_-30px_rgba(24,24,27,0.45)] dark:border-zinc-800 dark:bg-zinc-900/80 dark:hover:border-zinc-700 dark:hover:shadow-black/30 md:p-4">
       <div className="grid gap-4 md:grid-cols-[minmax(0,1.12fr)_minmax(0,0.88fr)] md:gap-6">
-        <div className="relative min-h-[260px] overflow-hidden rounded-[22px] bg-zinc-100 dark:bg-zinc-800 sm:min-h-[320px] md:min-h-[360px]">
+        <div className="relative min-h-[260px] overflow-hidden rounded-[22px] bg-white/60 backdrop-blur-xl dark:bg-zinc-800 sm:min-h-[320px] md:min-h-[360px]">
           {projectImages.length > 0 && (
             <img
               src={projectImages[activeImage]}

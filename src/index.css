@@ -1171,3 +1171,72 @@ html {
     will-change: auto;
   }
 }
+
+
+
+@keyframes float {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -18px;
+  }
+}
+
+@keyframes float-slow {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -28px;
+  }
+}
+
+@keyframes float-gentle {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 12px;
+  }
+}
+
+@keyframes binary-float {
+  0%,
+  100% {
+    translate: 0 0;
+    opacity: 0.2;
+  }
+  50% {
+    translate: 0 -16px;
+    opacity: 0.55;
+  }
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float-slow 7s ease-in-out infinite;
+}
+
+.animate-float-gentle {
+  animation: float-gentle 6s ease-in-out infinite;
+}
+
+.animate-binary-float {
+  animation: binary-float 6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float,
+  .animate-float-slow,
+  .animate-float-gentle,
+  .animate-binary-float {
+    animation: none;
+  }
+}

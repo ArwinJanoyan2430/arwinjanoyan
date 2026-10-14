@@ -1,29 +1,34 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
-import pfp from "../assets/v2/pfp.png";
-import QuoteTransition from "../animations/QuoteTransition";
-import { Github, Linkedin, MailIcon, X } from "lucide-react";
-import CursorCharacter from "../modal/CursorCharacter";
+import { Github, Linkedin, MailIcon } from "lucide-react";
 import { FaFacebook } from "react-icons/fa";
+
+import QuoteTransition from "../animations/QuoteTransition";
+import CursorCharacter from "../modal/CursorCharacter";
 
 function Home() {
   const email = "ajanoyan24@gmail.com";
+  const [copied, setCopied] = useState(false);
 
-  function copyEmail() {
-    navigator.clipboard.writeText(email);
+  async function copyEmail() {
+    try {
+      await navigator.clipboard.writeText(email);
+      setCopied(true);
 
-    setCopied(true);
-
-    setTimeout(() => {
-      setCopied(false);
-    }, 2000);
+      setTimeout(() => {
+        setCopied(false);
+      }, 2000);
+    } catch (error) {
+      console.error("Failed to copy email:", error);
+    }
   }
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 60 }}
+      initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className="relative grid min-h-screen w-full max-w-7xl items-center gap-12 px-6 md:grid-cols-[280px_1fr]"
+      className="relative mx-auto grid min-h-screen w-full max-w-7xl grid-cols-1 items-center gap-8 px-6 pb-36 pt-24 md:grid-cols-[280px_minmax(0,1fr)] md:gap-12 md:px-8 md:pb-32 md:pt-20"
     >
       {/* Profile */}
       <motion.div
@@ -51,29 +56,31 @@ function Home() {
         </motion.div>
       </motion.div>
 
-      {/* Content */}
+      {/* Main Content */}
       <motion.div
         initial={{ opacity: 0, x: 40 }}
         animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.7, delay: 0.4 }}
-        className="flex w-full flex-col items-center text-center md:items-start md:text-left"
+        transition={{ duration: 0.7, delay: 0.3 }}
+        className="flex min-w-0 w-full flex-col items-center text-center md:items-start md:text-left"
       >
         <h1 className="pixel-font text-lg font-bold text-zinc-500 dark:text-zinc-100 md:text-xl">
           Hey, I'm Arwin
         </h1>
 
-        <div className="relative mt-4 w-full">
+        {/* Quote */}
+        <div className="relative mt-4 min-h-[110px] w-full shrink-0 sm:min-h-[140px] md:min-h-[120px]">
           <QuoteTransition />
         </div>
 
-        {/* Buttons */}
+        {/* Buttons and Social Links */}
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.6 }}
-          className="mt-4 flex w-full flex-col items-center gap-4 md:flex-row md:justify-start"
+          transition={{ duration: 0.7, delay: 0.5 }}
+          className="mt-8 flex w-full flex-col items-center gap-5 md:flex-row md:flex-wrap md:items-center md:justify-start"
         >
-          <div className="flex gap-4">
+          {/* Action Buttons */}
+          <div className="flex flex-wrap justify-center gap-4">
             <button
               onClick={() =>
                 document.getElementById("projects")?.scrollIntoView({
@@ -81,7 +88,7 @@ function Home() {
                   block: "start",
                 })
               }
-              className="btn-glitch-fill ibm-mono rounded-lg border px-6 py-2 text-xs md:px-5 md:py-2 md:text-sm"
+              className="btn-glitch-fill ibm-mono rounded-lg border px-6 py-2 text-xs md:px-5 md:text-sm"
             >
               <span className="text">projects</span>
               <span className="text-decoration"> _ </span>
@@ -92,11 +99,12 @@ function Home() {
               href="https://docs.google.com/document/d/1VP-TqcVEvLKOiXYFlrS82h1CEuJRLu3K0f_lTg-9vbI/edit?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-glitch-fill ibm-mono rounded-lg border px-7 py-2 text-xs md:px-6 md:py-2 md:text-sm bg-zinc-950 text-white"
+              className="btn-glitch-fill ibm-mono rounded-lg border bg-zinc-950 px-7 py-2 text-xs text-white md:px-6 md:text-sm"
             >
               View Resume
             </a>
           </div>
+
           {/* Social Icons */}
           <div className="flex flex-wrap justify-center gap-3 md:justify-start">
             <a
@@ -123,7 +131,7 @@ function Home() {
               href="https://www.facebook.com/"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="GitHub"
+              aria-label="Facebook"
               className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-zinc-300 transition-all duration-300 hover:-translate-y-1 hover:bg-zinc-900 hover:text-white dark:border-zinc-700 dark:hover:bg-white dark:hover:text-black"
             >
               <FaFacebook size={20} />
@@ -131,17 +139,28 @@ function Home() {
 
             <a
               href="#contact"
-              aria-label="Open email"
-              className="inline-flex h-12 w-12 cursor-pointer items-center justify-center rounded-full border border-zinc-300 transition-all duration-300 hover:-translate-y-1 hover:bg-zinc-900 hover:text-white dark:border-zinc-700 dark:hover:bg-white dark:hover:text-black"
+              onClick={(event) => {
+                event.preventDefault();
+                copyEmail();
+              }}
+              aria-label="Copy email address"
+              title={copied ? "Email copied!" : "Copy email address"}
+              className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-zinc-300 transition-all duration-300 hover:-translate-y-1 hover:bg-zinc-900 hover:text-white dark:border-zinc-700 dark:hover:bg-white dark:hover:text-black"
             >
               <MailIcon size={20} />
             </a>
           </div>
+
+          {copied && (
+            <span className="text-xs text-emerald-500" role="status">
+              Email copied!
+            </span>
+          )}
         </motion.div>
       </motion.div>
 
       {/* Bottom Information */}
-      <div className="absolute bottom-10 left-1/2 flex w-full -translate-x-1/2 flex-col items-center px-4 text-center">
+      <div className="absolute bottom-6 left-0 flex w-full flex-col items-center px-4 text-center md:bottom-8">
         <p className="pixel-font text-[9px] tracking-wide sm:text-xs">
           INFORMATION TECHNOLOGY STUDENT
         </p>

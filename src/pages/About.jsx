@@ -86,7 +86,7 @@ function About() {
   ];
 
   return (
-    <section className="mx-auto max-w-7xl px-8 md:px-10 py-10 md:py-18">
+    <section className="mx-auto max-w-7xl px-0 md:px-0 py-10 md:py-20">
       <div className="mx-auto grid max-w-5xl items-center justify-items-center gap-12 md:grid-cols-2 md:gap-16">
         {/* Profile Card */}
         <div className="flex w-full justify-center">
@@ -179,8 +179,11 @@ function About() {
         </div>
       </div>
 
-      <div className="mt-4 w-full min-w-0 overflow-hidden rounded-[28px] border border-zinc-200/80 bg-white shadow-[0_24px_80px_-30px_rgba(0,0,0,0.22)] dark:border-zinc-800/80 dark:bg-zinc-950">
-        {/* Header */}
+<div className="mt-4 w-full min-w-0 overflow-hidden rounded-[28px]
+  border border-zinc-200/80
+  bg-white/60 backdrop-blur-xl
+  shadow-[0_24px_80px_-30px_rgba(0,0,0,0.22)]
+  dark:border-zinc-800/80 dark:bg-zinc-950/60">        {/* Header */}
         <div className="relative overflow-hidden px-5 py-6 sm:px-7 sm:py-8">
           {/* Decorative background */}
           <div className="pointer-events-none absolute -right-20 -top-20 h-48 w-48 rounded-full bg-zinc-100 blur-3xl dark:bg-zinc-900" />
@@ -207,7 +210,7 @@ function About() {
 
             {/* Tool count */}
             <div className="flex shrink-0 items-center gap-3">
-              <div className="hidden h-px w-8 bg-zinc-200 sm:block dark:bg-zinc-800" />
+              <div className="hidden h-px w-8 bg-zinc-300 sm:block dark:bg-zinc-800" />
 
               <div className="flex items-baseline gap-2">
                 <span className="text-2xl font-semibold tracking-tight text-zinc-950 dark:text-white">
@@ -266,19 +269,6 @@ function About() {
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Bottom accent */}
-        <div className="flex items-center justify-between border-t border-zinc-100 px-5 py-3.5 dark:border-zinc-900 sm:px-7">
-          <span className="ibm-mono text-[8px] uppercase tracking-[0.25em] text-zinc-300 dark:text-zinc-700">
-            Always learning · Always building
-          </span>
-
-          <div className="flex items-center gap-1">
-            <span className="h-1 w-1 rounded-full bg-zinc-300 dark:bg-zinc-700" />
-            <span className="h-1 w-1 rounded-full bg-zinc-400 dark:bg-zinc-600" />
-            <span className="h-1 w-1 rounded-full bg-zinc-700 dark:bg-zinc-400" />
-          </div>
         </div>
       </div>
     </section>

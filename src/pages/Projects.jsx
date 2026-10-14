@@ -1,174 +1,173 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
+import {
+  ArrowDownRight,
+  ArrowUpRight,
+  FlaskConical,
+  FolderGit2,
+} from "lucide-react";
+
 import ScrollReveal from "../animations/ScrollReveal";
 import ProjectCard from "@/modal/ProjectsCard";
 import ResearchModal from "@/modal/Research";
+import OngoingProjects from "../modal/OngoingProjects";
 import projects from "@/data/projects";
 import sensCaneImage from "@/assets/SENSCANE.png";
-import { ArrowUpRight, Eye } from "lucide-react";
-import OngoingProjects from "../modal/OngoingProjects";
 
 function Projects() {
   const [showResearch, setShowResearch] = useState(false);
+
   const clientProjects = projects.filter((project) => project.clientProject);
+
   const selfProjects = projects.filter((project) => !project.clientProject);
 
-  return (
-    <section className="mx-auto max-w-7xl px-5 py-16 sm:px-8 md:px-10 md:py-20">
-      {/* Heading */}
-      <header className="mb-12 grid gap-6 md:mb-16 md:grid-cols-[0.8fr_1.2fr] md:items-end">
-        <div>
-          <p className="ibm-mono text-[10px] font-medium uppercase tracking-[0.28em] text-zinc-500 dark:text-zinc-400">
-            Work / Selected projects
-          </p>
-          <h1 className="pixel-font mt-4 text-xl font-bold sm:text-3xl">
-            What I&apos;ve built
-          </h1>
-        </div>
 
-        <ScrollReveal
-          baseOpacity={0}
-          enableBlur
-          blurStrength={8}
-          containerClassName="md:flex md:justify-end"
-          textClassName="ibm-mono max-w-2xl text-sm leading-7 text-zinc-600 dark:text-zinc-400 sm:text-base md:mx-0 md:text-right"
-        >
-          Where ideas became applications.
-        </ScrollReveal>
-      </header>
+  return (
+    <section
+      id="projects"
+      className="mx-auto w-full max-w-7xl px-0 pb-0 pt-28 sm:px-0 sm:pt-32 md:px-0 md:pb-32"
+    >
+      {/* Hero */}
+      {/* Header */}
+<header className="mb-10 border-b border-zinc-200 pb-6 dark:border-zinc-800 sm:mb-12">
+  <p className="ibm-mono mb-3 text-[10px] uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400">
+    Portfolio
+  </p>
+
+  <h1 className="pixel-font text-2xl font-bold tracking-tight sm:text-3xl">
+    Projects
+  </h1>
+
+  <p className="ibm-mono mt-3 max-w-xl text-xs leading-6 text-zinc-600 dark:text-zinc-400 sm:text-sm">
+    A selection of client work, personal projects, and experiments I've built
+    through code and creativity.
+  </p>
+</header>
 
       {/* Client Projects */}
-      <section aria-labelledby="client-projects-heading">
-        <div className="mb-5 flex items-center gap-4">
-          <h2
-            id="client-projects-heading"
-            className="ibm-mono shrink-0 text-[10px] font-medium uppercase tracking-[0.24em] text-zinc-500 dark:text-zinc-400"
-          >
-            Client projects
-          </h2>
-          <span className="h-px w-full bg-zinc-200 dark:bg-zinc-800" />
-          <span className="ibm-mono shrink-0 text-[9px] uppercase tracking-[0.18em] text-zinc-400 dark:text-zinc-600">
-            projects
-          </span>
-        </div>
+      <section id="client-work" className="scroll-mt-28">
+        <SectionHeading
+          number="01"
+          title="Client work"
+          description="Projects built around real needs and practical solutions."
+          count={clientProjects.length}
+          icon={<FolderGit2 size={16} />}
+        />
 
-        <div className="space-y-6">
-          {clientProjects.map((project) => (
-            <ProjectCard key={project.id} {...project} />
-          ))}
+        {clientProjects.length > 0 ? (
+          <div className="mt-7 space-y-6">
+            {clientProjects.map((project) => (
+              <ProjectCard key={project.id} {...project} />
+            ))}
+          </div>
+        ) : (
+          <EmptyState message="Client projects will appear here." />
+        )}
+      </section>
+
+      {/* Personal Projects */}
+      <section className="mt-20 sm:mt-28">
+        <SectionHeading
+          number="02"
+          title="Personal projects"
+          description="Things I've designed, developed, and learned from."
+          count={selfProjects.length}
+          icon={<FolderGit2 size={16} />}
+        />
+
+        {selfProjects.length > 0 ? (
+          <div className="mt-7 space-y-6">
+            {selfProjects.map((project) => (
+              <ProjectCard key={project.id} {...project} />
+            ))}
+          </div>
+        ) : (
+          <EmptyState message="Personal projects will appear here." />
+        )}
+      </section>
+
+      {/* Ongoing Projects */}
+      <section className="mt-20 sm:mt-28">
+        <SectionHeading
+          number="03"
+          title="Currently building"
+          description="Experiments and projects still in progress."
+          icon={<FolderGit2 size={16} />}
+          badge="In progress"
+        />
+
+        <div className="mt-7">
+          <OngoingProjects />
         </div>
       </section>
 
-      {/* Self Projects */}
-      <section
-        className="mt-14 sm:mt-20"
-        aria-labelledby="self-projects-heading"
-      >
-        <div className="mb-5 flex items-center gap-4">
-          <h2
-            id="self-projects-heading"
-            className="ibm-mono shrink-0 text-[10px] font-medium uppercase tracking-[0.24em] text-zinc-500 dark:text-zinc-400"
-          >
-            Self projects
-          </h2>
-          <span className="h-px w-full bg-zinc-200 dark:bg-zinc-800" />
-          <span className="ibm-mono shrink-0 text-[9px] uppercase tracking-[0.18em] text-zinc-400 dark:text-zinc-600">
-            {String(selfProjects.length).padStart(2, "0")} projects
-          </span>
-        </div>
-
-        <div className="space-y-6">
-          {selfProjects.map((project) => (
-            <ProjectCard key={project.id} {...project} />
-          ))}
-        </div>
-      </section>
-
-      {/* Ongong Projects */}
-      <section
-        className="mt-8 sm:mt-20"
-        aria-labelledby="self-projects-heading"
-      >
-        <div className="mb-3 sm:mb-5 flex items-center gap-2 sm:gap-4">
-          <h2
-            id="self-projects-heading"
-            className="ibm-mono shrink-0 text-[8px] sm:text-[10px] font-medium uppercase tracking-[0.12em] sm:tracking-[0.24em] text-zinc-500 dark:text-zinc-400"
-          >
-            Ongoing projects
-          </h2>
-
-          <span className="h-px min-w-2 flex-1 bg-zinc-200 dark:bg-zinc-800" />
-
-          <span className="ibm-mono shrink-0 text-[8px] sm:text-[9px] uppercase tracking-[0.08em] sm:tracking-[0.18em] text-zinc-400 dark:text-zinc-600">
-            {String(selfProjects.length).padStart(2, "0")} projects
-          </span>
-        </div>
-
-        <OngoingProjects />
-      </section>
-
-      <section className="mt-14 sm:mt-20" aria-labelledby="research-heading">
-        <div className="mb-5 flex items-center gap-4">
-          <p
-            id="research-heading"
-            className="ibm-mono shrink-0 text-[10px] font-medium uppercase tracking-[0.24em] text-zinc-500 dark:text-zinc-400"
-          >
-            Academic research
-          </p>
-          <span className="h-px w-full bg-zinc-200 dark:bg-zinc-800" />
-          <span className="ibm-mono shrink-0 text-[9px] uppercase tracking-[0.18em] text-zinc-400 dark:text-zinc-600">
-            Grade 12
-          </span>
-        </div>
+      {/* Research */}
+      <section className="mt-20 sm:mt-28">
+        <SectionHeading
+          number="04"
+          title="Research & development"
+          description="Academic work exploring technology and its applications."
+          icon={<FlaskConical size={16} />}
+          badge="Academic"
+        />
 
         <button
           type="button"
           onClick={() => setShowResearch(true)}
-          className="group relative grid w-full overflow-hidden rounded-[28px] border border-zinc-200 bg-white p-3 text-left text-zinc-950 shadow-[0_22px_65px_-38px_rgba(24,24,27,0.45)] transition duration-500 hover:-translate-y-1 hover:border-zinc-300 hover:shadow-[0_30px_75px_-35px_rgba(24,24,27,0.55)] dark:border-zinc-800 dark:bg-zinc-900 dark:text-white dark:hover:border-zinc-700 dark:hover:shadow-black/40 sm:p-4 md:grid-cols-[1.05fr_0.95fr] md:gap-2"
+          className="group mt-7 grid w-full overflow-hidden rounded-2xl border border-zinc-200 bg-white text-left transition duration-500 hover:-translate-y-1 hover:border-zinc-400 hover:shadow-xl hover:shadow-zinc-950/5 dark:border-zinc-800 dark:bg-zinc-950 dark:hover:border-zinc-600 dark:hover:shadow-black/20 md:grid-cols-[1.05fr_0.95fr]"
         >
-          <span className="pointer-events-none absolute -right-5 -top-12 select-none font-mono text-[10rem] font-bold leading-none text-zinc-950/[0.025] dark:text-white/[0.025] sm:text-[14rem]">
-            01
-          </span>
-
-          <div className="relative min-h-[230px] overflow-hidden rounded-[22px] bg-white sm:min-h-[300px] md:min-h-[380px]">
+          {/* Research Image */}
+          <div className="relative min-h-[240px] overflow-hidden bg-zinc-100 dark:bg-zinc-900 sm:min-h-[340px]">
             <img
               src={sensCaneImage}
               alt="SensCane smart blind stick research presentation"
-              className="absolute inset-0 h-full w-full object-cover transition duration-700 ease-out group-hover:scale-[1.025]"
+              loading="lazy"
+              className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-[1.04]"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/40 via-transparent to-transparent" />
-            <p className="ibm-mono absolute bottom-4 left-4 rounded-full border border-white/25 bg-zinc-950/55 px-3 py-1.5 text-[9px] uppercase tracking-[0.2em] text-white backdrop-blur-sm">
+
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+
+            <span className="ibm-mono absolute bottom-4 left-4 rounded-full border border-white/25 bg-black/40 px-3 py-2 text-[9px] uppercase tracking-[0.18em] text-white backdrop-blur-md">
               Research archive / 01
-            </p>
+            </span>
           </div>
 
-          <div className="relative flex flex-col justify-center p-6 sm:p-8 lg:p-10">
-            <div className="flex items-center gap-3">
-              <span className="ibm-mono text-[9px] font-medium uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400">
-                Grade 12 research
+          {/* Research Details */}
+          <div className="flex flex-col justify-center p-6 sm:p-9 lg:p-12">
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="ibm-mono rounded-full bg-zinc-100 px-3 py-1.5 text-[9px] uppercase tracking-wider text-zinc-600 dark:bg-zinc-800 dark:text-zinc-300">
+                Grade 12
+              </span>
+              <span className="ibm-mono rounded-full border border-zinc-200 px-3 py-1.5 text-[9px] uppercase tracking-wider text-zinc-500 dark:border-zinc-700 dark:text-zinc-400">
+                Assistive technology
               </span>
             </div>
-            <p className="ibm-mono mt-6 text-[9px] font-medium uppercase tracking-[0.24em] text-zinc-500 dark:text-zinc-400">
-              Assistive technology / STEM
-            </p>
-            <h2 className="pixel-font mt-7 text-3xl leading-none tracking-[-0.04em] sm:text-4xl lg:text-5xl">
+
+            <h3 className="pixel-font mt-7 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
               SensCane
-            </h2>
-            <p className="mt-3 text-sm text-zinc-500 dark:text-zinc-400 sm:text-base">
+            </h3>
+
+            <p className="mt-3 text-sm leading-6 text-zinc-500 dark:text-zinc-400 sm:text-base">
               Smart Blind Stick for Visually Impaired Individuals
             </p>
-            <p className="mt-6 max-w-xl text-sm leading-7 text-zinc-600 dark:text-zinc-300">
-              A Grade 12 research requirement exploring how an affordable,
-              sensor-assisted device can support safer and more independent
-              navigation.
+
+            <p className="mt-5 max-w-lg text-sm leading-7 text-zinc-600 dark:text-zinc-300">
+              An academic research project exploring an affordable,
+              sensor-assisted device designed to support safer and more
+              independent navigation for visually impaired individuals.
             </p>
 
-            <div className="mt-8 inline-flex items-center gap-3 border-b border-zinc-300 pb-2 font-mono text-[10px] uppercase tracking-[0.18em] text-zinc-950 transition-colors group-hover:border-zinc-950 dark:border-zinc-600 dark:text-white dark:group-hover:border-white">
-              Explore the research
-              <ArrowUpRight
-                size={15}
-                aria-hidden="true"
-                className="transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1"
-              />
+            <div className="mt-8 flex items-center justify-between border-t border-zinc-200 pt-5 dark:border-zinc-800">
+              <span className="ibm-mono text-[10px] uppercase tracking-[0.16em]">
+                View research
+              </span>
+
+              <span className="flex h-10 w-10 items-center justify-center rounded-full border border-zinc-200 transition duration-300 group-hover:border-zinc-950 group-hover:bg-zinc-950 group-hover:text-white dark:border-zinc-700 dark:group-hover:border-white dark:group-hover:bg-white dark:group-hover:text-zinc-950">
+                <ArrowUpRight
+                  size={18}
+                  className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                />
+              </span>
             </div>
           </div>
         </button>
@@ -176,6 +175,49 @@ function Projects() {
 
       {showResearch && <ResearchModal onClose={() => setShowResearch(false)} />}
     </section>
+  );
+}
+
+function SectionHeading({ number, title, description, count, icon, badge }) {
+  return (
+    <div className="flex flex-col gap-4 border-b border-zinc-200 pb-5 dark:border-zinc-800 sm:flex-row sm:items-end sm:justify-between">
+      <div className="min-w-0">
+        <div className="ibm-mono flex items-center gap-2 text-[9px] uppercase tracking-[0.2em] text-zinc-400 dark:text-zinc-500">
+          <span>{number}</span>
+          <span className="h-px w-5 bg-zinc-300 dark:bg-zinc-700" />
+          {icon}
+          {badge && (
+            <span className="rounded-full border border-zinc-200 px-2 py-1 tracking-wider dark:border-zinc-700">
+              {badge}
+            </span>
+          )}
+        </div>
+
+        <h2 className="pixel-font mt-4 text-xl font-bold tracking-tight sm:text-2xl">
+          {title}
+        </h2>
+
+        <p className="ibm-mono mt-3 max-w-xl text-xs leading-6 text-zinc-500 dark:text-zinc-400 sm:text-sm">
+          {description}
+        </p>
+      </div>
+
+      {count !== undefined && (
+        <p className="ibm-mono shrink-0 text-[10px] uppercase tracking-[0.16em] text-zinc-400 dark:text-zinc-500">
+          {String(count).padStart(2, "0")} items
+        </p>
+      )}
+    </div>
+  );
+}
+
+function EmptyState({ message }) {
+  return (
+    <div className="mt-7 rounded-2xl border border-dashed border-zinc-300 px-5 py-10 text-center dark:border-zinc-800">
+      <p className="ibm-mono text-xs text-zinc-500 dark:text-zinc-400">
+        {message}
+      </p>
+    </div>
   );
 }
 
