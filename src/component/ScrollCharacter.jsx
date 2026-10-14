@@ -15,6 +15,7 @@ const smoothStep = (value) =>
 const getTextRect = (element) => {
   const range = document.createRange();
   range.selectNodeContents(element);
+
   return range.getBoundingClientRect();
 };
 
@@ -23,12 +24,14 @@ export default function ScrollCharacter() {
   const reduceMotion = useReducedMotion();
 
   useEffect(() => {
-    let frameId;
+    let frameId = null;
 
     const updatePosition = () => {
-      cancelAnimationFrame(frameId);
+      if (frameId !== null) return;
 
-      frameId = requestAnimationFrame(() => {
+      frameId = window.requestAnimationFrame(() => {
+        frameId = null;
+
         const start = document.getElementById("about-greeting");
         const target = document.getElementById("stack-heading");
         const nextTarget = document.getElementById(
@@ -42,16 +45,22 @@ export default function ScrollCharacter() {
         const nextTargetRect = getTextRect(nextTarget);
 
         const mobile = window.innerWidth < 640;
-        const size = mobile ? 28 : 64;
-        const gap = mobile ? 8 : 12;
-        const padding = 8;
         const viewportWidth = window.innerWidth;
         const viewportHeight = window.innerHeight;
+        const scrollY = window.scrollY;
+
+        // Responsive character size and spacing.
+        const size = mobile ? 32 : 64;
+        const gap = mobile ? 6 : 12;
+        const padding = 8;
 
         const minX = size / 2 + padding;
-        const maxX = viewportWidth - size / 2 - padding;
+        const maxX = Math.max(
+          minX,
+          viewportWidth - size / 2 - padding
+        );
 
-        // Place the character beside a heading.
+        // Position the character beside each heading.
         const getX = (rect) => {
           const rightX = rect.right + gap + size / 2;
           const leftX = rect.left - gap - size / 2;
@@ -59,64 +68,77 @@ export default function ScrollCharacter() {
           if (rightX <= maxX) return rightX;
           if (leftX >= minX) return leftX;
 
-          return clamp(rect.right - size / 2, minX, maxX);
+          return clamp(
+            rect.right + size / 2,
+            minX,
+            maxX
+          );
         };
 
-        // Convert heading positions into document coordinates.
+        // Keep all anchor coordinates in document space.
         const getAnchor = (rect) => ({
           x: getX(rect),
-          y: rect.top + rect.height / 2 + window.scrollY,
+          y: rect.top + rect.height / 2 + scrollY,
         });
 
         const startAnchor = getAnchor(startRect);
         const middleAnchor = getAnchor(targetRect);
         const endAnchor = getAnchor(nextTargetRect);
 
-        // The character begins traveling when the destination
-        // reaches 95% of the viewport height.
-        const triggerLine = viewportHeight * 0.95;
-        const travelDistance = viewportHeight * 0.8;
+        // Trigger when the destination heading approaches
+        // the lower part of the viewport.
+        const triggerLine = viewportHeight * 0.90;
 
-        const getTriggerScroll = (anchor) =>
-          anchor.y - triggerLine;
+        // Each journey has its own scroll distance.
+        const firstTravelDistance = viewportHeight * 0.7;
+        const secondTravelDistance = viewportHeight * 0.6;
 
-        const firstTrigger = getTriggerScroll(middleAnchor);
-        const secondTrigger = getTriggerScroll(endAnchor);
+        const firstTrigger =
+          middleAnchor.y - triggerLine;
 
+        // Phase 1: About -> My toolkit.
         const firstProgress = clamp(
-          (window.scrollY - firstTrigger) / travelDistance,
+          (scrollY - firstTrigger) /
+            firstTravelDistance,
           0,
           1
         );
 
-        // The second journey cannot start until the first finishes.
+        // Phase 2 starts exactly when phase 1 finishes.
+        // This avoids jumping ahead because of a separate
+        // destination trigger.
+        const secondStartScroll =
+          firstTrigger + firstTravelDistance;
+
         const secondProgress =
-          window.scrollY < firstTrigger + travelDistance
+          scrollY < secondStartScroll
             ? 0
             : clamp(
-                (window.scrollY - secondTrigger) /
-                  travelDistance,
+                (scrollY - secondStartScroll) /
+                  secondTravelDistance,
                 0,
                 1
               );
 
-        // Use document coordinates so the path doesn't drift
-        // just because the headings move with the viewport.
-        const travel = (from, to, t) => {
-          const eased = smoothStep(t);
+        // Calculate the path in document coordinates.
+        const travel = (from, to, progress) => {
+          const t = smoothStep(progress);
 
           if (!mobile) {
             return {
-              x: from.x + (to.x - from.x) * eased,
-              y: from.y + (to.y - from.y) * eased,
+              x: from.x + (to.x - from.x) * t,
+              y: from.y + (to.y - from.y) * t,
             };
           }
 
-          const inverseT = 1 - eased;
+          // A gentle curve on mobile instead of a straight,
+          // potentially awkward horizontal movement.
+          const inverseT = 1 - t;
           const direction = to.x >= from.x ? -1 : 1;
+
           const curveAmount = Math.min(
-            70,
-            Math.abs(to.x - from.x) * 0.35
+            45,
+            Math.abs(to.x - from.x) * 0.3
           );
 
           const controlX = clamp(
@@ -126,19 +148,28 @@ export default function ScrollCharacter() {
             maxX
           );
 
-          const verticalDistance = Math.abs(to.y - from.y);
-          const lift = Math.min(140, verticalDistance * 0.35);
-          const controlY = (from.y + to.y) / 2 - lift;
+          const verticalDistance = Math.abs(
+            to.y - from.y
+          );
+
+          const lift = Math.min(
+            80,
+            verticalDistance * 0.2
+          );
+
+          const controlY =
+            (from.y + to.y) / 2 - lift;
 
           return {
             x:
               inverseT * inverseT * from.x +
-              2 * inverseT * eased * controlX +
-              eased * eased * to.x,
+              2 * inverseT * t * controlX +
+              t * t * to.x,
+
             y:
               inverseT * inverseT * from.y +
-              2 * inverseT * eased * controlY +
-              eased * eased * to.y,
+              2 * inverseT * t * controlY +
+              t * t * to.y,
           };
         };
 
@@ -146,8 +177,7 @@ export default function ScrollCharacter() {
         let progress;
         let traveling;
 
-        if (firstProgress < 1) {
-          // Phase 1: Hi, I'm Arwin -> My toolkit.
+        if (scrollY < secondStartScroll) {
           point = travel(
             startAnchor,
             middleAnchor,
@@ -155,10 +185,11 @@ export default function ScrollCharacter() {
           );
 
           progress = firstProgress;
+
           traveling =
-            firstProgress > 0.02 && firstProgress < 0.98;
+            firstProgress > 0.02 &&
+            firstProgress < 0.98;
         } else {
-          // Phase 2: My toolkit -> Experiences.
           point = travel(
             middleAnchor,
             endAnchor,
@@ -166,14 +197,16 @@ export default function ScrollCharacter() {
           );
 
           progress = 1 + secondProgress;
+
           traveling =
-            secondProgress > 0.02 && secondProgress < 0.98;
+            secondProgress > 0.02 &&
+            secondProgress < 0.98;
         }
 
-        // Convert the document position back to viewport position.
+        // Convert document coordinates into viewport coordinates.
         setPosition({
           x: clamp(point.x, minX, maxX),
-          y: point.y - window.scrollY,
+          y: point.y - scrollY,
           progress,
           traveling,
           size,
@@ -186,21 +219,26 @@ export default function ScrollCharacter() {
     window.addEventListener("scroll", updatePosition, {
       passive: true,
     });
+
     window.addEventListener("resize", updatePosition);
 
     const observer = new ResizeObserver(updatePosition);
     observer.observe(document.body);
 
     return () => {
-      cancelAnimationFrame(frameId);
       window.removeEventListener("scroll", updatePosition);
       window.removeEventListener("resize", updatePosition);
       observer.disconnect();
+
+      if (frameId !== null) {
+        window.cancelAnimationFrame(frameId);
+      }
     };
   }, []);
 
   if (!position) return null;
 
+  // Switch character images as the journey progresses.
   const activeImage =
     position.progress >= 1.7
       ? experience
@@ -209,42 +247,52 @@ export default function ScrollCharacter() {
         : wave;
 
   return (
-    <motion.img
-      src={activeImage}
-      alt=""
+    <div
       aria-hidden="true"
-      className="pointer-events-none fixed z-40 object-contain"
+      className="pointer-events-none fixed z-40"
       style={{
         left: position.x,
         top: position.y,
         width: position.size,
         height: position.size,
-        x: "-50%",
-        y: "-50%",
-        imageRendering: "pixelated",
-        transformOrigin: "center",
+        transform: "translate(-50%, -50%)",
       }}
-      animate={
-        reduceMotion
-          ? { rotate: 0, scale: 1, y: "-50%" }
-          : position.traveling
+    >
+      <motion.img
+        src={activeImage}
+        alt=""
+        draggable={false}
+        className="h-full w-full select-none object-contain"
+        style={{
+          imageRendering: "pixelated",
+          transformOrigin: "center",
+        }}
+        animate={
+          reduceMotion
             ? {
-                rotate: [0, -1, 1, 0],
-                scale: [1, 1.12, 1],
-                y: ["-50%", "-58%", "-50%"],
+                rotate: 0,
+                scale: 1,
+                y: 0,
               }
-            : {
-                rotate: [0, -5, 5, 0],
-                scale: [1, 1.12, 1],
-                y: ["-50%", "-60%", "-50%"],
-              }
-      }
-      transition={{
-        duration: position.traveling ? 0.45 : 1.1,
-        ease: "easeInOut",
-        repeat: reduceMotion ? 0 : Infinity,
-        repeatDelay: position.traveling ? 0 : 0.3,
-      }}
-    />
+            : position.traveling
+              ? {
+                  rotate: [0, -4, 4, 0],
+                  scale: [1, 1.08, 1],
+                  y: [0, -4, 0],
+                }
+              : {
+                  rotate: [0, -5, 5, 0],
+                  scale: [1, 1.08, 1],
+                  y: [0, -6, 0],
+                }
+        }
+        transition={{
+          duration: position.traveling ? 0.5 : 1.2,
+          ease: "easeInOut",
+          repeat: reduceMotion ? 0 : Infinity,
+          repeatDelay: position.traveling ? 0 : 0.25,
+        }}
+      />
+    </div>
   );
 }
