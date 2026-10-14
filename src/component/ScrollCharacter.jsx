@@ -98,7 +98,7 @@ export default function ScrollCharacter() {
 
         // Shorter scroll distances on mobile.
         const triggerLine = viewportHeight * (
-          mobile ? 1 : 0.8
+          mobile ? 1 : 0.9
         );
 
         const firstDistance = viewportHeight * (
@@ -106,11 +106,11 @@ export default function ScrollCharacter() {
         );
 
         const secondDistance = viewportHeight * (
-          mobile ? 0.9 : 0.7
+          mobile ? 1.1 : 0.7
         );
 
         const thirdDistance = viewportHeight * (
-          mobile ? 2.5 : 1.5
+          mobile ? 2 : 1.5
         );
 
         // About -> Tools.
