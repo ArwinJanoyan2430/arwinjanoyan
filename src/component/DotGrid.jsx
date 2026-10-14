@@ -25,7 +25,7 @@ const binaryStreams = [
 
 function generateBinary(length = 16) {
   return Array.from({ length }, () =>
-    Math.random() > 0.5 ? "1" : "0",
+    Math.random() > 0.5 ? "1" : "0"
   ).join("\n");
 }
 
@@ -44,7 +44,7 @@ function SystemShape({ shape, scrollY, index }) {
 
   return (
     <div
-      className="absolute text-zinc-400/70 dark:text-zinc-300/60"
+      className="absolute text-zinc-400/50 dark:text-zinc-300/60"
       style={{
         left: shape.x,
         top: shape.y,
@@ -57,7 +57,7 @@ function SystemShape({ shape, scrollY, index }) {
         style={{
           ...floatStyle,
           transform: `rotate(${shape.rotate + phase * 10}deg)`,
-          filter: "drop-shadow(0 0 7px currentColor)",
+          filter: "drop-shadow(0 0 5px currentColor)",
         }}
       >
         {shape.type === "square" && (
@@ -118,7 +118,7 @@ function BinaryStream({ stream, scrollY, index }) {
   return (
     <div
       className="absolute select-none font-mono text-xs font-semibold
-        leading-[1.8] tracking-[0.35em] text-zinc-500/70
+        leading-[1.8] tracking-[0.35em] text-zinc-500/60
         dark:text-zinc-300/60"
       style={{
         left: stream.x,
@@ -148,10 +148,10 @@ function DotGrid() {
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
-    let frameId;
+    let frameId = null;
 
     const handleScroll = () => {
-      if (frameId) return;
+      if (frameId !== null) return;
 
       frameId = window.requestAnimationFrame(() => {
         setScrollY(window.scrollY);
@@ -164,7 +164,7 @@ function DotGrid() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
 
-      if (frameId) {
+      if (frameId !== null) {
         window.cancelAnimationFrame(frameId);
       }
     };
@@ -173,53 +173,52 @@ function DotGrid() {
   return (
     <div
       aria-hidden="true"
-      className="pointer-events-none fixed inset-0 z-0
-        overflow-hidden bg-zinc-50 transition-colors duration-500
-        dark:bg-[#070707]"
+      className="pointer-events-none fixed inset-0 z-0 overflow-hidden
+        bg-white transition-colors duration-500 dark:bg-[#070707]"
     >
       {/* Technical grid */}
       <div
-        className="absolute inset-0 opacity-70 dark:opacity-40"
+        className="absolute inset-0 opacity-100 dark:opacity-30"
         style={{
           backgroundImage: `
-            linear-gradient(rgba(82,82,91,0.13) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(82,82,91,0.13) 1px, transparent 1px)
+            linear-gradient(rgba(0,0,0,0.035) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0,0,0,0.035) 1px, transparent 1px)
           `,
           backgroundSize: "48px 48px",
         }}
       />
 
-      {/* Ambient lighting */}
+      {/* Ambient lighting: disabled in light mode */}
       <div
         className="absolute left-1/2 top-[-300px] h-[700px] w-[900px]
-          -translate-x-1/2 rounded-full bg-zinc-400/25 blur-[140px]
+          -translate-x-1/2 rounded-full bg-white/0 blur-[140px]
           dark:bg-zinc-400/[0.12]"
       />
 
       <div
         className="absolute left-[-220px] top-[15%] h-[550px] w-[550px]
-          rounded-full bg-slate-400/20 blur-[150px]
+          rounded-full bg-white/0 blur-[150px]
           dark:bg-slate-300/[0.07]"
       />
 
       <div
         className="absolute right-[-220px] top-[40%] h-[600px] w-[600px]
-          rounded-full bg-neutral-400/15 blur-[160px]
+          rounded-full bg-white/0 blur-[160px]
           dark:bg-neutral-400/[0.08]"
       />
 
       <div
         className="absolute bottom-[-350px] left-[15%] h-[650px] w-[750px]
-          rounded-full bg-gray-400/20 blur-[170px]
+          rounded-full bg-white/0 blur-[170px]
           dark:bg-gray-300/[0.06]"
       />
 
       {/* Dotted texture */}
       <div
-        className="absolute inset-0 opacity-40 dark:opacity-20"
+        className="absolute inset-0 opacity-100 dark:opacity-20"
         style={{
           backgroundImage:
-            "radial-gradient(rgba(82,82,91,0.55) 0.8px, transparent 0.8px)",
+            "radial-gradient(rgba(0,0,0,0.22) 0.6px, transparent 0.6px)",
           backgroundSize: "24px 24px",
         }}
       />
@@ -247,7 +246,7 @@ function DotGrid() {
       {/* Edge shading */}
       <div
         className="absolute inset-0 bg-gradient-to-b
-          from-zinc-50/5 via-transparent to-zinc-50/50
+          from-transparent via-transparent to-white/10
           dark:from-black/15 dark:via-transparent dark:to-[#070707]/60"
       />
 
