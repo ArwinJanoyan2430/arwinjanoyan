@@ -94,7 +94,7 @@ if (variant === "directory") {
 
 
   return (
-    <article className="group overflow-hidden rounded-[28px] border border-zinc-200 bg-white/60 backdrop-blur-xl p-3 shadow-[0_20px_60px_-30px_rgba(24,24,27,0.35)] transition-all duration-500 hover:-translate-y-1 hover:border-zinc-300 hover:shadow-[0_30px_80px_-30px_rgba(24,24,27,0.45)] dark:border-zinc-800 dark:bg-zinc-900/80 dark:hover:border-zinc-700 dark:hover:shadow-black/30 md:p-4">
+    <article className="group overflow-hidden rounded-[28px] border border-zinc-200 bg-zinc-50 backdrop-blur-xl p-3 shadow-[0_20px_60px_-30px_rgba(24,24,27,0.35)] transition-all duration-500 hover:-translate-y-1 hover:border-zinc-100 hover:shadow-[0_30px_80px_-30px_rgba(24,24,27,0.45)] dark:border-zinc-800 dark:bg-zinc-900/80 dark:hover:border-zinc-700 dark:hover:shadow-black/30 md:p-4">
       <div className="grid gap-4 md:grid-cols-[minmax(0,1.12fr)_minmax(0,0.88fr)] md:gap-6">
         <div className="relative min-h-[260px] overflow-hidden rounded-[22px] bg-white/60 backdrop-blur-xl dark:bg-zinc-800 sm:min-h-[320px] md:min-h-[360px]">
           {projectImages.length > 0 && (

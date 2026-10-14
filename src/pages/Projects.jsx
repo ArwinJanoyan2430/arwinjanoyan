@@ -114,7 +114,7 @@ function Projects() {
         <button
           type="button"
           onClick={() => setShowResearch(true)}
-          className="group mt-7 grid w-full overflow-hidden rounded-2xl border border-zinc-200 bg-white text-left transition duration-500 hover:-translate-y-1 hover:border-zinc-400 hover:shadow-xl hover:shadow-zinc-950/5 dark:border-zinc-800 dark:bg-zinc-950 dark:hover:border-zinc-600 dark:hover:shadow-black/20 md:grid-cols-[1.05fr_0.95fr]"
+          className="group mt-7 grid w-full overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-50 dark:bg-zinc-900/80 text-left transition duration-500 hover:-translate-y-1 hover:border-zinc-300 hover:shadow-xl hover:shadow-zinc-950/5 dark:border-zinc-800 dark:hover:border-zinc-600 dark:hover:shadow-black/20 md:grid-cols-[1.05fr_0.95fr]"
         >
           {/* Research Image */}
           <div className="relative min-h-[240px] overflow-hidden bg-zinc-100 dark:bg-zinc-900 sm:min-h-[340px]">

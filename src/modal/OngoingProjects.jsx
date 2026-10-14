@@ -41,11 +41,11 @@ function OngoingProjects() {
               shadow-[0_20px_70px_-35px_rgba(24,24,27,0.35)]
               transition-all duration-500
               hover:-translate-y-2
-              hover:border-zinc-300
+              hover:border-zinc-100
               hover:shadow-[0_30px_90px_-35px_rgba(24,24,27,0.5)]
 
               dark:border-zinc-800
-              dark:bg-zinc-950
+              dark:bg-zinc-900/80
               dark:hover:border-zinc-700
               dark:hover:shadow-black/40
             "

@@ -181,9 +181,9 @@ function About() {
 
 <div className="mt-4 w-full min-w-0 overflow-hidden rounded-[28px]
   border border-zinc-200/80
-  bg-white/60 backdrop-blur-xl
+  bg-zinc-100/0 backdrop-blur-xl
   shadow-[0_24px_80px_-30px_rgba(0,0,0,0.22)]
-  dark:border-zinc-800/80 dark:bg-zinc-950/60">        {/* Header */}
+  dark:border-zinc-800/80 dark:bg-zinc-950/30">        {/* Header */}
         <div className="relative overflow-hidden px-5 py-6 sm:px-7 sm:py-8">
           {/* Decorative background */}
           <div className="pointer-events-none absolute -right-20 -top-20 h-48 w-48 rounded-full bg-zinc-100 blur-3xl dark:bg-zinc-900" />
@@ -238,11 +238,11 @@ function About() {
               <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
                 {/* Number / Category */}
                 <div className="flex shrink-0 items-center gap-3 sm:w-40">
-                  <span className="ibm-mono text-[10px] text-zinc-300 transition-colors duration-300 group-hover:text-zinc-600 dark:text-zinc-700 dark:group-hover:text-zinc-400">
+                  <span className="ibm-mono text-[10px] text-zinc-500 transition-colors duration-300 group-hover:text-zinc-600 dark:text-zinc-700 dark:group-hover:text-zinc-400">
                     {String(index + 1).padStart(2, "0")}
                   </span>
 
-                  <div className="h-px w-5 bg-zinc-200 dark:bg-zinc-800" />
+                  <div className="h-px w-5 bg-zinc-400 dark:bg-zinc-800" />
 
                   <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400">
                     {group.title}
@@ -254,7 +254,7 @@ function About() {
                   {group.items.map((title) => (
                     <span
                       key={title}
-                      className="group/item inline-flex max-w-full items-center gap-2 rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1.5 text-xs font-medium text-zinc-700 transition-all duration-300 hover:-translate-y-0.5 hover:border-zinc-400 hover:bg-white hover:shadow-[0_6px_20px_-8px_rgba(0,0,0,0.3)] dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:border-zinc-600 dark:hover:bg-zinc-800"
+                      className="group/item inline-flex max-w-full items-center gap-2 rounded-full border border-zinc-300 bg-zinc-100 px-3 py-1.5 text-xs font-medium text-zinc-500 transition-all duration-300 hover:-translate-y-0.5 hover:border-zinc-400 hover:bg-white hover:shadow-[0_6px_20px_-8px_rgba(0,0,0,0.3)] dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:border-zinc-600 dark:hover:bg-zinc-800"
                     >
 
                       <span className="break-words">{title}</span>
