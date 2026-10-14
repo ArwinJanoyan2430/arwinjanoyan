@@ -34,7 +34,7 @@ function Experiences() {
           Experience / Timeline
         </p>
 
-        <h1 className="pixel-font mt-3 text-xl font-bold leading-relaxed sm:mt-4 sm:text-3xl">
+        <h1 id="experiences-heading" className="pixel-font mt-3 text-xl font-bold leading-relaxed sm:mt-4 sm:text-3xl">
           My journey
         </h1>
 
