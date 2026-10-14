@@ -98,7 +98,7 @@ export default function ScrollCharacter() {
 
         // Shorter scroll distances on mobile.
         const triggerLine = viewportHeight * (
-          mobile ? 1 : 0.9
+          mobile ? 0.9 : 0.9
         );
 
         const firstDistance = viewportHeight * (
