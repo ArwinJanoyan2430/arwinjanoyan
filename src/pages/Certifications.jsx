@@ -114,7 +114,7 @@ function Certifications() {
             {category}
           </h2>
 
-          <div className='border-b border-zinc-600 w-full'/>
+          <div className='border-b border-zinc-200 dark:border-zinc-800 w-full'/>
 
           <span className="ibm-mono text-[9px] text-zinc-400 dark:text-zinc-500">
             [{String(categoryCertificates.length).padStart(2, "0")} CERTS]

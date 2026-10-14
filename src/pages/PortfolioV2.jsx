@@ -12,11 +12,13 @@ import Recommendations from "../pages/Recommendations";
 import About from "../pages/About";
 import Contact from "../pages/Contact";
 import Footer from "../pages/Footer";
+import ScrollCharacter from "../component/ScrollCharacter";
 import Certifications from "../pages/Certifications";
 
 function PortfolioV2() {
   const [dark, setDark] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [showResearch, setShowResearch] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -51,9 +53,10 @@ function PortfolioV2() {
     <div className={dark ? "dark" : ""}>
       {/* Animated background */}
       <DotGrid />
+      <ScrollCharacter />
 
       {/* Pass theme state to Navbar */}
-      <Navbar dark={dark} setDark={setDark} />
+      {!showResearch && <Navbar dark={dark} setDark={setDark} />}
 
       {/* Main content */}
       <div
@@ -76,9 +79,10 @@ function PortfolioV2() {
             <Experiences />
           </section>
 
-          <section id="projects">
-            <Projects />
-          </section>
+          <Projects
+            showResearch={showResearch}
+            setShowResearch={setShowResearch}
+          />
 
           <section id="certifications">
             <Certifications />

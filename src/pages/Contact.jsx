@@ -1,4 +1,12 @@
-import { ArrowUpRight, Check, Copy, Github, Linkedin, Mail, Send } from "lucide-react";
+import {
+  ArrowUpRight,
+  Check,
+  Copy,
+  Github,
+  Linkedin,
+  Mail,
+  Send,
+} from "lucide-react";
 import { useState } from "react";
 import { FaFacebook } from "react-icons/fa";
 import emailjs from "@emailjs/browser";
@@ -39,12 +47,19 @@ function Contact() {
     setErrorMessage("");
 
     try {
-      await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, event.currentTarget, PUBLIC_KEY);
+      await emailjs.sendForm(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        event.currentTarget,
+        PUBLIC_KEY,
+      );
       setForm({ name: "", email: "", message: "" });
       setStatus("success");
     } catch (error) {
       setStatus("error");
-      setErrorMessage(error.message || "Unable to send your message right now.");
+      setErrorMessage(
+        error.message || "Unable to send your message right now.",
+      );
     }
   }
 
@@ -66,8 +81,8 @@ function Contact() {
           </h1>
         </div>
         <p className="ibm-mono max-w-2xl text-sm leading-7 text-zinc-600 dark:text-zinc-400 sm:text-base md:justify-self-end md:text-right">
-          Whether it&apos;s a project, collaboration, or a quick question, send me a
-          message and let&apos;s talk.
+          Whether it&apos;s a project, collaboration, or a quick question, send
+          me a message and let&apos;s talk.
         </p>
       </header>
 
@@ -81,7 +96,11 @@ function Contact() {
               href={`mailto:${email}`}
               className="group mt-5 inline-flex max-w-full items-center gap-3 text-sm text-zinc-950 dark:text-white sm:text-base"
             >
-              <Mail size={17} className="shrink-0 text-zinc-400" aria-hidden="true" />
+              <Mail
+                size={17}
+                className="shrink-0 text-zinc-400"
+                aria-hidden="true"
+              />
               <span className="ibm-mono truncate border-b border-zinc-300 pb-1 transition mr-5 group-hover:border-zinc-950 dark:border-zinc-700 dark:group-hover:border-white">
                 {email}
               </span>
@@ -92,7 +111,11 @@ function Contact() {
               onClick={copyEmail}
               className="ibm-mono mt-5 inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.16em] text-zinc-500 transition hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-white"
             >
-              {copied ? <Check size={14} aria-hidden="true" /> : <Copy size={14} aria-hidden="true" />}
+              {copied ? (
+                <Check size={14} aria-hidden="true" />
+              ) : (
+                <Copy size={14} aria-hidden="true" />
+              )}
               {copied ? "Email copied" : "Copy address"}
             </button>
 
@@ -113,7 +136,11 @@ function Contact() {
                       {icon}
                       <span className="ibm-mono text-xs">{name}</span>
                     </span>
-                    <ArrowUpRight size={14} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
+                    <ArrowUpRight
+                      size={14}
+                      className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                      aria-hidden="true"
+                    />
                   </a>
                 ))}
                 <a
@@ -126,7 +153,11 @@ function Contact() {
                     <FaFacebook size={16} aria-hidden="true" />
                     <span className="ibm-mono text-xs">Facebook</span>
                   </span>
-                  <ArrowUpRight size={14} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
+                  <ArrowUpRight
+                    size={14}
+                    className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                    aria-hidden="true"
+                  />
                 </a>
               </div>
             </div>
@@ -140,13 +171,18 @@ function Contact() {
           </div>
         </aside>
 
-        <form onSubmit={handleSubmit} className="py-8 sm:py-10 lg:py-12 lg:pl-12">
+        <form
+          onSubmit={handleSubmit}
+          className="py-8 sm:py-10 lg:py-12 lg:pl-12"
+        >
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
               <p className="ibm-mono text-[9px] uppercase tracking-[0.24em] text-zinc-400 dark:text-zinc-500">
                 Message form / 01
               </p>
-              <h2 className="pixel-font mt-3 text-xl sm:text-2xl">Tell me about it.</h2>
+              <h2 className="pixel-font mt-3 text-xl sm:text-2xl">
+                Tell me about it.
+              </h2>
             </div>
             <p className="ibm-mono text-[9px] uppercase tracking-[0.14em] text-zinc-400">
               Usually replies within a few days
@@ -213,16 +249,37 @@ function Contact() {
           </div>
 
           {status === "success" && (
-            <p aria-live="polite" className="ibm-mono mt-6 border border-emerald-200 bg-emerald-50 px-4 py-3 text-center text-xs text-emerald-800 dark:border-emerald-900 dark:bg-emerald-950/30 dark:text-emerald-400">
+            <p
+              aria-live="polite"
+              className="ibm-mono mt-6 border border-emerald-200 bg-emerald-50 px-4 py-3 text-center text-xs text-emerald-800 dark:border-emerald-900 dark:bg-emerald-950/30 dark:text-emerald-400"
+            >
               Thanks — your message has been sent.
             </p>
           )}
           {status === "error" && (
-            <p aria-live="assertive" className="ibm-mono mt-6 border border-red-200 bg-red-50 px-4 py-3 text-center text-xs text-red-800 dark:border-red-900 dark:bg-red-950/30 dark:text-red-400">
+            <p
+              aria-live="assertive"
+              className="ibm-mono mt-6 border border-red-200 bg-red-50 px-4 py-3 text-center text-xs text-red-800 dark:border-red-900 dark:bg-red-950/30 dark:text-red-400"
+            >
               {errorMessage}
             </p>
           )}
         </form>
+      </div>
+      <div className="mx-auto mt-20 max-w-3xl px-6 text-center">
+        <span className="pixel-font text-5xl text-zinc-300 dark:text-zinc-700">
+          “
+        </span>
+
+        <blockquote className="ibm-mono text-sm leading-8 text-zinc-600 dark:text-zinc-300 sm:text-base">
+          Build with purpose, learn through failure, and let every line of code
+          bring you closer to the person you want to become.
+        </blockquote>
+
+        <div className="mx-auto mt-5 h-px w-12 bg-zinc-300 dark:bg-zinc-700" />
+        <p className="ibm-mono mt-4 text-[10px] uppercase tracking-[0.2em] text-zinc-400 dark:text-zinc-500">
+          A developer's mindset
+        </p>
       </div>
     </section>
   );

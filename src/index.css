@@ -1172,6 +1172,23 @@ html {
   }
 }
 
+@keyframes float-side {
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.65;
+  }
+
+  50% {
+    transform: translateY(5px) translateX(0px);
+    opacity: 1;
+  }
+}
+
+.animate-float-side {
+  animation: float-side 2s ease-in-out infinite;
+}
+
 
 
 @keyframes float {

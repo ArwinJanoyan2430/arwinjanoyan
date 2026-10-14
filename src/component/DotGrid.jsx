@@ -9,7 +9,7 @@ const systemShapes = [
   { type: "circle", x: "18%", y: "58%", size: 26, speed: 0.14, rotate: 0 },
   { type: "diamond", x: "62%", y: "68%", size: 36, speed: -0.2, rotate: 0 },
   { type: "cross", x: "32%", y: "82%", size: 28, speed: 0.16, rotate: 0 },
-  { type: "square", x: "92%", y: "82%", size: 40, speed: -0.13, rotate: 30 },
+  { type: "square", x: "80%", y: "82%", size: 40, speed: -0.13, rotate: 30 },
   { type: "circle", x: "46%", y: "42%", size: 14, speed: 0.2, rotate: 0 },
   { type: "diamond", x: "8%", y: "38%", size: 24, speed: -0.15, rotate: 0 },
 ];
@@ -44,7 +44,7 @@ function SystemShape({ shape, scrollY, index }) {
 
   return (
     <div
-      className="absolute text-zinc-400/50 dark:text-zinc-300/60"
+      className="absolute text-zinc-200 dark:text-zinc-300/60"
       style={{
         left: shape.x,
         top: shape.y,
@@ -118,7 +118,7 @@ function BinaryStream({ stream, scrollY, index }) {
   return (
     <div
       className="absolute select-none font-mono text-xs font-semibold
-        leading-[1.8] tracking-[0.35em] text-zinc-500/60
+        leading-[1.8] tracking-[0.35em] text-zinc-300
         dark:text-zinc-300/60"
       style={{
         left: stream.x,

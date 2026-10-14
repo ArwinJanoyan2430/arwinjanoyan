@@ -1,6 +1,7 @@
+
 import PaddleHub from "../assets/v2/PaddleHub.jpg";
 import PaddleQ from "../assets/v2/PaddleQ.jpg";
-
+import { ArrowUpRight, CircleDot } from "lucide-react";
 
 function OngoingProjects() {
   const projects = [
@@ -8,167 +9,125 @@ function OngoingProjects() {
       name: "PaddleHub",
       image: PaddleHub,
       description:
-        "A full-stack platform for managing pickleball club operations, including court bookings, open play sessions, tournaments, player leaderboards, and admin workflows.",
+        "A full-stack platform for managing pickleball club operations, court bookings, open play sessions, tournaments, player leaderboards, and admin workflows.",
       progress: 75,
       status: "In Progress",
-      category: "Development",
-      timeline: "Active Development",
+      category: "Full-stack development",
+      number: "01",
     },
     {
       name: "PaddleQ",
       image: PaddleQ,
       description:
-        "PaddleQ streamlines pickleball club management, court bookings, and session tracking by automating player queuing, smart rotation, matchmaking, and live scores. ",
+        "A pickleball queue and session management system featuring automated player queuing, smart rotation, matchmaking, and live scores.",
       progress: 50,
       status: "In Progress",
-      category: "Development",
-      timeline: "Active Development",
+      category: "Web application",
+      number: "02",
     },
   ];
 
   return (
     <section className="w-full">
 
-      {/* Projects */}
-      <div className="grid gap-7 lg:grid-cols-2">
-        {projects.map((project, index) => (
+      {/* Project cards */}
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+        {projects.map((project) => (
           <article
-            key={index}
-            className="
-              group relative overflow-hidden rounded-[30px]
-              border border-zinc-200/80
-             bg-white/60 backdrop-blur-xl
-              shadow-[0_20px_70px_-35px_rgba(24,24,27,0.35)]
-              transition-all duration-500
-              hover:-translate-y-2
-              hover:border-zinc-100
-              hover:shadow-[0_30px_90px_-35px_rgba(24,24,27,0.5)]
-
-              dark:border-zinc-800
-              dark:bg-zinc-900/80
-              dark:hover:border-zinc-700
-              dark:hover:shadow-black/40
-            "
+            key={project.name}
+            className="group min-w-0 overflow-hidden rounded-2xl border border-zinc-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-zinc-300 hover:shadow-lg hover:shadow-zinc-950/5 dark:border-zinc-800 dark:bg-zinc-900/70 dark:hover:border-zinc-700 dark:hover:shadow-black/20"
           >
             {/* Image */}
-            <div className="relative h-72 overflow-hidden sm:h-80">
+            <div className="relative h-48 overflow-hidden bg-zinc-100 sm:h-56">
               <img
                 src={project.image}
-                alt={project.name}
-                className="
-                  h-full w-full object-cover
-                  transition-transform duration-700 ease-out
-                  group-hover:scale-[1.06]
-                "
+                alt={`${project.name} project preview`}
+                loading="lazy"
+                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
               />
 
-              {/* Gradient */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/5" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/10" />
 
-              {/* Top badges */}
-              <div className="absolute left-5 right-5 top-5 flex items-center justify-between">
-                <span
-                  className="
-                    rounded-full
-                    border border-white/20
-                    bg-black/30
-                    px-3.5 py-2
-                    text-[10px]
-                    font-semibold
-                    uppercase
-                    tracking-[0.16em]
-                    text-white
-                    backdrop-blur-md
-                  "
-                >
+              {/* Project number */}
+              <span className="ibm-mono absolute left-4 top-4 rounded-md border border-white/20 bg-black/30 px-2.5 py-1.5 text-[9px] tracking-widest text-white backdrop-blur-md">
+                PROJECT / {project.number}
+              </span>
+
+              {/* Status */}
+              <span className="ibm-mono absolute right-4 top-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/30 px-3 py-1.5 text-[9px] uppercase tracking-wider text-white backdrop-blur-md">
+                <CircleDot size={11} className="text-green-400" />
+                {project.status}
+              </span>
+
+              {/* Image title */}
+              <div className="absolute bottom-4 left-4 right-4">
+                <p className="ibm-mono mb-1.5 text-[9px] uppercase tracking-[0.18em] text-white/70">
                   {project.category}
-                </span>
+                </p>
 
-                <span
-                  className="
-                    flex items-center gap-2
-                    rounded-full
-                    border border-white/20
-                    bg-black/30
-                    px-3.5 py-2
-                    text-[10px]
-                    font-semibold
-                    uppercase
-                    tracking-[0.12em]
-                    text-white
-                    backdrop-blur-md
-                  "
-                >
-                  <span className="relative flex h-2 w-2">
-                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-60" />
-                    <span className="relative inline-flex h-2 w-2 rounded-full bg-green-400" />
-                  </span>
-
-                  {project.status}
-                </span>
-              </div>
-
-              {/* Image bottom content */}
-              <div className="absolute bottom-6 left-6 right-6">
-                <div className="mb-2 text-xs font-medium text-white/60">
-                  {project.timeline}
-                </div>
-
-                <h3 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
+                <h3 className="pixel-font text-xl font-bold tracking-tight text-white sm:text-2xl">
                   {project.name}
                 </h3>
               </div>
             </div>
 
-            {/* Content */}
-            <div className="p-6 sm:p-7">
-              {/* Description */}
-              <p className="text-sm leading-6 text-zinc-600 dark:text-zinc-400">
+            {/* Dashboard details */}
+            <div className="p-4 sm:p-5">
+              <p className="min-h-0 text-sm leading-6 text-zinc-600 dark:text-zinc-400 sm:min-h-[72px]">
                 {project.description}
               </p>
 
-              {/* Divider */}
-              <div className="my-6 h-px bg-zinc-200 dark:bg-zinc-800" />
+              {/* Progress section */}
+              <div className="mt-5 border-t border-zinc-200 pt-4 dark:border-zinc-800">
+                <div className="mb-3 flex items-end justify-between gap-3">
+                  <div>
+                    <p className="ibm-mono text-[9px] uppercase tracking-[0.16em] text-zinc-400 dark:text-zinc-500">
+                      Completion
+                    </p>
 
-              {/* Progress Header */}
-              <div className="mb-3 flex items-center justify-between">
-                <div>
-                  <span className="text-xs font-semibold uppercase tracking-[0.15em] text-zinc-500 dark:text-zinc-500">
-                    Project Progress
-                  </span>
+                    <p className="mt-1 text-xs text-zinc-600 dark:text-zinc-400">
+                      Overall project progress
+                    </p>
+                  </div>
+
+                  <p className="text-2xl font-semibold tracking-tight text-zinc-950 dark:text-white">
+                    {project.progress}
+                    <span className="ml-0.5 text-sm font-normal text-zinc-400">
+                      %
+                    </span>
+                  </p>
                 </div>
 
-                <span className="text-lg font-bold tracking-tight text-zinc-950 dark:text-white">
-                  {project.progress}%
-                </span>
-              </div>
-
-              {/* Progress */}
-              <div className="relative h-2.5 overflow-hidden rounded-full bg-zinc-100 dark:bg-zinc-800">
+                {/* Progress bar */}
                 <div
-                  className="
-                    absolute left-0 top-0 h-full
-                    rounded-full
-                    bg-zinc-950
-                    transition-all duration-1000 ease-out
-                    dark:bg-white
-                  "
-                  style={{
-                    width: `${project.progress}%`,
-                  }}
-                />
-              </div>
+                  className="h-1.5 overflow-hidden rounded-full bg-zinc-100 dark:bg-zinc-800"
+                  role="progressbar"
+                  aria-label={`${project.name} completion`}
+                  aria-valuenow={project.progress}
+                  aria-valuemin={0}
+                  aria-valuemax={100}
+                >
+                  <div
+                    className="h-full rounded-full bg-zinc-950 transition-[width] duration-700 ease-out dark:bg-white"
+                    style={{ width: `${project.progress}%` }}
+                  />
+                </div>
 
-              {/* Footer */}
-              <div className="mt-5 flex items-center justify-between">
-                <span className="text-xs text-zinc-500 dark:text-zinc-500">
-                  Development status
-                </span>
+                {/* Footer */}
+                <div className="mt-4 flex flex-wrap items-center justify-between gap-2">
+                  <span className="ibm-mono text-[9px] uppercase tracking-wider text-zinc-400 dark:text-zinc-500">
+                    {project.status}
+                  </span>
 
-                <span className="flex items-center gap-1.5 text-xs font-medium text-zinc-700 dark:text-zinc-300">
-                  <span className="h-1.5 w-1.5 rounded-full bg-green-500" />
-                  Currently active
-                </span>
+                  <span className="inline-flex items-center gap-1.5 text-xs text-zinc-600 dark:text-zinc-300">
+                    Active development
+                    <ArrowUpRight
+                      size={14}
+                      className="text-zinc-400"
+                      aria-hidden="true"
+                    />
+                  </span>
+                </div>
               </div>
             </div>
           </article>

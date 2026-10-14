@@ -169,7 +169,7 @@ function Home() {
           Full-Stack Developer · Software Engineer · Data Analyst
         </p>
 
-        <p className="ibm-mono mt-3 text-[9px] tracking-widest text-zinc-500 sm:text-xs">
+        <p className="ibm-mono mt-3 animate-float-side text-[9px] tracking-widest text-zinc-500 sm:text-xs">
           SCROLL TO EXPLORE
         </p>
       </div>

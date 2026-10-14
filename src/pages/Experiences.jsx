@@ -26,10 +26,10 @@ function Experiences() {
   return (
     <section
       id="experiences"
-      className="mx-auto w-full max-w-7xl px-0 pb-5 pt-10 sm:px-0 sm:pb-5 sm:pt-25 md:px-0 md:pb-5"
+      className="mx-auto w-full max-w-7xl px-0 pb-0 pt-10 sm:px-0 sm:pb-0 sm:pt-25 "
     >
       {/* Header */}
-      <header className="mb-8 border-b border-zinc-200 pb-6 dark:border-zinc-800 sm:mb-12 sm:pb-10">
+      <header className="mb-0 border-b border-zinc-200 pb-0 dark:border-zinc-800 sm:mb-5 sm:pb-10">
         <p className="ibm-mono text-[9px] font-medium uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400 sm:text-[10px] sm:tracking-[0.25em]">
           Experience / Timeline
         </p>
@@ -43,20 +43,7 @@ function Experiences() {
         </p>
       </header>
 
-      {/* Timeline Summary */}
-      <div className="mb-0 flex flex-wrap items-center justify-between gap-3 sm:mb-5">
-        <div className="ibm-mono flex items-center gap-2 text-[9px] uppercase tracking-[0.15em] text-zinc-500 dark:text-zinc-400 sm:tracking-[0.2em]">
-          <BriefcaseBusiness size={13} />
-          Career timeline
-        </div>
-
-        <span className="ibm-mono text-[9px] uppercase tracking-wider text-zinc-400 dark:text-zinc-500">
-          {String(experiences.length).padStart(2, "0")} entries
-        </span>
-      </div>
-
-      {/* Timeline */}
-      <div className="border-t border-zinc-200 dark:border-zinc-800">
+      <div className=" border-zinc-200 dark:border-zinc-800">
         {experiences.map((item, index) => {
           const itemKey = `${item.year}-${item.company}-${item.title}`;
           const isExpanded = Boolean(expandedItems[itemKey]);

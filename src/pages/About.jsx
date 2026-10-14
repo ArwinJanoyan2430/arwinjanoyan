@@ -1,6 +1,7 @@
 import TiltedCard from "@/animations/TitledCard";
 import { useEffect, useState } from "react";
 import LogoLoop from "@/animations/LogoLoop";
+import PixelCharacter from "../animations/PixelCharacter";
 import {
   SiReact,
   SiNextdotjs,
@@ -67,13 +68,7 @@ function About() {
     },
     {
       title: "Back End",
-      items: [
-        "Node.js",
-        "Express.js",
-        "Supabase",
-        "MongoDB",
-        "MySQL",
-      ],
+      items: ["Node.js", "Express.js", "Supabase", "MongoDB", "MySQL"],
     },
     {
       title: "Data Analytics",
@@ -81,7 +76,15 @@ function About() {
     },
     {
       title: "Other Tools",
-      items: ["Git", "GitHub", "Vercel", "Codex", "Claude", "Gemini", "VS Code"],
+      items: [
+        "Git",
+        "GitHub",
+        "Vercel",
+        "Codex",
+        "Claude",
+        "Gemini",
+        "VS Code",
+      ],
     },
   ];
 
@@ -115,9 +118,14 @@ function About() {
 
         {/* About */}
         <div className="max-w-xl text-center md:text-left">
-          <h2 className="pixel-font text-xl font-semibold sm:text-2xl">
-            Hi, I'm Arwin
-          </h2>
+          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 sm:gap-5">
+            <h2
+              id="about-greeting"
+              className="pixel-font text-xl font-semibold sm:text-2xl"
+            >
+              Hi, I'm Arwin
+            </h2>
+          </div>
 
           <p className="mt-6 text-sm leading-7 text-zinc-600 dark:text-zinc-400 sm:text-[15px] sm:leading-8">
             I'm an Information Technology student at the University of Mindanao
@@ -179,95 +187,62 @@ function About() {
         </div>
       </div>
 
+      <div className="mt-8 w-full min-w-0">
+        {/* Header */}
+        <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <h3 id="stack-heading" className="pixel-font text-2xl sm:text-3xl">
+              My toolkit<span className="text-zinc-400">.</span>
+            </h3>
 
-<div className="mt-6 w-full min-w-0 overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-950/50">
-  {/* Header */}
-  <div className="relative overflow-hidden border-b border-zinc-200 px-5 py-6 sm:px-7 sm:py-8 dark:border-zinc-800">
-    <div className="pointer-events-none absolute -right-12 -top-16 h-48 w-48 rounded-full bg-zinc-100 blur-3xl dark:bg-zinc-800/40" />
-
-    <div className="relative flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
-      <div className="min-w-0">
-        <div className="mb-3 flex items-center gap-2">
-          <span className="h-1.5 w-1.5 rounded-full bg-zinc-900 dark:bg-white" />
-          <span className="ibm-mono text-[9px] font-medium uppercase tracking-[0.25em] text-zinc-500 dark:text-zinc-400">
-            Technologies & tools
-          </span>
-        </div>
-
-        <h3 className="pixel-font text-xl tracking-tight text-zinc-950 dark:text-white sm:text-3xl">
-          My toolkit
-        </h3>
-
-        <p className="mt-3 max-w-lg text-xs leading-6 text-zinc-600 dark:text-zinc-400 sm:text-sm">
-          The technologies I use to build functional, modern digital
-          experiences.
-        </p>
-      </div>
-
-      {/* Tool Count */}
-      <div className="flex w-fit items-center gap-3 rounded-xl border border-zinc-200 bg-zinc-50 px-4 py-3 dark:border-zinc-800 dark:bg-zinc-900/70">
-        <span className="text-2xl font-semibold tabular-nums text-zinc-950 dark:text-white">
-          {techGroups.reduce(
-            (count, group) => count + group.items.length,
-            0
-          )}
-        </span>
-
-        <div>
-          <p className="ibm-mono text-[9px] uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400">
-            Total
-          </p>
-          <p className="text-xs text-zinc-600 dark:text-zinc-300">
-            Technologies
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  {/* Categories */}
-  <div className="divide-y divide-zinc-200 dark:divide-zinc-800">
-    {techGroups.map((group, index) => (
-      <section
-        key={group.title}
-        className="px-5 py-5 transition-colors duration-300 hover:bg-zinc-50/80 sm:px-7 sm:py-6 dark:hover:bg-zinc-900/40"
-      >
-        <div className="grid gap-4 sm:grid-cols-[180px_minmax(0,1fr)] sm:gap-6">
-          {/* Category Label */}
-          <div className="flex items-center gap-3 sm:items-start">
-            <span className="ibm-mono pt-0.5 text-[10px] text-zinc-400 dark:text-zinc-600">
-              {String(index + 1).padStart(2, "0")}
-            </span>
-
-            <div className="min-w-0">
-              <h4 className="text-xs font-semibold uppercase tracking-[0.12em] text-zinc-800 dark:text-zinc-200">
-                {group.title}
-              </h4>
-
-              <p className="mt-1 text-[10px] text-zinc-500 dark:text-zinc-500">
-                {group.items.length}{" "}
-                {group.items.length === 1 ? "technology" : "technologies"}
-              </p>
-            </div>
+            <p className="mt-3 max-w-md text-sm leading-6 text-zinc-500 dark:text-zinc-400">
+              A collection of tools and technologies I use to turn ideas into
+              working products.
+            </p>
           </div>
+        </div>
 
-          {/* Technology Tags */}
-          <div className="flex min-w-0 flex-wrap content-start gap-2">
-            {group.items.map((title) => (
-              <span
-                key={title}
-                className="inline-flex max-w-full items-center rounded-full border border-zinc-200 bg-zinc-50 px-3 py-2 text-[10px] font-medium text-zinc-700 transition-all duration-200 hover:border-zinc-400 hover:bg-white hover:text-zinc-950 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:border-zinc-600 dark:hover:bg-zinc-800 dark:hover:text-white"
-              >
-                <span className="break-words">{title}</span>
+        {/* Category Grid */}
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+          {techGroups.map((group, index) => (
+            <section
+              key={group.title}
+              className="group relative min-w-0 overflow-hidden rounded-xl border border-zinc-200 bg-white p-5 transition-all duration-300 hover:border-zinc-400 hover:shadow-[0_8px_30px_-18px_rgba(0,0,0,0.18)] dark:border-zinc-800 dark:bg-zinc-950/50 dark:hover:border-zinc-600 sm:p-6"
+            >
+              {/* Decorative index */}
+              <span className="pointer-events-none absolute right-4 top-3 select-none font-mono text-5xl font-bold text-zinc-100 transition-colors duration-300 group-hover:text-zinc-200/80 dark:text-zinc-900 dark:group-hover:text-zinc-800">
+                {String(index + 1).padStart(2, "0")}
               </span>
-            ))}
-          </div>
-        </div>
-      </section>
-    ))}
-  </div>
-</div>
 
+              {/* Category heading */}
+              <div className="relative mb-5 flex items-start justify-between gap-3">
+                <div className="min-w-0">
+                  <h4 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+                    {group.title}
+                  </h4>
+
+                  <p className="mt-1.5 text-xs text-zinc-500 dark:text-zinc-500">
+                    {group.items.length}{" "}
+                    {group.items.length === 1 ? "technology" : "technologies"}
+                  </p>
+                </div>
+              </div>
+
+              {/* Technology Tags */}
+              <div className="relative flex flex-wrap gap-2">
+                {group.items.map((title) => (
+                  <span
+                    key={title}
+                    className="inline-flex max-w-full items-center rounded-md border border-zinc-200/80 bg-zinc-50 px-2.5 py-1.5 text-[11px] font-medium leading-4 text-zinc-600 transition-all duration-200 hover:border-zinc-300 hover:bg-white hover:text-zinc-950 dark:border-zinc-800 dark:bg-zinc-900/80 dark:text-zinc-400 dark:hover:border-zinc-700 dark:hover:bg-zinc-800 dark:hover:text-white"
+                  >
+                    <span className="break-words">{title}</span>
+                  </span>
+                ))}
+              </div>
+            </section>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }
