@@ -118,7 +118,7 @@ function BinaryStream({ stream, scrollY, index }) {
   return (
     <div
       className="absolute select-none font-mono text-xs font-semibold
-        leading-[1.8] tracking-[0.35em] text-zinc-300
+        leading-[1.8] tracking-[0.35em] text-zinc-300 
         dark:text-zinc-300/60"
       style={{
         left: stream.x,
@@ -178,15 +178,26 @@ function DotGrid() {
     >
       {/* Technical grid */}
       <div
-        className="absolute inset-0 opacity-100 dark:opacity-30"
-        style={{
-          backgroundImage: `
-            linear-gradient(rgba(0,0,0,0.035) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(0,0,0,0.035) 1px, transparent 1px)
-          `,
-          backgroundSize: "48px 48px",
-        }}
-      />
+  className="absolute inset-0 opacity-100 dark:opacity-30"
+  style={{
+    backgroundImage: `
+      linear-gradient(rgba(0,0,0,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,0,0,0.035) 1px, transparent 1px)
+    `,
+    backgroundSize: "48px 48px",
+  }}
+>
+  <div
+    className="absolute inset-0 hidden dark:block"
+    style={{
+      backgroundImage: `
+        linear-gradient(rgba(255,255,255,0.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.12) 1px, transparent 1px)
+      `,
+      backgroundSize: "48px 48px",
+    }}
+  />
+</div>
 
       {/* Ambient lighting: disabled in light mode */}
       <div

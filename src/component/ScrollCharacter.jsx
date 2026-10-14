@@ -4,7 +4,7 @@ import { motion, useReducedMotion } from "framer-motion";
 
 import wave from "../assets/characters/arwin-pixel.png";
 import code from "../assets/characters/arwin-code.png";
-import experience from "../assets/characters/arwin-experience.jpg";
+import experience from "../assets/characters/arwin-experience.png";
 
 const clamp = (value, min, max) =>
   Math.max(min, Math.min(value, max));
