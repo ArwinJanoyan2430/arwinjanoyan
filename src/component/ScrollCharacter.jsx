@@ -5,6 +5,9 @@ import { motion, useReducedMotion } from "framer-motion";
 import wave from "../assets/characters/arwin-pixel.png";
 import code from "../assets/characters/arwin-code.png";
 import experience from "../assets/characters/arwin-experience.png";
+import projects from "../assets/characters/arwin-projects.png";
+import travelSprite from "../assets/characters/arwin-travel.png";
+import jump from "../assets/characters/arwin-jump.png";
 
 const clamp = (value, min, max) =>
   Math.max(min, Math.min(value, max));
@@ -15,7 +18,6 @@ const smoothStep = (value) =>
 const getTextRect = (element) => {
   const range = document.createRange();
   range.selectNodeContents(element);
-
   return range.getBoundingClientRect();
 };
 
@@ -33,23 +35,27 @@ export default function ScrollCharacter() {
         frameId = null;
 
         const start = document.getElementById("about-greeting");
-        const target = document.getElementById("stack-heading");
-        const nextTarget = document.getElementById(
-          "experiences-heading"
+        const toolkit = document.getElementById("stack-heading");
+        const experienceHeading = document.getElementById(
+          "experiences-heading",
         );
+        const projectsHeading =
+          document.getElementById("projects-heading");
 
-        if (!start || !target || !nextTarget) return;
-
-        const startRect = getTextRect(start);
-        const targetRect = getTextRect(target);
-        const nextTargetRect = getTextRect(nextTarget);
+        if (
+          !start ||
+          !toolkit ||
+          !experienceHeading ||
+          !projectsHeading
+        ) {
+          return;
+        }
 
         const mobile = window.innerWidth < 640;
         const viewportWidth = window.innerWidth;
         const viewportHeight = window.innerHeight;
         const scrollY = window.scrollY;
 
-        // Responsive character size and spacing.
         const size = mobile ? 32 : 64;
         const gap = mobile ? 6 : 12;
         const padding = 8;
@@ -57,10 +63,10 @@ export default function ScrollCharacter() {
         const minX = size / 2 + padding;
         const maxX = Math.max(
           minX,
-          viewportWidth - size / 2 - padding
+          viewportWidth - size / 2 - padding,
         );
 
-        // Position the character beside each heading.
+        // Keep the character beside each heading.
         const getX = (rect) => {
           const rightX = rect.right + gap + size / 2;
           const leftX = rect.left - gap - size / 2;
@@ -71,59 +77,76 @@ export default function ScrollCharacter() {
           return clamp(
             rect.right + size / 2,
             minX,
-            maxX
+            maxX,
           );
         };
 
-        // Keep all anchor coordinates in document space.
-        const getAnchor = (rect) => ({
-          x: getX(rect),
-          y: rect.top + rect.height / 2 + scrollY,
-        });
+        // Convert heading positions to document coordinates.
+        const getAnchor = (element) => {
+          const rect = getTextRect(element);
 
-        const startAnchor = getAnchor(startRect);
-        const middleAnchor = getAnchor(targetRect);
-        const endAnchor = getAnchor(nextTargetRect);
+          return {
+            x: getX(rect),
+            y: rect.top + rect.height / 2 + scrollY,
+          };
+        };
 
-        // Trigger when the destination heading approaches
-        // the lower part of the viewport.
-        const triggerLine = viewportHeight * 0.90;
+        const startAnchor = getAnchor(start);
+        const toolkitAnchor = getAnchor(toolkit);
+        const experienceAnchor = getAnchor(experienceHeading);
+        const projectsAnchor = getAnchor(projectsHeading);
 
-        // Each journey has its own scroll distance.
-        const firstTravelDistance = viewportHeight * 0.7;
-        const secondTravelDistance = viewportHeight * 0.6;
-
-        const firstTrigger =
-          middleAnchor.y - triggerLine;
-
-        // Phase 1: About -> My toolkit.
-        const firstProgress = clamp(
-          (scrollY - firstTrigger) /
-            firstTravelDistance,
-          0,
-          1
+        // Shorter scroll distances on mobile.
+        const triggerLine = viewportHeight * (
+          mobile ? 1 : 0.9
         );
 
-        // Phase 2 starts exactly when phase 1 finishes.
-        // This avoids jumping ahead because of a separate
-        // destination trigger.
-        const secondStartScroll =
-          firstTrigger + firstTravelDistance;
+        const firstDistance = viewportHeight * (
+          mobile ? 0.8 : 0.7
+        );
 
-        const secondProgress =
-          scrollY < secondStartScroll
-            ? 0
-            : clamp(
-                (scrollY - secondStartScroll) /
-                  secondTravelDistance,
-                0,
-                1
-              );
+        const secondDistance = viewportHeight * (
+          mobile ? 1 : 0.7
+        );
 
-        // Calculate the path in document coordinates.
+        const thirdDistance = viewportHeight * (
+          mobile ? 3 : 1.5
+        );
+
+        // About -> Tools.
+        const firstStart = toolkitAnchor.y - triggerLine;
+        const firstEnd = firstStart + firstDistance;
+
+        const firstProgress = clamp(
+          (scrollY - firstStart) / firstDistance,
+          0,
+          1,
+        );
+
+        // Tools -> Experience.
+        const secondStart = firstEnd;
+        const secondEnd = secondStart + secondDistance;
+
+        const secondProgress = clamp(
+          (scrollY - secondStart) / secondDistance,
+          0,
+          1,
+        );
+
+        // Experience -> Projects.
+        const thirdStart = secondEnd;
+
+        const thirdProgress = clamp(
+          (scrollY - thirdStart) / thirdDistance,
+          0,
+          1,
+        );
+
+        // Move smoothly between headings.
         const travel = (from, to, progress) => {
-          const t = smoothStep(progress);
+          const t = smoothStep(clamp(progress, 0, 1));
 
+          // Keep the original desktop movement.
           if (!mobile) {
             return {
               x: from.x + (to.x - from.x) * t,
@@ -131,41 +154,53 @@ export default function ScrollCharacter() {
             };
           }
 
-          // A gentle curve on mobile instead of a straight,
-          // potentially awkward horizontal movement.
+          // Gentler curve on mobile.
           const inverseT = 1 - t;
-          const direction = to.x >= from.x ? -1 : 1;
+          const verticalDistance = Math.abs(to.y - from.y);
+          const lift = Math.min(24, verticalDistance * 0.06);
+          const controlY = (from.y + to.y) / 2 - lift;
 
+          return {
+            x: from.x + (to.x - from.x) * t,
+            y:
+              inverseT * inverseT * from.y +
+              2 * inverseT * t * controlY +
+              t * t * to.y,
+          };
+        };
+
+        // Experience -> Projects.
+        const travelViaLeft = (from, to, progress) => {
+          const t = smoothStep(clamp(progress, 0, 1));
+          const inverseT = 1 - t;
+
+          // Use direct movement on mobile to prevent wide curves.
+          if (mobile) {
+            return {
+              x: from.x + (to.x - from.x) * t,
+              y: from.y + (to.y - from.y) * t,
+            };
+          }
+
+          // Preserve the original desktop curve.
           const curveAmount = Math.min(
-            45,
-            Math.abs(to.x - from.x) * 0.3
+            180,
+            viewportWidth * 0.25,
           );
 
           const controlX = clamp(
-            (from.x + to.x) / 2 +
-              direction * curveAmount,
+            Math.min(from.x, to.x) - curveAmount,
             minX,
-            maxX
+            maxX,
           );
 
-          const verticalDistance = Math.abs(
-            to.y - from.y
-          );
-
-          const lift = Math.min(
-            80,
-            verticalDistance * 0.2
-          );
-
-          const controlY =
-            (from.y + to.y) / 2 - lift;
+          const controlY = (from.y + to.y) / 2;
 
           return {
             x:
               inverseT * inverseT * from.x +
               2 * inverseT * t * controlX +
               t * t * to.x,
-
             y:
               inverseT * inverseT * from.y +
               2 * inverseT * t * controlY +
@@ -177,39 +212,47 @@ export default function ScrollCharacter() {
         let progress;
         let traveling;
 
-        if (scrollY < secondStartScroll) {
+        if (scrollY < secondStart) {
+          // About -> Tools.
           point = travel(
             startAnchor,
-            middleAnchor,
-            firstProgress
+            toolkitAnchor,
+            firstProgress,
           );
 
           progress = firstProgress;
-
           traveling =
-            firstProgress > 0.02 &&
-            firstProgress < 0.98;
-        } else {
+            firstProgress > 0.02 && firstProgress < 0.98;
+        } else if (scrollY < thirdStart) {
+          // Tools -> Experience.
           point = travel(
-            middleAnchor,
-            endAnchor,
-            secondProgress
+            toolkitAnchor,
+            experienceAnchor,
+            secondProgress,
           );
 
           progress = 1 + secondProgress;
-
           traveling =
-            secondProgress > 0.02 &&
-            secondProgress < 0.98;
+            secondProgress > 0.02 && secondProgress < 0.98;
+        } else {
+          // Experience -> Projects.
+          point = travelViaLeft(
+            experienceAnchor,
+            projectsAnchor,
+            thirdProgress,
+          );
+
+          progress = 3 + thirdProgress;
+          traveling =
+            thirdProgress > 0.02 && thirdProgress < 0.98;
         }
 
-        // Convert document coordinates into viewport coordinates.
         setPosition({
           x: clamp(point.x, minX, maxX),
           y: point.y - scrollY,
+          size,
           progress,
           traveling,
-          size,
         });
       });
     };
@@ -228,6 +271,7 @@ export default function ScrollCharacter() {
     return () => {
       window.removeEventListener("scroll", updatePosition);
       window.removeEventListener("resize", updatePosition);
+
       observer.disconnect();
 
       if (frameId !== null) {
@@ -238,13 +282,21 @@ export default function ScrollCharacter() {
 
   if (!position) return null;
 
-  // Switch character images as the journey progresses.
+  // Keep your sprite sequence.
   const activeImage =
-    position.progress >= 1.7
-      ? experience
-      : position.progress >= 0.7
-        ? code
-        : wave;
+    position.progress >= 4
+      ? projects
+      : position.progress >= 3.1
+        ? travelSprite
+        : position.progress >= 1.8
+          ? experience
+          : position.progress >= 1.2 && position.progress < 3
+            ? jump
+            : position.progress >= 0.8
+              ? code
+              : position.progress >= 0.2
+                ? jump
+                : wave;
 
   return (
     <div
@@ -296,3 +348,4 @@ export default function ScrollCharacter() {
     </div>
   );
 }
+

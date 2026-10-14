@@ -32,7 +32,7 @@ function Projects({ showResearch, setShowResearch }) {
           Portfolio
         </p>
 
-        <h1 className="pixel-font text-2xl font-bold tracking-tight sm:text-3xl">
+        <h1 id='projects-heading' className="pixel-font text-2xl font-bold tracking-tight sm:text-3xl">
           Projects
         </h1>
 
