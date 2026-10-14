@@ -179,98 +179,95 @@ function About() {
         </div>
       </div>
 
-<div className="mt-4 w-full min-w-0 overflow-hidden rounded-[28px]
-  border border-zinc-200/80
-  bg-zinc-100/0 backdrop-blur-xl
-  shadow-[0_24px_80px_-30px_rgba(0,0,0,0.22)]
-  dark:border-zinc-800/80 dark:bg-zinc-950/30">        {/* Header */}
-        <div className="relative overflow-hidden px-5 py-6 sm:px-7 sm:py-8">
-          {/* Decorative background */}
-          <div className="pointer-events-none absolute -right-20 -top-20 h-48 w-48 rounded-full bg-zinc-100 blur-3xl dark:bg-zinc-900" />
 
-          <div className="relative flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
-            <div className="min-w-0">
-              <div className="mb-3 flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-zinc-950 dark:bg-white" />
+<div className="mt-6 w-full min-w-0 overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-950/50">
+  {/* Header */}
+  <div className="relative overflow-hidden border-b border-zinc-200 px-5 py-6 sm:px-7 sm:py-8 dark:border-zinc-800">
+    <div className="pointer-events-none absolute -right-12 -top-16 h-48 w-48 rounded-full bg-zinc-100 blur-3xl dark:bg-zinc-800/40" />
 
-                <span className="ibm-mono text-[9px] font-medium uppercase tracking-[0.28em] text-zinc-400">
-                  Technologies & tools
-                </span>
-              </div>
-
-              <h3 className="pixel-font text-2xl tracking-tight text-zinc-950 dark:text-white sm:text-3xl">
-                My toolkit
-              </h3>
-
-              <p className="mt-2 max-w-xl text-xs leading-5 text-zinc-500 dark:text-zinc-400 sm:text-sm sm:leading-6">
-                The technologies I use to turn ideas into functional, modern
-                digital experiences.
-              </p>
-            </div>
-
-            {/* Tool count */}
-            <div className="flex shrink-0 items-center gap-3">
-              <div className="hidden h-px w-8 bg-zinc-300 sm:block dark:bg-zinc-800" />
-
-              <div className="flex items-baseline gap-2">
-                <span className="text-2xl font-semibold tracking-tight text-zinc-950 dark:text-white">
-                  {techGroups.reduce(
-                    (count, group) => count + group.items.length,
-                    0,
-                  )}
-                </span>
-
-                <span className="ibm-mono text-[9px] uppercase tracking-[0.2em] text-zinc-400">
-                  tools
-                </span>
-              </div>
-            </div>
-          </div>
+    <div className="relative flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+      <div className="min-w-0">
+        <div className="mb-3 flex items-center gap-2">
+          <span className="h-1.5 w-1.5 rounded-full bg-zinc-900 dark:bg-white" />
+          <span className="ibm-mono text-[9px] font-medium uppercase tracking-[0.25em] text-zinc-500 dark:text-zinc-400">
+            Technologies & tools
+          </span>
         </div>
 
-        {/* Categories */}
-        <div className="border-t border-zinc-100 dark:border-zinc-900">
-          {techGroups.map((group, index) => (
-            <div
-              key={group.title}
-              className="group relative px-5 py-6 transition-colors duration-300 hover:bg-zinc-50/70 sm:px-7 sm:py-7 dark:hover:bg-zinc-900/40"
-            >
-              <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
-                {/* Number / Category */}
-                <div className="flex shrink-0 items-center gap-3 sm:w-40">
-                  <span className="ibm-mono text-[10px] text-zinc-500 transition-colors duration-300 group-hover:text-zinc-600 dark:text-zinc-700 dark:group-hover:text-zinc-400">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
+        <h3 className="pixel-font text-xl tracking-tight text-zinc-950 dark:text-white sm:text-3xl">
+          My toolkit
+        </h3>
 
-                  <div className="h-px w-5 bg-zinc-400 dark:bg-zinc-800" />
+        <p className="mt-3 max-w-lg text-xs leading-6 text-zinc-600 dark:text-zinc-400 sm:text-sm">
+          The technologies I use to build functional, modern digital
+          experiences.
+        </p>
+      </div>
 
-                  <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400">
-                    {group.title}
-                  </span>
-                </div>
+      {/* Tool Count */}
+      <div className="flex w-fit items-center gap-3 rounded-xl border border-zinc-200 bg-zinc-50 px-4 py-3 dark:border-zinc-800 dark:bg-zinc-900/70">
+        <span className="text-2xl font-semibold tabular-nums text-zinc-950 dark:text-white">
+          {techGroups.reduce(
+            (count, group) => count + group.items.length,
+            0
+          )}
+        </span>
 
-                {/* Technologies */}
-                <div className="flex min-w-0 flex-1 flex-wrap gap-2">
-                  {group.items.map((title) => (
-                    <span
-                      key={title}
-                      className="group/item inline-flex max-w-full items-center gap-2 rounded-full border border-zinc-300 bg-zinc-100 px-3 py-1.5 text-xs font-medium text-zinc-500 transition-all duration-300 hover:-translate-y-0.5 hover:border-zinc-400 hover:bg-white hover:shadow-[0_6px_20px_-8px_rgba(0,0,0,0.3)] dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:border-zinc-600 dark:hover:bg-zinc-800"
-                    >
-
-                      <span className="break-words">{title}</span>
-                    </span>
-                  ))}
-                </div>
-
-                {/* Count */}
-                <span className="ibm-mono hidden shrink-0 text-[9px] text-zinc-300 sm:block dark:text-zinc-700">
-                  {String(group.items.length).padStart(2, "0")}
-                </span>
-              </div>
-            </div>
-          ))}
+        <div>
+          <p className="ibm-mono text-[9px] uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400">
+            Total
+          </p>
+          <p className="text-xs text-zinc-600 dark:text-zinc-300">
+            Technologies
+          </p>
         </div>
       </div>
+    </div>
+  </div>
+
+  {/* Categories */}
+  <div className="divide-y divide-zinc-200 dark:divide-zinc-800">
+    {techGroups.map((group, index) => (
+      <section
+        key={group.title}
+        className="px-5 py-5 transition-colors duration-300 hover:bg-zinc-50/80 sm:px-7 sm:py-6 dark:hover:bg-zinc-900/40"
+      >
+        <div className="grid gap-4 sm:grid-cols-[180px_minmax(0,1fr)] sm:gap-6">
+          {/* Category Label */}
+          <div className="flex items-center gap-3 sm:items-start">
+            <span className="ibm-mono pt-0.5 text-[10px] text-zinc-400 dark:text-zinc-600">
+              {String(index + 1).padStart(2, "0")}
+            </span>
+
+            <div className="min-w-0">
+              <h4 className="text-xs font-semibold uppercase tracking-[0.12em] text-zinc-800 dark:text-zinc-200">
+                {group.title}
+              </h4>
+
+              <p className="mt-1 text-[10px] text-zinc-500 dark:text-zinc-500">
+                {group.items.length}{" "}
+                {group.items.length === 1 ? "technology" : "technologies"}
+              </p>
+            </div>
+          </div>
+
+          {/* Technology Tags */}
+          <div className="flex min-w-0 flex-wrap content-start gap-2">
+            {group.items.map((title) => (
+              <span
+                key={title}
+                className="inline-flex max-w-full items-center rounded-md border border-zinc-200 bg-zinc-50 px-3 py-2 text-xs font-medium text-zinc-700 transition-all duration-200 hover:border-zinc-400 hover:bg-white hover:text-zinc-950 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:border-zinc-600 dark:hover:bg-zinc-800 dark:hover:text-white"
+              >
+                <span className="break-words">{title}</span>
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+    ))}
+  </div>
+</div>
+
     </section>
   );
 }
