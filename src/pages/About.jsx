@@ -256,7 +256,7 @@ function About() {
             {group.items.map((title) => (
               <span
                 key={title}
-                className="inline-flex max-w-full items-center rounded-md border border-zinc-200 bg-zinc-50 px-3 py-2 text-xs font-medium text-zinc-700 transition-all duration-200 hover:border-zinc-400 hover:bg-white hover:text-zinc-950 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:border-zinc-600 dark:hover:bg-zinc-800 dark:hover:text-white"
+                className="inline-flex max-w-full items-center rounded-full border border-zinc-200 bg-zinc-50 px-3 py-2 text-[10px] font-medium text-zinc-700 transition-all duration-200 hover:border-zinc-400 hover:bg-white hover:text-zinc-950 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:border-zinc-600 dark:hover:bg-zinc-800 dark:hover:text-white"
               >
                 <span className="break-words">{title}</span>
               </span>
