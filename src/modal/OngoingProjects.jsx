@@ -1,6 +1,6 @@
 
 import PaddleHub from "../assets/v2/PaddleHub.jpg";
-import PaddleQ from "../assets/v2/PaddleQ.jpg";
+import PaddleQ from "../assets/v2/PaddleQ.png";
 import { ArrowUpRight, CircleDot } from "lucide-react";
 
 function OngoingProjects() {
@@ -19,8 +19,8 @@ function OngoingProjects() {
       name: "PaddleQ",
       image: PaddleQ,
       description:
-        "A pickleball queue and session management system featuring automated player queuing, smart rotation, matchmaking, and live scores.",
-      progress: 50,
+        "A pocket-friendly pickleball queue system designed for easy access during group meetups, family gatherings, and friendly matches, with simple player queuing and rotation.",
+      progress: 100,
       status: "In Progress",
       category: "Web application",
       number: "02",
