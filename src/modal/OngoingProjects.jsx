@@ -19,7 +19,7 @@ function OngoingProjects() {
       name: "PaddleQ",
       image: PaddleQ,
       description:
-        "A pocket-friendly pickleball queue system designed for easy access during group meetups, family gatherings, and friendly matches, with simple player queuing and rotation.",
+        "A pocket pickleball queue system for family gatherings, friend meetups, and group games, featuring easy player queuing, smart rotation, live scores, and a podium to showcase top players.",
       progress: 100,
       status: "In Progress",
       category: "Web application",
